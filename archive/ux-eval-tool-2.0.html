@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Website Evaluation Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for animations and transitions */
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        .fade-out { animation: fadeOut 0.5s ease-in-out forwards; }
+        .slide-in-up { animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        .modal-content { transition: transform 0.3s ease-in-out; }
+        .progress-bar-fill { transition: width 1s ease-in-out; }
+        .score-circle {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 1.5s ease-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes slideInUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Tracker styles */
+        .tracker-item { transition: all 0.4s ease-in-out; opacity: 0.5; transform: scale(0.95); }
+        .tracker-item.in-progress { opacity: 1; transform: scale(1.05); background-color: white; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+        .tracker-item.complete { opacity: 1; transform: scale(1); }
+        .tracker-icon .spinner, .tracker-icon .checkmark { display: none; }
+        .tracker-icon .pending-icon { display: block; }
+        .in-progress .tracker-icon .spinner { display: block; animation: spin 1s linear infinite; }
+        .in-progress .tracker-icon .pending-icon { display: none; }
+        .complete .tracker-icon .checkmark { display: block; }
+        .complete .tracker-icon .pending-icon { display: none; }
+        .complete .tracker-text { text-decoration: line-through; color: #64748b; }
+
+        /* Print styles */
+        @media print {
+            body * { visibility: hidden; }
+            #advanced-report-content, #advanced-report-content * { visibility: visible; }
+            #advanced-report-content { position: absolute; left: 0; top: 0; width: 100%; padding: 2rem; }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <div id="app" class="max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mb-2">UX Evaluation Tool</h1>
+            <p class="text-lg text-slate-600">Turn good intentions into a great user experience.</p>
+        </header>
+
+        <!-- Initial Screen: URL Input -->
+        <div id="start-screen" class="text-center bg-white p-8 rounded-2xl shadow-lg fade-in">
+            <h2 class="text-2xl font-bold mb-4">Get Your Free Website Analysis</h2>
+            <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Enter your website and email below. Our team will perform a manual UX audit and send a detailed report to your inbox.</p>
+            
+            <div class="max-w-md mx-auto space-y-4">
+                <!-- Form fields -->
+                <div>
+                    <select id="industry" name="industry" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 bg-white text-slate-500">
+                        <option>Select Industry (Optional)</option>
+                        <option>E-commerce</option><option>SaaS / Technology</option><option>Local Business</option><option>Consulting</option><option>Blog / Content</option><option>Non-Profit</option><option>Other</option>
+                    </select>
+                </div>
+                <div>
+                    <input id="website-url" type="url" placeholder="https://yourwebsite.com" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                    <p id="url-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid URL.</p>
+                </div>
+                <div>
+                    <input id="email" type="email" placeholder="you@email.com" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200">
+                    <p id="email-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid email address.</p>
+                </div>
+                <button id="start-btn" class="w-full bg-indigo-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-indigo-300">Start Free Analysis</button>
+            </div>
+
+            <!-- Guarantees -->
+            <div class="mt-6 text-slate-500 text-sm flex justify-center items-center gap-x-4 gap-y-2 flex-wrap">
+                <span>✓ No signup required</span><span class="hidden sm:inline">|</span><span>✓ Results in 48 hours</span><span class="hidden sm:inline">|</span><span>✓ 100% Free</span>
+            </div>
+        </div>
+
+        <!-- Processing Screen -->
+        <div id="processing-screen" class="hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                <h2 class="text-2xl font-bold mb-2">Analyzing Your Website...</h2>
+                <p class="text-slate-600 mb-8">Our automated checker is running a series of evaluations. Please wait a moment.</p>
+                <div id="tracker-container" class="space-y-3 max-w-md mx-auto text-left"></div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="hidden text-center">
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-2">Evaluation Complete!</h2>
+                <p class="text-slate-600 mb-8">Here's your initial score. For a deep dive, order the advanced report.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Score Chart -->
+                    <div class="relative flex justify-center items-center">
+                        <svg class="w-48 h-48 transform -rotate-90"><circle class="text-slate-200" stroke-width="12" stroke="currentColor" fill="transparent" r="45" cx="96" cy="96" /><circle id="score-circle" class="text-indigo-600 score-circle" stroke-width="12" stroke-linecap="round" stroke="currentColor" fill="transparent" r="45" cx="96" cy="96" /></svg>
+                        <div class="absolute flex flex-col items-center"><span id="overall-score-text" class="text-5xl font-extrabold text-slate-900">0</span><span class="text-slate-500">Overall Score</span></div>
+                    </div>
+                    <!-- Category Scores -->
+                    <div id="category-scores" class="space-y-4 text-left"></div>
+                </div>
+
+                <!-- Feedback Section -->
+                <div id="feedback-section" class="mt-12 text-left border-t border-slate-200 pt-8">
+                    <h3 class="text-2xl font-bold mb-4">Actionable Feedback</h3>
+                    <div id="feedback-list" class="space-y-6"></div>
+                </div>
+
+                <div class="mt-12 border-t border-slate-200 pt-8 flex flex-col sm:flex-row justify-center gap-4">
+                    <button id="restart-btn" class="bg-slate-200 text-slate-800 font-bold py-3 px-8 rounded-lg hover:bg-slate-300 transition">Evaluate Another Site</button>
+                    <button id="order-advanced-btn" class="bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">Order Advanced Report for $49</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advanced Report Screen -->
+        <div id="advanced-report-screen" class="hidden">
+            <!-- Purchase Modal -->
+            <div id="purchase-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center p-4 fade-in">
+                <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 text-center slide-in-up">
+                    <h2 class="text-2xl font-bold mb-2">Complete Your Purchase</h2>
+                    <p class="text-slate-600 mb-6">You're one step away from your detailed UX report.</p>
+                    <div class="bg-slate-100 p-6 rounded-lg mb-6">
+                        <div class="flex justify-between items-center text-lg">
+                            <span class="font-medium">Advanced UX Report</span>
+                            <span class="font-bold text-indigo-600">$49.00</span>
+                        </div>
+                    </div>
+                    <button id="simulate-purchase-btn" class="w-full bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition">Simulate Secure Payment</button>
+                    <button id="cancel-purchase-btn" class="mt-3 text-sm text-slate-500 hover:text-slate-700">Cancel and go back</button>
+                </div>
+            </div>
+
+            <!-- Report Content -->
+            <div id="advanced-report-content" class="hidden bg-white p-8 rounded-2xl shadow-lg">
+                <div class="no-print flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
+                    <h2 class="text-3xl font-bold">Advanced Report</h2>
+                    <div class="flex gap-3">
+                        <button id="print-btn" class="flex items-center gap-2 bg-slate-200 text-slate-800 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 transition">Print</button>
+                        <button id="download-btn" class="flex items-center gap-2 bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition">Download</button>
+                    </div>
+                </div>
+                <div id="advanced-feedback-list" class="space-y-8"></div>
+                
+                <!-- CTA Box -->
+                <div class="no-print mt-12 p-8 bg-indigo-700 text-white rounded-2xl text-center shadow-2xl">
+                    <h3 class="text-3xl font-extrabold mb-3">Ready to Turn Insights Into Action?</h3>
+                    <p class="text-indigo-200 max-w-2xl mx-auto mb-6">This report shows what's wrong. We know how to fix it. Let our expert UX/UI designers transform your website into a high-performing, user-friendly asset.</p>
+                    <a href="https://www.withdesignspark.com" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-indigo-600 font-bold py-3 px-8 rounded-lg hover:bg-slate-100 transition-transform transform hover:scale-105 text-lg shadow-lg">
+                        Get Your Free Proposal
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM ELEMENTS ---
+            const startScreen = document.getElementById('start-screen');
+            const processingScreen = document.getElementById('processing-screen');
+            const resultsScreen = document.getElementById('results-screen');
+            const advancedReportScreen = document.getElementById('advanced-report-screen');
+            const purchaseModal = document.getElementById('purchase-modal');
+            const advancedReportContent = document.getElementById('advanced-report-content');
+            
+            const startBtn = document.getElementById('start-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const orderAdvancedBtn = document.getElementById('order-advanced-btn');
+            const simulatePurchaseBtn = document.getElementById('simulate-purchase-btn');
+            const cancelPurchaseBtn = document.getElementById('cancel-purchase-btn');
+            const printBtn = document.getElementById('print-btn');
+            const downloadBtn = document.getElementById('download-btn');
+
+            const websiteUrlInput = document.getElementById('website-url');
+            const emailInput = document.getElementById('email');
+            const industryDropdown = document.getElementById('industry');
+            const urlError = document.getElementById('url-error');
+            const emailError = document.getElementById('email-error');
+            
+            const trackerContainer = document.getElementById('tracker-container');
+            const overallScoreText = document.getElementById('overall-score-text');
+            const scoreCircle = document.getElementById('score-circle');
+            const categoryScoresContainer = document.getElementById('category-scores');
+            const feedbackList = document.getElementById('feedback-list');
+            const advancedFeedbackList = document.getElementById('advanced-feedback-list');
+
+            // --- EVALUATION DATA ---
+            const checks = [
+                { id: 'clarity', name: 'Analyzing Clarity & Messaging' },
+                { id: 'usability', name: 'Evaluating Usability & Flow' },
+                { id: 'accessibility', name: 'Checking Accessibility Standards' },
+                { id: 'visuals', name: 'Assessing Visual Design & Branding' },
+                { id: 'report', name: 'Compiling Your Report' }
+            ];
+
+            const feedbackTemplates = {
+                Clarity: {
+                    low: "Your website's purpose may not be clear. Focus on writing a powerful, direct headline for your homepage and simplifying your navigation labels.",
+                    medium: "You're on the right track, but there's room to improve clarity. Review your calls-to-action (CTAs) to make them more prominent and ensure all content is easy to scan.",
+                    high: "Excellent work! Your website is clear and easy to understand. Users should have no trouble figuring out what you do and how to take the next step.",
+                    advanced: {
+                        low: "A low Clarity score means users likely feel lost or confused when they first arrive. Your primary value proposition isn't hitting home. **Action Items:** 1. Rewrite your homepage headline to state exactly what you do for your customer. 2. Ensure your main navigation uses simple, universally understood terms (e.g., 'Services' not 'Offerings'). 3. Add a clear, concise subheading that elaborates on the headline.",
+                        medium: "Your site is mostly clear, but minor ambiguities could be causing hesitation. Users might understand the 'what' but not the 'why' or 'how'. **Action Items:** 1. Review your Call-to-Action buttons. Are they visually distinct? Is the text a compelling command (e.g., 'Get Your Free Quote' vs. 'Submit')? 2. Break down large paragraphs into smaller chunks with descriptive subheadings to improve scannability.",
+                        high: "Your site communicates its purpose effectively and guides users logically. To maintain this, regularly ask new visitors for their first impressions. Ensure any new pages or features added to the site maintain this same high level of clarity and simplicity. No immediate action is required, but vigilance is key."
+                    }
+                },
+                Usability: {
+                    low: "Significant usability issues may be frustrating your users. Prioritize mobile responsiveness and simplify your forms. Test every link and button.",
+                    medium: "Your site is generally usable, but could be smoother. Double-check your mobile experience and make sure help/contact info is very easy to find.",
+                    high: "Great job! Your website is user-friendly and functional. Users can accomplish their goals efficiently.",
+                    advanced: {
+                        low: "Users are likely hitting dead ends or getting stuck. This is a critical issue that costs you conversions. **Action Items:** 1. Use your phone to navigate your entire site. Can you complete a purchase or fill out a form easily? 2. Shorten all forms to only the absolute essential fields. 3. Click every single link and button on your site to find and fix any that are broken.",
+                        medium: "The core functions of your site work, but there are opportunities to reduce friction. Think about making common tasks even easier. **Action Items:** 1. Make your 'Contact Us' link or phone number visible in the header or footer on every page. 2. If you have a search bar, test it with common queries to ensure it provides relevant results. 3. Check page load speeds; slow pages are a major usability problem.",
+                        high: "Your site is a breeze to use. The layout is intuitive and everything works as expected. To level up, consider adding features that anticipate user needs, like a 'Recently Viewed Items' section or more advanced filtering options if applicable. Continue testing on new devices and browsers as they are released."
+                    }
+                },
+                Accessibility: {
+                    low: "Your site has major accessibility barriers. Start by checking color contrast and adding alt text to all images. This is crucial for inclusivity and legal compliance.",
+                    medium: "You've made some effort in accessibility, which is great. Now, focus on full keyboard navigation and ensuring text is resizable to support more users.",
+                    high: "Fantastic! Your commitment to accessibility makes your website usable for a wider audience. Keep up the great work.",
+                    advanced: {
+                        low: "Your site is likely unusable for people with certain disabilities, which can have legal and ethical implications. **Action Items:** 1. Use an online color contrast checker to find and fix all instances of text that is hard to read against its background. 2. Go through your entire site and add descriptive 'alt text' to every meaningful image. 3. Ensure all form fields have proper `<label>` tags.",
+                        medium: "You've covered the basics, which is a great start. Now you can address more nuanced accessibility issues. **Action Items:** 1. Try to navigate your entire site using only the 'Tab' key. Can you reach and operate every interactive element? Is the focus order logical? 2. Use your browser's zoom function to increase the text size to 200%. Does the layout break or does text become unreadable?",
+                        high: "Your dedication to an inclusive web is commendable. Your site serves a broad audience effectively. To stay ahead, explore ARIA (Accessible Rich Internet Applications) landmarks to better define regions of your page for screen reader users and ensure any videos have captions and transcripts."
+                    }
+                },
+                'Visual Design': {
+                    low: "The visual design may appear unprofessional or dated. Consider a redesign focusing on a clean layout, consistent branding, and high-quality images.",
+                    medium: "Your design is functional, but could be more polished. Focus on creating more white space and ensuring your use of color and fonts is consistent everywhere.",
+                    high: "Beautifully done! Your website's professional and modern design builds trust and provides a pleasant user experience.",
+                    advanced: {
+                        low: "A poor visual design can erode trust and make your brand seem less credible. It suggests a lack of care. **Action Items:** 1. Create a simple style guide: define 1-2 primary fonts and 2-3 brand colors and use them consistently. 2. Replace any low-resolution or generic stock photos with high-quality, relevant images. 3. Increase the 'white space' (empty areas) around elements to reduce clutter and improve focus.",
+                        medium: "Your design is solid but lacks a 'wow' factor. Small tweaks can elevate the overall perception of your brand. **Action Items:** 1. Ensure that spacing (margins and padding) is consistent for similar elements across all pages. 2. Check font hierarchy. Are your main headings (H1) clearly more important than subheadings (H2, H3)? 3. Review your imagery. Does it evoke a consistent mood and support your brand message?",
+                        high: "Your visual design is a major asset. It's clean, professional, and enhances your content. To maintain this standard, create a component library for any new sections you build to ensure consistency. Pay attention to design trends, but don't chase them; evolve your design thoughtfully to keep it fresh without alienating your audience."
+                    }
+                }
+            };
+            
+            // --- STATE ---
+            let simulatedScores = {};
+            let feedbackKeyMap = {};
+
+            // --- FUNCTIONS ---
+            function isValidUrl(string) { try { new URL(string); return true; } catch (_) { return false; } }
+            function isValidEmail(email) { return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()); }
+
+            function startEvaluation() {
+                let isValid = true;
+                if (!isValidUrl(websiteUrlInput.value.trim())) { urlError.classList.remove('hidden'); websiteUrlInput.classList.add('border-red-500'); isValid = false; } else { urlError.classList.add('hidden'); websiteUrlInput.classList.remove('border-red-500'); }
+                if (!isValidEmail(emailInput.value.trim())) { emailError.classList.remove('hidden'); emailInput.classList.add('border-red-500'); isValid = false; } else { emailError.classList.add('hidden'); emailInput.classList.remove('border-red-500'); }
+                if (!isValid) return;
+
+                startScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    startScreen.classList.add('hidden');
+                    processingScreen.classList.remove('hidden');
+                    processingScreen.classList.add('fade-in');
+                    runAutomatedChecks();
+                }, 500);
+            }
+
+            function runAutomatedChecks() {
+                trackerContainer.innerHTML = '';
+                checks.forEach(check => {
+                    trackerContainer.innerHTML += `<div id="tracker-${check.id}" class="tracker-item flex items-center p-4 bg-slate-100 rounded-lg"><div class="tracker-icon w-6 h-6 mr-4 flex-shrink-0"><svg class="pending-icon text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><svg class="spinner text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0011.667 0l3.181-3.183m-4.991-2.696a8.25 8.25 0 00-11.667 0l-3.181 3.183" /></svg><svg class="checkmark text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span class="tracker-text font-medium text-slate-700">${check.name}</span></div>`;
+                });
+
+                let currentCheckIndex = 0;
+                const processNextCheck = () => {
+                    if (currentCheckIndex > 0) updateTrackerStatus(checks[currentCheckIndex - 1].id, 'complete');
+                    if (currentCheckIndex < checks.length) {
+                        updateTrackerStatus(checks[currentCheckIndex].id, 'in-progress');
+                        setTimeout(processNextCheck, 1500);
+                        currentCheckIndex++;
+                    } else {
+                        showResults();
+                    }
+                };
+                setTimeout(processNextCheck, 500);
+            }
+            
+            function updateTrackerStatus(id, status) {
+                const item = document.getElementById(`tracker-${id}`);
+                if (item) item.className = `tracker-item flex items-center p-4 bg-slate-100 rounded-lg ${status}`;
+            }
+
+            function showResults() {
+                processingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    processingScreen.classList.add('hidden');
+                    resultsScreen.classList.remove('hidden');
+                    resultsScreen.classList.add('fade-in');
+                    calculateAndDisplayResults();
+                }, 500);
+            }
+
+            function calculateAndDisplayResults() {
+                simulatedScores = {
+                    Clarity: Math.floor(Math.random() * 51) + 45,
+                    Usability: Math.floor(Math.random() * 51) + 45,
+                    Accessibility: Math.floor(Math.random() * 51) + 45,
+                    'Visual Design': Math.floor(Math.random() * 51) + 45,
+                };
+                
+                let totalPercentage = 0;
+                const categories = Object.keys(simulatedScores);
+                categoryScoresContainer.innerHTML = '';
+                feedbackList.innerHTML = '';
+                
+                categories.forEach(cat => {
+                    const percentage = simulatedScores[cat];
+                    totalPercentage += percentage;
+                    const scoreColor = percentage > 75 ? 'bg-green-100 text-green-800' : percentage > 60 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800';
+                    const barColor = percentage > 75 ? 'bg-green-500' : percentage > 60 ? 'bg-yellow-500' : 'bg-red-500';
+                    
+                    let feedbackKey;
+                    if (percentage <= 60) feedbackKey = 'low';
+                    else if (percentage <= 75) feedbackKey = 'medium';
+                    else feedbackKey = 'high';
+                    feedbackKeyMap[cat] = feedbackKey;
+
+                    categoryScoresContainer.innerHTML += `<div class="slide-in-up" style="animation-delay: ${categories.indexOf(cat) * 100}ms"><div class="flex justify-between items-center mb-1"><span class="font-semibold">${cat}</span><span class="text-sm font-bold ${scoreColor} px-2 py-0.5 rounded-md">${percentage}%</span></div><div class="w-full bg-slate-200 rounded-full h-2.5"><div class="h-2.5 rounded-full progress-bar-fill ${barColor}" style="width: 0%"></div></div></div>`;
+                    feedbackList.innerHTML += `<div class="flex gap-4 slide-in-up" style="animation-delay: ${300 + categories.indexOf(cat) * 100}ms"><div class="w-12 h-12 rounded-full ${scoreColor} flex-shrink-0 flex items-center justify-center font-bold text-lg">${percentage}%</div><div><h4 class="font-bold text-lg">${cat}</h4><p class="text-slate-600">${feedbackTemplates[cat][feedbackKey]}</p></div></div>`;
+                });
+                
+                setTimeout(() => {
+                    document.querySelectorAll('#category-scores .progress-bar-fill').forEach((bar, index) => {
+                        bar.style.width = `${simulatedScores[categories[index]]}%`;
+                    });
+                }, 200);
+
+                const overallPercentage = Math.round(totalPercentage / categories.length);
+                
+                let currentScore = 0;
+                const scoreInterval = setInterval(() => {
+                    currentScore >= overallPercentage ? clearInterval(scoreInterval) : currentScore++;
+                    overallScoreText.textContent = currentScore;
+                }, 20);
+
+                const circle = scoreCircle;
+                const circumference = circle.r.baseVal.value * 2 * Math.PI;
+                const offset = circumference - (overallPercentage / 100) * circumference;
+                setTimeout(() => { circle.style.strokeDashoffset = offset; }, 200);
+            }
+
+            function showAdvancedReportFlow() {
+                resultsScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    resultsScreen.classList.add('hidden');
+                    advancedReportScreen.classList.remove('hidden');
+                    purchaseModal.classList.remove('hidden');
+                }, 500);
+            }
+
+            function generateAdvancedFeedback() {
+                advancedFeedbackList.innerHTML = '';
+                Object.keys(simulatedScores).forEach(cat => {
+                    const percentage = simulatedScores[cat];
+                    const feedbackKey = feedbackKeyMap[cat];
+                    const scoreColor = percentage > 75 ? 'bg-green-100 text-green-800' : percentage > 60 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800';
+
+                    advancedFeedbackList.innerHTML += `
+                        <div>
+                            <div class="flex items-center gap-4 mb-3">
+                                <span class="w-16 h-16 rounded-full ${scoreColor} flex-shrink-0 flex items-center justify-center font-bold text-2xl">${percentage}</span>
+                                <h3 class="text-2xl font-bold">${cat}</h3>
+                            </div>
+                            <p class="text-slate-700 leading-relaxed">${feedbackTemplates[cat].advanced[feedbackKey]}</p>
+                        </div>
+                    `;
+                });
+            }
+            
+            function downloadReport() {
+                let reportText = `UX ADVANCED REPORT\n====================\n\n`;
+                Object.keys(simulatedScores).forEach(cat => {
+                    const percentage = simulatedScores[cat];
+                    const feedbackKey = feedbackKeyMap[cat];
+                    reportText += `CATEGORY: ${cat}\nSCORE: ${percentage}%\n\nFEEDBACK:\n${feedbackTemplates[cat].advanced[feedbackKey]}\n\n--------------------\n\n`;
+                });
+                
+                const blob = new Blob([reportText], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'UX-Advanced-Report.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            function restart() {
+                const currentScreen = document.querySelector('#app > div:not(.hidden)');
+                currentScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    currentScreen.classList.add('hidden');
+                    startScreen.classList.remove('hidden', 'fade-out');
+                    startScreen.classList.add('fade-in');
+                    websiteUrlInput.value = '';
+                    emailInput.value = '';
+                    industryDropdown.selectedIndex = 0;
+                    scoreCircle.style.transition = 'none';
+                    scoreCircle.style.strokeDashoffset = 283;
+                    setTimeout(() => { scoreCircle.style.transition = 'stroke-dashoffset 1.5s ease-out'; }, 50);
+                }, 500);
+            }
+
+            // --- EVENT LISTENERS ---
+            startBtn.addEventListener('click', startEvaluation);
+            restartBtn.addEventListener('click', restart);
+            orderAdvancedBtn.addEventListener('click', showAdvancedReportFlow);
+            cancelPurchaseBtn.addEventListener('click', () => {
+                advancedReportScreen.classList.add('hidden');
+                resultsScreen.classList.remove('hidden', 'fade-out');
+                resultsScreen.classList.add('fade-in');
+            });
+            simulatePurchaseBtn.addEventListener('click', () => {
+                purchaseModal.classList.add('fade-out');
+                setTimeout(() => {
+                    purchaseModal.classList.add('hidden');
+                    advancedReportContent.classList.remove('hidden');
+                    advancedReportContent.classList.add('fade-in');
+                    generateAdvancedFeedback();
+                }, 500);
+            });
+            printBtn.addEventListener('click', () => window.print());
+            downloadBtn.addEventListener('click', downloadReport);
+        });
+    </script>
+</body>
+</html>

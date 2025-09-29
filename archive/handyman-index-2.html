@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Handyman - by DesignSpark: Fix Your Broken Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1",
+                        secondary: "#8b5cf6",
+                        accent: "#06b6d4",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+        }
+        
+        /* Animation and Tool Specific Styles */
+        .fade-in { animation: fadeIn 0.5s ease-in-out forwards; }
+        .fade-out { animation: fadeOut 0.5s ease-in-out forwards; }
+        .slide-in-up { animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+        .score-circle {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            transition: stroke-dashoffset 1.5s ease-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes slideInUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .tracker-item { transition: all 0.4s ease-in-out; opacity: 0.5; transform: scale(0.95); }
+        .tracker-item.in-progress { opacity: 1; transform: scale(1.05); background-color: white; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+        .tracker-item.complete { opacity: 1; transform: scale(1); }
+        .tracker-icon .spinner, .tracker-icon .checkmark { display: none; }
+        .tracker-icon .pending-icon { display: block; }
+        .in-progress .tracker-icon .spinner { display: block; animation: spin 1s linear infinite; }
+        .in-progress .tracker-icon .pending-icon { display: none; }
+        .complete .tracker-icon .checkmark { display: block; }
+        .complete .tracker-icon .pending-icon { display: none; }
+        .complete .tracker-text { text-decoration: line-through; color: #64748b; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-slate-800">
+    <!-- Header and other sections remain the same -->
+    <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+            <a href="/" class="flex items-center space-x-3 group">
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">DesignSpark -
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Website
+                        Handyman</span></span>
+            </a>
+            <nav class="flex items-center space-x-4">
+                <a href="/manageone/login.php"
+                    class="text-gray-700 hover:text-primary font-medium px-4 py-2 rounded transition-colors">Login</a>
+                <a class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-xl font-semibold shadow hover:scale-105 transition-transform"
+                    href="https://calendly.com/david-withdesignspark/30min" target="_blank">Book a Call</a>
+                <a href="#pricing"
+                    class="text-primary hover:text-secondary font-semibold px-4 py-2 rounded transition-colors underline underline-offset-4 hover:no-underline">See
+                    Pricing</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="h-20"></div>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-50 min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-6xl mx-auto text-center">
+             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-gray-900">
+                Broken Website?
+                <span
+                    class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Fixed in
+                    Hours!</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-12 text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Get back online fast and reclaim your business! Website design & repair and design services that
+                get you back online and optimized in no time.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <button onclick="scrollToPricing()"
+                    class="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl relative overflow-hidden group active:scale-95 active:brightness-90">
+                    <span class="relative z-10">Get Started Now</span>
+                    <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </button>
+                <button onclick="scrollToEvaluation()"
+                    class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 active:brightness-90">
+                    <span>Free Website Evaluation</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- START: WEBSITE EVALUATION TOOL SECTION -->
+    <!-- ================================================================= -->
+    <section id="website-evaluation" class="bg-slate-100 py-20 px-4">
+        <div id="evaluation-tool-container" class="max-w-4xl mx-auto">
+            <!-- This container will be dynamically filled by JavaScript -->
+        </div>
+    </section>
+    <!-- ================================================================= -->
+    <!-- END: WEBSITE EVALUATION TOOL SECTION -->
+    <!-- ================================================================= -->
+
+    <!-- Other sections like Portfolio, Pricing, FAQ, etc. -->
+    <section id="contact" class="py-20 px-4 bg-white">
+        <div class="max-w-lg mx-auto">
+             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">
+                Get In Touch <span class="text-primary">With Us</span>
+            </h2>
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+                <form id="contactForm" action="process-contact-form.php" method="POST" class="space-y-6">
+                    <div>
+                        <label for="contact_name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
+                        <input type="text" id="contact_name" name="name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary" placeholder="John Doe" />
+                    </div>
+                    <div>
+                        <label for="contact_email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label>
+                        <input type="email" id="contact_email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary" placeholder="you@example.com" />
+                    </div>
+                    <div>
+                        <label for="contact_message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                        <textarea id="contact_message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary" placeholder="How can we help you?"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-transform">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <div id="formSuccessMessage" class="hidden text-center p-8">
+                    <svg class="w-16 h-16 mx-auto text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="text-2xl font-bold text-gray-800">Thank You!</h3>
+                    <p class="text-gray-600 mt-2">Your message has been sent successfully.</p>
+                </div>
+                <div id="formErrorMessage" class="hidden text-center mt-4 text-red-600 font-medium p-4 bg-red-100 rounded-lg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer and Modals -->
+    <footer class="py-10 px-4 bg-gray-800">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="text-white mb-6">
+                &copy; 2025 DesignSpark. All rights reserved.
+                <p>Based in Holladay Utah</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Smooth scroll function
+            function scrollToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop - 80,
+                        behavior: "smooth",
+                    });
+                }
+            }
+            window.scrollToEvaluation = () => scrollToSection('website-evaluation');
+            window.scrollToPricing = () => scrollToSection('pricing');
+
+            // Contact Form AJAX handler
+            const contactForm = document.getElementById("contactForm");
+            if(contactForm) {
+                contactForm.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    const form = this;
+                    const formData = new FormData(form);
+                    fetch('process-contact-form.php', { method: 'POST', body: formData })
+                    .then(response => response.json())
+                    .then(data => {
+                        const successMessage = document.getElementById('formSuccessMessage');
+                        const errorMessage = document.getElementById('formErrorMessage');
+                        if (data.success) {
+                            form.style.display = 'none';
+                            successMessage.classList.remove('hidden');
+                        } else {
+                            errorMessage.textContent = data.message || 'An error occurred.';
+                            errorMessage.classList.remove('hidden');
+                        }
+                    }).catch(error => {
+                        document.getElementById('formErrorMessage').textContent = 'A network error occurred.';
+                        document.getElementById('formErrorMessage').classList.remove('hidden');
+                    });
+                });
+            }
+
+            // =================================================================
+            // START: WEBSITE EVALUATION TOOL JAVASCRIPT
+            // =================================================================
+            const toolContainer = document.getElementById('evaluation-tool-container');
+            
+            // Inject the tool's HTML structure
+            toolContainer.innerHTML = `
+                <div id="start-screen" class="text-center bg-white p-8 rounded-2xl shadow-lg fade-in">
+                    <h2 class="text-2xl font-bold mb-4">Get Your Free Website Analysis</h2>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Our AI will analyze your site's design, clarity, and how well it encourages visitors to take action.</p>
+                    <div class="max-w-md mx-auto space-y-4">
+                        <div>
+                            <input id="eval_name_input" type="text" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+                            <p id="name-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter your name.</p>
+                        </div>
+                        <div>
+                            <input id="eval_email_input" type="email" placeholder="you@email.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+                            <p id="email-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid email address.</p>
+                        </div>
+                        <div>
+                            <input id="eval_website_url_input" type="url" placeholder="https://yourwebsite.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+                            <p id="url-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid URL.</p>
+                        </div>
+                         <div class="flex items-start space-x-3 text-left">
+                            <input id="newsletter_checkbox" name="newsletter" type="checkbox" value="1" checked class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                            <div class="text-sm">
+                                <label for="newsletter_checkbox" class="text-sm font-medium text-gray-700">Yes, send me occasional insights about turning more visitors into customers — no spam, promise.</label>
+                            </div>
+                        </div>
+                        <button id="start-btn" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center justify-center space-x-3 hover:scale-105 transition-transform shadow-lg">
+                            <span>Start Free Analysis</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="processing-screen" class="hidden bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <h2 class="text-2xl font-bold mb-2">AI Is Analyzing Your Website...</h2>
+                    <p class="text-slate-600 mb-8">This can take up to a minute. We're saving your info and sending the site to the AI.</p>
+                    <div id="tracker-container" class="space-y-3 max-w-md mx-auto text-left"></div>
+                </div>
+                <div id="results-screen" class="hidden text-center bg-white p-8 rounded-2xl shadow-lg">
+                    <div id="results-url" class="mb-4 text-sm text-indigo-700 font-semibold break-all"></div>
+                    <h2 class="text-3xl font-bold mb-2">Your Analysis is Complete!</h2>
+                    <p class="text-slate-600 mb-8">Here's your website's initial score based on key UX and design principles.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="relative flex justify-center items-center h-[18rem] w-[18rem] mx-auto">
+                            <svg class="w-[18rem] h-[18rem] transform -rotate-90"><circle class="text-slate-200" stroke-width="16" stroke="currentColor" fill="transparent" r="80" cx="144" cy="144" /><circle id="score-circle" class="text-indigo-600 score-circle" stroke-width="16" stroke-linecap="round" stroke="currentColor" fill="transparent" r="80" cx="144" cy="144" /></svg>
+                            <div class="absolute flex flex-col items-center"><span id="overall-score-text" class="text-4xl font-extrabold text-slate-900">0</span><span class="text-slate-500 -mt-1 text-xl">Overall Score</span></div>
+                        </div>
+                        <div id="category-scores" class="space-y-4 text-left"></div>
+                    </div>
+                    <div id="feedback-section" class="mt-12 text-left border-t border-slate-200 pt-8">
+                        <h3 class="text-2xl font-bold mb-4">Top Opportunities</h3>
+                        <div id="feedback-list" class="space-y-6"></div>
+                    </div>
+                    <div class="mt-12 border-t border-slate-200 pt-8 text-center">
+                        <button id="restart-btn" class="w-full sm:w-auto bg-slate-200 text-slate-800 font-bold py-3 px-8 rounded-lg hover:bg-slate-300 transition">Analyze Another Site</button>
+                    </div>
+                </div>
+            `;
+
+            // --- Tool's DOM ELEMENTS ---
+            const startScreen = document.getElementById('start-screen');
+            const processingScreen = document.getElementById('processing-screen');
+            const resultsScreen = document.getElementById('results-screen');
+            const startBtn = document.getElementById('start-btn');
+            const restartBtn = document.getElementById('restart-btn');
+            const nameInput = document.getElementById('eval_name_input');
+            const emailInput = document.getElementById('eval_email_input');
+            const websiteUrlInput = document.getElementById('eval_website_url_input');
+            const newsletterCheckbox = document.getElementById('newsletter_checkbox');
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const urlError = document.getElementById('url-error');
+            const trackerContainer = document.getElementById('tracker-container');
+            const overallScoreText = document.getElementById('overall-score-text');
+            const scoreCircle = document.getElementById('score-circle');
+            const categoryScoresContainer = document.getElementById('category-scores');
+            const feedbackList = document.getElementById('feedback-list');
+            const resultsUrl = document.getElementById('results-url');
+            
+            let aiReportData = null;
+
+            function isValidUrl(string) { try { new URL(string); return true; } catch (_) { return false; } }
+            function isValidEmail(email) { return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()); }
+
+            function startEvaluation() {
+                let isValid = true;
+                let urlToTest = websiteUrlInput.value.trim();
+                if (!/^https?:\/\//i.test(urlToTest) && urlToTest.length > 0) {
+                    urlToTest = 'https://' + urlToTest;
+                    websiteUrlInput.value = urlToTest;
+                }
+
+                if (!nameInput.value.trim()) { nameError.classList.remove('hidden'); isValid = false; } else { nameError.classList.add('hidden'); }
+                if (!isValidEmail(emailInput.value.trim())) { emailError.classList.remove('hidden'); isValid = false; } else { emailError.classList.add('hidden'); }
+                if (!isValidUrl(urlToTest)) { urlError.classList.remove('hidden'); isValid = false; } else { urlError.classList.add('hidden'); }
+                
+                if (!isValid) return;
+
+                startScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    startScreen.classList.add('hidden');
+                    processingScreen.classList.remove('hidden');
+                    processingScreen.classList.add('fade-in');
+                    runAutomatedChecks(nameInput.value.trim(), emailInput.value.trim(), urlToTest, newsletterCheckbox.checked);
+                }, 500);
+            }
+
+            function runTrackerAnimation(onComplete) {
+                const checks = [
+                    { id: 'db-save', name: 'Saving your request...' },
+                    { id: 'ai-call', name: 'Sending to our AI...' },
+                    { id: 'parsing', name: 'Translating robot language...' },
+                    { id: 'report', name: 'Making it look pretty...' }
+                ];
+                trackerContainer.innerHTML = '';
+                checks.forEach(check => {
+                    trackerContainer.innerHTML += `<div id="tracker-${check.id}" class="tracker-item flex items-center p-4 bg-slate-100 rounded-lg"><div class="tracker-icon w-6 h-6 mr-4 flex-shrink-0 flex items-center justify-center"><svg class="pending-icon text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><svg class="spinner text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><svg class="checkmark text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></div><span class="tracker-text font-medium text-slate-700">${check.name}</span></div>`;
+                });
+
+                let currentCheckIndex = 0;
+                const interval = setInterval(() => {
+                    if (currentCheckIndex > 0) document.getElementById(`tracker-${checks[currentCheckIndex - 1].id}`).classList.add('complete');
+                    if (currentCheckIndex < checks.length) {
+                        document.getElementById(`tracker-${checks[currentCheckIndex].id}`).classList.add('in-progress');
+                        currentCheckIndex++;
+                    } else {
+                        clearInterval(interval);
+                        onComplete();
+                    }
+                }, 1200);
+            }
+
+            function runAutomatedChecks(name, email, url, newsletter) {
+                let trackerDone = false;
+                let apiDone = false;
+                let apiError = null;
+
+                const formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('website_url', url);
+                formData.append('newsletter', newsletter ? '1' : '0');
+
+                fetch('api_handler.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) throw new Error(data.error);
+                    aiReportData = data;
+                })
+                .catch(error => {
+                    apiError = error.message;
+                })
+                .finally(() => {
+                    apiDone = true;
+                    if (trackerDone) showResults(apiError);
+                });
+
+                runTrackerAnimation(() => {
+                    trackerDone = true;
+                    if (apiDone) showResults(apiError);
+                });
+            }
+
+            function showResults(error = null) {
+                if (error || !aiReportData) {
+                    alert(`An error occurred: ${error || 'Could not retrieve AI report.'}`);
+                    restart();
+                    return;
+                }
+                processingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    processingScreen.classList.add('hidden');
+                    resultsScreen.classList.remove('hidden');
+                    resultsScreen.classList.add('fade-in');
+                    resultsUrl.textContent = "Analyzed Site: " + websiteUrlInput.value;
+                    displayInitialReport();
+                }, 500);
+            }
+
+            function displayInitialReport() {
+                 const { overallScore, basicReport } = aiReportData;
+                const { scores, topOpportunities } = basicReport;
+                
+                const metricDescriptions = {
+                    HeroClarity: "How clear is your main message?",
+                    VisualDesignLayout: "How professional does it look?",
+                    CallToAction: "Is it obvious what to do next?",
+                    ReadabilityTypography: "Is the text easy to read?",
+                    SocialProofTrust: "Does your site build trust?"
+                };
+
+                const scoresArray = Object.keys(scores).map(key => ({ metric: key, score: scores[key] }));
+
+                categoryScoresContainer.innerHTML = '';
+                scoresArray.forEach((cat, index) => {
+                    const colors = getScoreColor(cat.score);
+                    categoryScoresContainer.innerHTML += `<div class="slide-in-up" style="animation-delay: ${index * 100}ms"><div class="flex justify-between items-center mb-1"><span class="font-semibold">${formatMetricName(cat.metric)}</span><span class="text-sm font-bold ${colors.bg} ${colors.text} px-2.5 py-1 rounded-md">${cat.score}</span></div><p class="text-sm text-slate-500 text-left mb-2">${metricDescriptions[cat.metric] || ''}</p><div class="w-full bg-slate-200 rounded-full h-2.5"><div class="h-2.5 rounded-full ${colors.bar}" style="width: ${cat.score}%"></div></div></div>`;
+                });
+
+                feedbackList.innerHTML = '';
+                topOpportunities.forEach(opp => {
+                    feedbackList.innerHTML += `<div class="flex gap-4"><div class="w-12 h-12 rounded-full bg-indigo-100 text-indigo-600 flex-shrink-0 flex items-center justify-center font-bold text-lg">💡</div><div><p class="text-slate-600">${opp}</p></div></div>`;
+                });
+                
+                let currentScore = 0;
+                const scoreInterval = setInterval(() => {
+                    if (currentScore >= overallScore) { clearInterval(scoreInterval); overallScoreText.textContent = overallScore; } else { currentScore++; overallScoreText.textContent = currentScore; }
+                }, 20);
+
+                const circle = scoreCircle;
+                const circumference = circle.r.baseVal.value * 2 * Math.PI;
+                const offset = circumference - (overallScore / 100) * circumference;
+                setTimeout(() => { circle.style.strokeDashoffset = offset; }, 200);
+            }
+
+            function getScoreColor(percentage) {
+                if (percentage >= 85) return { bg: 'bg-green-100', text: 'text-green-800', bar: 'bg-green-500' };
+                if (percentage >= 50) return { bg: 'bg-yellow-100', text: 'text-yellow-800', bar: 'bg-yellow-500' };
+                return { bg: 'bg-red-100', text: 'text-red-800', bar: 'bg-red-500' };
+            }
+
+            function formatMetricName(name) {
+                return name.replace(/([A-Z])/g, ' $1').trim();
+            }
+
+            function restart() {
+                const currentScreen = document.querySelector('#evaluation-tool-container > div:not(.hidden)');
+                if (currentScreen) {
+                    currentScreen.classList.add('fade-out');
+                    setTimeout(() => {
+                        currentScreen.classList.add('hidden');
+                        startScreen.classList.remove('hidden', 'fade-out');
+                        startScreen.classList.add('fade-in');
+                        websiteUrlInput.value = '';
+                        emailInput.value = '';
+                        nameInput.value = '';
+                    }, 500);
+                }
+            }
+
+            startBtn.addEventListener('click', startEvaluation);
+            restartBtn.addEventListener('click', restart);
+        });
+    </script>
+</body>
+
+</html>

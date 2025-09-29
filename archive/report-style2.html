@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Analysis Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .score-circle {
+            background: conic-gradient(from 0deg, var(--score-color) 0deg, var(--score-color) var(--percentage), #e5e7eb var(--percentage), #e5e7eb 360deg);
+        }
+        
+        .score-excellent { --percentage: 324deg; --score-color: #10b981; }
+        .score-good { --percentage: 288deg; --score-color: #3b82f6; }
+        .score-average { --percentage: 216deg; --score-color: #f59e0b; }
+        .score-poor { --percentage: 144deg; --score-color: #eab308; }
+        .score-critical { --percentage: 72deg; --score-color: #ef4444; }
+        .score-na { --percentage: 0deg; --score-color: #6b7280; }
+        
+        .icon-excellent { background-color: #10b981; }
+        .icon-good { background-color: #3b82f6; }
+        .icon-average { background-color: #f59e0b; }
+        .icon-poor { background-color: #eab308; }
+        .icon-critical { background-color: #ef4444; }
+        .icon-na { background-color: #6b7280; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="bg-white rounded-lg border border-gray-200 p-8 mb-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-2">UX Analysis Report</h1>
+                    <p class="text-gray-600 text-lg">Comprehensive user experience evaluation</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-3xl font-bold text-blue-600" id="overall-score">87</div>
+                    <div class="text-gray-500">Overall Score</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Hero Clarity -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-excellent rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-excellent rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">92</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Hero Clarity</h3>
+                <p class="text-gray-600 text-sm mb-3">Clear value proposition and messaging in hero section</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">The headline is clear, but could be more benefit-oriented. Focus on the <strong>results</strong> for the customer.</p>
+                    <p class="text-gray-600"><strong>Example:</strong> Instead of 'Your website is broken. We fix it...', try 'Get Your Website Back Online Fast.'</p>
+                </div>
+            </div>
+
+            <!-- Visual Design Layout -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-good rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-good rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">85</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Visual Design Layout</h3>
+                <p class="text-gray-600 text-sm mb-3">Overall visual hierarchy and layout structure</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Good use of whitespace and visual hierarchy. Consider increasing contrast between sections.</p>
+                    <p class="text-gray-600"><strong>Tip:</strong> Use alternating background colors or subtle borders to separate content blocks more clearly.</p>
+                </div>
+            </div>
+
+            <!-- Call To Action -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-excellent rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-excellent rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">94</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Call To Action</h3>
+                <p class="text-gray-600 text-sm mb-3">Effectiveness and visibility of action buttons</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Excellent button visibility and placement. CTAs are action-oriented and compelling.</p>
+                    <p class="text-gray-600"><strong>Example:</strong> 'Start Free Trial' performs better than 'Sign Up' - it's specific and removes friction.</p>
+                </div>
+            </div>
+
+            <!-- Readability Typography -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-good rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-good rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">78</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Readability Typography</h3>
+                <p class="text-gray-600 text-sm mb-3">Font choices, sizing, and text readability</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Font size is adequate but line height could be improved for better readability.</p>
+                    <p class="text-gray-600"><strong>Recommendation:</strong> Increase line-height to 1.6-1.8 for body text and ensure 16px minimum font size on mobile.</p>
+                </div>
+            </div>
+
+            <!-- Social Proof Trust -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-average rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-average rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">68</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Social Proof Trust</h3>
+                <p class="text-gray-600 text-sm mb-3">Testimonials, reviews, and social validation</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Limited social proof elements visible. Add customer testimonials and trust badges.</p>
+                    <p class="text-gray-600"><strong>Suggestion:</strong> Include specific results in testimonials: "Increased sales by 40%" rather than "Great service!"</p>
+                </div>
+            </div>
+
+            <!-- Hero Trust Signals -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-poor rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-poor rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">42</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Hero Trust Signals</h3>
+                <p class="text-gray-600 text-sm mb-3">Security badges, certifications, and trust indicators</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Missing critical trust elements. Users need reassurance before taking action.</p>
+                    <p class="text-gray-600"><strong>Critical:</strong> Add SSL badges, money-back guarantee, or "As seen on" logos to build immediate trust.</p>
+                </div>
+            </div>
+
+            <!-- Persuasive Copy -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-critical rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-critical rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">18</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Persuasive Copy</h3>
+                <p class="text-gray-600 text-sm mb-3">Compelling and conversion-focused content</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Copy is generic and feature-focused rather than benefit-driven. Lacks emotional appeal.</p>
+                    <p class="text-gray-600"><strong>Urgent:</strong> Rewrite to focus on customer outcomes: "Save 10 hours per week" vs "Advanced automation features"</p>
+                </div>
+            </div>
+
+            <!-- Attention Ratio -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-na rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-na rounded-full flex items-center justify-center">
+                        <span class="text-sm font-bold text-gray-800">N/A</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Attention Ratio</h3>
+                <p class="text-gray-600 text-sm mb-3">Focus on primary actions vs distractions</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Unable to analyze - page structure needs to be evaluated manually for attention flow.</p>
+                    <p class="text-gray-600"><strong>Manual Check:</strong> Count clickable vs non-clickable elements. Aim for 5:1 ratio in hero section.</p>
+                </div>
+            </div>
+
+            <!-- Navigation Clarity -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-good rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-good rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">89</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Navigation Clarity</h3>
+                <p class="text-gray-600 text-sm mb-3">Menu structure and navigation usability</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Clear menu labels and logical structure. Navigation is intuitive and well-organized.</p>
+                    <p class="text-gray-600"><strong>Best Practice:</strong> Keep main navigation to 7 items or fewer to avoid choice paralysis.</p>
+                </div>
+            </div>
+
+            <!-- Accessibility Contrast -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-poor rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-poor rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">35</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Accessibility Contrast</h3>
+                <p class="text-gray-600 text-sm mb-3">Color contrast and accessibility compliance</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Multiple contrast failures throughout the site. Light text on light backgrounds is unreadable.</p>
+                    <p class="text-gray-600"><strong>Action Required:</strong> Darken text colors immediately. Use #333333 or darker for body text on white backgrounds.</p>
+                </div>
+            </div>
+
+            <!-- Mobile Responsive Hints -->
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 icon-good rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="w-16 h-16 score-circle score-good rounded-full flex items-center justify-center">
+                        <span class="text-lg font-bold text-gray-800">86</span>
+                    </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Mobile Responsive Hints</h3>
+                <p class="text-gray-600 text-sm mb-3">Mobile optimization and responsive design</p>
+                <div class="bg-gray-50 rounded-lg p-3 text-xs">
+                    <p class="text-gray-700 mb-2">Good responsive behavior overall. Consider larger touch targets for mobile buttons.</p>
+                    <p class="text-gray-600"><strong>Standard:</strong> Minimum 44px touch targets, thumb-friendly navigation, and readable text without zooming.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="bg-white rounded-lg border border-gray-200 p-8 mt-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Report Summary</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">3</div>
+                    <div class="text-gray-600">Excellent</div>
+                    <div class="text-sm text-gray-500">(90-100)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">3</div>
+                    <div class="text-gray-600">Good</div>
+                    <div class="text-sm text-gray-500">(70-89)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-amber-600 mb-2">1</div>
+                    <div class="text-gray-600">Average</div>
+                    <div class="text-sm text-gray-500">(51-69)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-600 mb-2">2</div>
+                    <div class="text-gray-600">Poor</div>
+                    <div class="text-sm text-gray-500">(21-50)</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-red-600 mb-2">1</div>
+                    <div class="text-gray-600">Critical</div>
+                    <div class="text-sm text-gray-500">(≤20)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample scores with different ranges
+        const scores = [92, 85, 94, 78, 68, 42, 18, null, 89, 35, 86];
+        
+        // Calculate overall score (excluding N/A values)
+        const validScores = scores.filter(score => score !== null);
+        const overallScore = Math.round(validScores.reduce((a, b) => a + b, 0) / validScores.length);
+        document.getElementById('overall-score').textContent = overallScore;
+
+        // Function to get score class based on value
+        function getScoreClass(score) {
+            if (score === null) return 'score-na';
+            if (score >= 90) return 'score-excellent';
+            if (score >= 70) return 'score-good';
+            if (score >= 51) return 'score-average';
+            if (score >= 21) return 'score-poor';
+            return 'score-critical';
+        }
+
+        // Function to get icon class based on value
+        function getIconClass(score) {
+            if (score === null) return 'icon-na';
+            if (score >= 90) return 'icon-excellent';
+            if (score >= 70) return 'icon-good';
+            if (score >= 51) return 'icon-average';
+            if (score >= 21) return 'icon-poor';
+            return 'icon-critical';
+        }
+
+        // Apply score classes dynamically
+        const scoreCircles = document.querySelectorAll('.score-circle');
+        const iconContainers = document.querySelectorAll('[class*="icon-"]');
+        
+        scoreCircles.forEach((circle, index) => {
+            const score = scores[index];
+            const scoreClass = getScoreClass(score);
+            const iconClass = getIconClass(score);
+            
+            // Remove existing score classes
+            circle.classList.remove('score-excellent', 'score-good', 'score-average', 'score-poor', 'score-critical', 'score-na');
+            
+            // Add appropriate class
+            circle.classList.add(scoreClass);
+            
+            // Update icon background
+            const iconContainer = iconContainers[index];
+            iconContainer.classList.remove('icon-excellent', 'icon-good', 'icon-average', 'icon-poor', 'icon-critical', 'icon-na');
+            iconContainer.classList.add(iconClass);
+            
+            // Update display text
+            const scoreText = circle.querySelector('span');
+            if (score === null) {
+                scoreText.textContent = 'N/A';
+                scoreText.classList.remove('text-lg');
+                scoreText.classList.add('text-sm');
+            } else {
+                scoreText.textContent = score;
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'95c4f79b9378c64b',t:'MTc1MjAzNDE4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
