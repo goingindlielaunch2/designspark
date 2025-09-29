@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DesignSpark (Static Version)</title>
+  <meta name="description" content="Static version of DesignSpark site for GitHub Pages deployment." />
+  <link rel="stylesheet" href="main.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary:'#6366f1', secondary:'#8b5cf6', accent:'#06b6d4' } } }
+    };
+  </script>
+  <style>
+    .animate-on-scroll{opacity:0;transform:translateY(25px);transition:all .6s ease}
+    .animate-on-scroll.is-visible{opacity:1;transform:none}
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- NOTE: This is a STATIC ONLY build (no PHP / no backend). -->
+  <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      <a href="./" class="flex items-center space-x-3 group">
+        <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">DesignSpark</span>
+      </a>
+      <nav class="flex items-center space-x-4">
+        <a href="#pricing" class="hidden md:block text-primary hover:text-secondary font-semibold px-4 py-2 rounded transition-colors underline underline-offset-4 hover:no-underline">See Pricing</a>
+        <a class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-xl font-semibold shadow hover:scale-105 transition-transform" href="https://calendly.com/david-withdesignspark/30min" target="_blank">Book a Call</a>
+      </nav>
+    </div>
+  </header>
+  <div class="h-20"></div>
+
+  <section class="bg-gray-50 min-h-screen flex items-center justify-center px-4 py-20">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="mb-6 animate-on-scroll">
+        <div class="bg-green-50 border border-green-200 rounded-full px-4 py-2 inline-flex items-center space-x-2 text-green-700 font-medium text-sm">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span>Booking for <span id="current-month"></span></span>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 animate-on-scroll"><span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sites engineered for success</span></h1>
+      <p class="text-lg md:text-lg mb-12 text-gray-600 leading-relaxed animate-on-scroll">Elevate your brand with a user‑friendly website engineered to capture attention and maximize conversions. From complete website designs to small development fixes, I've got you covered.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-on-scroll">
+        <button onclick="scrollToSection('pricing')" class="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
+          <span>Get Started Now</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+        <button onclick="scrollToSection('website-evaluation')" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
+          <span>Free Website Evaluation</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </button>
+      </div>
+      <div class="mb-8 animate-on-scroll">
+        <div class="bg-green-50 border border-green-200 rounded-full px-6 py-3 inline-flex items-center space-x-3 text-green-700 font-medium">
+          <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+          <span class="text-sm">🚀 <span id="live-counter">0</span> websites evaluated this week</span>
+        </div>
+      </div>
+      <div class="flex flex-col items-center space-y-4 animate-on-scroll">
+        <div class="flex items-center space-x-4">
+          <div class="flex -space-x-2">
+            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-md">SM</div>
+            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-md">MJ</div>
+            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-md">LC</div>
+            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-sm shadow-md">DK</div>
+            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm shadow-md">AR</div>
+          </div>
+          <div class="reviews flex flex-col items-start">
+            <div class="flex text-yellow-400 mb-1" aria-label="5 star rating">★★★★★</div>
+            <div class="text-gray-700 text-sm font-medium"><span id="avg-rating">5.0</span>/5 from <span id="rating-count">100</span>+ customers</div>
+          </div>
+        </div>
+        <button onclick="scrollToSection('website-evaluation')" class="text-primary hover:text-secondary transition-colors text-sm font-medium underline underline-offset-4 hover:no-underline">Evaluate your site now →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="website-evaluation" class="bg-slate-100 py-20 px-4">
+    <div class="max-w-4xl mx-auto" id="evaluation-tool-container"></div>
+  </section>
+
+  <section id="portfolio" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Portfolio</h2>
+        <p class="text-xl text-gray-600">A selection of my recent work</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/dental-website-design.jpg')">
+          <img src="images/dental-website-design.jpg" alt="Dental Website" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/gripsock-ecommerce-website-design.jpg')">
+          <img src="images/gripsock-ecommerce-website-design.jpg" alt="Ecommerce Website" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/payment-website-design.jpg')">
+          <img src="images/payment-website-design.jpg" alt="Payment Website" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/skin-care-web-design.jpg')">
+          <img src="images/skin-care-web-design.jpg" alt="Skin Care Web Design" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/bloom-branding.jpg')">
+          <img src="images/bloom-branding.jpg" alt="Branding" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/app-design.jpg')">
+          <img src="images/app-design.jpg" alt="App Design" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+      </div>
+    </div>
+    <div id="portfolioModal" class="fixed inset-0 z-50 pointer-events-none hidden flex items-center justify-center">
+      <div id="modalBg" class="absolute inset-0 bg-black bg-opacity-70 opacity-0 transition-opacity duration-300"></div>
+      <div id="modalContent" class="relative max-w-3xl w-full mx-4 opacity-0 scale-95 transition-all duration-300 transform">
+        <button onclick="closePortfolioModal()" class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-80 focus:outline-none z-10">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <img id="modalImage" src="" alt="Portfolio Large" class="rounded-2xl shadow-2xl w-full max-h-[80vh] object-contain bg-white" />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-white" id="testimonials">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">What Clients Say</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Static sample testimonials (original dynamic reviews removed for static hosting).</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow animate-on-scroll">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+          <p class="text-slate-700 mb-4">“Outstanding service! Fixed my website issues quickly and professionally.”</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">S</div>
+            <div><p class="font-semibold">Sarah J.</p><p class="text-xs text-slate-500">Business Owner</p></div>
+          </div>
+        </div>
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow animate-on-scroll">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+            <p class="text-slate-700 mb-4">“Detailed analysis helped us improve conversions within a week.”</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">M</div>
+            <div><p class="font-semibold">Michael C.</p><p class="text-xs text-slate-500">E‑commerce</p></div>
+          </div>
+        </div>
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow animate-on-scroll">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+          <p class="text-slate-700 mb-4">“Fast, reliable, and expert work. Highly recommend.”</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">E</div>
+            <div><p class="font-semibold">Emily R.</p><p class="text-xs text-slate-500">Nonprofit</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="py-20 px-4 bg-gray-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-gray-600 max-w-2xl text-lg mx-auto">Static version uses direct Stripe Payment Links (server checkout removed).</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full animate-on-scroll">
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Fix</h3>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$99</span><span class="text-gray-500 ml-2">/ one-time</span></div>
+            <p class="text-gray-600 mb-6">Perfect for small issues.</p>
+            <ul class="space-y-3 mb-8 text-sm">
+              <li class="flex items-start">✅ 1 specific issue</li>
+              <li class="flex items-start">✅ 48-hour turnaround</li>
+              <li class="flex items-start">✅ All major platforms</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 mt-auto">
+            <a href="https://buy.stripe.com/6oU00jbcTeS35V8bJrbbG06" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get Started - $99</a>
+          </div>
+        </div>
+        <div class="bg-indigo-600 rounded-xl shadow-xl overflow-hidden flex flex-col h-full animate-on-scroll">
+          <div class="bg-indigo-700 py-2"><p class="text-center text-white font-medium">MOST POPULAR</p></div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-semibold text-white mb-4">Monthly Club</h3>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-white">$1999</span><span class="text-indigo-200 ml-2">/ month</span></div>
+            <p class="text-indigo-100 mb-6">Ongoing site fixes & design.</p>
+            <ul class="space-y-3 mb-8 text-sm text-white/90">
+              <li>✅ Unlimited Requests (1 at a time)</li>
+              <li>✅ 48-hour average delivery</li>
+              <li>✅ Pause / Cancel anytime</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 mt-auto">
+            <a href="https://buy.stripe.com/4gM7sLgxd6lx5V828RbbG05" class="w-full bg-white hover:bg-gray-200 text-indigo-900 font-medium py-3 rounded-lg block text-center">Subscribe - $1999/mo</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full animate-on-scroll">
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Website Overhaul</h3>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$3999</span><span class="text-gray-500 ml-2">/ one-time</span></div>
+            <p class="text-gray-600 mb-6">Complete redesign & optimization.</p>
+            <ul class="space-y-3 mb-8 text-sm">
+              <li>✅ Conversion focused</li>
+              <li>✅ Mobile-first build</li>
+              <li>✅ Speed + SEO baseline</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 mt-auto">
+            <a href="https://buy.stripe.com/6oU7sLcgX39lerE28RbbG04" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get Started - $3999</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">This static form uses Formspree. Replace the action attribute with your endpoint.</p>
+      </div>
+      <div class="max-w-lg mx-auto bg-white rounded-3xl shadow-2xl p-8 md:p-12 animate-on-scroll">
+        <form id="contactForm" action="https://formspree.io/f/your-id" method="POST" class="space-y-6">
+          <div><label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Your Name</label><input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></div>
+          <div><label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Your Email</label><input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></div>
+          <div><label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label><textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent"></textarea></div>
+          <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center justify-center space-x-3 hover:scale-105 transition-transform shadow-lg">Send Message</button>
+        </form>
+        <p class="mt-6 text-center text-xs text-gray-500">Replace Formspree action URL to activate.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 px-4 bg-gray-800 text-center text-white text-sm">
+    <p>&copy; 2025 DesignSpark. Static build for GitHub Pages. <a href="index.php" class="underline text-indigo-300">Original PHP version</a> (will not run on GitHub Pages).</p>
+  </footer>
+
+  <!-- Evaluation Tool (Client-only mock) -->
+  <script>
+    function scrollToSection(id){const el=document.getElementById(id);if(el){window.scrollTo({top:el.offsetTop-70,behavior:'smooth'})}}
+    // Simple intersection observer
+    const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible')}})},{threshold:.15});
+    document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
+
+    // Month + counters
+    document.getElementById('current-month').textContent=new Date().toLocaleString('default',{month:'long'});
+    const base=5+Math.floor(Math.random()*6);document.getElementById('live-counter').textContent=base;
+
+    // Static evaluation tool
+    const evalContainer=document.getElementById('evaluation-tool-container');
+    evalContainer.innerHTML=`<div class='bg-white p-8 rounded-2xl shadow-lg'>
+      <h2 class='text-3xl font-bold mb-2 text-center'>Free <span class='text-primary'>Website Evaluation</span></h2>
+      <p class='text-gray-600 text-center mb-6'>Client-side demo only. The original AI + Stripe backend has been removed for GitHub Pages. This simulates a sample output.</p>
+      <div class='grid md:grid-cols-2 gap-6 mb-8'>
+        <div>
+          <label class='text-sm font-semibold text-gray-700 mb-2 block'>Website URL</label>
+          <input id='demo-url' type='url' placeholder='https://example.com' class='w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500' />
+        </div>
+        <div>
+          <label class='text-sm font-semibold text-gray-700 mb-2 block'>Email (optional)</label>
+          <input id='demo-email' type='email' placeholder='you@email.com' class='w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500' />
+        </div>
+      </div>
+      <button id='run-eval' class='w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-transform shadow-lg'>Run Demo Analysis</button>
+      <div id='eval-results' class='hidden mt-10'>
+        <h3 class='text-2xl font-bold mb-4'>Sample Results</h3>
+        <div class='flex items-center gap-6 flex-wrap mb-8' id='score-badges'></div>
+        <div>
+          <h4 class='text-xl font-semibold mb-3'>Top Opportunities</h4>
+          <ul id='opp-list' class='space-y-3 list-disc list-inside text-slate-700'></ul>
+        </div>
+      </div>
+    </div>`;
+
+    document.getElementById('run-eval').addEventListener('click',()=>{
+      const url=document.getElementById('demo-url').value.trim()||'https://example.com';
+      const categories=['Hero Clarity','Visual Design','Call To Action','Readability','Trust Signals'];
+      const scores={};categories.forEach(c=>scores[c]=60+Math.floor(Math.random()*36));
+      const opportunities=[
+        'Clarify your primary value proposition above the fold.',
+        'Increase contrast + spacing for improved readability.',
+        'Add a single, dominant call to action button in the hero.',
+        'Show real testimonials earlier to build trust.',
+        'Reduce attention leaks: limit secondary links near the main CTA.'
+      ].sort(()=>.5-Math.random()).slice(0,3);
+      const badgeWrap=document.getElementById('score-badges');
+      badgeWrap.innerHTML='';
+      Object.entries(scores).forEach(([k,v])=>{const color=v>84?'bg-green-600':v>69?'bg-yellow-500':'bg-red-600';badgeWrap.innerHTML+=`<div class='flex flex-col items-center'><div class='w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-xl ${color}'>${v}</div><p class='text-xs mt-2 font-medium text-slate-600 text-center w-20'>${k}</p></div>`});
+      const oppList=document.getElementById('opp-list');
+      oppList.innerHTML='';
+      opportunities.forEach(o=>oppList.innerHTML+=`<li>${o}</li>`);
+      document.getElementById('eval-results').classList.remove('hidden');
+    });
+
+    // Portfolio modal helpers
+    window.openPortfolioModal=function(img){const m=document.getElementById('portfolioModal');document.getElementById('modalImage').src=img;m.classList.remove('pointer-events-none','hidden');setTimeout(()=>{document.getElementById('modalBg').classList.add('opacity-100');document.getElementById('modalContent').classList.add('opacity-100','scale-100');},10);document.body.style.overflow='hidden'};
+    window.closePortfolioModal=function(){const m=document.getElementById('portfolioModal');document.getElementById('modalBg').classList.remove('opacity-100');document.getElementById('modalContent').classList.remove('opacity-100','scale-100');setTimeout(()=>{m.classList.add('pointer-events-none','hidden');document.body.style.overflow='';},300);};
+  </script>
+</body>
+</html>
