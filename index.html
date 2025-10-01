@@ -447,9 +447,9 @@
               <div id="feedback-list" class="space-y-6"></div>
             </div>
             <div class="mt-12 border-t border-slate-200 pt-8 text-center">
-              <h3 class="text-2xl font-bold text-slate-800 mb-2">Ready for Professional Help?</h3>
+              <h3 class="text-2xl font-bold text-slate-800 mb-2">Ready to Turn Insights into Action?</h3>
               <p class="text-slate-600 max-w-xl mx-auto mb-6">
-                This free report shows sample opportunities. For real website improvements, check out our professional services.
+                This free report shows your biggest opportunities. The full, detailed report provides a step-by-step guide to fixing these issues and increasing conversions.
               </p>
               <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <button id="download-basic-report-btn" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
@@ -458,11 +458,64 @@
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
                   </svg>
-                  Download Sample Report (PDF)
+                  Download Basic Report (PDF)
                 </button>
-                <button onclick="scrollToSection('pricing')" class="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
-                  See Professional Services
+                <button id="order-advanced-btn" class="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+                  Get the Full Report for $19.99
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="advanced-report-screen" class="hidden">
+          <div id="purchase-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center p-4 fade-in z-50">
+            <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 text-center slide-in-up">
+              <h2 class="text-2xl font-bold mb-2">Unlock Your Detailed Report</h2>
+              <p class="text-slate-600 mb-6">Get the full, detailed report with all the steps to improve your site.</p>
+              <div class="bg-slate-100 p-6 rounded-lg mb-6">
+                <div class="flex justify-between items-center text-lg">
+                  <span class="font-medium">Detailed Website Report</span>
+                  <span class="font-bold text-indigo-600">$19.99</span>
+                </div>
+              </div>
+              <button id="stripe-purchase-btn" class="w-full bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition">Secure Payment</button>
+              <button id="cancel-purchase-btn" class="mt-3 text-sm text-slate-500 hover:text-slate-700">Cancel and go back</button>
+            </div>
+          </div>
+          <div id="advanced-report-content" class="hidden bg-white p-8 rounded-2xl shadow-lg">
+            <div id="advanced-url" class="mb-4 text-sm text-indigo-700 font-semibold break-all"></div>
+            <div class="no-print flex justify-between items-center mb-8 pb-4">
+              <h2 class="text-3xl font-bold">Detailed Report</h2>
+              <div class="flex gap-2">
+                <button onclick="window.print()" class="bg-slate-200 text-slate-800 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 transition flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9"/>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <rect x="6" y="14" width="12" height="8"/>
+                  </svg>
+                  Print
+                </button>
+                <button onclick="window.downloadAdvancedReport()" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+            <div id="advanced-feedback-list" class="space-y-8"></div>
+            <div id="ab-test-accordion" class="hidden no-print mt-12">
+              <button id="ab-test-toggle" class="w-full text-left font-bold text-xl p-4 bg-slate-100 rounded-lg flex justify-between items-center hover:bg-slate-200 transition">
+                <span>Bonus: A/B Test Ideas for Experts</span>
+                <svg id="ab-test-arrow" class="w-6 h-6 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div id="ab-test-content" class="hidden p-4 border border-t-0 border-slate-200 rounded-b-lg">
+                <div id="ab-test-list" class="space-y-3"></div>
               </div>
             </div>
           </div>
@@ -473,7 +526,12 @@
       const startScreen = document.getElementById("start-screen");
       const processingScreen = document.getElementById("processing-screen");
       const resultsScreen = document.getElementById("results-screen");
+      const advancedReportScreen = document.getElementById("advanced-report-screen");
+      const purchaseModal = document.getElementById("purchase-modal");
+      const advancedReportContent = document.getElementById("advanced-report-content");
       const startBtn = document.getElementById("start-btn");
+      const orderAdvancedBtn = document.getElementById("order-advanced-btn");
+      const cancelPurchaseBtn = document.getElementById("cancel-purchase-btn");
       const nameInput = document.getElementById("eval_name_input");
       const emailInput = document.getElementById("eval_email_input");
       const websiteUrlInput = document.getElementById("eval_website_url_input");
@@ -486,6 +544,13 @@
       const categoryScoresContainer = document.getElementById("category-scores");
       const feedbackList = document.getElementById("feedback-list");
       const resultsUrl = document.getElementById("results-url");
+      const advancedUrl = document.getElementById("advanced-url");
+      const advancedFeedbackList = document.getElementById("advanced-feedback-list");
+      const abTestAccordion = document.getElementById("ab-test-accordion");
+      const abTestToggle = document.getElementById("ab-test-toggle");
+      const abTestContent = document.getElementById("ab-test-content");
+      const abTestArrow = document.getElementById("ab-test-arrow");
+      const abTestList = document.getElementById("ab-test-list");
 
       let demoReportData = null;
 
@@ -818,9 +883,153 @@
       // Event listeners
       startBtn.addEventListener("click", startEvaluation);
       document.getElementById("download-basic-report-btn").addEventListener("click", downloadBasicReport);
+      
+      // Advanced report functionality
+      if (orderAdvancedBtn) {
+        orderAdvancedBtn.addEventListener("click", showAdvancedReportFlow);
+      }
+      
+      if (cancelPurchaseBtn) {
+        cancelPurchaseBtn.addEventListener("click", hideAdvancedReportFlow);
+      }
 
       // Global function for download
       window.downloadBasicReport = downloadBasicReport;
+      
+      // Advanced report functions
+      function showAdvancedReportFlow() {
+        if (!demoReportData) return;
+        
+        // Generate advanced report data if not already present
+        if (!demoReportData.advancedReport) {
+          demoReportData.advancedReport = generateAdvancedReportData();
+        }
+        
+        // Show advanced report screen
+        resultsScreen.classList.add("fade-out");
+        setTimeout(() => {
+          resultsScreen.classList.add("hidden");
+          advancedReportScreen.classList.remove("hidden");
+          advancedReportScreen.classList.add("fade-in");
+          displayAdvancedReport();
+        }, 500);
+      }
+      
+      function hideAdvancedReportFlow() {
+        advancedReportScreen.classList.add("fade-out");
+        setTimeout(() => {
+          advancedReportScreen.classList.add("hidden");
+          resultsScreen.classList.remove("hidden");
+          resultsScreen.classList.add("fade-in");
+        }, 500);
+      }
+      
+      function generateAdvancedReportData() {
+        const advancedCategories = [
+          { name: "Accessibility", score: Math.floor(Math.random() * 21) + 70, icon: "♿" },
+          { name: "Security", score: Math.floor(Math.random() * 21) + 70, icon: "🔒" },
+          { name: "Mobile", score: Math.floor(Math.random() * 21) + 70, icon: "📱" },
+          { name: "Content", score: Math.floor(Math.random() * 21) + 70, icon: "📝" }
+        ];
+
+        const advancedFeedback = [
+          "Accessibility features need improvement for better inclusivity",
+          "Security headers and SSL configuration should be enhanced", 
+          "Mobile optimization could be improved for better performance",
+          "Content structure and hierarchy need refinement"
+        ];
+
+        const abTestSuggestions = [
+          {
+            title: "Hero Section CTA Button",
+            description: "Test different button colors and text to improve conversion rates",
+            impact: "High",
+            effort: "Low"
+          },
+          {
+            title: "Navigation Menu Layout", 
+            description: "Compare horizontal vs. vertical menu layouts for mobile users",
+            impact: "Medium",
+            effort: "Medium"
+          },
+          {
+            title: "Contact Form Length",
+            description: "Test shorter vs. longer contact forms to optimize completion rates", 
+            impact: "High",
+            effort: "Low"
+          },
+          {
+            title: "Product Gallery Style",
+            description: "Compare grid vs. carousel layouts for product showcases",
+            impact: "Medium", 
+            effort: "High"
+          }
+        ];
+
+        return {
+          categories: advancedCategories,
+          feedback: advancedFeedback,
+          abTests: abTestSuggestions
+        };
+      }
+      
+      function displayAdvancedReport() {
+        if (!demoReportData || !demoReportData.advancedReport) return;
+        
+        const { categories, feedback, abTests } = demoReportData.advancedReport;
+        
+        // Update URL display
+        if (advancedUrl) {
+          advancedUrl.textContent = "Advanced Analysis: " + websiteUrlInput.value;
+        }
+        
+        // Display advanced feedback
+        if (advancedFeedbackList) {
+          advancedFeedbackList.innerHTML = "";
+          feedback.forEach((item) => {
+            const feedbackHtml = `
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.847a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.09z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-slate-600 leading-relaxed">${item}</p>
+                </div>
+              </div>`;
+            advancedFeedbackList.innerHTML += feedbackHtml;
+          });
+        }
+        
+        // Display A/B test suggestions
+        if (abTestList) {
+          abTestList.innerHTML = "";
+          abTests.forEach((test) => {
+            const impactColor = test.impact === 'High' ? 'text-red-600 bg-red-100' : 
+                              test.impact === 'Medium' ? 'text-yellow-600 bg-yellow-100' : 
+                              'text-green-600 bg-green-100';
+            const effortColor = test.effort === 'High' ? 'text-red-600 bg-red-100' : 
+                               test.effort === 'Medium' ? 'text-yellow-600 bg-yellow-100' : 
+                               'text-green-600 bg-green-100';
+            
+            const testHtml = `
+              <div class="bg-white border border-slate-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-2">${test.title}</h4>
+                <p class="text-slate-600 mb-4">${test.description}</p>
+                <div class="flex gap-3">
+                  <span class="px-2 py-1 text-xs font-medium rounded-full ${impactColor}">
+                    ${test.impact} Impact
+                  </span>
+                  <span class="px-2 py-1 text-xs font-medium rounded-full ${effortColor}">
+                    ${test.effort} Effort
+                  </span>
+                </div>
+              </div>`;
+            abTestList.innerHTML += testHtml;
+          });
+        }
+      }
     });
 
     // Portfolio modal helpers
