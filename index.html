@@ -212,6 +212,81 @@
     </div>
   </section>
 
+  <section class="px-6 py-20 md:px-12 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 id="faq" class="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-8 text-primary animate-on-scroll">Monthly Club</h3>
+        <div class="space-y-4" id="faq-accordion-monthly">
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-1" aria-expanded="false">
+              <span>How fast will I receive my designs / tasks?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-1">
+              Most requests are completed in two days or less. If you send over something more complex, it might take a bit more time, but I'll always keep you updated on the progress.
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-1">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-4" aria-expanded="false">
+              <span>Is there a limit to how many requests I can make?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-4">
+              Nope! Feel free to fill up your queue with as many design / development requests as you can think of. I'll get to work on them and deliver them back to you one by one.
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-2">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-5" aria-expanded="false">
+              <span>How do Monthly site fixes work?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-5">
+              The development process is straightforward. These are treated the same as 'design requests', As long as your request is supported by your website platform, DesignSpark will handle the fix and development for you. Just submit your fix request, and I'll take care of the rest.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-bold text-center mb-8 text-primary animate-on-scroll">Basic Questions</h3>
+        <div class="space-y-4" id="faq-accordion-basic">
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-2" aria-expanded="false">
+              <span>How does onboarding work?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-2">
+              Getting started is a breeze. Once you subscribe, I'll set you up with your own private Trello board—usually within the hour. Just accept the invite, and you're ready to start submitting requests! I've left some simple instructions on the board to guide you.
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-1">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-3" aria-expanded="false">
+              <span>Who are the developers and designers?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-3">
+              You're looking at him! DesignSpark is a one-man creative and web development studio, founded and run by me, David. I handle every project personally from start to finish. This means no middlemen and no outsourcing— just a direct, dedicated partnership with you.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="py-20 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 animate-on-scroll">
@@ -234,10 +309,18 @@
     <p>&copy; 2025 DesignSpark. Static build for GitHub Pages. <a href="index.php" class="underline text-indigo-300">Original PHP version</a> (will not run on GitHub Pages).</p>
   </footer>
 
-  <!-- Evaluation Tool (Client-only mock) -->
+  <!-- jsPDF for report generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+  <!-- Website Evaluation Tool - Full Implementation -->
   <script>
     function scrollToSection(id){const el=document.getElementById(id);if(el){window.scrollTo({top:el.offsetTop-70,behavior:'smooth'})}}
-    // Simple intersection observer
+    
+    // Global scroll functions
+    window.scrollToEvaluation = () => scrollToSection("website-evaluation");
+    window.scrollToPricing = () => scrollToSection("pricing");
+    
+    // Simple intersection observer for animations
     const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible')}})},{threshold:.15});
     document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
 
@@ -245,55 +328,519 @@
     document.getElementById('current-month').textContent=new Date().toLocaleString('default',{month:'long'});
     const base=5+Math.floor(Math.random()*6);document.getElementById('live-counter').textContent=base;
 
-    // Static evaluation tool
-    const evalContainer=document.getElementById('evaluation-tool-container');
-    evalContainer.innerHTML=`<div class='bg-white p-8 rounded-2xl shadow-lg'>
-      <h2 class='text-3xl font-bold mb-2 text-center'>Free <span class='text-primary'>Website Evaluation</span></h2>
-      <p class='text-gray-600 text-center mb-6'>Client-side demo only. The original AI + Stripe backend has been removed for GitHub Pages. This simulates a sample output.</p>
-      <div class='grid md:grid-cols-2 gap-6 mb-8'>
-        <div>
-          <label class='text-sm font-semibold text-gray-700 mb-2 block'>Website URL</label>
-          <input id='demo-url' type='url' placeholder='https://example.com' class='w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500' />
-        </div>
-        <div>
-          <label class='text-sm font-semibold text-gray-700 mb-2 block'>Email (optional)</label>
-          <input id='demo-email' type='email' placeholder='you@email.com' class='w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500' />
-        </div>
-      </div>
-      <button id='run-eval' class='w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-transform shadow-lg'>Run Demo Analysis</button>
-      <div id='eval-results' class='hidden mt-10'>
-        <h3 class='text-2xl font-bold mb-4'>Sample Results</h3>
-        <div class='flex items-center gap-6 flex-wrap mb-8' id='score-badges'></div>
-        <div>
-          <h4 class='text-xl font-semibold mb-3'>Top Opportunities</h4>
-          <ul id='opp-list' class='space-y-3 list-disc list-inside text-slate-700'></ul>
-        </div>
-      </div>
-    </div>`;
+    // Add fade animations CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      .fade-in{opacity:1;transition:opacity 0.5s ease-in-out}
+      .fade-out{opacity:0;transition:opacity 0.5s ease-in-out}
+      .slide-in-up{animation:slideInUp 0.6s ease-out}
+      @keyframes slideInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+      .tracker-item .pending-icon{display:block}
+      .tracker-item .spinner{display:none}
+      .tracker-item .checkmark{display:none}
+      .tracker-item.in-progress .pending-icon{display:none}
+      .tracker-item.in-progress .spinner{display:block;animation:spin 1s linear infinite}
+      .tracker-item.complete .pending-icon{display:none}
+      .tracker-item.complete .spinner{display:none}
+      .tracker-item.complete .checkmark{display:block}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      .score-circle{transition:stroke-dashoffset 1.5s ease-in-out}
+    `;
+    document.head.appendChild(style);
 
-    document.getElementById('run-eval').addEventListener('click',()=>{
-      const url=document.getElementById('demo-url').value.trim()||'https://example.com';
-      const categories=['Hero Clarity','Visual Design','Call To Action','Readability','Trust Signals'];
-      const scores={};categories.forEach(c=>scores[c]=60+Math.floor(Math.random()*36));
-      const opportunities=[
-        'Clarify your primary value proposition above the fold.',
-        'Increase contrast + spacing for improved readability.',
-        'Add a single, dominant call to action button in the hero.',
-        'Show real testimonials earlier to build trust.',
-        'Reduce attention leaks: limit secondary links near the main CTA.'
-      ].sort(()=>.5-Math.random()).slice(0,3);
-      const badgeWrap=document.getElementById('score-badges');
-      badgeWrap.innerHTML='';
-      Object.entries(scores).forEach(([k,v])=>{const color=v>84?'bg-green-600':v>69?'bg-yellow-500':'bg-red-600';badgeWrap.innerHTML+=`<div class='flex flex-col items-center'><div class='w-20 h-20 rounded-full flex items-center justify-center text-white font-bold text-xl ${color}'>${v}</div><p class='text-xs mt-2 font-medium text-slate-600 text-center w-20'>${k}</p></div>`});
-      const oppList=document.getElementById('opp-list');
-      oppList.innerHTML='';
-      opportunities.forEach(o=>oppList.innerHTML+=`<li>${o}</li>`);
-      document.getElementById('eval-results').classList.remove('hidden');
+    // Website Evaluation Tool Implementation
+    document.addEventListener("DOMContentLoaded", function () {
+      const toolContainer = document.getElementById("evaluation-tool-container");
+      
+      // Build the full evaluation tool UI
+      toolContainer.innerHTML = `
+        <div id="start-screen" class="text-center bg-white p-8 rounded-2xl shadow-lg fade-in">
+          <div class="text-center mb-8 fade-in">
+            <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              100% Free - No Credit Card Required
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Free <span class="text-primary">Website Evaluation</span>
+            </h2>
+            <p class="text-sm md:text-md text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Get a comprehensive UX and conversion analysis of your website. This static version generates sample data for demonstration.
+            </p>
+          </div>
+          <div class="max-w-md mx-auto space-y-4">
+            <div>
+              <input id="eval_name_input" type="text" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+              <p id="name-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter your name.</p>
+            </div>
+            <div>
+              <input id="eval_email_input" type="email" placeholder="you@email.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+              <p id="email-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid email address.</p>
+            </div>
+            <div>
+              <input id="eval_website_url_input" type="url" placeholder="https://yourwebsite.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+              <p id="url-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid URL.</p>
+            </div>
+            <div class="flex items-start space-x-3 text-left">
+              <input id="newsletter_checkbox" name="newsletter" type="checkbox" value="1" checked class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+              <div class="text-sm">
+                <label for="newsletter_checkbox" class="text-xs font-medium text-gray-700">
+                  Yes, you may contact me and send me occasional insights about turning more visitors into customers — no spam, promise.
+                </label>
+              </div>
+            </div>
+            <button id="start-btn" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center justify-center space-x-3 hover:scale-105 transition-transform shadow-lg">
+              <span>Start Free Analysis</span>
+            </button>
+          </div>
+          <div class="mt-8 text-center text-sm text-gray-500">
+            <div class="flex items-center justify-center space-x-4">
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                No signup required
+              </div>
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Results in minutes
+              </div>
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                100% Free
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="processing-screen" class="hidden bg-white p-8 rounded-2xl shadow-lg text-center">
+          <h2 class="text-2xl font-bold mb-2">Analyzing Your Website...</h2>
+          <p class="text-slate-600 mb-8">This demo generates sample analysis data in real-time.</p>
+          <div id="tracker-container" class="space-y-3 max-w-md mx-auto text-left"></div>
+        </div>
+        
+        <div id="results-screen" class="hidden text-center">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div id="results-url" class="mb-4 text-sm text-indigo-700 font-semibold break-all"></div>
+            <h2 class="text-3xl font-bold mb-2">Your Analysis is Complete!</h2>
+            <p class="text-slate-600 mb-8">Here's your website's evaluation. This is a demonstration with sample data.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="relative flex justify-center items-center h-[18rem] w-[18rem] mx-auto">
+                <svg class="w-[18rem] h-[18rem] transform -rotate-90">
+                  <circle class="text-slate-200" stroke-width="16" stroke="currentColor" fill="transparent" r="80" cx="144" cy="144" />
+                  <circle id="score-circle" class="text-indigo-600 score-circle" stroke-width="16" stroke-linecap="round" stroke="currentColor" fill="transparent" r="80" cx="144" cy="144" />
+                </svg>
+                <div class="absolute flex flex-col items-center">
+                  <span id="overall-score-text" class="text-4xl font-extrabold text-slate-900">0</span>
+                  <span class="text-slate-500 -mt-1 text-xl">Overall Score</span>
+                </div>
+              </div>
+              <div id="category-scores" class="space-y-4 text-left"></div>
+            </div>
+            <div id="feedback-section" class="mt-12 text-left border-t border-slate-200 pt-8">
+              <h3 class="text-2xl font-bold mb-4">Top Opportunities</h3>
+              <div id="feedback-list" class="space-y-6"></div>
+            </div>
+            <div class="mt-12 border-t border-slate-200 pt-8 text-center">
+              <h3 class="text-2xl font-bold text-slate-800 mb-2">Ready for Professional Help?</h3>
+              <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                This free report shows sample opportunities. For real website improvements, check out our professional services.
+              </p>
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button id="download-basic-report-btn" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download Sample Report (PDF)
+                </button>
+                <button onclick="scrollToSection('pricing')" class="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+                  See Professional Services
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Tool functionality
+      const startScreen = document.getElementById("start-screen");
+      const processingScreen = document.getElementById("processing-screen");
+      const resultsScreen = document.getElementById("results-screen");
+      const startBtn = document.getElementById("start-btn");
+      const nameInput = document.getElementById("eval_name_input");
+      const emailInput = document.getElementById("eval_email_input");
+      const websiteUrlInput = document.getElementById("eval_website_url_input");
+      const nameError = document.getElementById("name-error");
+      const emailError = document.getElementById("email-error");
+      const urlError = document.getElementById("url-error");
+      const trackerContainer = document.getElementById("tracker-container");
+      const overallScoreText = document.getElementById("overall-score-text");
+      const scoreCircle = document.getElementById("score-circle");
+      const categoryScoresContainer = document.getElementById("category-scores");
+      const feedbackList = document.getElementById("feedback-list");
+      const resultsUrl = document.getElementById("results-url");
+
+      let demoReportData = null;
+
+      function isValidUrl(string) {
+        try {
+          new URL(string);
+          return true;
+        } catch (_) {
+          return false;
+        }
+      }
+
+      function isValidEmail(email) {
+        return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          String(email).toLowerCase()
+        );
+      }
+
+      function startEvaluation() {
+        let isValid = true;
+        let urlToTest = websiteUrlInput.value.trim();
+        
+        if (!/^https?:\/\//i.test(urlToTest) && urlToTest.length > 0) {
+          urlToTest = "https://" + urlToTest;
+          websiteUrlInput.value = urlToTest;
+        }
+        
+        if (!nameInput.value.trim()) {
+          nameError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          nameError.classList.add("hidden");
+        }
+        
+        if (!isValidEmail(emailInput.value.trim())) {
+          emailError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          emailError.classList.add("hidden");
+        }
+        
+        if (!isValidUrl(urlToTest)) {
+          urlError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          urlError.classList.add("hidden");
+        }
+        
+        if (!isValid) return;
+
+        startScreen.classList.add("fade-out");
+        setTimeout(() => {
+          startScreen.classList.add("hidden");
+          processingScreen.classList.remove("hidden");
+          processingScreen.classList.add("fade-in");
+          runDemoAnalysis(nameInput.value.trim(), emailInput.value.trim(), urlToTest);
+        }, 500);
+      }
+
+      function runDemoAnalysis(name, email, url) {
+        // Generate sample analysis data
+        const baseScore = 65 + Math.floor(Math.random() * 25);
+        const scores = {
+          HeroClarity: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
+          VisualDesignLayout: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
+          CallToAction: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
+          ReadabilityTypography: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
+          SocialProofTrust: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
+        };
+
+        const opportunities = [
+          "Clarify your main value proposition above the fold to immediately communicate what you offer",
+          "Improve visual hierarchy with better contrast and spacing for enhanced readability",
+          "Add a single, prominent call-to-action button that stands out from other page elements",
+          "Include customer testimonials and trust signals to build credibility with visitors",
+          "Reduce cognitive load by removing unnecessary links and distractions near your primary CTA",
+          "Optimize your headline to be more specific and benefit-focused",
+          "Add social proof elements like customer logos or review badges",
+          "Improve mobile responsiveness for better user experience on all devices"
+        ].sort(() => 0.5 - Math.random()).slice(0, 3);
+
+        demoReportData = {
+          overallScore: Math.round(Object.values(scores).reduce((a, b) => a + b, 0) / Object.values(scores).length),
+          basicReport: { scores, topOpportunities: opportunities }
+        };
+
+        runTrackerAnimation(() => {
+          showResults();
+        });
+      }
+
+      function runTrackerAnimation(onComplete) {
+        const checks = [
+          { id: "db-save", name: "Processing your request..." },
+          { id: "ai-call", name: "Analyzing website structure..." },
+          { id: "parsing", name: "Evaluating user experience..." },
+          { id: "report", name: "Generating recommendations..." },
+          { id: "waiting", name: "Finalizing report..." },
+        ];
+
+        trackerContainer.innerHTML = "";
+        checks.forEach((check) => {
+          trackerContainer.innerHTML += `
+            <div id="tracker-${check.id}" class="tracker-item flex items-center p-4 bg-slate-100 rounded-lg">
+              <div class="tracker-icon w-6 h-6 mr-4 flex-shrink-0 flex items-center justify-center">
+                <svg class="pending-icon text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <svg class="spinner text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                </svg>
+                <svg class="checkmark text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <span class="tracker-text font-medium text-slate-700">${check.name}</span>
+            </div>`;
+        });
+
+        let currentCheckIndex = 0;
+        const interval = setInterval(() => {
+          if (currentCheckIndex > 0) {
+            document.getElementById(`tracker-${checks[currentCheckIndex - 1].id}`).classList.add("complete");
+          }
+          if (currentCheckIndex < checks.length) {
+            document.getElementById(`tracker-${checks[currentCheckIndex].id}`).classList.add("in-progress");
+            currentCheckIndex++;
+          } else {
+            clearInterval(interval);
+            setTimeout(onComplete, 1000);
+          }
+        }, 1200);
+      }
+
+      function showResults() {
+        const waitingElement = document.querySelector('#tracker-waiting');
+        if (waitingElement) {
+          waitingElement.classList.add("complete");
+          waitingElement.querySelector('.tracker-text').textContent = "Analysis complete!";
+        }
+
+        processingScreen.classList.add("fade-out");
+        setTimeout(() => {
+          processingScreen.classList.add("hidden");
+          resultsScreen.classList.remove("hidden");
+          resultsScreen.classList.add("fade-in");
+          resultsUrl.textContent = "Analyzed Site: " + websiteUrlInput.value;
+          displayReport();
+        }, 500);
+      }
+
+      function displayReport() {
+        if (!demoReportData) return;
+
+        const { overallScore, basicReport } = demoReportData;
+        const { scores, topOpportunities } = basicReport;
+
+        const metricDescriptions = {
+          HeroClarity: "How clear is your main message?",
+          VisualDesignLayout: "How professional does it look?",
+          CallToAction: "Is it obvious what to do next?",
+          ReadabilityTypography: "Is the text easy to read?",
+          SocialProofTrust: "Does your site build trust?",
+        };
+
+        // Display category scores
+        categoryScoresContainer.innerHTML = "";
+        Object.keys(scores).forEach((key, index) => {
+          const score = scores[key];
+          const colors = getScoreColor(score);
+          const scoreHtml = `
+            <div class="slide-in-up" style="animation-delay: ${index * 100}ms">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-semibold">${formatMetricName(key)}</span>
+                <span class="text-sm font-bold ${colors.bg} ${colors.text} px-2.5 py-1 rounded-md">${score}</span>
+              </div>
+              <p class="text-sm text-slate-500 text-left mb-2">${metricDescriptions[key] || ""}</p>
+              <div class="w-full bg-slate-200 rounded-full h-2.5">
+                <div class="h-2.5 rounded-full ${colors.bar}" style="width: ${score}%"></div>
+              </div>
+            </div>`;
+          categoryScoresContainer.innerHTML += scoreHtml;
+        });
+
+        // Display opportunities
+        feedbackList.innerHTML = "";
+        topOpportunities.forEach((opp) => {
+          const oppHtml = `
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.53 7.68h8.08l-6.54 4.76 2.5 7.69L12 18.37l-6.55 4.76 2.5-7.69L1.41 10.68h8.08L12 3z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-slate-600 leading-relaxed">${opp}</p>
+              </div>
+            </div>`;
+          feedbackList.innerHTML += oppHtml;
+        });
+
+        // Animate overall score
+        overallScoreText.textContent = overallScore;
+        const circle = scoreCircle;
+        if (circle && circle.r && circle.r.baseVal) {
+          const circumference = circle.r.baseVal.value * 2 * Math.PI;
+          circle.style.strokeDasharray = circumference;
+          circle.style.strokeDashoffset = circumference;
+
+          let currentScore = 0;
+          const scoreInterval = setInterval(() => {
+            if (currentScore >= overallScore) {
+              clearInterval(scoreInterval);
+              overallScoreText.textContent = overallScore;
+            } else {
+              currentScore++;
+              overallScoreText.textContent = currentScore;
+            }
+          }, 20);
+
+          setTimeout(() => {
+            const offset = circumference - (overallScore / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+          }, 200);
+        }
+      }
+
+      function getScoreColor(percentage) {
+        if (percentage >= 85) return { bg: "bg-green-100", text: "text-green-800", bar: "bg-green-500" };
+        if (percentage >= 60) return { bg: "bg-yellow-100", text: "text-yellow-800", bar: "bg-yellow-500" };
+        return { bg: "bg-red-100", text: "text-red-800", bar: "bg-red-500" };
+      }
+
+      function formatMetricName(name) {
+        return name.replace(/([A-Z])/g, " $1").trim();
+      }
+
+      // PDF download function
+      function downloadBasicReport() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const analyzedUrl = resultsUrl.textContent;
+
+        if (!demoReportData) {
+          doc.text("No report data available.", 10, 10);
+          doc.save("Sample-Website-Report.pdf");
+          return;
+        }
+
+        const { overallScore, basicReport } = demoReportData;
+        const { scores, topOpportunities } = basicReport;
+
+        let yPos = 20;
+        const leftMargin = 15;
+        const lineSpacing = 7;
+
+        // Add title
+        doc.setFontSize(22);
+        doc.setFont("helvetica", "bold");
+        doc.text("Sample Website Evaluation Report", leftMargin, yPos);
+        yPos += lineSpacing * 2;
+
+        if (analyzedUrl) {
+          doc.setFontSize(11);
+          doc.setTextColor(54, 78, 163);
+          doc.text(analyzedUrl, leftMargin, yPos);
+          yPos += lineSpacing * 1.5;
+          doc.setTextColor(0, 0, 0);
+        }
+
+        doc.setFontSize(16);
+        doc.text(`Overall Score: ${overallScore}`, leftMargin, yPos);
+        yPos += lineSpacing * 2;
+
+        // Add category scores
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text("Category Scores", leftMargin, yPos);
+        yPos += lineSpacing;
+
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        Object.keys(scores).forEach((category) => {
+          const formattedName = category.replace(/([A-Z])/g, " $1").trim();
+          doc.text(`${formattedName}: ${scores[category]}`, leftMargin, yPos);
+          yPos += lineSpacing;
+        });
+
+        yPos += lineSpacing;
+
+        // Add opportunities
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text("Top Opportunities", leftMargin, yPos);
+        yPos += lineSpacing * 1.5;
+
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        topOpportunities.forEach((opportunity, index) => {
+          if (yPos > 260) {
+            doc.addPage();
+            yPos = 20;
+          }
+          doc.setFontSize(12);
+          doc.setFont("helvetica", "bold");
+          doc.text(`${index + 1}. Opportunity`, leftMargin, yPos);
+          yPos += lineSpacing;
+          doc.setFontSize(11);
+          doc.setFont("helvetica", "normal");
+          const lines = doc.splitTextToSize(opportunity, 180);
+          doc.text(lines, leftMargin, yPos);
+          yPos += lines.length * lineSpacing + lineSpacing;
+        });
+
+        // Add disclaimer
+        if (yPos > 240) {
+          doc.addPage();
+          yPos = 20;
+        }
+        yPos = Math.max(yPos, 220);
+        doc.setFontSize(10);
+        doc.setTextColor(100, 100, 100);
+        doc.text("This is a demonstration report with sample data.", leftMargin, yPos);
+        yPos += lineSpacing;
+        doc.text("For real website analysis, contact our professional services.", leftMargin, yPos);
+
+        doc.save("Sample-Website-Report.pdf");
+      }
+
+      // Event listeners
+      startBtn.addEventListener("click", startEvaluation);
+      document.getElementById("download-basic-report-btn").addEventListener("click", downloadBasicReport);
+
+      // Global function for download
+      window.downloadBasicReport = downloadBasicReport;
     });
 
     // Portfolio modal helpers
     window.openPortfolioModal=function(img){const m=document.getElementById('portfolioModal');document.getElementById('modalImage').src=img;m.classList.remove('pointer-events-none','hidden');setTimeout(()=>{document.getElementById('modalBg').classList.add('opacity-100');document.getElementById('modalContent').classList.add('opacity-100','scale-100');},10);document.body.style.overflow='hidden'};
     window.closePortfolioModal=function(){const m=document.getElementById('portfolioModal');document.getElementById('modalBg').classList.remove('opacity-100');document.getElementById('modalContent').classList.remove('opacity-100','scale-100');setTimeout(()=>{m.classList.add('pointer-events-none','hidden');document.body.style.overflow='';},300);};
+
+    // FAQ Accordion functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".faq-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = document.getElementById(button.dataset.faq);
+          const arrow = button.querySelector("svg");
+          const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+          button.setAttribute("aria-expanded", !isExpanded);
+          content.classList.toggle("hidden");
+          arrow.classList.toggle("rotate-180");
+        });
+      });
+    });
   </script>
 </body>
 </html>
