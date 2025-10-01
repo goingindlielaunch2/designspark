@@ -834,7 +834,6 @@
           const content = document.getElementById(button.dataset.faq);
           const arrow = button.querySelector("svg");
           const isExpanded = button.getAttribute("aria-expanded") === "true";
-
           button.setAttribute("aria-expanded", !isExpanded);
           content.classList.toggle("hidden");
           arrow.classList.toggle("rotate-180");
