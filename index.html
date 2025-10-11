@@ -314,8 +314,11 @@
   <!-- jsPDF for report generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   
+  <!-- Import API Helper -->
+  <script type="module" src="api-helper.js"></script>
+  
   <!-- Website Evaluation Tool - Full Implementation -->
-  <script>
+  <script type="module">
     function scrollToSection(id){const el=document.getElementById(id);if(el){window.scrollTo({top:el.offsetTop-70,behavior:'smooth'})}}
     
     // Global scroll functions
@@ -612,32 +615,28 @@
         }, 500);
       }
 
-      function runDemoAnalysis(name, email, url) {
-        // Generate sample analysis data
-        const baseScore = 65 + Math.floor(Math.random() * 25);
-        const scores = {
-          HeroClarity: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
-          VisualDesignLayout: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
-          CallToAction: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
-          ReadabilityTypography: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
-          SocialProofTrust: Math.max(30, baseScore + Math.floor(Math.random() * 20) - 10),
-        };
-
-        const opportunities = [
-          "Clarify your main value proposition above the fold to immediately communicate what you offer",
-          "Improve visual hierarchy with better contrast and spacing for enhanced readability",
-          "Add a single, prominent call-to-action button that stands out from other page elements",
-          "Include customer testimonials and trust signals to build credibility with visitors",
-          "Reduce cognitive load by removing unnecessary links and distractions near your primary CTA",
-          "Optimize your headline to be more specific and benefit-focused",
-          "Add social proof elements like customer logos or review badges",
-          "Improve mobile responsiveness for better user experience on all devices"
-        ].sort(() => 0.5 - Math.random()).slice(0, 3);
-
-        demoReportData = {
-          overallScore: Math.round(Object.values(scores).reduce((a, b) => a + b, 0) / Object.values(scores).length),
-          basicReport: { scores, topOpportunities: opportunities }
-        };
+      async function runDemoAnalysis(name, email, url) {
+        try {
+          const { evaluateWebsite } = await import('./api-helper.js');
+          demoReportData = await evaluateWebsite(url);
+        } catch (error) {
+          console.error('Website evaluation failed:', error);
+          demoReportData = {
+            overallScore: 0,
+            basicReport: {
+              scores: {
+                HeroClarity: 0,
+                VisualDesignLayout: 0,
+                CallToAction: 0,
+                ReadabilityTypography: 0,
+                SocialProofTrust: 0
+              },
+              topOpportunities: [
+                "Error: Could not analyze website. Please ensure the URL is accessible."
+              ]
+            }
+          };
+        }
 
         runTrackerAnimation(() => {
           showResults();
