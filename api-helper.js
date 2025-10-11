@@ -2,7 +2,7 @@
  * API Helper module for Gemini integration
  */
 
-const GEMINI_API_KEY = 'gen-lang-client-0418804085'; // Replace with your actual API key
+const GEMINI_API_KEY = 'AIzaSyDTzekJoUeuiyOchptigMv9MG6qOF4riNk'; // Replace with your actual API key
 const GEMINI_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite-preview-06-17:generateContent';
 
 /**
