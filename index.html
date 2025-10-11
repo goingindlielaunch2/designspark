@@ -318,12 +318,21 @@
   <script type="module" src="api-helper.js"></script>
   
   <!-- Website Evaluation Tool - Full Implementation -->
-  <script type="module">
-    function scrollToSection(id){const el=document.getElementById(id);if(el){window.scrollTo({top:el.offsetTop-70,behavior:'smooth'})}}
+  <script>
+    // Make scrollToSection available globally
+    window.scrollToSection = function(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        window.scrollTo({
+          top: el.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }
+    };
     
     // Global scroll functions
-    window.scrollToEvaluation = () => scrollToSection("website-evaluation");
-    window.scrollToPricing = () => scrollToSection("pricing");
+    window.scrollToEvaluation = () => window.scrollToSection("website-evaluation");
+    window.scrollToPricing = () => window.scrollToSection("pricing");
     
     // Simple intersection observer for animations
     const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible')}})},{threshold:.15});
