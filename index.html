@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DesignSpark - Expert Web Design & Development Services | UX/UI & Conversion Optimization</title>
-  <meta name="description" content="Transform your online presence with DesignSpark's expert web design and development services. Get conversion-focused websites, UI/UX optimization" />
+  <meta name="description"
+    content="Transform your online presence with DesignSpark's expert web design and development services. Get conversion-focused websites, UI/UX optimization" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -12,25 +14,39 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { primary:'#6366f1', secondary:'#8b5cf6', accent:'#06b6d4' } } }
+      theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' } } }
     };
   </script>
   <style>
-    .animate-on-scroll{opacity:0;transform:translateY(25px);transition:all .6s ease}
-    .animate-on-scroll.is-visible{opacity:1;transform:none}
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all .6s ease
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: none
+    }
   </style>
 </head>
+
 <body class="bg-gray-50">
   <!-- NOTE: This is a STATIC ONLY build (no PHP / no backend). -->
   <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
       <a href="./" class="flex items-center space-x-3 group">
-        <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
         <span class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">DesignSpark</span>
       </a>
       <nav class="flex items-center space-x-4">
-        <a href="#pricing" class="hidden md:block text-primary hover:text-secondary font-semibold px-4 py-2 rounded transition-colors underline underline-offset-4 hover:no-underline">See Pricing</a>
-        <a class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-xl font-semibold shadow hover:scale-105 transition-transform" href="https://calendly.com/david-withdesignspark/30min" target="_blank">Book a Call</a>
+        <a href="#pricing"
+          class="hidden md:block text-primary hover:text-secondary font-semibold px-4 py-2 rounded transition-colors underline underline-offset-4 hover:no-underline">See
+          Pricing</a>
+        <a class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-xl font-semibold shadow hover:scale-105 transition-transform"
+          href="https://calendly.com/david-withdesignspark/30min" target="_blank">Book a Call</a>
       </nav>
     </div>
   </header>
@@ -39,17 +55,25 @@
   <section class="bg-gray-50 min-h-screen flex items-center justify-center px-4 py-20">
     <div class="max-w-2xl mx-auto text-center">
       <div class="mb-6 animate-on-scroll">
-        <div class="bg-green-50 border border-green-200 rounded-full px-4 py-2 inline-flex items-center space-x-2 text-green-700 font-medium text-sm">
+        <div
+          class="bg-green-50 border border-green-200 rounded-full px-4 py-2 inline-flex items-center space-x-2 text-green-700 font-medium text-sm">
           <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
           <span>Booking for <span id="current-month"></span></span>
         </div>
       </div>
-      <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 animate-on-scroll"><span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sites engineered for success</span></h1>
-      <p class="text-lg md:text-lg mb-12 text-gray-600 leading-relaxed animate-on-scroll">Elevate your brand with a user‑friendly website engineered to capture attention and maximize conversions. From complete website designs to small development fixes, I've got you covered.</p>
+      <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 animate-on-scroll"><span
+          class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sites engineered for
+          success</span></h1>
+      <p class="text-lg md:text-lg mb-12 text-gray-600 leading-relaxed animate-on-scroll">Elevate your brand with a
+        user‑friendly website engineered to capture attention and maximize conversions. From complete website designs to
+        small development fixes, I've got you covered.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-on-scroll">
-        <button onclick="scrollToSection('pricing')" class="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
+        <button onclick="scrollToSection('pricing')"
+          class="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
           <span>Get Started Now</span>
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
         </button>
         <!-- <button onclick="scrollToSection('website-evaluation')" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
           <span>Free Website Evaluation</span>
@@ -62,24 +86,37 @@
           <span class="text-sm">🚀 <span id="live-counter">0</span> websites evaluated this week</span>
         </div>
       </div> -->
-      <!-- <div class="flex flex-col items-center space-y-4 animate-on-scroll">
+      <div class="flex flex-col items-center space-y-4 animate-on-scroll">
         <div class="flex items-center space-x-4">
           <div class="flex -space-x-2">
-            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-md">SM</div>
-            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-md">MJ</div>
-            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-md">LC</div>
-            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-sm shadow-md">DK</div>
-            <div class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm shadow-md">AR</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              SM</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              MJ</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              LC</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              DK</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              AR</div>
           </div>
           <div class="reviews flex flex-col items-start">
             <div class="flex text-yellow-400 mb-1" aria-label="5 star rating">★★★★★</div>
-            <div class="text-gray-700 text-sm font-medium"><span id="avg-rating">5.0</span>/5 from <span id="rating-count">100</span>+ customers</div>
+            <div class="text-gray-700 text-sm font-medium"><span id="avg-rating">5.0</span>/5 from <span
+                id="rating-count">100</span>+ customers</div>
           </div>
         </div>
-        <button onclick="scrollToSection('website-evaluation')" class="text-primary hover:text-secondary transition-colors text-sm font-medium underline underline-offset-4 hover:no-underline">Evaluate your site now →</button>
+        <button onclick="scrollToSection('website-evaluation')"
+          class="text-primary hover:text-secondary transition-colors text-sm font-medium underline underline-offset-4 hover:no-underline">Evaluate
+          your site now →</button>
       </div>
     </div>
-  </section> -->
+  </section>
 
   <!-- <section id="website-evaluation" class="bg-slate-100 py-20 px-4">
     <div class="max-w-4xl mx-auto" id="evaluation-tool-container"></div>
@@ -92,33 +129,50 @@
         <p class="text-xl text-gray-600">A selection of my recent work</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/dental-website-design.jpg')">
-          <img src="images/dental-website-design.jpg" alt="Dental Website" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/dental-website-design.jpg')">
+          <img src="images/dental-website-design.jpg" alt="Dental Website"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
-        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/gripsock-ecommerce-website-design.jpg')">
-          <img src="images/gripsock-ecommerce-website-design.jpg" alt="Ecommerce Website" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/gripsock-ecommerce-website-design.jpg')">
+          <img src="images/gripsock-ecommerce-website-design.jpg" alt="Ecommerce Website"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
-        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/payment-website-design.jpg')">
-          <img src="images/payment-website-design.jpg" alt="Payment Website" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/payment-website-design.jpg')">
+          <img src="images/payment-website-design.jpg" alt="Payment Website"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
-        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/skin-care-web-design.jpg')">
-          <img src="images/skin-care-web-design.jpg" alt="Skin Care Web Design" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/skin-care-web-design.jpg')">
+          <img src="images/skin-care-web-design.jpg" alt="Skin Care Web Design"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
-        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/bloom-branding.jpg')">
-          <img src="images/bloom-branding.jpg" alt="Branding" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/bloom-branding.jpg')">
+          <img src="images/bloom-branding.jpg" alt="Branding"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
-        <div class="relative group cursor-pointer animate-on-scroll" onclick="openPortfolioModal('images/app-design.jpg')">
-          <img src="images/app-design.jpg" alt="App Design" class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/app-design.jpg')">
+          <img src="images/app-design.jpg" alt="App Design"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
         </div>
       </div>
     </div>
     <div id="portfolioModal" class="fixed inset-0 z-50 pointer-events-none hidden flex items-center justify-center">
       <div id="modalBg" class="absolute inset-0 bg-black bg-opacity-70 opacity-0 transition-opacity duration-300"></div>
-      <div id="modalContent" class="relative max-w-3xl w-full mx-4 opacity-0 scale-95 transition-all duration-300 transform">
-        <button onclick="closePortfolioModal()" class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-80 focus:outline-none z-10">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <div id="modalContent"
+        class="relative max-w-3xl w-full mx-4 opacity-0 scale-95 transition-all duration-300 transform">
+        <button onclick="closePortfolioModal()"
+          class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-80 focus:outline-none z-10">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
-        <img id="modalImage" src="" alt="Portfolio Large" class="rounded-2xl shadow-2xl w-full max-h-[80vh] object-contain bg-white" />
+        <img id="modalImage" src="" alt="Portfolio Large"
+          class="rounded-2xl shadow-2xl w-full max-h-[80vh] object-contain bg-white" />
       </div>
     </div>
   </section>
@@ -162,13 +216,15 @@
     <div class="container mx-auto">
       <div class="text-center mb-16 animate-on-scroll">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Simple, Transparent Pricing</h2>
-        <p class="text-gray-600 max-w-2xl text-lg mx-auto">Static version uses direct Stripe Payment Links (server checkout removed).</p>
+        <p class="text-gray-600 max-w-2xl text-lg mx-auto">Static version uses direct Stripe Payment Links (server
+          checkout removed).</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full animate-on-scroll">
           <div class="p-6 flex-1 flex flex-col">
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Fix</h3>
-            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$99</span><span class="text-gray-500 ml-2">/ one-time</span></div>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$99</span><span
+                class="text-gray-500 ml-2">/ one-time</span></div>
             <p class="text-gray-600 mb-6">Perfect for small issues.</p>
             <ul class="space-y-3 mb-8 text-sm">
               <li class="flex items-start">✅ 1 specific issue</li>
@@ -177,14 +233,19 @@
             </ul>
           </div>
           <div class="px-6 pb-6 mt-auto">
-            <a href="https://buy.stripe.com/6oU00jbcTeS35V8bJrbbG06" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get Started - $99</a>
+            <a href="https://buy.stripe.com/6oU00jbcTeS35V8bJrbbG06"
+              class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get
+              Started - $99</a>
           </div>
         </div>
         <div class="bg-indigo-600 rounded-xl shadow-xl overflow-hidden flex flex-col h-full animate-on-scroll">
-          <div class="bg-indigo-700 py-2"><p class="text-center text-white font-medium">MOST POPULAR</p></div>
+          <div class="bg-indigo-700 py-2">
+            <p class="text-center text-white font-medium">MOST POPULAR</p>
+          </div>
           <div class="p-6 flex-1 flex flex-col">
             <h3 class="text-xl font-semibold text-white mb-4">Monthly Club</h3>
-            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-white">$1999</span><span class="text-indigo-200 ml-2">/ month</span></div>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-white">$1999</span><span
+                class="text-indigo-200 ml-2">/ month</span></div>
             <p class="text-indigo-100 mb-6">Ongoing site fixes & design.</p>
             <ul class="space-y-3 mb-8 text-sm text-white/90">
               <li>✅ Unlimited Requests (1 at a time)</li>
@@ -193,13 +254,16 @@
             </ul>
           </div>
           <div class="px-6 pb-6 mt-auto">
-            <a href="https://buy.stripe.com/4gM7sLgxd6lx5V828RbbG05" class="w-full bg-white hover:bg-gray-200 text-indigo-900 font-medium py-3 rounded-lg block text-center">Subscribe - $1999/mo</a>
+            <a href="https://buy.stripe.com/4gM7sLgxd6lx5V828RbbG05"
+              class="w-full bg-white hover:bg-gray-200 text-indigo-900 font-medium py-3 rounded-lg block text-center">Subscribe
+              - $1999/mo</a>
           </div>
         </div>
         <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full animate-on-scroll">
           <div class="p-6 flex-1 flex flex-col">
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Website Overhaul</h3>
-            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$3999</span><span class="text-gray-500 ml-2">/ one-time</span></div>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$3999</span><span
+                class="text-gray-500 ml-2">/ one-time</span></div>
             <p class="text-gray-600 mb-6">Complete redesign & optimization.</p>
             <ul class="space-y-3 mb-8 text-sm">
               <li>✅ Conversion focused</li>
@@ -208,7 +272,9 @@
             </ul>
           </div>
           <div class="px-6 pb-6 mt-auto">
-            <a href="https://buy.stripe.com/6oU7sLcgX39lerE28RbbG04" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get Started - $3999</a>
+            <a href="https://buy.stripe.com/6oU7sLcgX39lerE28RbbG04"
+              class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get
+              Started - $3999</a>
           </div>
         </div>
       </div>
@@ -225,36 +291,43 @@
         <h3 class="text-2xl font-bold text-center mb-8 text-primary animate-on-scroll">Monthly Club</h3>
         <div class="space-y-4" id="faq-accordion-monthly">
           <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll">
-            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-1" aria-expanded="false">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-1" aria-expanded="false">
               <span>How fast will I receive my designs / tasks?</span>
               <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-1">
-              Most requests are completed in two days or less. If you send over something more complex, it might take a bit more time, but I'll always keep you updated on the progress.
+              Most requests are completed in two days or less. If you send over something more complex, it might take a
+              bit more time, but I'll always keep you updated on the progress.
             </div>
           </div>
           <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-1">
-            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-4" aria-expanded="false">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-4" aria-expanded="false">
               <span>Is there a limit to how many requests I can make?</span>
               <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-4">
-              Nope! Feel free to fill up your queue with as many design / development requests as you can think of. I'll get to work on them and deliver them back to you one by one.
+              Nope! Feel free to fill up your queue with as many design / development requests as you can think of. I'll
+              get to work on them and deliver them back to you one by one.
             </div>
           </div>
           <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-2">
-            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-5" aria-expanded="false">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-5" aria-expanded="false">
               <span>How do Monthly site fixes work?</span>
               <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-5">
-              The development process is straightforward. These are treated the same as 'design requests', As long as your request is supported by your website platform, DesignSpark will handle the fix and development for you. Just submit your fix request, and I'll take care of the rest.
+              The development process is straightforward. These are treated the same as 'design requests', As long as
+              your request is supported by your website platform, DesignSpark will handle the fix and development for
+              you. Just submit your fix request, and I'll take care of the rest.
             </div>
           </div>
         </div>
@@ -264,25 +337,31 @@
         <h3 class="text-2xl font-bold text-center mb-8 text-primary animate-on-scroll">Basic Questions</h3>
         <div class="space-y-4" id="faq-accordion-basic">
           <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll">
-            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-2" aria-expanded="false">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-2" aria-expanded="false">
               <span>How does onboarding work?</span>
               <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-2">
-              Getting started is a breeze. Once you subscribe, I'll set you up with your own private Trello board—usually within the hour. Just accept the invite, and you're ready to start submitting requests! I've left some simple instructions on the board to guide you.
+              Getting started is a breeze. Once you subscribe, I'll set you up with your own private Trello
+              board—usually within the hour. Just accept the invite, and you're ready to start submitting requests! I've
+              left some simple instructions on the board to guide you.
             </div>
           </div>
           <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-1">
-            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle" data-faq="faq-3" aria-expanded="false">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-3" aria-expanded="false">
               <span>Who are the developers and designers?</span>
               <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-3">
-              You're looking at him! DesignSpark is a one-man creative and web development studio, founded and run by me, David. I handle every project personally from start to finish. This means no middlemen and no outsourcing— just a direct, dedicated partnership with you.
+              You're looking at him! DesignSpark is a one-man creative and web development studio, founded and run by
+              me, David. I handle every project personally from start to finish. This means no middlemen and no
+              outsourcing— just a direct, dedicated partnership with you.
             </div>
           </div>
         </div>
@@ -295,35 +374,39 @@
       <div class="mb-12 animate-on-scroll">
         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get In Touch</h2>
         <p class="text-xl text-gray-600 mb-8">Have a question about your website? Let's chat!</p>
-        
-        <div class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+
+        <div
+          class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl shadow-lg hover:scale-105 transition-transform">
           <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.95a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 4.95a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <a href="mailto:hello.withsparkdesign@gmail.com?subject=Question from Website - Let's Improve My Site!" class="text-lg font-semibold hover:text-gray-100 transition-colors">
+          <a href="mailto:hello.withsparkdesign@gmail.com?subject=Question from Website - Let's Improve My Site!"
+            class="text-lg font-semibold hover:text-gray-100 transition-colors">
             hello.withsparkdesign@gmail.com
           </a>
         </div>
-        
+
         <p class="text-sm text-gray-500 mt-4">Click to send an email with a pre-filled subject line</p>
       </div>
     </div>
   </section>
 
   <footer class="py-10 px-4 bg-gray-800 text-center text-white text-sm">
-    <p>&copy; 2025 DesignSpark.</p>
+    <p>&copy; 2025 DesignSpark. Static build for GitHub Pages. <a href="index.php"
+        class="underline text-indigo-300">Original PHP version</a> (will not run on GitHub Pages).</p>
   </footer>
 
   <!-- jsPDF for report generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  
+
   <!-- Import API Helper -->
- 
-  
+
+
   <!-- Website Evaluation Tool - Full Implementation -->
   <script>
     // Make scrollToSection available globally
-    window.scrollToSection = function(id) {
+    window.scrollToSection = function (id) {
       const el = document.getElementById(id);
       if (el) {
         window.scrollTo({
@@ -332,18 +415,22 @@
         });
       }
     };
-    
+
     // Global scroll functions
     window.scrollToEvaluation = () => window.scrollToSection("website-evaluation");
     window.scrollToPricing = () => window.scrollToSection("pricing");
-    
+
+    // Portfolio modal helpers
+    window.openPortfolioModal = function (img) { const m = document.getElementById('portfolioModal'); document.getElementById('modalImage').src = img; m.classList.remove('pointer-events-none', 'hidden'); setTimeout(() => { document.getElementById('modalBg').classList.add('opacity-100'); document.getElementById('modalContent').classList.add('opacity-100', 'scale-100'); }, 10); document.body.style.overflow = 'hidden' };
+    window.closePortfolioModal = function () { const m = document.getElementById('portfolioModal'); document.getElementById('modalBg').classList.remove('opacity-100'); document.getElementById('modalContent').classList.remove('opacity-100', 'scale-100'); setTimeout(() => { m.classList.add('pointer-events-none', 'hidden'); document.body.style.overflow = ''; }, 300); };
+
     // Simple intersection observer for animations
-    const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible')}})},{threshold:.15});
-    document.querySelectorAll('.animate-on-scroll').forEach(el=>observer.observe(el));
+    const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible') } }) }, { threshold: .15 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
     // Month + counters
-    document.getElementById('current-month').textContent=new Date().toLocaleString('default',{month:'long'});
-    const base=5+Math.floor(Math.random()*6);document.getElementById('live-counter').textContent=base;
+    document.getElementById('current-month').textContent = new Date().toLocaleString('default', { month: 'long' });
+    const base = 5 + Math.floor(Math.random() * 6); document.getElementById('live-counter').textContent = base;
 
     // Add fade animations CSS
     const style = document.createElement('style');
@@ -368,7 +455,7 @@
     // Website Evaluation Tool Implementation
     document.addEventListener("DOMContentLoaded", function () {
       const toolContainer = document.getElementById("evaluation-tool-container");
-      
+
       // Build the full evaluation tool UI
       toolContainer.innerHTML = `
         <div id="start-screen" class="text-center bg-white p-8 rounded-2xl shadow-lg fade-in">
@@ -589,33 +676,33 @@
       function startEvaluation() {
         let isValid = true;
         let urlToTest = websiteUrlInput.value.trim();
-        
+
         if (!/^https?:\/\//i.test(urlToTest) && urlToTest.length > 0) {
           urlToTest = "https://" + urlToTest;
           websiteUrlInput.value = urlToTest;
         }
-        
+
         if (!nameInput.value.trim()) {
           nameError.classList.remove("hidden");
           isValid = false;
         } else {
           nameError.classList.add("hidden");
         }
-        
+
         if (!isValidEmail(emailInput.value.trim())) {
           emailError.classList.remove("hidden");
           isValid = false;
         } else {
           emailError.classList.add("hidden");
         }
-        
+
         if (!isValidUrl(urlToTest)) {
           urlError.classList.remove("hidden");
           isValid = false;
         } else {
           urlError.classList.add("hidden");
         }
-        
+
         if (!isValid) return;
 
         startScreen.classList.add("fade-out");
@@ -896,28 +983,28 @@
       // Event listeners
       startBtn.addEventListener("click", startEvaluation);
       document.getElementById("download-basic-report-btn").addEventListener("click", downloadBasicReport);
-      
+
       // Advanced report functionality
       if (orderAdvancedBtn) {
         orderAdvancedBtn.addEventListener("click", showAdvancedReportFlow);
       }
-      
+
       if (cancelPurchaseBtn) {
         cancelPurchaseBtn.addEventListener("click", hideAdvancedReportFlow);
       }
 
       // Global function for download
       window.downloadBasicReport = downloadBasicReport;
-      
+
       // Advanced report functions
       function showAdvancedReportFlow() {
         if (!demoReportData) return;
-        
+
         // Generate advanced report data if not already present
         if (!demoReportData.advancedReport) {
           demoReportData.advancedReport = generateAdvancedReportData();
         }
-        
+
         // Show advanced report screen
         resultsScreen.classList.add("fade-out");
         setTimeout(() => {
@@ -927,7 +1014,7 @@
           displayAdvancedReport();
         }, 500);
       }
-      
+
       function hideAdvancedReportFlow() {
         advancedReportScreen.classList.add("fade-out");
         setTimeout(() => {
@@ -936,7 +1023,7 @@
           resultsScreen.classList.add("fade-in");
         }, 500);
       }
-      
+
       function generateAdvancedReportData() {
         const advancedCategories = [
           { name: "Accessibility", score: Math.floor(Math.random() * 21) + 70, icon: "♿" },
@@ -947,7 +1034,7 @@
 
         const advancedFeedback = [
           "Accessibility features need improvement for better inclusivity",
-          "Security headers and SSL configuration should be enhanced", 
+          "Security headers and SSL configuration should be enhanced",
           "Mobile optimization could be improved for better performance",
           "Content structure and hierarchy need refinement"
         ];
@@ -960,21 +1047,21 @@
             effort: "Low"
           },
           {
-            title: "Navigation Menu Layout", 
+            title: "Navigation Menu Layout",
             description: "Compare horizontal vs. vertical menu layouts for mobile users",
             impact: "Medium",
             effort: "Medium"
           },
           {
             title: "Contact Form Length",
-            description: "Test shorter vs. longer contact forms to optimize completion rates", 
+            description: "Test shorter vs. longer contact forms to optimize completion rates",
             impact: "High",
             effort: "Low"
           },
           {
             title: "Product Gallery Style",
             description: "Compare grid vs. carousel layouts for product showcases",
-            impact: "Medium", 
+            impact: "Medium",
             effort: "High"
           }
         ];
@@ -985,17 +1072,17 @@
           abTests: abTestSuggestions
         };
       }
-      
+
       function displayAdvancedReport() {
         if (!demoReportData || !demoReportData.advancedReport) return;
-        
+
         const { categories, feedback, abTests } = demoReportData.advancedReport;
-        
+
         // Update URL display
         if (advancedUrl) {
           advancedUrl.textContent = "Advanced Analysis: " + websiteUrlInput.value;
         }
-        
+
         // Display advanced feedback
         if (advancedFeedbackList) {
           advancedFeedbackList.innerHTML = "";
@@ -1014,18 +1101,18 @@
             advancedFeedbackList.innerHTML += feedbackHtml;
           });
         }
-        
+
         // Display A/B test suggestions
         if (abTestList) {
           abTestList.innerHTML = "";
           abTests.forEach((test) => {
-            const impactColor = test.impact === 'High' ? 'text-red-600 bg-red-100' : 
-                              test.impact === 'Medium' ? 'text-yellow-600 bg-yellow-100' : 
-                              'text-green-600 bg-green-100';
-            const effortColor = test.effort === 'High' ? 'text-red-600 bg-red-100' : 
-                               test.effort === 'Medium' ? 'text-yellow-600 bg-yellow-100' : 
-                               'text-green-600 bg-green-100';
-            
+            const impactColor = test.impact === 'High' ? 'text-red-600 bg-red-100' :
+              test.impact === 'Medium' ? 'text-yellow-600 bg-yellow-100' :
+                'text-green-600 bg-green-100';
+            const effortColor = test.effort === 'High' ? 'text-red-600 bg-red-100' :
+              test.effort === 'Medium' ? 'text-yellow-600 bg-yellow-100' :
+                'text-green-600 bg-green-100';
+
             const testHtml = `
               <div class="bg-white border border-slate-200 rounded-lg p-6">
                 <h4 class="font-semibold text-slate-900 mb-2">${test.title}</h4>
@@ -1045,10 +1132,6 @@
       }
     });
 
-    // Portfolio modal helpers
-    window.openPortfolioModal=function(img){const m=document.getElementById('portfolioModal');document.getElementById('modalImage').src=img;m.classList.remove('pointer-events-none','hidden');setTimeout(()=>{document.getElementById('modalBg').classList.add('opacity-100');document.getElementById('modalContent').classList.add('opacity-100','scale-100');},10);document.body.style.overflow='hidden'};
-    window.closePortfolioModal=function(){const m=document.getElementById('portfolioModal');document.getElementById('modalBg').classList.remove('opacity-100');document.getElementById('modalContent').classList.remove('opacity-100','scale-100');setTimeout(()=>{m.classList.add('pointer-events-none','hidden');document.body.style.overflow='';},300);};
-
     // FAQ Accordion functionality
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".faq-toggle").forEach((button) => {
@@ -1064,4 +1147,5 @@
     });
   </script>
 </body>
+
 </html>
