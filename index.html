@@ -660,7 +660,7 @@
                 if (activeCard < projects.length - 1) {
                     activeCard++;
                     updatePositions();
-                    renderDetailView();
+                    updateDetailView();
                 }
             }
             if (touchEndX > touchStartX + threshold) {
@@ -668,7 +668,7 @@
                 if (activeCard > 0) {
                     activeCard--;
                     updatePositions();
-                    renderDetailView();
+                    updateDetailView();
                 }
             }
         }
