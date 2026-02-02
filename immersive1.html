@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyager Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Utilities */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .rotate-y-6 {
+            transform: rotateY(6deg);
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 12s linear infinite;
+        }
+
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Smooth scrolling for JS triggered scrolls */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans overflow-hidden">
+
+    <!-- DATA SCRIPT -->
+    <script>
+        const PORTFOLIO_ITEMS = [
+            {
+                id: 1,
+                title: "Neon Horizon",
+                client: "Future Tech",
+                type: "Mobile App",
+                description: "A cyberpunk-inspired finance dashboard for the next generation of traders.",
+                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+                tags: ["UX/UI", "Fintech", "Mobile"],
+                likes: "4.2k",
+                comments: 128
+            },
+            {
+                id: 2,
+                title: "Ethereal Sound",
+                client: "SoundCloud Redesign",
+                type: "Case Study",
+                description: "Reimagining music discovery through fluid gestures and immersive visuals.",
+                image: "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop",
+                tags: ["Product Design", "Audio", "Concept"],
+                likes: "8.5k",
+                comments: 342
+            },
+            {
+                id: 3,
+                title: "Voyager II",
+                client: "SpaceX",
+                type: "Web Experience",
+                description: "Interactive timeline of the Voyager missions using WebGL and GSAP.",
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
+                tags: ["Web Design", "3D", "Interactive"],
+                likes: "12k",
+                comments: 89
+            },
+            {
+                id: 4,
+                title: "EcoStream",
+                client: "National Geo",
+                type: "Streaming Platform",
+                description: "Documentary streaming service focused on sustainability and nature.",
+                image: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=2070&auto=format&fit=crop",
+                tags: ["UI Kit", "Video", "Web"],
+                likes: "3.1k",
+                comments: 56
+            },
+            {
+                id: 5,
+                title: "Urban Shift",
+                client: "Nike Lab",
+                type: "E-commerce",
+                description: "Augmented reality sneaker drops in urban environments.",
+                image: "https://images.unsplash.com/photo-1515462277126-2dd0c162007a?q=80&w=1976&auto=format&fit=crop",
+                tags: ["AR", "Commerce", "Mobile"],
+                likes: "9.9k",
+                comments: 420
+            },
+            {
+                id: 6,
+                title: "Cyberpunk City",
+                client: "Game Dev",
+                type: "Level Design",
+                description: "Immersive environments created for a next-gen open world RPG.",
+                image: "https://images.unsplash.com/photo-1535868463750-c78d9543614f?q=80&w=2076&auto=format&fit=crop",
+                tags: ["Game Art", "Level Design", "3D"],
+                likes: "15k",
+                comments: 512
+            }
+        ];
+    </script>
+
+    <!-- MOBILE VIEW CONTAINER (Hidden on md+) -->
+    <div id="mobile-view" class="h-screen w-full flex flex-col relative md:hidden">
+
+        <!-- Main Vertical Feed -->
+        <div id="feed-container" class="flex-1 overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar">
+            <!-- Feed Items Injected Here -->
+        </div>
+
+        <!-- Thumbnail Navigation Strip -->
+        <div
+            class="fixed bottom-[60px] left-0 right-0 z-40 h-24 bg-gradient-to-t from-black via-black/95 to-transparent pointer-events-auto">
+            <div id="thumbnail-container"
+                class="flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar py-4 px-[calc(50vw-32px)] items-center h-full">
+                <!-- Thumbnails Injected Here -->
+            </div>
+        </div>
+
+        <!-- Mobile Navbar -->
+        <nav
+            class="fixed bottom-0 w-full h-[60px] bg-black border-t border-white/10 flex justify-around items-center z-50 pb-safe">
+            <div class="flex flex-col items-center gap-1 text-white cursor-pointer">
+                <i data-lucide="home" stroke-width="2.5" class="w-6 h-6"></i>
+                <span class="text-[10px] font-medium">Home</span>
+            </div>
+            <div
+                class="flex flex-col items-center gap-1 text-zinc-500 hover:text-white transition-colors cursor-pointer">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+                <span class="text-[10px] font-medium">Discover</span>
+            </div>
+            <div class="mb-4 cursor-pointer">
+                <div
+                    class="w-12 h-8 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <span class="text-white text-xl font-bold leading-none mt-[-2px]">+</span>
+                </div>
+            </div>
+            <div
+                class="flex flex-col items-center gap-1 text-zinc-500 hover:text-white transition-colors cursor-pointer">
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                <span class="text-[10px] font-medium">Inbox</span>
+            </div>
+            <div
+                class="flex flex-col items-center gap-1 text-zinc-500 hover:text-white transition-colors cursor-pointer">
+                <i data-lucide="user" class="w-6 h-6"></i>
+                <span class="text-[10px] font-medium">Me</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- DESKTOP VIEW CONTAINER (Hidden on mobile) -->
+    <div id="desktop-view"
+        class="hidden md:flex min-h-screen w-full flex-col overflow-x-hidden selection:bg-cyan-500 selection:text-black relative">
+
+        <!-- Navbar -->
+        <nav
+            class="fixed top-0 left-0 right-0 py-6 px-12 flex justify-between items-center z-50 mix-blend-difference text-white">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+                <span class="text-xl font-bold tracking-tighter">VOYAGER<span
+                        class="font-light opacity-70">2</span></span>
+            </div>
+            <div class="flex gap-8 text-sm font-medium tracking-wide">
+                <a href="#" class="hover:text-cyan-400 transition-colors">Work</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#" class="hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+            <button
+                class="flex items-center gap-2 border border-white/30 px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all">
+                <span class="text-xs font-bold uppercase tracking-wider">Connect</span>
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col justify-center relative">
+            <!-- Background Orbs -->
+            <div
+                class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-[128px] pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-900/10 rounded-full blur-[128px] pointer-events-none">
+            </div>
+
+            <div class="container mx-auto px-12 mb-12 z-10">
+                <h1 class="text-6xl md:text-8xl font-serif text-center md:text-left leading-tight mb-6">
+                    Selected <br />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-600 italic">Works</span>
+                </h1>
+                <p class="text-gray-400 text-lg max-w-md md:ml-2">
+                    A curation of digital experiences, interface designs, and interactive experiments.
+                </p>
+            </div>
+
+            <!-- Horizontal Scroll Area -->
+            <div class="w-full overflow-x-auto pb-12 pt-8 px-12 no-scrollbar">
+                <div id="desktop-card-container" class="flex gap-8 w-max px-8">
+                    <!-- Desktop Cards Injected Here -->
+                </div>
+            </div>
+        </main>
+
+        <footer
+            class="w-full py-8 px-12 border-t border-white/5 flex justify-between items-center text-xs text-gray-600 uppercase tracking-widest">
+            <div>© 2024 Voyager Design System</div>
+            <div class="flex gap-6">
+                <span class="hover:text-white cursor-pointer transition-colors">Twitter</span>
+                <span class="hover:text-white cursor-pointer transition-colors">LinkedIn</span>
+                <span class="hover:text-white cursor-pointer transition-colors">Instagram</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- LOGIC SCRIPT -->
+    <script>
+        // --- State ---
+        let activeSlideIndex = 0;
+        let isInternalScroll = false;
+        let scrollTimeout = null;
+
+        // --- DOM Elements ---
+        const feedContainer = document.getElementById('feed-container');
+        const thumbnailContainer = document.getElementById('thumbnail-container');
+        const desktopCardContainer = document.getElementById('desktop-card-container');
+
+        // --- Init ---
+        function init() {
+            renderMobileFeed();
+            renderThumbnails();
+            renderDesktopCards();
+
+            // Re-run icons after DOM injection
+            lucide.createIcons();
+
+            // Set up Observers and Listeners
+            setupFeedObserver();
+            setupThumbnailInteraction();
+        }
+
+        // --- Rendering Functions ---
+
+        function renderMobileFeed() {
+            feedContainer.innerHTML = PORTFOLIO_ITEMS.map((item, index) => `
+                <div class="h-full w-full relative flex-shrink-0 bg-black overflow-hidden snap-start feed-item" data-index="${index}">
+                    <img src="${item.image}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover opacity-80" />
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/95"></div>
+
+                    <!-- Top Nav Overlay -->
+                    <div class="absolute top-0 w-full pt-14 flex justify-center gap-6 z-20">
+                        <span class="text-white/60 font-medium text-sm hover:text-white cursor-pointer transition-colors">Following</span>
+                        <span class="text-white font-bold text-sm border-b-2 border-white pb-1 cursor-pointer">Discover</span>
+                    </div>
+
+                    <!-- Right Actions -->
+                    <div class="absolute right-4 bottom-48 flex flex-col items-center gap-6 z-20">
+                        <div class="flex flex-col items-center gap-1 cursor-pointer group">
+                            <div class="p-2.5 rounded-full bg-white/10 backdrop-blur-md transition-all active:scale-90 group-hover:bg-white/20">
+                                <i data-lucide="heart" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <span class="text-white text-xs font-medium drop-shadow-md">${item.likes}</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 cursor-pointer group">
+                            <div class="p-2.5 rounded-full bg-white/10 backdrop-blur-md transition-all active:scale-90 group-hover:bg-white/20">
+                                <i data-lucide="message-circle" class="w-7 h-7 text-white"></i>
+                            </div>
+                            <span class="text-white text-xs font-medium drop-shadow-md">${item.comments}</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-1 cursor-pointer group">
+                            <div class="p-2.5 rounded-full bg-white/10 backdrop-blur-md transition-all active:scale-90 group-hover:bg-white/20">
+                                <i data-lucide="share-2" class="w-7 h-7 text-white"></i>
+                            </div>
+                        </div>
+                        <div class="animate-[spin_8s_linear_infinite] mt-4 p-1 rounded-full bg-zinc-800 border-zinc-700 border-2">
+                             <img src="https://ui-avatars.com/api/?name=UX&background=0D8ABC&color=fff" class="w-6 h-6 rounded-full" alt="Music" />
+                        </div>
+                    </div>
+
+                    <!-- Info Content -->
+                    <div class="absolute bottom-0 left-0 right-0 p-5 pb-44 z-10 flex flex-col gap-2">
+                        <div class="self-start px-2 py-0.5 rounded bg-cyan-900/30 border border-cyan-500/30 text-[10px] font-bold text-cyan-400 uppercase tracking-wider">
+                           ${item.type}
+                        </div>
+                        <h2 class="text-3xl font-serif font-bold text-white leading-tight drop-shadow-lg">${item.title}</h2>
+                        <p class="text-white/80 text-sm line-clamp-2 pr-12">${item.description}</p>
+                        
+                        <div class="flex items-center gap-2 mt-2 opacity-70">
+                            <i data-lucide="play" class="w-3 h-3 fill-white text-white"></i>
+                            <div class="w-2/3 overflow-hidden">
+                                <p class="text-xs text-white font-medium whitespace-nowrap animate-marquee">
+                                    Original Design Concept • ${item.client} • Viewing Case Study • Swipe for more
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderThumbnails() {
+            thumbnailContainer.innerHTML = PORTFOLIO_ITEMS.map((item, index) => `
+                <div 
+                    class="thumbnail-item relative flex-shrink-0 w-16 h-20 rounded-lg overflow-hidden snap-center cursor-pointer transition-all duration-300 ease-out origin-center scale-90 opacity-40 grayscale hover:opacity-70"
+                    data-index="${index}"
+                    onclick="handleThumbnailClick(${index})"
+                >
+                    <img src="${item.image}" alt="" class="w-full h-full object-cover" />
+                </div>
+            `).join('');
+
+            // Set initial state
+            updateThumbnailVisuals(0);
+        }
+
+        function renderDesktopCards() {
+            desktopCardContainer.innerHTML = PORTFOLIO_ITEMS.map((item) => `
+                <div class="group relative w-[280px] h-[400px] md:w-[350px] md:h-[500px] flex-shrink-0 cursor-pointer transition-all duration-500 hover:scale-105 hover:-translate-y-2 perspective-1000">
+                    <div class="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 transform preserve-3d group-hover:rotate-y-6">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors z-10"></div>
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        
+                        <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="text-xs font-mono text-cyan-400 mb-2 block tracking-widest uppercase">${item.type}</span>
+                            <h3 class="text-3xl font-serif text-white mb-2 leading-none">${item.title}</h3>
+                            <p class="text-gray-300 text-sm line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                ${item.description}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `).join('') + `
+             <div class="w-[200px] h-[500px] flex items-center justify-center group cursor-pointer">
+                <div class="flex flex-col items-center gap-4 text-gray-500 group-hover:text-white transition-colors">
+                  <div class="p-4 rounded-full border border-current group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                  </div>
+                  <span class="uppercase tracking-widest text-xs font-bold">View Archive</span>
+                </div>
+             </div>
+            `;
+        }
+
+        // --- Logic & Synchronization ---
+
+        // 1. Vertical Feed Observer (Feed -> Thumbs)
+        function setupFeedObserver() {
+            const options = { threshold: 0.6 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isInternalScroll) {
+                        const index = parseInt(entry.target.getAttribute('data-index'));
+                        if (index !== activeSlideIndex) {
+                            activeSlideIndex = index;
+                            updateThumbnailVisuals(index);
+                            scrollThumbnailToCenter(index);
+                        }
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.feed-item').forEach(el => observer.observe(el));
+        }
+
+        // 2. Thumbnail Swipe Listener (Thumbs -> Feed)
+        function setupThumbnailInteraction() {
+            thumbnailContainer.addEventListener('scroll', () => {
+                isInternalScroll = true;
+
+                // Constants for math (w-16 + gap-3 = 64px + 12px = 76px)
+                const itemWidth = 76;
+
+                // Calculate centered index
+                const centerScroll = thumbnailContainer.scrollLeft;
+                const index = Math.round(centerScroll / itemWidth);
+
+                if (index !== activeSlideIndex && index >= 0 && index < PORTFOLIO_ITEMS.length) {
+                    activeSlideIndex = index;
+                    updateThumbnailVisuals(index); // Just visual update
+
+                    // Scroll Main Feed
+                    const feedItems = document.querySelectorAll('.feed-item');
+                    if (feedItems[index]) {
+                        feedItems[index].scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+
+                // Debounce the lock release
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isInternalScroll = false;
+                }, 150);
+            });
+        }
+
+        // 3. Click Interaction
+        window.handleThumbnailClick = function (index) {
+            isInternalScroll = true; // Lock observer loop
+            activeSlideIndex = index;
+
+            updateThumbnailVisuals(index);
+            scrollThumbnailToCenter(index); // Explicitly center clicked item
+
+            const feedItems = document.querySelectorAll('.feed-item');
+            if (feedItems[index]) {
+                feedItems[index].scrollIntoView({ behavior: 'smooth' });
+            }
+
+            setTimeout(() => { isInternalScroll = false; }, 600);
+        }
+
+        // --- Visual Helpers ---
+
+        function updateThumbnailVisuals(activeIndex) {
+            const thumbnails = document.querySelectorAll('.thumbnail-item');
+            thumbnails.forEach((thumb, index) => {
+                if (index === activeIndex) {
+                    // Active Styles
+                    thumb.className = "thumbnail-item relative flex-shrink-0 w-16 h-20 rounded-lg overflow-hidden snap-center cursor-pointer transition-all duration-300 ease-out origin-center scale-110 opacity-100 ring-2 ring-cyan-400 z-10 shadow-[0_0_15px_rgba(34,211,238,0.5)]";
+                } else {
+                    // Inactive Styles
+                    thumb.className = "thumbnail-item relative flex-shrink-0 w-16 h-20 rounded-lg overflow-hidden snap-center cursor-pointer transition-all duration-300 ease-out origin-center scale-90 opacity-40 grayscale hover:opacity-70";
+                }
+            });
+        }
+
+        function scrollThumbnailToCenter(index) {
+            const itemWidth = 76; // 64px + 12px gap
+            // Using scrollLeft math instead of scrollIntoView for better control in this custom context
+            // But since we use snap-x, a simple calculation works best
+            thumbnailContainer.scrollTo({
+                left: index * itemWidth,
+                behavior: 'smooth'
+            });
+        }
+
+        // Start
+        window.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+
+</html>
