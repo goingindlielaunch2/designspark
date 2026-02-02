@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo-Tokyo Shop - Case Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans selection:bg-white selection:text-black">
+    <nav class="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="portfolio.html" class="flex items-center gap-2 text-white hover:opacity-80 transition-opacity">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span class="font-medium">Back to Portfolio</span>
+        </a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <span class="text-purple-400 text-sm font-mono tracking-wider mb-4 block">Interaction Design</span>
+        <h1 class="font-serif text-5xl md:text-7xl mb-8 leading-tight">Neo-Tokyo Shop</h1>
+
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop"
+            alt="Neo-Tokyo Shop" class="w-full h-auto rounded-lg mb-12 shadow-2xl skew-y-1">
+
+        <div class="grid md:grid-cols-3 gap-12 mb-16">
+            <div>
+                <h3 class="font-bold text-lg mb-2">Role</h3>
+                <p class="text-zinc-500">Creative Developer</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Timeline</h3>
+                <p class="text-zinc-500">4 Weeks</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Tech</h3>
+                <p class="text-zinc-500">WebGL, Three.js</p>
+            </div>
+        </div>
+
+        <article class="prose prose-invert prose-lg max-w-none">
+            <h2 class="font-serif text-3xl mb-6">The Concept</h2>
+            <p class="text-zinc-400 mb-8">
+                An immersive shopping experience for a high-end streetwear brand. The client wanted to move away from
+                traditional grids and creating a feeling of exploring a digital city.
+            </p>
+
+            <h2 class="font-serif text-3xl mb-6">Execution</h2>
+            <p class="text-zinc-400 mb-8">
+                We implemented WebGL product views and micro-interactions that respond to cursor movement. The result is
+                a fluid, game-like shopping journey that increased session duration by 200%.
+            </p>
+        </article>
+    </main>
+
+    <footer class="bg-zinc-950 py-12 text-center text-zinc-600 text-sm border-t border-white/10">
+        <p>© 2025 Voyager Portfolio.</p>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

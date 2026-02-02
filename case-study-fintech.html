@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintech Dashboard - Case Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white font-sans selection:bg-white selection:text-black">
+    <nav class="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <a href="portfolio.html" class="flex items-center gap-2 text-white hover:opacity-80 transition-opacity">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <span class="font-medium">Back to Portfolio</span>
+        </a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <span class="text-blue-400 text-sm font-mono tracking-wider mb-4 block">UX Research & UI</span>
+        <h1 class="font-serif text-5xl md:text-7xl mb-8 leading-tight">Fintech Dashboard</h1>
+
+        <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=1000&auto=format&fit=crop"
+            alt="Fintech Dashboard" class="w-full h-auto rounded-lg mb-12 shadow-2xl skew-y-1">
+
+        <div class="grid md:grid-cols-3 gap-12 mb-16">
+            <div>
+                <h3 class="font-bold text-lg mb-2">Role</h3>
+                <p class="text-zinc-500">Lead Designer</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Timeline</h3>
+                <p class="text-zinc-500">8 Weeks</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Outcome</h3>
+                <p class="text-zinc-500">+45% Engagement</p>
+            </div>
+        </div>
+
+        <article class="prose prose-invert prose-lg max-w-none">
+            <h2 class="font-serif text-3xl mb-6">The Challenge</h2>
+            <p class="text-zinc-400 mb-8">
+                A complete overhaul of a legacy banking interface, focusing on accessibility and data visualization
+                transparency for over 50k active users. The goal was to simplify complex financial data into actionable
+                insights.
+            </p>
+
+            <h2 class="font-serif text-3xl mb-6">The Solution</h2>
+            <p class="text-zinc-400 mb-8">
+                We implemented a modular dashboard design with customizable widgets. The color palette was carefully
+                chosen to meet WCAG 2.1 AA standards while maintaining a modern, dark-mode-first aesthetic.
+            </p>
+        </article>
+    </main>
+
+    <footer class="bg-zinc-950 py-12 text-center text-zinc-600 text-sm border-t border-white/10">
+        <p>© 2025 Voyager Portfolio.</p>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
