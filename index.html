@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protected Content - David Darling</title>
+    <title>David Darling UX Portfolio</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons are inline SVG for optimal performance -->
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +19,7 @@
         rel="stylesheet">
 
     <style>
+        /* Custom Fonts */
         .font-serif {
             font-family: 'Playfair Display', serif;
         }
@@ -25,74 +28,59 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* 3D Perspective Setup */
+        .perspective-container {
+            perspective: 1000px;
+            /* Slightly reduced perspective for mobile impact */
+        }
+
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+
+        /* Animation Classes */
+        .card-transition {
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out, filter 0.8s ease-out;
+        }
+
+        /* Text reveal animations for active card */
+        @keyframes textReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-text-reveal {
+            animation: textReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
 
+        /* Selection Color */
         ::selection {
             background-color: white;
             color: black;
-        }
-
-        /* Animated gradient background */
-        @keyframes gradientShift {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            33% {
-                transform: translate(30px, -20px) scale(1.1);
-            }
-
-            66% {
-                transform: translate(-20px, 20px) scale(0.95);
-            }
-        }
-
-        .blob-animate {
-            animation: gradientShift 15s ease-in-out infinite;
-        }
-
-        .blob-animate-delayed {
-            animation: gradientShift 18s ease-in-out infinite reverse;
-        }
-
-        /* Glass morphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Input styling */
-        input:focus {
-            outline: none;
-        }
-
-        /* Shake animation for wrong password */
-        @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            20%,
-            60% {
-                transform: translateX(-10px);
-            }
-
-            40%,
-            80% {
-                transform: translateX(10px);
-            }
-        }
-
-        .shake {
-            animation: shake 0.4s ease-in-out;
         }
     </style>
 
@@ -110,130 +98,591 @@
     </script>
 </head>
 
-<body class="bg-black text-white font-sans overflow-hidden selection:bg-white selection:text-black min-h-screen">
+<body class="bg-black text-white font-sans overflow-x-hidden selection:bg-white selection:text-black">
 
-    <!-- Animated Gradient Background -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div
-            class="blob-animate absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[120px]">
-        </div>
-        <div
-            class="blob-animate-delayed absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/25 rounded-full blur-[140px]">
-        </div>
-        <div
-            class="blob-animate absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px]">
-        </div>
+    <!-- Navigation Gradient Background -->
+    <div
+        class="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-black via-black/60 to-transparent z-40 pointer-events-none">
     </div>
 
-    <!-- Password Container -->
-    <div class="relative z-10 min-h-screen flex items-center justify-center px-6">
-        <div id="password-form" class="glass rounded-3xl p-8 md:p-12 w-full max-w-md text-center">
-            <!-- Lock Icon -->
-            <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-white/10 flex items-center justify-center">
-                <svg class="w-8 h-8 text-white/70" fill="none" stroke="currentColor" stroke-width="1.5"
-                    viewBox="0 0 24 24">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-            </div>
-
-            <h1 class="font-serif text-3xl md:text-4xl mb-3">Protected Content</h1>
-            <p class="text-zinc-400 text-sm mb-8">Enter the password to continue</p>
-
-            <!-- Password Input -->
-            <div class="relative mb-6">
-                <input type="password" id="password-input"
-                    class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-zinc-500 text-center tracking-widest focus:border-white/30 transition-colors"
-                    placeholder="••••••••" autocomplete="off">
-            </div>
-
-            <!-- Error Message -->
-            <p id="error-message" class="text-red-400 text-sm mb-4 opacity-0 transition-opacity">
-                Incorrect password. Please try again.
-            </p>
-
-            <!-- Submit Button -->
-            <button id="submit-btn"
-                class="w-full bg-white text-black font-medium py-4 rounded-xl hover:bg-white/90 transition-colors">
-                Unlock
-            </button>
-
-            <!-- Hint -->
-            <p class="text-zinc-600 text-xs mt-6">
-                Need access? <a href="mailto:hello.designspark@gmail.com"
-                    class="text-zinc-400 hover:text-white transition-colors">Contact me</a>
-            </p>
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 px-6 md:px-8 py-6 flex justify-between items-center text-white pointer-events-none md:pointer-events-auto">
+        <div class="flex items-center gap-2 pointer-events-auto">
+            <span class="text-xl font-bold tracking-tight">David Darling</span>
         </div>
 
-        <!-- Protected Content (Hidden by default) -->
-        <div id="protected-content" class="hidden text-center max-w-2xl">
-            <h1 class="font-serif text-4xl md:text-6xl mb-6">Welcome</h1>
-            <p class="text-zinc-400 text-lg mb-8">You now have access to the protected content.</p>
-            <a href="portfolio.html"
-                class="inline-block bg-white text-black font-medium px-8 py-4 rounded-xl hover:bg-white/90 transition-colors">
-                View Portfolio
-            </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide opacity-80 pointer-events-auto">
+            <a href="#about"
+                class="hover:opacity-100 hover:text-white transition-colors duration-300 relative group">About<span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#contact"
+                class="hover:opacity-100 hover:text-white transition-colors duration-300 relative group">Contact<span
+                    class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
         </div>
-    </div>
+
+        <!-- Mobile Menu Icon (Visual Only) -->
+        <div class="md:hidden pointer-events-auto">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main
+        class="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-20 overflow-hidden touch-pan-y"
+        id="hero">
+
+
+
+        <!-- Heading -->
+        <!-- <div class="text-center z-10 mb-8 md:mb-16 max-w-2xl px-4 opacity-0 animate-fade-in" id="main-heading">
+            <h1
+                class="font-serif text-4xl md:text-7xl leading-tight mb-4 bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
+                Selected <br />
+                <span class="italic font-light">works</span> on display
+            </h1>
+            <p class="text-white/40 text-xs md:text-base uppercase tracking-widest mt-4 md:mt-6">
+                UX/UI Portfolio • 2024 - 2026
+            </p>
+            <p class="md:hidden text-white/30 text-[10px] mt-4 animate-pulse uppercase tracking-widest">
+                Swipe to navigate
+            </p>
+        </div> -->
+
+        <!-- Carousel Container -->
+        <!-- Unified Container for Mobile & Desktop -->
+        <div
+            class="perspective-container w-full flex justify-center items-center h-[450px] md:h-[500px] relative mb-12">
+            <div id="carousel-track"
+                class="relative flex items-center justify-center w-full max-w-5xl h-full transform-style-3d cursor-pointer">
+                <!-- Cards will be injected here by JS -->
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <a href="#navigator"
+            class="absolute bottom-6 md:bottom-10 animate-bounce opacity-50 text-white hover:opacity-100 transition-opacity cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9" />
+            </svg>
+        </a>
+    </main>
+
+    <!-- Detailed Project View -->
+    <section class="min-h-screen bg-zinc-950 relative z-20 py-16 md:py-24 px-6 md:px-20" id="navigator">
+        <div class="max-w-6xl mx-auto" id="detail-view">
+            <!-- Content injected by JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 md:py-20 px-6 border-t border-white/10" id="connect">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="max-w-md">
+                <h2 class="font-serif text-3xl md:text-4xl mb-6">Let's create something timeless.</h2>
+                <p class="text-zinc-500 mb-8 leading-relaxed">
+                    I am a multidisciplinary product designer focused on crafting immersive web experiences.
+                    Currently available for freelance projects.
+                </p>
+                <div class="flex gap-6 text-zinc-400">
+                    <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M22 6l-10 7L2 6" />
+                        </svg></a>
+                    <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg></a>
+                    <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path
+                                d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 12 7.5v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c13 8 27 0 27-15.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+                        </svg></a>
+                    <a href="#" class="hover:text-white transition-colors"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="20" rx="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <circle cx="17.5" cy="6.5" r="1.5" />
+                        </svg></a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 md:gap-24 w-full md:w-auto">
+                <div>
+                    <h4 class="font-bold mb-6">Navigation</h4>
+                    <ul class="space-y-4 text-zinc-500">
+                        <li class="hover:text-white cursor-pointer">Work</li>
+                        <li class="hover:text-white cursor-pointer">About</li>
+                        <li class="hover:text-white cursor-pointer">Services</li>
+                        <li class="hover:text-white cursor-pointer">Resume</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Contact</h4>
+                    <ul class="space-y-4 text-zinc-500">
+                        <li>hello.designspark@gmail.com</li>
+                        <li>+1 (801) 673-8562</li>
+                        <li>Greater Salt Lake City Area</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12 md:mt-20 text-zinc-800 text-sm">
+            © 2026 DesignSpark.
+        </div>
+    </footer>
 
     <script>
-        // Simple client-side password check
-        // NOTE: For production, use server-side authentication
-        const PASSWORD = 'design2026';
+        // --- Data ---
+        const projects = [
+            {
+                id: 1,
+                title: "UI Design",
+                category: "UI Design",
+                image: "images/portfolio/ui-design-legacy.jpg",
+                description: "Frontend UI design and development using Bootstrap framework for responsive web applications.",
+                link: "case-study-ui.html",
+                role: "UI Designer",
+                timeline: "4 Weeks",
+                tools: "Figma, Bootstrap, HTML/CSS",
+                outcome: "Responsive Design",
+                details: `
+                    <h3 class="font-serif text-2xl mb-4 mt-8 text-white">The Approach</h3>
+                    <p class="text-zinc-400 mb-6 font-light leading-relaxed">
+                        Frontend UI design with a focus on clean, modern aesthetics and intuitive user interactions. Built with Bootstrap for rapid prototyping and responsive layouts.
+                    </p>
+                    <h3 class="font-serif text-2xl mb-4 text-white">Technical Implementation</h3>
+                    <p class="text-zinc-400 mb-0 font-light leading-relaxed">
+                        Leveraged Bootstrap's grid system and components while adding custom styling to create a unique visual identity that stands out from typical framework-based designs.
+                    </p>
+                `
+            },
+            {
+                id: 2,
+                title: "Mobile UI Design",
+                category: "Mobile UI Design",
+                image: "images/portfolio/mobile-ui-legacy.jpg",
+                description: "Mobile-first UI design focusing on intuitive touch interactions and seamless user experiences.",
+                link: "case-study-mobile.html",
+                role: "Mobile Designer",
+                timeline: "6 Weeks",
+                tools: "Figma, Sketch",
+                outcome: "iOS & Android",
+                details: `
+                    <h3 class="font-serif text-2xl mb-4 mt-8 text-white">Mobile First</h3>
+                    <p class="text-zinc-400 mb-6 font-light leading-relaxed">
+                        Designed with mobile-first principles, ensuring optimal usability on touch devices
+                        while maintaining visual consistency across platforms.
+                    </p>
+                    <h3 class="font-serif text-2xl mb-4 text-white">Cross-Platform</h3>
+                    <p class="text-zinc-400 mb-0 font-light leading-relaxed">
+                        Created design systems that adapt seamlessly between iOS and Android while respecting
+                        each platform's native design patterns and user expectations.
+                    </p>
+                `
+            },
+            {
+                id: 3,
+                title: "VibeCue Tasks",
+                category: "Product Design",
+                image: "images/portfolio/brain-app.jpg",
+                description: "Low Friction task and calendar app for neurodivergent individuals.",
+                link: "case-study-vibecue.html",
+                role: "Product Designer",
+                timeline: "2 Weeks",
+                tools: "Figma, Gemini",
+                outcome: "Pending",
+                details: `
+                    <h3 class="font-serif text-2xl mb-4 mt-8 text-white">Mission</h3>
+                    <p class="text-zinc-400 mb-6 font-light leading-relaxed">
+                        Allowing users with and without ADHD to have super low friction when entering and managing tasks and calendar items.
+                    </p>
+                    <h3 class="font-serif text-2xl mb-4 text-white">Design Features</h3>
+                    <p class="text-zinc-400 mb-0 font-light leading-relaxed">
+                        I designed a system that allows users to enter tasks and calendar items with minimal friction. It will use AI to understand the user's intent and automatically categorizes and prioritizes tasks.
+                    </p>
+                `
+            },
+            {
+                id: 4,
+                title: "Game Design",
+                category: "Game Design",
+                image: "images/portfolio/game-design-legacy.jpg",
+                description: "Game designed and developed with focus on engaging mechanics and immersive player experiences.",
+                link: "case-study-game.html",
+                role: "Game Designer",
+                timeline: "16 Weeks",
+                tools: "GameSalad, Photoshop, Inkscape",
+                outcome: "Published Game",
+                details: `
+                    <h3 class="font-serif text-2xl mb-4 mt-8 text-white">Game Concept</h3>
+                    <p class="text-zinc-400 mb-6 font-light leading-relaxed">
+                        Designed and developed an engaging casual platform puzzle game experience with balanced mechanics and compelling visual design that keeps players coming back.
+                    </p>
+                    <h3 class="font-serif text-2xl mb-4 text-white">Development</h3>
+                    <p class="text-zinc-400 mb-0 font-light leading-relaxed">
+                        From concept to completion, handled both design and development aspects to create
+                        a cohesive gaming experience with polished visuals and smooth gameplay.
+                    </p>
+                `
+            },
+            {
+                id: 5,
+                title: "Logo Design",
+                category: "Logo Design",
+                image: "images/portfolio/logo-design-legacy.jpg",
+                description: "Various logo designs creating memorable brand identities through thoughtful typography and iconography.",
+                link: "case-study-logo.html",
+                role: "Brand Designer",
+                timeline: "2 Weeks",
+                tools: "Illustrator, Photoshop",
+                outcome: "Brand Identity",
+                details: `
+                    <h3 class="font-serif text-2xl mb-4 mt-8 text-white">Brand Identity</h3>
+                    <p class="text-zinc-400 mb-6 font-light leading-relaxed">
+                        Created distinctive logo designs that capture the essence of each brand while ensuring
+                        versatility across different mediums and applications.
+                    </p>
+                    <h3 class="font-serif text-2xl mb-4 text-white">Design Process</h3>
+                    <p class="text-zinc-400 mb-0 font-light leading-relaxed">
+                        Each logo went through an iterative design process, exploring multiple concepts before
+                        refining the final mark that best represents the brand's values and vision.
+                    </p>
+                `
+            }
+        ];
 
-        const passwordInput = document.getElementById('password-input');
-        const submitBtn = document.getElementById('submit-btn');
-        const errorMessage = document.getElementById('error-message');
-        const passwordForm = document.getElementById('password-form');
-        const protectedContent = document.getElementById('protected-content');
+        // --- State ---
+        let activeCard = 2;
+        const carouselTrack = document.getElementById('carousel-track');
+        const detailView = document.getElementById('detail-view');
 
-        function checkPassword() {
-            const entered = passwordInput.value;
+        // Mobile Swipe State
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-            if (entered === PASSWORD) {
-                // Success - show protected content
-                passwordForm.style.opacity = '0';
-                passwordForm.style.transform = 'scale(0.95)';
-                passwordForm.style.transition = 'all 0.3s ease-out';
+        // Cached mobile state (updated on resize) - avoids layout reflow
+        let cachedIsMobile = window.innerWidth < 768;
 
-                setTimeout(() => {
-                    passwordForm.classList.add('hidden');
-                    protectedContent.classList.remove('hidden');
-                    protectedContent.style.opacity = '0';
-                    protectedContent.style.transform = 'scale(1.05)';
+        // Card element cache for faster updates
+        const cardElementCache = new Map();
 
-                    requestAnimationFrame(() => {
-                        protectedContent.style.transition = 'all 0.4s ease-out';
-                        protectedContent.style.opacity = '1';
-                        protectedContent.style.transform = 'scale(1)';
-                    });
-                }, 300);
+        // --- Render Logic ---
+
+        function isMobile() {
+            return cachedIsMobile;
+        }
+
+        // Initialize Carousel structure (Unified)
+        function initCarousel() {
+            carouselTrack.innerHTML = '';
+            cardElementCache.clear();
+
+            // Create Cards
+            projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.dataset.index = index;
+
+                // Unified Classes for both mobile and desktop
+                card.className = "absolute w-[280px] md:w-[340px] h-[400px] md:h-[450px] rounded-3xl card-transition cursor-pointer group bg-zinc-900 border border-white/5 overflow-hidden shadow-2xl shadow-black/50";
+
+                card.innerHTML = `
+                    <!-- Image Layer -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                    </div>
+
+                    <!-- Content Layer -->
+                    <div class="absolute inset-0 p-6 md:p-8 flex flex-col justify-end pointer-events-none">
+                         <div class="js-category opacity-0">
+                            <span class="text-xs font-medium tracking-wider uppercase text-white/60 mb-2 block">${project.category}</span>
+                        </div>
+                        <h3 class="js-title font-serif text-2xl md:text-3xl text-white leading-tight opacity-0">${project.title}</h3>
+                        <div class="js-desc h-0 overflow-hidden opacity-0">
+                            <p class="text-white/70 text-sm mt-4 leading-relaxed line-clamp-3">${project.description}</p>
+                            <a href="#navigator" class="mt-4 text-xs uppercase tracking-widest border-b border-white/30 pb-1 inline-flex items-center gap-2 text-white hover:text-white/80 transition-colors pointer-events-auto relative z-20">
+                                View Case Study <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                // Cache DOM references for this card to avoid repeated queries
+                cardElementCache.set(index, {
+                    card,
+                    categoryEl: card.querySelector('.js-category'),
+                    titleEl: card.querySelector('.js-title'),
+                    descEl: card.querySelector('.js-desc')
+                });
+
+                carouselTrack.appendChild(card);
+            });
+
+            // Event delegation: handle clicks on carousel track
+            carouselTrack.onclick = (e) => {
+                // Don't interfere with links
+                if (e.target.closest('a')) return;
+
+                // Find which card was clicked by checking all cards at click position
+                const clickX = e.clientX;
+                const clickY = e.clientY;
+
+                // Check each card to find which one contains the click point
+                let clickedIndex = -1;
+                cardElementCache.forEach((cached, index) => {
+                    const rect = cached.card.getBoundingClientRect();
+                    if (clickX >= rect.left && clickX <= rect.right &&
+                        clickY >= rect.top && clickY <= rect.bottom) {
+                        // Prefer cards closer to front (higher z-index visually = lower distance)
+                        if (clickedIndex === -1 || Math.abs(index - activeCard) < Math.abs(clickedIndex - activeCard)) {
+                            clickedIndex = index;
+                        }
+                    }
+                });
+
+                // Actually, we want the card furthest from active (most visible at click point)
+                // Re-check: find ALL cards containing the point, pick the one the user likely intended
+                let candidates = [];
+                cardElementCache.forEach((cached, index) => {
+                    const rect = cached.card.getBoundingClientRect();
+                    if (clickX >= rect.left && clickX <= rect.right &&
+                        clickY >= rect.top && clickY <= rect.bottom) {
+                        candidates.push({ index, distance: Math.abs(index - activeCard) });
+                    }
+                });
+
+                // User clicking on inactive card wants the furthest visible one (not the active card overlay)
+                if (candidates.length > 0) {
+                    // Find the inactive card that's closest to click position
+                    // If active card is in candidates, prefer adjacent inactive card
+                    const inactiveCards = candidates.filter(c => c.index !== activeCard);
+                    if (inactiveCards.length > 0) {
+                        // Pick the one with smallest distance (adjacent to active)
+                        inactiveCards.sort((a, b) => a.distance - b.distance);
+                        clickedIndex = inactiveCards[0].index;
+                    }
+                }
+
+                if (clickedIndex !== -1 && clickedIndex !== activeCard) {
+                    activeCard = clickedIndex;
+                    updatePositions();
+                    updateDetailView();
+                }
+            };
+
+            updatePositions();
+            initDetailView();
+        }
+
+        // 3D Position Logic (Adaptive)
+        function getCardStyle(index) {
+            const distance = index - activeCard;
+            const isActive = index === activeCard;
+            const mobile = isMobile();
+
+            // Adaptive Spacing: Tighter on mobile to fit screen
+            const xOffset = mobile ? 35 : 140;
+            const rotateAngle = mobile ? 15 : 25;
+            const zDepth = mobile ? 40 : 50;
+            const scaleFactor = 0.15;
+
+            let transform = '';
+            let zIndex = 10 - Math.abs(distance);
+            let opacity = 1;
+            let filter = isActive ? 'brightness(1.1)' : 'brightness(0.6)';
+
+            if (isActive) {
+                transform = `scale(1.1) translateZ(50px)`;
+            } else if (distance < 0) {
+                // Left side
+                transform = `translateX(${distance * xOffset}px) scale(${1 - Math.abs(distance) * scaleFactor}) rotateY(${rotateAngle}deg) translateZ(${-Math.abs(distance) * zDepth}px)`;
             } else {
-                // Wrong password
-                errorMessage.style.opacity = '1';
-                passwordForm.classList.add('shake');
-                passwordInput.value = '';
+                // Right side
+                transform = `translateX(${distance * xOffset}px) scale(${1 - Math.abs(distance) * scaleFactor}) rotateY(-${rotateAngle}deg) translateZ(${-Math.abs(distance) * zDepth}px)`;
+            }
 
-                setTimeout(() => {
-                    passwordForm.classList.remove('shake');
-                }, 400);
+            return { transform, zIndex, opacity, filter };
+        }
 
-                setTimeout(() => {
-                    errorMessage.style.opacity = '0';
-                }, 3000);
+        function updatePositions() {
+            const mobile = isMobile();
+            // Calculate offset to center the active card
+            const cardWidth = mobile ? 280 : 340;
+            const centerOffset = -(cardWidth / 2);
+
+            // Use cached card references instead of querying DOM
+            cardElementCache.forEach((cached, index) => {
+                const style = getCardStyle(index);
+                const isActive = index === activeCard;
+                const { card, categoryEl, titleEl, descEl } = cached;
+
+                card.style.transform = style.transform;
+                card.style.zIndex = style.zIndex;
+                card.style.opacity = style.opacity;
+                card.style.filter = style.filter;
+                card.style.left = '50%';
+                card.style.marginLeft = `${centerOffset}px`; // Center absolute element
+
+                // Toggle Hover States using cached elements
+                if (isActive) {
+                    // Trigger staggered text animations
+                    categoryEl.classList.remove('opacity-0');
+                    categoryEl.classList.add('animate-text-reveal');
+
+                    titleEl.classList.remove('opacity-0');
+                    titleEl.classList.add('animate-text-reveal', 'animate-delay-1');
+
+                    descEl.classList.remove('h-0', 'opacity-0');
+                    descEl.classList.add('h-auto', 'animate-text-reveal', 'animate-delay-2');
+                } else {
+                    // Reset animations for inactive cards
+                    categoryEl.classList.remove('animate-text-reveal');
+                    categoryEl.classList.add('opacity-0');
+
+                    titleEl.classList.remove('animate-text-reveal', 'animate-delay-1');
+                    titleEl.classList.add('opacity-0');
+
+                    descEl.classList.remove('h-auto', 'animate-text-reveal', 'animate-delay-2');
+                    descEl.classList.add('h-0', 'opacity-0');
+                }
+            });
+        }
+
+        // Detail View - Cached DOM references
+        let detailCache = {
+            title: null,
+            description: null,
+            details: null,
+            image: null,
+            number: null
+        };
+
+        // Initialize detail view structure once
+        function initDetailView() {
+            const project = projects[activeCard];
+
+            detailView.innerHTML = `
+                <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                    <div class="order-2 md:order-1">
+                        <span class="text-blue-400 text-xs md:text-sm font-mono tracking-wider mb-4 block">Currently Viewing</span>
+                        <h2 id="detail-title" class="font-serif text-4xl md:text-6xl mb-6 leading-none text-white">${project.title}</h2>
+                        <p id="detail-description" class="text-lg md:text-xl text-zinc-400 leading-relaxed mb-8">
+                            ${project.description}
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6 md:gap-8 mb-10 text-sm md:text-base">
+                            <div><h4 class="text-white font-bold mb-1">Role</h4><p id="detail-role" class="text-zinc-500">${project.role}</p></div>
+                            <div><h4 class="text-white font-bold mb-1">Timeline</h4><p id="detail-timeline" class="text-zinc-500">${project.timeline}</p></div>
+                            <div><h4 class="text-white font-bold mb-1">Tools</h4><p id="detail-tools" class="text-zinc-500">${project.tools}</p></div>
+                            <div><h4 class="text-white font-bold mb-1">Outcome</h4><p id="detail-outcome" class="text-zinc-500">${project.outcome}</p></div>
+                        </div>
+
+                        <div id="detail-details" class="prose prose-invert max-w-none">
+                            ${project.details}
+                        </div>
+                    </div>
+
+                    <div class="order-1 md:order-2 relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
+                        <img id="detail-image" src="${project.image}" alt="Detail view" class="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-0 right-0 p-4">
+                            <div class="w-12 h-12 md:w-16 md:h-16 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-md text-white">
+                                <span id="detail-number" class="font-serif italic text-lg md:text-xl">0${activeCard + 1}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Cache DOM references for fast updates
+            detailCache = {
+                title: document.getElementById('detail-title'),
+                description: document.getElementById('detail-description'),
+                role: document.getElementById('detail-role'),
+                timeline: document.getElementById('detail-timeline'),
+                tools: document.getElementById('detail-tools'),
+                outcome: document.getElementById('detail-outcome'),
+                details: document.getElementById('detail-details'),
+                image: document.getElementById('detail-image'),
+                number: document.getElementById('detail-number')
+            };
+        }
+
+        // Fast update - only change content, don't rebuild DOM
+        function updateDetailView() {
+            const project = projects[activeCard];
+
+            // Update only the changed content
+            detailCache.title.textContent = project.title;
+            detailCache.description.textContent = project.description;
+            detailCache.role.textContent = project.role;
+            detailCache.timeline.textContent = project.timeline;
+            detailCache.tools.textContent = project.tools;
+            detailCache.outcome.textContent = project.outcome;
+            detailCache.details.innerHTML = project.details;
+            detailCache.image.src = project.image;
+            detailCache.number.textContent = `0${activeCard + 1}`;
+        }
+
+        // --- Event Listeners ---
+
+        // Resize Handler with Debounce
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                cachedIsMobile = window.innerWidth < 768; // Update cached value
+                updatePositions(); // Recalculate positions on resize
+            }, 200);
+        });
+
+
+
+        // --- Swipe Support (Mobile) ---
+        carouselTrack.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carouselTrack.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const threshold = 50;
+            if (touchEndX < touchStartX - threshold) {
+                // Swipe Left (Next)
+                if (activeCard < projects.length - 1) {
+                    activeCard++;
+                    updatePositions();
+                    renderDetailView();
+                }
+            }
+            if (touchEndX > touchStartX + threshold) {
+                // Swipe Right (Prev)
+                if (activeCard > 0) {
+                    activeCard--;
+                    updatePositions();
+                    renderDetailView();
+                }
             }
         }
 
-        submitBtn.addEventListener('click', checkPassword);
+        // --- Init ---
+        setTimeout(() => {
+            document.getElementById('main-heading').classList.remove('opacity-0');
+            document.getElementById('main-heading').classList.add('opacity-100', 'transition-opacity', 'duration-1000');
+        }, 100);
 
-        passwordInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
+        initCarousel();
 
-        // Auto-focus input
-        passwordInput.focus();
     </script>
 </body>
 
