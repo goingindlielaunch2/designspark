@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DesignSpark - Expert Web Design & Development Services | UX/UI & Conversion Optimization</title>
+  <meta name="description"
+    content="Transform your online presence with DesignSpark's expert web design and development services. Get conversion-focused websites, UI/UX optimization" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="main.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4' } } }
+    };
+  </script>
+  <style>
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: all .6s ease
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: none
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- NOTE: This is a STATIC ONLY build (no PHP / no backend). -->
+  <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">
+      <a href="./" class="flex items-center space-x-3 group">
+        <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <span class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">DesignSpark</span>
+      </a>
+      <nav class="flex items-center space-x-4">
+        <a href="#pricing"
+          class="hidden md:block text-primary hover:text-secondary font-semibold px-4 py-2 rounded transition-colors underline underline-offset-4 hover:no-underline">See
+          Pricing</a>
+        <a class="bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-xl font-semibold shadow hover:scale-105 transition-transform"
+          href="https://calendly.com/david-withdesignspark/30min" target="_blank">Book a Call</a>
+      </nav>
+    </div>
+  </header>
+  <div class="h-20"></div>
+
+  <section class="bg-gray-50 min-h-screen flex items-center justify-center px-4 py-20">
+    <div class="max-w-2xl mx-auto text-center">
+      <div class="mb-6 animate-on-scroll">
+        <div
+          class="bg-green-50 border border-green-200 rounded-full px-4 py-2 inline-flex items-center space-x-2 text-green-700 font-medium text-sm">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span>Booking for <span id="current-month"></span></span>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-7xl font-bold mb-6 leading-tight text-gray-900 animate-on-scroll"><span
+          class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Sites engineered for
+          success</span></h1>
+      <p class="text-lg md:text-lg mb-12 text-gray-600 leading-relaxed animate-on-scroll">Elevate your brand with a
+        user‑friendly website engineered to capture attention and maximize conversions. From complete website designs to
+        small development fixes, I've got you covered.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-on-scroll">
+        <button onclick="scrollToSection('pricing')"
+          class="bg-gradient-to-r from-primary to-secondary text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
+          <span>Get Started Now</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </button>
+        <!-- <button onclick="scrollToSection('website-evaluation')" class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-semibold inline-flex items-center space-x-2 hover:scale-105 transition-all shadow-lg active:scale-95">
+          <span>Free Website Evaluation</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </button> -->
+      </div>
+      <!-- <div class="mb-8 animate-on-scroll">
+        <div class="bg-green-50 border border-green-200 rounded-full px-6 py-3 inline-flex items-center space-x-3 text-green-700 font-medium">
+          <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+          <span class="text-sm">🚀 <span id="live-counter">0</span> websites evaluated this week</span>
+        </div>
+      </div> -->
+      <!-- <div class="flex flex-col items-center space-y-4 animate-on-scroll">
+        <div class="flex items-center space-x-4">
+          <div class="flex -space-x-2">
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              SM</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              MJ</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              LC</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              DK</div>
+            <div
+              class="w-12 h-12 rounded-full border-3 border-gray-200 bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm shadow-md">
+              AR</div>
+          </div>
+          <div class="reviews flex flex-col items-start">
+            <div class="flex text-yellow-400 mb-1" aria-label="5 star rating">★★★★★</div>
+            <div class="text-gray-700 text-sm font-medium"><span id="avg-rating">5.0</span>/5 from <span
+                id="rating-count">100</span>+ customers</div>
+          </div>
+        </div>
+        <button onclick="scrollToSection('website-evaluation')"
+          class="text-primary hover:text-secondary transition-colors text-sm font-medium underline underline-offset-4 hover:no-underline">Evaluate
+          your site now →</button>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- <section id="website-evaluation" class="bg-slate-100 py-20 px-4">
+    <div class="max-w-4xl mx-auto" id="evaluation-tool-container"></div>
+  </section> -->
+
+  <section id="portfolio" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Portfolio</h2>
+        <p class="text-xl text-gray-600">A selection of my recent work</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/dental-website-design.jpg')">
+          <img src="images/dental-website-design.jpg" alt="Dental Website"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/gripsock-ecommerce-website-design.jpg')">
+          <img src="images/gripsock-ecommerce-website-design.jpg" alt="Ecommerce Website"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/payment-website-design.jpg')">
+          <img src="images/payment-website-design.jpg" alt="Payment Website"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/skin-care-web-design.jpg')">
+          <img src="images/skin-care-web-design.jpg" alt="Skin Care Web Design"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/bloom-branding.jpg')">
+          <img src="images/bloom-branding.jpg" alt="Branding"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+        <div class="relative group cursor-pointer animate-on-scroll"
+          onclick="openPortfolioModal('images/app-design.jpg')">
+          <img src="images/app-design.jpg" alt="App Design"
+            class="rounded-2xl shadow-lg w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+        </div>
+      </div>
+    </div>
+    <div id="portfolioModal" class="fixed inset-0 z-50 pointer-events-none hidden flex items-center justify-center">
+      <div id="modalBg" class="absolute inset-0 bg-black bg-opacity-70 opacity-0 transition-opacity duration-300"></div>
+      <div id="modalContent"
+        class="relative max-w-3xl w-full mx-4 opacity-0 scale-95 transition-all duration-300 transform">
+        <button onclick="closePortfolioModal()"
+          class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-80 focus:outline-none z-10">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <img id="modalImage" src="" alt="Portfolio Large"
+          class="rounded-2xl shadow-2xl w-full max-h-[80vh] object-contain bg-white" />
+      </div>
+    </div>
+  </section>
+
+  <!--<section class="py-20 bg-white" id="testimonials">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">What Clients Say</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Static sample testimonials (original dynamic reviews removed for static hosting).</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow animate-on-scroll">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+          <p class="text-slate-700 mb-4">“Outstanding service! Fixed my website issues quickly and professionally.”</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">S</div>
+            <div><p class="font-semibold">Sarah J.</p><p class="text-xs text-slate-500">Business Owner</p></div>
+          </div>
+        </div>
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow animate-on-scroll">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+            <p class="text-slate-700 mb-4">“Detailed analysis helped us improve conversions within a week.”</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">M</div>
+            <div><p class="font-semibold">Michael C.</p><p class="text-xs text-slate-500">E‑commerce</p></div>
+          </div>
+        </div>
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow animate-on-scroll">
+          <div class="text-yellow-400 mb-2">★★★★★</div>
+          <p class="text-slate-700 mb-4">“Fast, reliable, and expert work. Highly recommend.”</p>
+          <div class="flex items-center space-x-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center font-bold">E</div>
+            <div><p class="font-semibold">Emily R.</p><p class="text-xs text-slate-500">Nonprofit</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+-->
+  <section id="pricing" class="py-20 px-4 bg-gray-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-gray-600 max-w-2xl text-lg mx-auto">Static version uses direct Stripe Payment Links (server
+          checkout removed).</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full animate-on-scroll">
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Fix</h3>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$99</span><span
+                class="text-gray-500 ml-2">/ one-time</span></div>
+            <p class="text-gray-600 mb-6">Perfect for small issues.</p>
+            <ul class="space-y-3 mb-8 text-sm">
+              <li class="flex items-start">✅ 1 specific issue</li>
+              <li class="flex items-start">✅ 48-hour turnaround</li>
+              <li class="flex items-start">✅ All major platforms</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 mt-auto">
+            <a href="https://buy.stripe.com/6oU00jbcTeS35V8bJrbbG06"
+              class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get
+              Started - $99</a>
+          </div>
+        </div>
+        <div class="bg-indigo-600 rounded-xl shadow-xl overflow-hidden flex flex-col h-full animate-on-scroll">
+          <div class="bg-indigo-700 py-2">
+            <p class="text-center text-white font-medium">MOST POPULAR</p>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-semibold text-white mb-4">Monthly Club</h3>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-white">$1999</span><span
+                class="text-indigo-200 ml-2">/ month</span></div>
+            <p class="text-indigo-100 mb-6">Ongoing site fixes & design.</p>
+            <ul class="space-y-3 mb-8 text-sm text-white/90">
+              <li>✅ Unlimited Requests (1 at a time)</li>
+              <li>✅ 48-hour average delivery</li>
+              <li>✅ Pause / Cancel anytime</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 mt-auto">
+            <a href="https://buy.stripe.com/4gM7sLgxd6lx5V828RbbG05"
+              class="w-full bg-white hover:bg-gray-200 text-indigo-900 font-medium py-3 rounded-lg block text-center">Subscribe
+              - $1999/mo</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col h-full animate-on-scroll">
+          <div class="p-6 flex-1 flex flex-col">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Website Overhaul</h3>
+            <div class="flex items-baseline mb-6"><span class="text-4xl font-bold text-gray-800">$3999</span><span
+                class="text-gray-500 ml-2">/ one-time</span></div>
+            <p class="text-gray-600 mb-6">Complete redesign & optimization.</p>
+            <ul class="space-y-3 mb-8 text-sm">
+              <li>✅ Conversion focused</li>
+              <li>✅ Mobile-first build</li>
+              <li>✅ Speed + SEO baseline</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 mt-auto">
+            <a href="https://buy.stripe.com/6oU7sLcgX39lerE28RbbG04"
+              class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 rounded-lg block text-center">Get
+              Started - $3999</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:px-12 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 id="faq" class="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">
+        Frequently Asked Questions
+      </h2>
+
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-center mb-8 text-primary animate-on-scroll">Monthly Club</h3>
+        <div class="space-y-4" id="faq-accordion-monthly">
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-1" aria-expanded="false">
+              <span>How fast will I receive my designs / tasks?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-1">
+              Most requests are completed in two days or less. If you send over something more complex, it might take a
+              bit more time, but I'll always keep you updated on the progress.
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-1">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-4" aria-expanded="false">
+              <span>Is there a limit to how many requests I can make?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-4">
+              Nope! Feel free to fill up your queue with as many design / development requests as you can think of. I'll
+              get to work on them and deliver them back to you one by one.
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-2">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-5" aria-expanded="false">
+              <span>How do Monthly site fixes work?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-5">
+              The development process is straightforward. These are treated the same as 'design requests', As long as
+              your request is supported by your website platform, DesignSpark will handle the fix and development for
+              you. Just submit your fix request, and I'll take care of the rest.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-bold text-center mb-8 text-primary animate-on-scroll">Basic Questions</h3>
+        <div class="space-y-4" id="faq-accordion-basic">
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-2" aria-expanded="false">
+              <span>How does onboarding work?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-2">
+              Getting started is a breeze. Once you subscribe, I'll set you up with your own private Trello
+              board—usually within the hour. Just accept the invite, and you're ready to start submitting requests! I've
+              left some simple instructions on the board to guide you.
+            </div>
+          </div>
+          <div class="bg-gray-100 rounded-lg overflow-hidden animate-on-scroll delay-1">
+            <button class="w-full px-6 py-4 text-left font-semibold flex justify-between items-center faq-toggle"
+              data-faq="faq-3" aria-expanded="false">
+              <span>Who are the developers and designers?</span>
+              <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="px-6 pb-4 hidden text-gray-600 text-descriptive" id="faq-3">
+              You're looking at him! DesignSpark is a one-man creative and web development studio, founded and run by
+              me, David. I handle every project personally from start to finish. This means no middlemen and no
+              outsourcing— just a direct, dedicated partnership with you.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="mb-12 animate-on-scroll">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+        <p class="text-xl text-gray-600 mb-8">Have a question about your website? Let's chat!</p>
+
+        <div
+          class="inline-flex items-center bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 4.95a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <a href="mailto:hello.withsparkdesign@gmail.com?subject=Question from Website - Let's Improve My Site!"
+            class="text-lg font-semibold hover:text-gray-100 transition-colors">
+            hello.withsparkdesign@gmail.com
+          </a>
+        </div>
+
+        <p class="text-sm text-gray-500 mt-4">Click to send an email with a pre-filled subject line</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 px-4 bg-gray-800 text-center text-white text-sm">
+    <p>&copy; 2025 DesignSpark. Static build for GitHub Pages. <a href="index.php"
+        class="underline text-indigo-300">Original PHP version</a> (will not run on GitHub Pages).</p>
+  </footer>
+
+  <!-- jsPDF for report generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Import API Helper -->
+
+
+  <!-- Website Evaluation Tool - Full Implementation -->
+  <script>
+    // Make scrollToSection available globally
+    window.scrollToSection = function (id) {
+      const el = document.getElementById(id);
+      if (el) {
+        window.scrollTo({
+          top: el.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }
+    };
+
+    // Global scroll functions
+    window.scrollToEvaluation = () => window.scrollToSection("website-evaluation");
+    window.scrollToPricing = () => window.scrollToSection("pricing");
+
+    // Portfolio modal helpers
+    window.openPortfolioModal = function (img) { const m = document.getElementById('portfolioModal'); document.getElementById('modalImage').src = img; m.classList.remove('pointer-events-none', 'hidden'); setTimeout(() => { document.getElementById('modalBg').classList.add('opacity-100'); document.getElementById('modalContent').classList.add('opacity-100', 'scale-100'); }, 10); document.body.style.overflow = 'hidden' };
+    window.closePortfolioModal = function () { const m = document.getElementById('portfolioModal'); document.getElementById('modalBg').classList.remove('opacity-100'); document.getElementById('modalContent').classList.remove('opacity-100', 'scale-100'); setTimeout(() => { m.classList.add('pointer-events-none', 'hidden'); document.body.style.overflow = ''; }, 300); };
+
+    // Simple intersection observer for animations
+    const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible') } }) }, { threshold: .15 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Month + counters
+    document.getElementById('current-month').textContent = new Date().toLocaleString('default', { month: 'long' });
+    const base = 5 + Math.floor(Math.random() * 6); document.getElementById('live-counter').textContent = base;
+
+    // Add fade animations CSS
+    const style = document.createElement('style');
+    style.textContent = `
+      .fade-in{opacity:1;transition:opacity 0.5s ease-in-out}
+      .fade-out{opacity:0;transition:opacity 0.5s ease-in-out}
+      .slide-in-up{animation:slideInUp 0.6s ease-out}
+      @keyframes slideInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+      .tracker-item .pending-icon{display:block}
+      .tracker-item .spinner{display:none}
+      .tracker-item .checkmark{display:none}
+      .tracker-item.in-progress .pending-icon{display:none}
+      .tracker-item.in-progress .spinner{display:block;animation:spin 1s linear infinite}
+      .tracker-item.complete .pending-icon{display:none}
+      .tracker-item.complete .spinner{display:none}
+      .tracker-item.complete .checkmark{display:block}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      .score-circle{transition:stroke-dashoffset 1.5s ease-in-out}
+    `;
+    document.head.appendChild(style);
+
+    // Website Evaluation Tool Implementation
+    document.addEventListener("DOMContentLoaded", function () {
+      const toolContainer = document.getElementById("evaluation-tool-container");
+
+      // Build the full evaluation tool UI
+      toolContainer.innerHTML = `
+        <div id="start-screen" class="text-center bg-white p-8 rounded-2xl shadow-lg fade-in">
+          <div class="text-center mb-8 fade-in">
+            <div class="inline-flex items-center bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              100% Free - No Credit Card Required
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Free <span class="text-primary">Website Evaluation</span>
+            </h2>
+            <p class="text-sm md:text-md text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Get a comprehensive UX and conversion analysis of your website. This static version generates sample data for demonstration.
+            </p>
+          </div>
+          <div class="max-w-md mx-auto space-y-4">
+            <div>
+              <input id="eval_name_input" type="text" placeholder="Your Name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+              <p id="name-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter your name.</p>
+            </div>
+            <div>
+              <input id="eval_email_input" type="email" placeholder="you@email.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+              <p id="email-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid email address.</p>
+            </div>
+            <div>
+              <input id="eval_website_url_input" type="url" placeholder="https://yourwebsite.com" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500">
+              <p id="url-error" class="text-red-500 mt-2 text-sm text-left hidden">Please enter a valid URL.</p>
+            </div>
+            <div class="flex items-start space-x-3 text-left">
+              <input id="newsletter_checkbox" name="newsletter" type="checkbox" value="1" checked class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+              <div class="text-sm">
+                <label for="newsletter_checkbox" class="text-xs font-medium text-gray-700">
+                  Yes, you may contact me and send me occasional insights about turning more visitors into customers — no spam, promise.
+                </label>
+              </div>
+            </div>
+            <button id="start-btn" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center justify-center space-x-3 hover:scale-105 transition-transform shadow-lg">
+              <span>Start Free Analysis</span>
+            </button>
+          </div>
+          <div class="mt-8 text-center text-sm text-gray-500">
+            <div class="flex items-center justify-center space-x-4">
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                No signup required
+              </div>
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                Results in minutes
+              </div>
+              <div class="flex items-center">
+                <svg class="w-4 h-4 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                100% Free
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="processing-screen" class="hidden bg-white p-8 rounded-2xl shadow-lg text-center">
+          <h2 class="text-2xl font-bold mb-2">Analyzing Your Website...</h2>
+          <p class="text-slate-600 mb-8">This demo generates sample analysis data in real-time.</p>
+          <div id="tracker-container" class="space-y-3 max-w-md mx-auto text-left"></div>
+        </div>
+        
+        <div id="results-screen" class="hidden text-center">
+          <div class="bg-white p-8 rounded-2xl shadow-lg">
+            <div id="results-url" class="mb-4 text-sm text-indigo-700 font-semibold break-all"></div>
+            <h2 class="text-3xl font-bold mb-2">Your Analysis is Complete!</h2>
+            <p class="text-slate-600 mb-8">Here's your website's evaluation. This is a demonstration with sample data.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="relative flex justify-center items-center h-[18rem] w-[18rem] mx-auto">
+                <svg class="w-[18rem] h-[18rem] transform -rotate-90">
+                  <circle class="text-slate-200" stroke-width="16" stroke="currentColor" fill="transparent" r="80" cx="144" cy="144" />
+                  <circle id="score-circle" class="text-indigo-600 score-circle" stroke-width="16" stroke-linecap="round" stroke="currentColor" fill="transparent" r="80" cx="144" cy="144" />
+                </svg>
+                <div class="absolute flex flex-col items-center">
+                  <span id="overall-score-text" class="text-4xl font-extrabold text-slate-900">0</span>
+                  <span class="text-slate-500 -mt-1 text-xl">Overall Score</span>
+                </div>
+              </div>
+              <div id="category-scores" class="space-y-4 text-left"></div>
+            </div>
+            <div id="feedback-section" class="mt-12 text-left border-t border-slate-200 pt-8">
+              <h3 class="text-2xl font-bold mb-4">Top Opportunities</h3>
+              <div id="feedback-list" class="space-y-6"></div>
+            </div>
+            <div class="mt-12 border-t border-slate-200 pt-8 text-center">
+              <h3 class="text-2xl font-bold text-slate-800 mb-2">Ready to Turn Insights into Action?</h3>
+              <p class="text-slate-600 max-w-xl mx-auto mb-6">
+                This free report shows your biggest opportunities. The full, detailed report provides a step-by-step guide to fixing these issues and increasing conversions.
+              </p>
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button id="download-basic-report-btn" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download Basic Report (PDF)
+                </button>
+                <button id="order-advanced-btn" class="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+                  Get the Full Report for $19.99
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div id="advanced-report-screen" class="hidden">
+          <div id="purchase-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center p-4 fade-in z-50">
+            <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 text-center slide-in-up">
+              <h2 class="text-2xl font-bold mb-2">Unlock Your Detailed Report</h2>
+              <p class="text-slate-600 mb-6">Get the full, detailed report with all the steps to improve your site.</p>
+              <div class="bg-slate-100 p-6 rounded-lg mb-6">
+                <div class="flex justify-between items-center text-lg">
+                  <span class="font-medium">Detailed Website Report</span>
+                  <span class="font-bold text-indigo-600">$19.99</span>
+                </div>
+              </div>
+              <button id="stripe-purchase-btn" class="w-full bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition">Secure Payment</button>
+              <button id="cancel-purchase-btn" class="mt-3 text-sm text-slate-500 hover:text-slate-700">Cancel and go back</button>
+            </div>
+          </div>
+          <div id="advanced-report-content" class="hidden bg-white p-8 rounded-2xl shadow-lg">
+            <div id="advanced-url" class="mb-4 text-sm text-indigo-700 font-semibold break-all"></div>
+            <div class="no-print flex justify-between items-center mb-8 pb-4">
+              <h2 class="text-3xl font-bold">Detailed Report</h2>
+              <div class="flex gap-2">
+                <button onclick="window.print()" class="bg-slate-200 text-slate-800 font-bold py-2 px-4 rounded-lg hover:bg-slate-300 transition flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 6 2 18 2 18 9"/>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <rect x="6" y="14" width="12" height="8"/>
+                  </svg>
+                  Print
+                </button>
+                <button onclick="window.downloadAdvancedReport()" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+            <div id="advanced-feedback-list" class="space-y-8"></div>
+            <div id="ab-test-accordion" class="hidden no-print mt-12">
+              <button id="ab-test-toggle" class="w-full text-left font-bold text-xl p-4 bg-slate-100 rounded-lg flex justify-between items-center hover:bg-slate-200 transition">
+                <span>Bonus: A/B Test Ideas for Experts</span>
+                <svg id="ab-test-arrow" class="w-6 h-6 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div id="ab-test-content" class="hidden p-4 border border-t-0 border-slate-200 rounded-b-lg">
+                <div id="ab-test-list" class="space-y-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Tool functionality
+      const startScreen = document.getElementById("start-screen");
+      const processingScreen = document.getElementById("processing-screen");
+      const resultsScreen = document.getElementById("results-screen");
+      const advancedReportScreen = document.getElementById("advanced-report-screen");
+      const purchaseModal = document.getElementById("purchase-modal");
+      const advancedReportContent = document.getElementById("advanced-report-content");
+      const startBtn = document.getElementById("start-btn");
+      const orderAdvancedBtn = document.getElementById("order-advanced-btn");
+      const cancelPurchaseBtn = document.getElementById("cancel-purchase-btn");
+      const nameInput = document.getElementById("eval_name_input");
+      const emailInput = document.getElementById("eval_email_input");
+      const websiteUrlInput = document.getElementById("eval_website_url_input");
+      const nameError = document.getElementById("name-error");
+      const emailError = document.getElementById("email-error");
+      const urlError = document.getElementById("url-error");
+      const trackerContainer = document.getElementById("tracker-container");
+      const overallScoreText = document.getElementById("overall-score-text");
+      const scoreCircle = document.getElementById("score-circle");
+      const categoryScoresContainer = document.getElementById("category-scores");
+      const feedbackList = document.getElementById("feedback-list");
+      const resultsUrl = document.getElementById("results-url");
+      const advancedUrl = document.getElementById("advanced-url");
+      const advancedFeedbackList = document.getElementById("advanced-feedback-list");
+      const abTestAccordion = document.getElementById("ab-test-accordion");
+      const abTestToggle = document.getElementById("ab-test-toggle");
+      const abTestContent = document.getElementById("ab-test-content");
+      const abTestArrow = document.getElementById("ab-test-arrow");
+      const abTestList = document.getElementById("ab-test-list");
+
+      let demoReportData = null;
+
+      function isValidUrl(string) {
+        try {
+          new URL(string);
+          return true;
+        } catch (_) {
+          return false;
+        }
+      }
+
+      function isValidEmail(email) {
+        return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          String(email).toLowerCase()
+        );
+      }
+
+      function startEvaluation() {
+        let isValid = true;
+        let urlToTest = websiteUrlInput.value.trim();
+
+        if (!/^https?:\/\//i.test(urlToTest) && urlToTest.length > 0) {
+          urlToTest = "https://" + urlToTest;
+          websiteUrlInput.value = urlToTest;
+        }
+
+        if (!nameInput.value.trim()) {
+          nameError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          nameError.classList.add("hidden");
+        }
+
+        if (!isValidEmail(emailInput.value.trim())) {
+          emailError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          emailError.classList.add("hidden");
+        }
+
+        if (!isValidUrl(urlToTest)) {
+          urlError.classList.remove("hidden");
+          isValid = false;
+        } else {
+          urlError.classList.add("hidden");
+        }
+
+        if (!isValid) return;
+
+        startScreen.classList.add("fade-out");
+        setTimeout(() => {
+          startScreen.classList.add("hidden");
+          processingScreen.classList.remove("hidden");
+          processingScreen.classList.add("fade-in");
+          runDemoAnalysis(nameInput.value.trim(), emailInput.value.trim(), urlToTest);
+        }, 500);
+      }
+
+      async function runDemoAnalysis(name, email, url) {
+        try {
+          const { evaluateWebsite } = await import('./api-helper.js');
+          demoReportData = await evaluateWebsite(url);
+        } catch (error) {
+          console.error('Website evaluation failed:', error);
+          demoReportData = {
+            overallScore: 0,
+            basicReport: {
+              scores: {
+                HeroClarity: 0,
+                VisualDesignLayout: 0,
+                CallToAction: 0,
+                ReadabilityTypography: 0,
+                SocialProofTrust: 0
+              },
+              topOpportunities: [
+                "Error: Could not analyze website. Please ensure the URL is accessible."
+              ]
+            }
+          };
+        }
+
+        runTrackerAnimation(() => {
+          showResults();
+        });
+      }
+
+      function runTrackerAnimation(onComplete) {
+        const checks = [
+          { id: "db-save", name: "Processing your request..." },
+          { id: "ai-call", name: "Analyzing website structure..." },
+          { id: "parsing", name: "Evaluating user experience..." },
+          { id: "report", name: "Generating recommendations..." },
+          { id: "waiting", name: "Finalizing report..." },
+        ];
+
+        trackerContainer.innerHTML = "";
+        checks.forEach((check) => {
+          trackerContainer.innerHTML += `
+            <div id="tracker-${check.id}" class="tracker-item flex items-center p-4 bg-slate-100 rounded-lg">
+              <div class="tracker-icon w-6 h-6 mr-4 flex-shrink-0 flex items-center justify-center">
+                <svg class="pending-icon text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <svg class="spinner text-indigo-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                </svg>
+                <svg class="checkmark text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <span class="tracker-text font-medium text-slate-700">${check.name}</span>
+            </div>`;
+        });
+
+        let currentCheckIndex = 0;
+        const interval = setInterval(() => {
+          if (currentCheckIndex > 0) {
+            document.getElementById(`tracker-${checks[currentCheckIndex - 1].id}`).classList.add("complete");
+          }
+          if (currentCheckIndex < checks.length) {
+            document.getElementById(`tracker-${checks[currentCheckIndex].id}`).classList.add("in-progress");
+            currentCheckIndex++;
+          } else {
+            clearInterval(interval);
+            setTimeout(onComplete, 1000);
+          }
+        }, 1200);
+      }
+
+      function showResults() {
+        const waitingElement = document.querySelector('#tracker-waiting');
+        if (waitingElement) {
+          waitingElement.classList.add("complete");
+          waitingElement.querySelector('.tracker-text').textContent = "Analysis complete!";
+        }
+
+        processingScreen.classList.add("fade-out");
+        setTimeout(() => {
+          processingScreen.classList.add("hidden");
+          resultsScreen.classList.remove("hidden");
+          resultsScreen.classList.add("fade-in");
+          resultsUrl.textContent = "Analyzed Site: " + websiteUrlInput.value;
+          displayReport();
+        }, 500);
+      }
+
+      function displayReport() {
+        if (!demoReportData) return;
+
+        const { overallScore, basicReport } = demoReportData;
+        const { scores, topOpportunities } = basicReport;
+
+        const metricDescriptions = {
+          HeroClarity: "How clear is your main message?",
+          VisualDesignLayout: "How professional does it look?",
+          CallToAction: "Is it obvious what to do next?",
+          ReadabilityTypography: "Is the text easy to read?",
+          SocialProofTrust: "Does your site build trust?",
+        };
+
+        // Display category scores
+        categoryScoresContainer.innerHTML = "";
+        Object.keys(scores).forEach((key, index) => {
+          const score = scores[key];
+          const colors = getScoreColor(score);
+          const scoreHtml = `
+            <div class="slide-in-up" style="animation-delay: ${index * 100}ms">
+              <div class="flex justify-between items-center mb-1">
+                <span class="font-semibold">${formatMetricName(key)}</span>
+                <span class="text-sm font-bold ${colors.bg} ${colors.text} px-2.5 py-1 rounded-md">${score}</span>
+              </div>
+              <p class="text-sm text-slate-500 text-left mb-2">${metricDescriptions[key] || ""}</p>
+              <div class="w-full bg-slate-200 rounded-full h-2.5">
+                <div class="h-2.5 rounded-full ${colors.bar}" style="width: ${score}%"></div>
+              </div>
+            </div>`;
+          categoryScoresContainer.innerHTML += scoreHtml;
+        });
+
+        // Display opportunities
+        feedbackList.innerHTML = "";
+        topOpportunities.forEach((opp) => {
+          const oppHtml = `
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center">
+                <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.53 7.68h8.08l-6.54 4.76 2.5 7.69L12 18.37l-6.55 4.76 2.5-7.69L1.41 10.68h8.08L12 3z" />
+                </svg>
+              </div>
+              <div class="flex-1">
+                <p class="text-slate-600 leading-relaxed">${opp}</p>
+              </div>
+            </div>`;
+          feedbackList.innerHTML += oppHtml;
+        });
+
+        // Animate overall score
+        overallScoreText.textContent = overallScore;
+        const circle = scoreCircle;
+        if (circle && circle.r && circle.r.baseVal) {
+          const circumference = circle.r.baseVal.value * 2 * Math.PI;
+          circle.style.strokeDasharray = circumference;
+          circle.style.strokeDashoffset = circumference;
+
+          let currentScore = 0;
+          const scoreInterval = setInterval(() => {
+            if (currentScore >= overallScore) {
+              clearInterval(scoreInterval);
+              overallScoreText.textContent = overallScore;
+            } else {
+              currentScore++;
+              overallScoreText.textContent = currentScore;
+            }
+          }, 20);
+
+          setTimeout(() => {
+            const offset = circumference - (overallScore / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+          }, 200);
+        }
+      }
+
+      function getScoreColor(percentage) {
+        if (percentage >= 85) return { bg: "bg-green-100", text: "text-green-800", bar: "bg-green-500" };
+        if (percentage >= 60) return { bg: "bg-yellow-100", text: "text-yellow-800", bar: "bg-yellow-500" };
+        return { bg: "bg-red-100", text: "text-red-800", bar: "bg-red-500" };
+      }
+
+      function formatMetricName(name) {
+        return name.replace(/([A-Z])/g, " $1").trim();
+      }
+
+      // PDF download function
+      function downloadBasicReport() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const analyzedUrl = resultsUrl.textContent;
+
+        if (!demoReportData) {
+          doc.text("No report data available.", 10, 10);
+          doc.save("Sample-Website-Report.pdf");
+          return;
+        }
+
+        const { overallScore, basicReport } = demoReportData;
+        const { scores, topOpportunities } = basicReport;
+
+        let yPos = 20;
+        const leftMargin = 15;
+        const lineSpacing = 7;
+
+        // Add title
+        doc.setFontSize(22);
+        doc.setFont("helvetica", "bold");
+        doc.text("Sample Website Evaluation Report", leftMargin, yPos);
+        yPos += lineSpacing * 2;
+
+        if (analyzedUrl) {
+          doc.setFontSize(11);
+          doc.setTextColor(54, 78, 163);
+          doc.text(analyzedUrl, leftMargin, yPos);
+          yPos += lineSpacing * 1.5;
+          doc.setTextColor(0, 0, 0);
+        }
+
+        doc.setFontSize(16);
+        doc.text(`Overall Score: ${overallScore}`, leftMargin, yPos);
+        yPos += lineSpacing * 2;
+
+        // Add category scores
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text("Category Scores", leftMargin, yPos);
+        yPos += lineSpacing;
+
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        Object.keys(scores).forEach((category) => {
+          const formattedName = category.replace(/([A-Z])/g, " $1").trim();
+          doc.text(`${formattedName}: ${scores[category]}`, leftMargin, yPos);
+          yPos += lineSpacing;
+        });
+
+        yPos += lineSpacing;
+
+        // Add opportunities
+        doc.setFontSize(14);
+        doc.setFont("helvetica", "bold");
+        doc.text("Top Opportunities", leftMargin, yPos);
+        yPos += lineSpacing * 1.5;
+
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        topOpportunities.forEach((opportunity, index) => {
+          if (yPos > 260) {
+            doc.addPage();
+            yPos = 20;
+          }
+          doc.setFontSize(12);
+          doc.setFont("helvetica", "bold");
+          doc.text(`${index + 1}. Opportunity`, leftMargin, yPos);
+          yPos += lineSpacing;
+          doc.setFontSize(11);
+          doc.setFont("helvetica", "normal");
+          const lines = doc.splitTextToSize(opportunity, 180);
+          doc.text(lines, leftMargin, yPos);
+          yPos += lines.length * lineSpacing + lineSpacing;
+        });
+
+        // Add disclaimer
+        if (yPos > 240) {
+          doc.addPage();
+          yPos = 20;
+        }
+        yPos = Math.max(yPos, 220);
+        doc.setFontSize(10);
+        doc.setTextColor(100, 100, 100);
+        doc.text("This is a demonstration report with sample data.", leftMargin, yPos);
+        yPos += lineSpacing;
+        doc.text("For real website analysis, contact our professional services.", leftMargin, yPos);
+
+        doc.save("Sample-Website-Report.pdf");
+      }
+
+      // Event listeners
+      startBtn.addEventListener("click", startEvaluation);
+      document.getElementById("download-basic-report-btn").addEventListener("click", downloadBasicReport);
+
+      // Advanced report functionality
+      if (orderAdvancedBtn) {
+        orderAdvancedBtn.addEventListener("click", showAdvancedReportFlow);
+      }
+
+      if (cancelPurchaseBtn) {
+        cancelPurchaseBtn.addEventListener("click", hideAdvancedReportFlow);
+      }
+
+      // Global function for download
+      window.downloadBasicReport = downloadBasicReport;
+
+      // Advanced report functions
+      function showAdvancedReportFlow() {
+        if (!demoReportData) return;
+
+        // Generate advanced report data if not already present
+        if (!demoReportData.advancedReport) {
+          demoReportData.advancedReport = generateAdvancedReportData();
+        }
+
+        // Show advanced report screen
+        resultsScreen.classList.add("fade-out");
+        setTimeout(() => {
+          resultsScreen.classList.add("hidden");
+          advancedReportScreen.classList.remove("hidden");
+          advancedReportScreen.classList.add("fade-in");
+          displayAdvancedReport();
+        }, 500);
+      }
+
+      function hideAdvancedReportFlow() {
+        advancedReportScreen.classList.add("fade-out");
+        setTimeout(() => {
+          advancedReportScreen.classList.add("hidden");
+          resultsScreen.classList.remove("hidden");
+          resultsScreen.classList.add("fade-in");
+        }, 500);
+      }
+
+      function generateAdvancedReportData() {
+        const advancedCategories = [
+          { name: "Accessibility", score: Math.floor(Math.random() * 21) + 70, icon: "♿" },
+          { name: "Security", score: Math.floor(Math.random() * 21) + 70, icon: "🔒" },
+          { name: "Mobile", score: Math.floor(Math.random() * 21) + 70, icon: "📱" },
+          { name: "Content", score: Math.floor(Math.random() * 21) + 70, icon: "📝" }
+        ];
+
+        const advancedFeedback = [
+          "Accessibility features need improvement for better inclusivity",
+          "Security headers and SSL configuration should be enhanced",
+          "Mobile optimization could be improved for better performance",
+          "Content structure and hierarchy need refinement"
+        ];
+
+        const abTestSuggestions = [
+          {
+            title: "Hero Section CTA Button",
+            description: "Test different button colors and text to improve conversion rates",
+            impact: "High",
+            effort: "Low"
+          },
+          {
+            title: "Navigation Menu Layout",
+            description: "Compare horizontal vs. vertical menu layouts for mobile users",
+            impact: "Medium",
+            effort: "Medium"
+          },
+          {
+            title: "Contact Form Length",
+            description: "Test shorter vs. longer contact forms to optimize completion rates",
+            impact: "High",
+            effort: "Low"
+          },
+          {
+            title: "Product Gallery Style",
+            description: "Compare grid vs. carousel layouts for product showcases",
+            impact: "Medium",
+            effort: "High"
+          }
+        ];
+
+        return {
+          categories: advancedCategories,
+          feedback: advancedFeedback,
+          abTests: abTestSuggestions
+        };
+      }
+
+      function displayAdvancedReport() {
+        if (!demoReportData || !demoReportData.advancedReport) return;
+
+        const { categories, feedback, abTests } = demoReportData.advancedReport;
+
+        // Update URL display
+        if (advancedUrl) {
+          advancedUrl.textContent = "Advanced Analysis: " + websiteUrlInput.value;
+        }
+
+        // Display advanced feedback
+        if (advancedFeedbackList) {
+          advancedFeedbackList.innerHTML = "";
+          feedback.forEach((item) => {
+            const feedbackHtml = `
+              <div class="flex gap-4 items-start">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex-shrink-0 flex items-center justify-center">
+                  <svg class="w-6 h-6 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.847a4.5 4.5 0 003.09 3.09L15.75 12l-2.847.813a4.5 4.5 0 00-3.09 3.09z" />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <p class="text-slate-600 leading-relaxed">${item}</p>
+                </div>
+              </div>`;
+            advancedFeedbackList.innerHTML += feedbackHtml;
+          });
+        }
+
+        // Display A/B test suggestions
+        if (abTestList) {
+          abTestList.innerHTML = "";
+          abTests.forEach((test) => {
+            const impactColor = test.impact === 'High' ? 'text-red-600 bg-red-100' :
+              test.impact === 'Medium' ? 'text-yellow-600 bg-yellow-100' :
+                'text-green-600 bg-green-100';
+            const effortColor = test.effort === 'High' ? 'text-red-600 bg-red-100' :
+              test.effort === 'Medium' ? 'text-yellow-600 bg-yellow-100' :
+                'text-green-600 bg-green-100';
+
+            const testHtml = `
+              <div class="bg-white border border-slate-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-2">${test.title}</h4>
+                <p class="text-slate-600 mb-4">${test.description}</p>
+                <div class="flex gap-3">
+                  <span class="px-2 py-1 text-xs font-medium rounded-full ${impactColor}">
+                    ${test.impact} Impact
+                  </span>
+                  <span class="px-2 py-1 text-xs font-medium rounded-full ${effortColor}">
+                    ${test.effort} Effort
+                  </span>
+                </div>
+              </div>`;
+            abTestList.innerHTML += testHtml;
+          });
+        }
+      }
+    });
+
+    // FAQ Accordion functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".faq-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = document.getElementById(button.dataset.faq);
+          const arrow = button.querySelector("svg");
+          const isExpanded = button.getAttribute("aria-expanded") === "true";
+          button.setAttribute("aria-expanded", !isExpanded);
+          content.classList.toggle("hidden");
+          arrow.classList.toggle("rotate-180");
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
