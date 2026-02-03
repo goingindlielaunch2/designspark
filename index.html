@@ -102,7 +102,7 @@
 
     <!-- Navigation Gradient Background -->
     <div
-        class="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-black via-black/60 to-transparent z-40 pointer-events-none">
+        class="fixed top-0 left-0 w-full h-18 bg-gradient-to-b from-black via-black/60 to-transparent z-40 pointer-events-none">
     </div>
 
     <!-- Navigation -->
@@ -381,7 +381,7 @@
                     <!-- Image Layer -->
                     <div class="absolute inset-0 pointer-events-none">
                         <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
                     </div>
 
                     <!-- Content Layer -->
@@ -517,6 +517,10 @@
 
                 // Toggle Hover States using cached elements
                 if (isActive) {
+                    // Active card border
+                    card.classList.add('border-white');
+                    card.classList.remove('border-white/5');
+
                     // Trigger staggered text animations
                     categoryEl.classList.remove('opacity-0');
                     categoryEl.classList.add('animate-text-reveal');
@@ -527,6 +531,10 @@
                     descEl.classList.remove('h-0', 'opacity-0');
                     descEl.classList.add('h-auto', 'animate-text-reveal', 'animate-delay-2');
                 } else {
+                    // Reset border for inactive cards
+                    card.classList.remove('border-white');
+                    card.classList.add('border-white/5');
+
                     // Reset animations for inactive cards
                     categoryEl.classList.remove('animate-text-reveal');
                     categoryEl.classList.add('opacity-0');
