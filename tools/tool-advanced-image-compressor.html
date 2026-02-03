@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Image Compressor</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter for a clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- browser-image-compression library -->
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+
+    <style>
+        /* Custom styles to supplement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the file input button */
+        .file-input-button {
+            cursor: pointer;
+        }
+        /* Transition for smooth appearance */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* A simple spinner for loading state */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #4f46e5; /* Changed to indigo to match theme */
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Hover effect for benefit cards */
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Comparison Slider Styles */
+        .comparison-container {
+            position: relative;
+            overflow: auto; /* Make the container scrollable */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            background-color: #f3f4f6; /* bg-gray-100 */
+            display: grid; /* Use grid for perfect centering */
+            place-items: center; /* Center content both horizontally and vertically */
+        }
+        .comparison-wrapper {
+            position: relative;
+            display: inline-block; /* Allow wrapper to size to the image */
+        }
+        .comparison-image-100 {
+            display: block;
+            max-width: none; /* Allow 100% zoom */
+            max-height: none;
+        }
+        #comparison-compressed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover; /* Ensure it covers the same area */
+            object-position: left;
+            clip-path: inset(0 50% 0 0); /* Modern way to crop */
+        }
+        .comparison-slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 100%;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+        .comparison-slider-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: white;
+        }
+        .comparison-slider-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+        .comparison-slider-handle svg {
+            width: 24px;
+            height: 24px;
+            color: #4f46e5;
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen p-4 py-8 md:py-12">
+
+    <div class="w-full max-w-4xl mx-auto">
+        
+        <!-- App Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Image Compressor</h1>
+            <p class="text-gray-500 mt-2 text-lg">Quickly compress your JPG, PNG, and WEBP images.</p>
+            <!-- Fun Stats and Facts -->
+            <p id="stats" class="text-indigo-600 mt-4 text-md font-medium"></p>
+            
+            <!-- Visually Appealing Fun Fact Box -->
+            <div id="fun-fact-container" class="max-w-2xl mx-auto mt-4 bg-indigo-50 border-l-4 border-indigo-400 p-4 rounded-r-lg hidden">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0">
+                        <!-- Lightbulb Icon -->
+                        <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 3a.75.75 0 01.75.75v.518A7 7 0 0116.5 10.75a.75.75 0 01-1.5 0A5.5 5.5 0 0010 5.25v-1.5A.75.75 0 0110 3zM8.5 10.75a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clip-rule="evenodd" />
+                          <path d="M3 10.25a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75V10.25zM15.5 9.5a.75.75 0 00-.75.75v.01a.75.75 0 00.75.75h.01a.75.75 0 00.75-.75V10.25a.75.75 0 00-.75-.75h-.01zM8.25 15a.75.75 0 01.75-.75h2a.75.75 0 010 1.5h-2a.75.75 0 01-.75-.75zM4.69 13.03a.75.75 0 00-1.06-1.06l-.01.01a.75.75 0 001.06 1.06l.01-.01zM16.37 11.97a.75.75 0 00-1.06 1.06l.01.01a.75.75 0 001.06-1.06l-.01-.01zM10 17a1 1 0 011 1v.25a.75.75 0 01-1.5 0V18a1 1 0 011-1z" />
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold text-indigo-800">Did you know?</h4>
+                        <p id="fun-fact-text" class="text-indigo-700 text-sm"></p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Application Body -->
+        <main id="app-container" class="bg-white rounded-2xl shadow-lg p-6 md:p-8 transition-all duration-500">
+
+            <!-- UPLOAD VIEW -->
+            <div id="upload-view">
+                <div id="drop-zone" class="border-2 border-dashed border-gray-300 rounded-xl p-8 md:p-12 text-center transition-all duration-300">
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <svg class="w-16 h-16 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l-3 3m3-3l3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                        </svg>
+                        <p class="text-lg text-gray-600">Drag & drop your image here</p>
+                        <p class="text-gray-500">or</p>
+                        <label for="file-input" class="file-input-button bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition-all duration-300">
+                            Upload a File
+                        </label>
+                        <input type="file" id="file-input" class="hidden" accept="image/jpeg, image/png, image/webp">
+                    </div>
+                </div>
+                <!-- Privacy Message Below Upload Box -->
+                <div class="flex items-center justify-center mt-4 gap-2">
+                    <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor"/>
+                        <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-green-700 text-sm font-medium">Your files stay safe with us! Everything is processed securely right in your browser.</span>
+                </div>
+            </div>
+
+            <!-- COMPRESSION VIEW -->
+            <div id="compression-view" class="hidden fade-in">
+                <!-- Main Preview (Scaled) -->
+                <div class="grid md:grid-cols-2 gap-6 items-start">
+                    <!-- Original Image -->
+                    <div class="text-center">
+                        <h2 class="text-xl font-semibold mb-3">Original</h2>
+                        <div class="bg-gray-100 rounded-lg shadow-md p-2 min-h-[200px] flex items-center justify-center">
+                            <img id="original-image-top" src="#" alt="Original" class="rounded-md max-h-80 mx-auto">
+                        </div>
+                        <p id="original-size" class="mt-3 text-gray-500"></p>
+                    </div>
+                    <!-- Compressed Image -->
+                    <div class="text-center">
+                        <h2 class="text-xl font-semibold mb-3">Compressed</h2>
+                        <div class="bg-gray-100 rounded-lg shadow-md p-2 min-h-[200px] flex items-center justify-center">
+                             <div id="loader-top" class="spinner"></div>
+                            <img id="compressed-image-top" src="#" alt="Compressed" class="rounded-md max-h-80 mx-auto hidden">
+                        </div>
+                        <p id="compressed-size" class="mt-3 text-gray-500"></p>
+                    </div>
+                </div>
+
+                <!-- Detailed Comparison (100% Zoom with Slider) -->
+                <div class="mt-12">
+                    <h3 class="text-xl font-semibold text-center mb-4">Detailed Comparison (1:1 Zoom)</h3>
+                    <div id="comparison-container" class="comparison-container h-[50vh]">
+                        <div id="loader-bottom" class="spinner absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden z-20"></div>
+                        <div id="comparison-wrapper" class="comparison-wrapper">
+                            <img id="comparison-original" class="comparison-image-100" src="#" alt="Original">
+                            <img id="comparison-compressed" class="comparison-image-100" src="#" alt="Compressed">
+                            <div id="comparison-slider" class="comparison-slider">
+                                <div class="comparison-slider-line"></div>
+                                <div class="comparison-slider-handle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="mt-8">
+                    <div class="max-w-md mx-auto">
+                        <label for="quality-slider" class="block text-center font-medium mb-2">Quality: <span id="quality-value" class="font-bold text-indigo-600">0.60</span></label>
+                        <input id="quality-slider" type="range" min="0.1" max="0.95" step="0.05" value="0.6" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="mt-8 flex flex-col items-center justify-center gap-4">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button id="download-original-btn" class="w-full sm:w-auto bg-green-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                            Download
+                        </button>
+                        <button id="start-over-btn" class="w-full sm:w-auto bg-gray-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-gray-700 transition-all duration-300">
+                            Compress Another
+                        </button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <button id="advanced-toggle-btn" class="text-sm text-indigo-600 hover:underline">Advanced Options</button>
+                        <div id="advanced-options" class="hidden mt-4">
+                             <button id="download-webp-btn" class="w-full sm:w-auto bg-teal-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-teal-600 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                                Download as WebP
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Benefits Section -->
+        <section class="mt-16 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Why Compress Images?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1: Faster Websites -->
+                <div class="benefit-card bg-white p-8 rounded-xl shadow-sm transition-all duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mx-auto">
+                        <svg class="w-8 h-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold">Faster Websites</h3>
+                    <p class="mt-2 text-gray-500">Smaller images reduce page load times, keeping your visitors happy and engaged.</p>
+                </div>
+                <!-- Benefit 2: Improved SEO -->
+                <div class="benefit-card bg-white p-8 rounded-xl shadow-sm transition-all duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mx-auto">
+                        <svg class="w-8 h-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold">Improved SEO</h3>
+                    <p class="mt-2 text-gray-500">Search engines like Google favor fast-loading sites, boosting your visibility.</p>
+                </div>
+                <!-- Benefit 3: Save Storage & Bandwidth -->
+                <div class="benefit-card bg-white p-8 rounded-xl shadow-sm transition-all duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-purple-100 mx-auto">
+                        <svg class="w-8 h-8 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+                        </svg>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold">Save Space</h3>
+                    <p class="mt-2 text-gray-500">Reduce server storage costs and save bandwidth for you and your visitors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-gray-500">
+            <p>Provided by <a href="https://www.withdesignspark.com" target="_blank" rel="noopener noreferrer" class="text-indigo-600 font-semibold hover:underline">DesignSpark</a></p>
+            <p class="text-sm mt-1">Web, UX/UI, and Design Solutions</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- DOM Element References ---
+        const uploadView = document.getElementById('upload-view');
+        const compressionView = document.getElementById('compression-view');
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const statsDisplay = document.getElementById('stats');
+        const funFactContainer = document.getElementById('fun-fact-container');
+        const funFactText = document.getElementById('fun-fact-text');
+        
+        // Top scaled previews
+        const originalImageTop = document.getElementById('original-image-top');
+        const compressedImageTop = document.getElementById('compressed-image-top');
+        const loaderTop = document.getElementById('loader-top');
+
+        // 1:1 Comparison Slider elements
+        const comparisonContainer = document.getElementById('comparison-container');
+        const comparisonWrapper = document.getElementById('comparison-wrapper');
+        const comparisonOriginal = document.getElementById('comparison-original');
+        const comparisonCompressed = document.getElementById('comparison-compressed');
+        const comparisonSlider = document.getElementById('comparison-slider');
+        const loaderBottom = document.getElementById('loader-bottom');
+        
+        const originalSize = document.getElementById('original-size');
+        const compressedSize = document.getElementById('compressed-size');
+        
+        const qualitySlider = document.getElementById('quality-slider');
+        const qualityValue = document.getElementById('quality-value');
+        
+        const downloadOriginalBtn = document.getElementById('download-original-btn');
+        const downloadWebpBtn = document.getElementById('download-webp-btn');
+        const startOverBtn = document.getElementById('start-over-btn');
+        const advancedToggleBtn = document.getElementById('advanced-toggle-btn');
+        const advancedOptions = document.getElementById('advanced-options');
+
+        // --- State ---
+        let originalFile = null;
+        let compressedFileBlob = null;
+        let webpBlob = null;
+        let compressedCount = 0;
+        const funFacts = [
+            "Smaller images can make a website load up to 80% faster!",
+            "Optimizing images significantly boosts a site's SEO ranking on Google.",
+            "Compressed images save tons of storage space on your devices and servers.",
+            "Faster load times from smaller images reduce visitor bounce rates. Happy users stay longer!",
+            "Sending smaller images uses less data, which is great for mobile data plans!",
+            "Did you know? The human eye often can't tell the difference between a high-quality original and a well-compressed image.",
+            "Reducing image file sizes decreases server bandwidth, which can save money on hosting costs."
+        ];
+
+        // --- Utility Functions ---
+
+        function loadStats() {
+            compressedCount = parseInt(localStorage.getItem('compressedImageCount') || '0', 10);
+            if (compressedCount > 0) {
+                statsDisplay.textContent = `You've compressed ${compressedCount.toLocaleString()} images so far! Keep it up!`;
+            }
+        }
+
+        function displayRandomFact() {
+            const randomIndex = Math.floor(Math.random() * funFacts.length);
+            funFactText.textContent = funFacts[randomIndex];
+            funFactContainer.classList.remove('hidden');
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showCompressionView() {
+            uploadView.classList.add('hidden');
+            compressionView.classList.remove('hidden');
+        }
+
+        function resetApp() {
+            uploadView.classList.remove('hidden');
+            compressionView.classList.add('hidden');
+            originalFile = null;
+            compressedFileBlob = null;
+            webpBlob = null;
+            
+            originalImageTop.src = '#';
+            compressedImageTop.src = '#';
+            compressedImageTop.classList.add('hidden');
+            loaderTop.classList.remove('hidden');
+
+            comparisonOriginal.src = '#';
+            comparisonCompressed.src = '#';
+            comparisonWrapper.style.width = 'auto';
+            comparisonWrapper.style.height = 'auto';
+
+            originalSize.textContent = '';
+            compressedSize.textContent = '';
+            downloadOriginalBtn.disabled = true;
+            downloadWebpBtn.disabled = true;
+            fileInput.value = ''; 
+            
+            qualitySlider.value = 0.6;
+            qualityValue.textContent = '0.60';
+            advancedOptions.classList.add('hidden');
+        }
+
+        // --- Core Logic ---
+        async function handleFileSelect(file) {
+            if (!file || !file.type.startsWith('image/')) {
+                alert('Please select a valid image file (JPG, PNG, WEBP).');
+                return;
+            }
+            originalFile = file;
+            showCompressionView();
+            compressImage();
+        }
+
+        async function compressImage() {
+            if (!originalFile) return;
+
+            // Show loaders and disable buttons
+            loaderTop.classList.remove('hidden');
+            loaderBottom.classList.remove('hidden');
+            compressedImageTop.classList.add('hidden');
+            downloadOriginalBtn.disabled = true;
+            downloadWebpBtn.disabled = true;
+            originalSize.textContent = `Original: ${formatBytes(originalFile.size)}`;
+            compressedSize.textContent = 'Compressing...';
+
+            const quality = parseFloat(qualitySlider.value);
+            const commonOptions = {
+                // No resizing to keep dimensions the same
+                useWebWorker: true,
+                initialQuality: quality,
+            };
+
+            const webpOptions = { ...commonOptions, mimeType: 'image/webp' };
+
+            try {
+                const [compressedFile, webpCompressedFile] = await Promise.all([
+                    imageCompression(originalFile, commonOptions),
+                    imageCompression(originalFile, webpOptions)
+                ]);
+
+                compressedFileBlob = compressedFile;
+                webpBlob = webpCompressedFile;
+
+                const originalUrl = URL.createObjectURL(originalFile);
+                const compressedUrl = URL.createObjectURL(compressedFileBlob);
+                
+                // Update top previews
+                originalImageTop.src = originalUrl;
+                compressedImageTop.src = compressedUrl;
+
+                // Update 1:1 comparison view
+                comparisonOriginal.src = originalUrl;
+                comparisonCompressed.src = compressedUrl;
+
+                // Set wrapper to image's natural dimensions for 100% zoom
+                const img = new Image();
+                img.onload = () => {
+                    comparisonWrapper.style.width = `${img.naturalWidth}px`;
+                    comparisonWrapper.style.height = `${img.naturalHeight}px`;
+                };
+                img.src = originalUrl;
+
+                const reduction = Math.round(((originalFile.size - compressedFileBlob.size) / originalFile.size) * 100);
+                compressedSize.innerHTML = `Compressed: ${formatBytes(compressedFileBlob.size)} <span class="text-green-600 font-semibold">(-${reduction}%)</span>`;
+                
+                const fileType = (originalFile.type.split('/')[1] || 'file').toUpperCase();
+                downloadOriginalBtn.textContent = `Download as ${fileType}`;
+                downloadOriginalBtn.disabled = false;
+                downloadWebpBtn.disabled = false;
+                
+                // Hide loaders
+                loaderTop.classList.add('hidden');
+                loaderBottom.classList.add('hidden');
+                compressedImageTop.classList.remove('hidden');
+
+                if (!compressionView.classList.contains('has-compressed')) {
+                    compressedCount++;
+                    localStorage.setItem('compressedImageCount', compressedCount);
+                    loadStats();
+                    compressionView.classList.add('has-compressed');
+                }
+
+            } catch (error) {
+                console.error('Compression Error:', error);
+                alert('An error occurred during compression. The image might be too large or in an unsupported format.');
+                loaderTop.classList.add('hidden');
+                loaderBottom.classList.add('hidden');
+                compressedSize.textContent = 'Compression failed.';
+            }
+        }
+
+        // --- Event Listeners ---
+        fileInput.addEventListener('change', (e) => {
+            compressionView.classList.remove('has-compressed');
+            handleFileSelect(e.target.files[0]);
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-indigo-500', 'bg-indigo-50');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-indigo-500', 'bg-indigo-50');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-indigo-500', 'bg-indigo-50');
+            if (e.dataTransfer.files.length) {
+                compressionView.classList.remove('has-compressed');
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
+
+        qualitySlider.addEventListener('input', (e) => {
+            qualityValue.textContent = parseFloat(e.target.value).toFixed(2);
+        });
+        qualitySlider.addEventListener('change', compressImage);
+
+        startOverBtn.addEventListener('click', resetApp);
+        
+        advancedToggleBtn.addEventListener('click', () => {
+            advancedOptions.classList.toggle('hidden');
+        });
+
+        function triggerDownload(blob, filename) {
+            if (!blob) {
+                alert('No compressed image available to download.');
+                return;
+            }
+            const a = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        downloadOriginalBtn.addEventListener('click', () => {
+            triggerDownload(compressedFileBlob, `compressed-${originalFile.name}`);
+        });
+
+        downloadWebpBtn.addEventListener('click', () => {
+            const webpFilename = `compressed-${originalFile.name.split('.').slice(0, -1).join('.')}.webp`;
+            triggerDownload(webpBlob, webpFilename);
+        });
+
+        // --- Comparison Slider Logic ---
+        let isDragging = false;
+        
+        function moveSlider(event) {
+            if (!isDragging) return;
+            event.preventDefault();
+
+            const rect = comparisonWrapper.getBoundingClientRect();
+            const x = (event.clientX || event.changedTouches[0].clientX) - rect.left;
+            let percentage = (x / rect.width) * 100;
+
+            if (percentage < 0) percentage = 0;
+            if (percentage > 100) percentage = 100;
+
+            comparisonCompressed.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            comparisonSlider.style.left = `${percentage}%`;
+        }
+
+        comparisonSlider.addEventListener('mousedown', () => { isDragging = true; });
+        comparisonSlider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            e.preventDefault(); 
+        });
+
+        window.addEventListener('mouseup', () => { isDragging = false; });
+        window.addEventListener('touchend', () => { isDragging = false; });
+
+        window.addEventListener('mousemove', moveSlider);
+        window.addEventListener('touchmove', moveSlider);
+        
+        // --- Initial Load ---
+        loadStats();
+        displayRandomFact();
+
+    </script>
+</body>
+</html>

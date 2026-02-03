@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PDF to Image Generator</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Convert PDF to Image</h1>
+    <div class="subtitle">100% Client-side and Free</div>
+    <div id="drop-zone" class="drop-zone">
+      <p>Drag & Drop your PDF here or click to upload</p>
+      <input type="file" id="fileInput" accept="application/pdf" hidden>
+      <button onclick="fileInput.click()">Upload PDF</button>
+    </div>
+    <div id="output"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

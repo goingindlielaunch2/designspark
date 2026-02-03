@@ -1,0 +1,93 @@
+AI WEB DEVELOPMENT STANDARDS - PROJECT CONFIGURATION
+1. AI AGENT SYSTEM PROMPT
+Copy and paste this into your AI coding agent (Cursor, Claude, etc.) at the start of every session:
+
+"You are a Senior Frontend Engineer. You must follow these strict rules:
+
+TECH STACK: Use only Vanilla HTML5, Vanilla CSS3, and Vanilla JavaScript (ES6+).
+
+NO FRAMEWORKS: Do not use Tailwind, Bootstrap, or any CSS-in-JS libraries.
+
+CSS STYLE: Use CSS Custom Properties (variables). No pre-processors like SASS.
+
+ARCHITECTURE: Keep HTML, CSS, and JS in separate files.
+
+ACCESSIBILITY: Code must meet WCAG 2.2 AA standards by default.
+
+QUALITY: Use semantic HTML5 tags and modern CSS (Grid/Flexbox/Container Queries)."
+
+2. CSS & STYLING STANDARDS
+Naming & Variables
+
+Use kebab-case for all class names and variable names (e.g., --primary-color).
+
+Define all design tokens in a :root block within a variables.css file.
+
+Required variables: colors, spacing scale (rem-based), typography sizes, and border-radii.
+
+CSS Best Practices
+
+Layout: Use CSS Grid for page layouts and Flexbox for UI components.
+
+Modern CSS: Use :has(), :is(), and native CSS nesting.
+
+No ID Selectors: Use classes for styling to keep specificity low.
+
+Responsive Design: Use clamp() for fluid typography and Container Queries (@container) for components.
+
+3. HTML & ACCESSIBILITY (A11Y)
+Structure
+
+Always use semantic tags: <header>, <nav>, <main>, <section>, <article>, <aside>, <footer>.
+
+                            Maintain a logical heading hierarchy (H1 -> H2 -> H3).
+
+                            Accessibility Checklist
+
+                            Interactive targets must be at least 44x44px.
+
+                            Use :focus-visible to provide high-contrast focus indicators.
+
+                            All <img> tags must have alt text (empty alt="" only for decorative images).
+
+                            Forms: Every <input> must have a corresponding <label> using the 'for' attribute.
+
+                                Color Contrast: Text must maintain a minimum 4.5:1 ratio against the background.
+
+                                4. SEO & PERFORMANCE
+                                Technical SEO
+
+                                Use a single H1 per page.
+
+                                Include descriptive Meta Titles (under 60 chars) and Descriptions (under 160 chars).
+
+                                Implement JSON-LD Schema markup for the specific project type (e.g., SoftwareApplication
+                                or HealthTopic).
+
+                                Use
+                                <link rel="canonical"> to prevent duplicate content issues.
+
+                                Performance
+
+                                Lazy-load images using loading="lazy".
+
+                                Minimize the use of heavy external fonts; prefer system fonts or variable fonts.
+
+                                Ensure all interactive elements are responsive within 100ms.
+
+                                5. FRAMEWORK TRANSITION (RESERVED FOR REACT)
+                                [FRAMEWORK_PLACEHOLDER]
+
+                                When migrating to React:
+
+                                Maintain Vanilla CSS via CSS Modules (.module.css).
+
+                                Use Functional Components and Hooks (useState, useEffect, etc.).
+
+                                Keep business logic in custom hooks to separate it from UI components.
+
+                                6. PROJECT DIRECTORY STRUCTURE
+                                / ├── index.html # Semantic HTML5 ├── css/ │ ├── variables.css # CSS Custom Properties │
+                                ├── reset.css # Modern CSS Reset │ └── style.css # Component & Layout styles ├── js/ │
+                                └── main.js # Vanilla JavaScript ├── assets/ # Images, Icons, Fonts └── ai-rules.txt #
+                                This standards document for the AI to reference

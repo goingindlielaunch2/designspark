@@ -1,0 +1,111 @@
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 40px;
+  max-width: 900px;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.drop-zone {
+  border: 3px dashed #7b61ff;
+  border-radius: 16px;
+  background: #fafaff;
+  padding: 60px 40px;
+  transition: border-color 0.3s, background 0.3s;
+  cursor: pointer;
+}
+
+.drop-zone.dragover {
+  background: #f0eaff;
+  border-color: #6a4cff;
+}
+
+.drop-zone p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.drop-zone button {
+  padding: 12px 24px;
+  font-size: 1em;
+  background-color: #7b61ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.drop-zone button:hover {
+  background-color: #6a4cff;
+}
+
+#output canvas {
+  max-width: 100%;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+a.download-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #6a4cff;
+  font-weight: bold;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.drop-zone {
+  transition: transform 0.3s ease;
+}
+
+.drop-zone.dragover {
+  transform: scale(1.02);
+}
+
+#output canvas {
+  animation: fadeIn 0.5s ease-out;
+}
+
+a.download-link {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 0.4s;
+}

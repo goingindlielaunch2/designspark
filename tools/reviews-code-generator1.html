@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Review Card Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for a cleaner look */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Simple transition for a smoother feel */
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-5xl font-bold text-slate-900">Modern Review Card Generator</h1>
+            <p class="mt-3 text-lg text-slate-600 max-w-2xl mx-auto">Paste your customer reviews and instantly generate a beautiful, responsive card to embed on your website.</p>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Left Column: Input Form -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 text-slate-900">1. Enter Review Details</h2>
+                
+                <div class="space-y-6">
+                    <!-- Reviewer Name -->
+                    <div>
+                        <label for="reviewerName" class="block text-sm font-medium text-slate-700 mb-1">Reviewer's Name</label>
+                        <input type="text" id="reviewerName" value="Jane Doe" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all" placeholder="e.g., John Smith">
+                    </div>
+
+                    <!-- Review Source -->
+                    <div>
+                        <label for="reviewSource" class="block text-sm font-medium text-slate-700 mb-1">Review Source</label>
+                        <select id="reviewSource" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all">
+                            <option value="Google" selected>Google</option>
+                            <option value="Yelp">Yelp</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Trustpilot">Trustpilot</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Star Rating -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Star Rating</label>
+                        <div id="starRating" class="flex items-center space-x-2 text-3xl text-slate-300">
+                            <svg data-value="1" class="w-8 h-8 cursor-pointer star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg data-value="2" class="w-8 h-8 cursor-pointer star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg data-value="3" class="w-8 h-8 cursor-pointer star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg data-value="4" class="w-8 h-8 cursor-pointer star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg data-value="5" class="w-8 h-8 cursor-pointer star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="5">
+                    </div>
+
+                    <!-- Review Text -->
+                    <div>
+                        <label for="reviewText" class="block text-sm font-medium text-slate-700 mb-1">Review Text</label>
+                        <textarea id="reviewText" rows="6" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all" placeholder="Paste the full review here...">This is a fantastic product! It exceeded all of my expectations. The quality is top-notch and the customer service was incredibly helpful. I would recommend this to anyone without hesitation. A well-deserved 5 stars!</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Preview and Code -->
+            <div class="space-y-8">
+                <!-- Preview Section -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                    <h2 class="text-2xl font-bold mb-6 text-slate-900">2. Live Preview</h2>
+                    <div id="preview" class="bg-slate-100 p-6 rounded-lg flex items-center justify-center min-h-[300px]">
+                        <!-- Generated review card will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Code Section -->
+                <div class="bg-slate-900 p-6 md:p-8 rounded-2xl shadow-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold text-white">3. Copy Your Code</h2>
+                        <button id="copyButton" class="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-indigo-500 transition-all">
+                            Copy Code
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <pre class="bg-slate-800 text-slate-300 p-4 rounded-lg overflow-x-auto text-sm"><code id="codeOutput" class="language-html"></code></pre>
+                        <div id="copySuccess" class="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md opacity-0 transition-opacity duration-300">Copied!</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- DOM Elements ---
+            const reviewerNameInput = document.getElementById('reviewerName');
+            const reviewSourceSelect = document.getElementById('reviewSource');
+            const starRatingContainer = document.getElementById('starRating');
+            const stars = starRatingContainer.querySelectorAll('.star');
+            const ratingValueInput = document.getElementById('ratingValue');
+            const reviewTextInput = document.getElementById('reviewText');
+            const previewContainer = document.getElementById('preview');
+            const codeOutput = document.getElementById('codeOutput');
+            const copyButton = document.getElementById('copyButton');
+            const copySuccessMessage = document.getElementById('copySuccess');
+
+            // --- State ---
+            let currentRating = 5;
+
+            // --- SVG Icons ---
+            const sourceIcons = {
+                Google: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.574l6.19 5.238C42.012 35.238 44 30.028 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>`,
+                Yelp: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24"><path fill="#d32323" d="M11.39 22.39l-2.6-6.42H3.22l5.33-4.2L5.8 6.13l5.33 4.19l5.32-4.19l-2.74 5.64l5.33 4.2h-5.57l-2.6 6.42Z"/></svg>`,
+                Facebook: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24"><path fill="#1877F2" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5c0-2.16 1.37-3.5 3.5-3.5h2.5v3H14c-1.03 0-1.25.49-1.25 1.22V12h2.72l-.44 3h-2.28v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>`,
+                Trustpilot: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24"><path fill="#00b67a" d="M22.48 8.03H14.8L12 1l-2.8 7.03H1.52l5.69 4.34l-2.16 6.6l7.95-5.44l7.95 5.44l-2.16-6.6l5.69-4.34Z"/><path fill="#fff" d="m16.31 15.3l-1-3.06h-6.62l-1 3.06H12l2.16-6.6h-4.31l-1 3.06h3.62l-1.47 4.5h2.47l1.47-4.5h1.36z"/></svg>`,
+                Other: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>`
+            };
+
+            const starSVG = {
+                filled: `<svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`,
+                empty: `<svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`
+            };
+            
+            // --- Functions ---
+
+            /**
+             * Updates the star rating display based on currentRating
+             */
+            function updateStarsUI() {
+                stars.forEach(star => {
+                    const starValue = parseInt(star.dataset.value);
+                    if (starValue <= currentRating) {
+                        star.classList.remove('text-slate-300');
+                        star.classList.add('text-yellow-400');
+                    } else {
+                        star.classList.remove('text-yellow-400');
+                        star.classList.add('text-slate-300');
+                    }
+                });
+            }
+            
+            /**
+             * Generates the HTML for the star rating based on the value
+             * @param {number} rating - The star rating (1-5)
+             * @returns {string} - The HTML string for the stars
+             */
+            function generateStarHTML(rating) {
+                let html = '';
+                for (let i = 1; i <= 5; i++) {
+                    html += i <= rating ? starSVG.filled : starSVG.empty;
+                }
+                return html;
+            }
+
+            /**
+             * Sanitizes text to prevent HTML injection
+             * @param {string} str - The input string
+             * @returns {string} - The sanitized string
+             */
+            function sanitize(str) {
+                const temp = document.createElement('div');
+                temp.textContent = str;
+                return temp.innerHTML;
+            }
+
+            /**
+             * Main function to generate and update the review card and code
+             */
+            function generate() {
+                const name = sanitize(reviewerNameInput.value) || 'Anonymous';
+                const source = reviewSourceSelect.value;
+                const rating = currentRating;
+                const text = sanitize(reviewTextInput.value).replace(/\n/g, '<br>');
+
+                const starHTML = generateStarHTML(rating);
+                const sourceIconHTML = sourceIcons[source] || sourceIcons['Other'];
+
+                // Generate the review card HTML for preview
+                const previewHTML = `
+                    <div class="w-full max-w-md bg-white p-6 rounded-xl shadow-lg font-sans transition-all">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                ${sourceIconHTML}
+                                <div class="text-slate-800 font-semibold">Review on ${source}</div>
+                            </div>
+                            <div class="flex items-center">
+                                ${starHTML}
+                            </div>
+                        </div>
+                        <p class="text-slate-600 mb-4 text-base leading-relaxed">"${text}"</p>
+                        <div class="text-right text-slate-800 font-bold text-sm">- ${name}</div>
+                    </div>
+                `;
+
+                // Generate the clean code for output
+                const outputCode = `
+<!-- Review Card Start -->
+<div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-lg font-sans">
+    <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center space-x-3">
+            <!-- Source Icon SVG -->
+            ${sourceIconHTML.replace(/\s\s+/g, ' ')}
+            <div class="text-slate-800 font-semibold">Review on ${source}</div>
+        </div>
+        <div class="flex items-center">
+            <!-- Star Rating SVG -->
+            ${starHTML.replace(/\s\s+/g, ' ')}
+        </div>
+    </div>
+    <p class="text-slate-600 mb-4 text-base leading-relaxed">"${text}"</p>
+    <div class="text-right text-slate-800 font-bold text-sm">- ${name}</div>
+</div>
+<!-- Review Card End -->
+                `.trim();
+
+                // Update the DOM
+                previewContainer.innerHTML = previewHTML;
+                codeOutput.textContent = outputCode;
+                
+                // Note for Prism/highlight.js if it were used
+                // if (window.Prism) {
+                //     Prism.highlightElement(codeOutput);
+                // }
+            }
+
+            // --- Event Listeners ---
+            
+            // Update on any input change for a live experience
+            [reviewerNameInput, reviewSourceSelect, reviewTextInput].forEach(el => {
+                el.addEventListener('input', generate);
+            });
+
+            // Handle star rating clicks
+            starRatingContainer.addEventListener('click', (e) => {
+                const star = e.target.closest('.star');
+                if (star) {
+                    currentRating = parseInt(star.dataset.value);
+                    ratingValueInput.value = currentRating;
+                    updateStarsUI();
+                    generate();
+                }
+            });
+
+            // Handle copy button click
+            copyButton.addEventListener('click', () => {
+                const textToCopy = codeOutput.textContent;
+                // Use a temporary textarea to copy text
+                const tempTextarea = document.createElement('textarea');
+                tempTextarea.value = textToCopy;
+                document.body.appendChild(tempTextarea);
+                tempTextarea.select();
+                try {
+                    document.execCommand('copy');
+                    // Show success message
+                    copySuccessMessage.style.opacity = '1';
+                    setTimeout(() => {
+                        copySuccessMessage.style.opacity = '0';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+                document.body.removeChild(tempTextarea);
+            });
+
+            // --- Initial Load ---
+            updateStarsUI();
+            generate();
+        });
+    </script>
+</body>
+</html>
