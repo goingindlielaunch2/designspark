@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Content - David Darling</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-sans {
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background-color: white;
+            color: black;
+        }
+
+        /* Animated gradient background */
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -20px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
+            }
+        }
+
+        .blob-animate {
+            animation: gradientShift 15s ease-in-out infinite;
+        }
+
+        .blob-animate-delayed {
+            animation: gradientShift 18s ease-in-out infinite reverse;
+        }
+
+        /* Glass morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Input styling */
+        input:focus {
+            outline: none;
+        }
+
+        /* Shake animation for wrong password */
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20%,
+            60% {
+                transform: translateX(-10px);
+            }
+
+            40%,
+            80% {
+                transform: translateX(10px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-black text-white font-sans overflow-hidden selection:bg-white selection:text-black min-h-screen">
+
+    <!-- Animated Gradient Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div
+            class="blob-animate absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[120px]">
+        </div>
+        <div
+            class="blob-animate-delayed absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/25 rounded-full blur-[140px]">
+        </div>
+        <div
+            class="blob-animate absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-500/20 rounded-full blur-[100px]">
+        </div>
+    </div>
+
+    <!-- Password Container -->
+    <div class="relative z-10 min-h-screen flex items-center justify-center px-6">
+        <div id="password-form" class="glass rounded-3xl p-8 md:p-12 w-full max-w-md text-center">
+            <!-- Lock Icon -->
+            <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-white/10 flex items-center justify-center">
+                <svg class="w-8 h-8 text-white/70" fill="none" stroke="currentColor" stroke-width="1.5"
+                    viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+            </div>
+
+            <h1 class="font-serif text-3xl md:text-4xl mb-3">Protected Content</h1>
+            <p class="text-zinc-400 text-sm mb-8">Enter the password to continue</p>
+
+            <!-- Password Input -->
+            <div class="relative mb-6">
+                <input type="password" id="password-input"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-zinc-500 text-center tracking-widest focus:border-white/30 transition-colors"
+                    placeholder="••••••••" autocomplete="off">
+            </div>
+
+            <!-- Error Message -->
+            <p id="error-message" class="text-red-400 text-sm mb-4 opacity-0 transition-opacity">
+                Incorrect password. Please try again.
+            </p>
+
+            <!-- Submit Button -->
+            <button id="submit-btn"
+                class="w-full bg-white text-black font-medium py-4 rounded-xl hover:bg-white/90 transition-colors">
+                Unlock
+            </button>
+
+            <!-- Hint -->
+            <p class="text-zinc-600 text-xs mt-6">
+                Need access? <a href="mailto:hello.designspark@gmail.com"
+                    class="text-zinc-400 hover:text-white transition-colors">Contact me</a>
+            </p>
+        </div>
+
+        <!-- Protected Content (Hidden by default) -->
+        <div id="protected-content" class="hidden text-center max-w-2xl">
+            <h1 class="font-serif text-4xl md:text-6xl mb-6">Welcome</h1>
+            <p class="text-zinc-400 text-lg mb-8">You now have access to the protected content.</p>
+            <a href="portfolio.html"
+                class="inline-block bg-white text-black font-medium px-8 py-4 rounded-xl hover:bg-white/90 transition-colors">
+                View Portfolio
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Simple client-side password check
+        // NOTE: For production, use server-side authentication
+        const PASSWORD = 'design2026';
+
+        const passwordInput = document.getElementById('password-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const errorMessage = document.getElementById('error-message');
+        const passwordForm = document.getElementById('password-form');
+        const protectedContent = document.getElementById('protected-content');
+
+        function checkPassword() {
+            const entered = passwordInput.value;
+
+            if (entered === PASSWORD) {
+                // Success - show protected content
+                passwordForm.style.opacity = '0';
+                passwordForm.style.transform = 'scale(0.95)';
+                passwordForm.style.transition = 'all 0.3s ease-out';
+
+                setTimeout(() => {
+                    passwordForm.classList.add('hidden');
+                    protectedContent.classList.remove('hidden');
+                    protectedContent.style.opacity = '0';
+                    protectedContent.style.transform = 'scale(1.05)';
+
+                    requestAnimationFrame(() => {
+                        protectedContent.style.transition = 'all 0.4s ease-out';
+                        protectedContent.style.opacity = '1';
+                        protectedContent.style.transform = 'scale(1)';
+                    });
+                }, 300);
+            } else {
+                // Wrong password
+                errorMessage.style.opacity = '1';
+                passwordForm.classList.add('shake');
+                passwordInput.value = '';
+
+                setTimeout(() => {
+                    passwordForm.classList.remove('shake');
+                }, 400);
+
+                setTimeout(() => {
+                    errorMessage.style.opacity = '0';
+                }, 3000);
+            }
+        }
+
+        submitBtn.addEventListener('click', checkPassword);
+
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Auto-focus input
+        passwordInput.focus();
+    </script>
+</body>
+
+</html>
