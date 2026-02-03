@@ -72,6 +72,43 @@
             animation-delay: 0.3s;
         }
 
+        /* Swipe Hint Animation */
+        @keyframes swipeHint {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            15% {
+                opacity: 1;
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            35% {
+                opacity: 1;
+                transform: translateX(calc(-50% - 8px)) rotate(-20deg);
+            }
+
+            65% {
+                opacity: 1;
+                transform: translateX(calc(-50% + 8px)) rotate(20deg);
+            }
+
+            85% {
+                opacity: 1;
+                transform: translateX(-50%) rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) rotate(0deg);
+            }
+        }
+
+        .animate-swipe-hint {
+            animation: swipeHint 3s ease-in-out forwards;
+        }
+
         /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
@@ -136,6 +173,11 @@
         class="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-20 overflow-hidden touch-pan-y"
         id="hero">
 
+
+        <!-- Mobile Swipe Hint -->
+        <div id="swipe-hint" class="md:hidden absolute top-4 left-1/2 z-30 animate-swipe-hint">
+            <img src="images/portfolio/icon-swipe.svg" alt="Swipe to navigate" class="w-12 h-12 opacity-60">
+        </div>
 
         <!-- Carousel Container -->
         <!-- Unified Container for Mobile & Desktop -->
