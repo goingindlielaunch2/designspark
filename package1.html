@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Redesign Proposal | Toy Towers</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[#fafaf9] text-stone-900 selection:bg-orange-200 selection:text-orange-900">
+
+  <!-- Header -->
+  <header
+    class="px-6 py-4 flex justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-orange-100">
+    <div class="flex items-center gap-2">
+      <div
+        class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-red-400 flex items-center justify-center shadow-sm">
+        <i data-lucide="smile" class="w-5 h-5 text-white"></i>
+      </div>
+      <span class="font-bold text-xl tracking-tight text-stone-800">DesignSpark</span>
+    </div>
+    <div class="text-sm font-medium text-stone-500 hidden sm:block">
+      Prepared by <span class="text-stone-800">David Darling</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 px-6 max-w-5xl mx-auto text-center">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 font-medium text-sm mb-6">
+        <!-- Sparkles Icon -->
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        Prepared for Toy Towers of Denver
+      </div>
+      <h1 class="text-5xl md:text-6xl font-extrabold text-stone-900 tracking-tight mb-6 leading-tight">
+        Let's turn your website into a <br class="hidden md:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">
+          lead-generating asset.
+        </span>
+      </h1>
+      <p class="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed mb-10">
+        Toy Towers of Denver has a strong product and reputation, but the current website is functioning primarily as a
+        digital brochure rather than a conversion engine.
+        A modern UX and UI redesign will reduce friction in understanding the program, build trust, and seamlessly
+        convert dental offices, medical offices, and schools into customers.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#pricing"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-stone-900 hover:bg-stone-800 text-white rounded-2xl font-bold text-lg transition-all hover:scale-105 hover:shadow-xl group">
+          View Transformation Packages
+          <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="py-16 px-6 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-stone-900 mb-12">The Vision for Toy Towers</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div class="p-6 rounded-3xl bg-stone-50 border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4">
+              <i data-lucide="trending-up" class="w-6 h-6 text-orange-500"></i>
+            </div>
+            <h3 class="font-semibold text-stone-900 text-lg mb-2">Increase Inquiries</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">Multiply the number of offices that contact you directly.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-stone-50 border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4">
+              <i data-lucide="shield-check" class="w-6 h-6 text-emerald-500"></i>
+            </div>
+            <h3 class="font-semibold text-stone-900 text-lg mb-2">Build Trust</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">Make Toy Towers appear more professional and
+              authoritative.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-stone-50 border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4">
+              <i data-lucide="layout" class="w-6 h-6 text-blue-500"></i>
+            </div>
+            <h3 class="font-semibold text-stone-900 text-lg mb-2">Clear Explanation</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">Instantly explain the program to new, first-time visitors.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-stone-50 border border-stone-100 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4">
+              <i data-lucide="layers" class="w-6 h-6 text-indigo-500"></i>
+            </div>
+            <h3 class="font-semibold text-stone-900 text-lg mb-2">Easy Management</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">Make it effortless for you to manage toys and update the
+              site.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminology Section -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+      <div class="bg-orange-50 rounded-3xl p-8 md:p-12">
+        <div class="mb-10">
+          <h2 class="text-3xl font-bold text-stone-900 mb-4">Plain English Glossary</h2>
+          <p class="text-stone-600 text-lg">We use a few technical terms in this proposal. Here is exactly what they
+            mean for your bottom line.</p>
+        </div>
+        <div class="space-y-6">
+
+          <div class="flex gap-4 items-start bg-white p-6 rounded-2xl shadow-sm">
+            <div class="mt-1">
+              <i data-lucide="check-circle" class="w-5 h-5 text-orange-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-900 text-lg mb-1">Conversion</h4>
+              <p class="text-stone-600 leading-relaxed">When a visitor takes an action you want — like filling out a
+                form or calling you. More conversions = more customers.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start bg-white p-6 rounded-2xl shadow-sm">
+            <div class="mt-1">
+              <i data-lucide="check-circle" class="w-5 h-5 text-orange-400"></i>
+            </div>
+            <div class="flex-grow">
+              <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-grow">
+                  <h4 class="font-bold text-stone-900 text-lg mb-1">Above-the-Fold (The Hero Section)</h4>
+                  <p class="text-stone-600 leading-relaxed">What people see immediately when the site loads, before they
+                    scroll. It's critical because visitors decide to stay or leave in seconds. In this proposal, we
+                    focus
+                    heavily on the <strong>Hero Section</strong> as it is your digital first impression.</p>
+                </div>
+                <!-- Detailed Wireframe Hero Visual -->
+                <div
+                  class="shrink-0 w-48 h-36 bg-white rounded-xl border-2 border-stone-200 overflow-hidden relative shadow-sm group">
+                  <!-- Browser Header -->
+                  <div class="h-4 bg-stone-100 border-b border-stone-200 flex items-center px-2 gap-1">
+                    <div class="w-1.5 h-1.5 rounded-full bg-stone-300"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-stone-300"></div>
+                  </div>
+                  <!-- Nav Bar Placeholder -->
+                  <div class="h-6 px-3 flex items-center justify-between border-b border-stone-50">
+                    <div class="w-8 h-1.5 bg-stone-200 rounded-full"></div>
+                    <div class="flex gap-2">
+                      <div class="w-4 h-1 bg-stone-100 rounded-full"></div>
+                      <div class="w-4 h-1 bg-stone-100 rounded-full"></div>
+                      <div class="w-4 h-1 bg-stone-100 rounded-full"></div>
+                    </div>
+                  </div>
+                  <!-- HERO AREA (Highlighted) -->
+                  <div
+                    class="absolute top-10 left-0 right-0 h-16 bg-orange-50 flex flex-col items-center justify-center px-4 gap-2 border-y border-orange-100">
+                    <div class="w-24 h-2 bg-orange-400/40 rounded-full"></div>
+                    <div class="space-y-1">
+                      <div class="w-32 h-1 bg-orange-300/30 rounded-full"></div>
+                      <div class="w-20 h-1 bg-orange-300/30 rounded-full mx-auto"></div>
+                    </div>
+                    <div class="w-10 h-3 bg-orange-500/60 rounded-sm mt-1"></div>
+
+                    <!-- Hero Label Overlay -->
+                    <div
+                      class="absolute inset-0 bg-orange-500/0 group-hover:bg-orange-500/10 transition-colors flex items-center justify-center">
+                      <span
+                        class="text-[10px] font-bold text-orange-600 bg-white px-2 py-0.5 rounded shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">HERO
+                        SECTION</span>
+                    </div>
+                  </div>
+                  <!-- Rest of Page (Wireframe) -->
+                  <div class="p-3 mt-16 space-y-3">
+                    <div class="grid grid-cols-3 gap-2">
+                      <div class="h-8 bg-stone-50 rounded-md border border-stone-100"></div>
+                      <div class="h-8 bg-stone-50 rounded-md border border-stone-100"></div>
+                      <div class="h-8 bg-stone-50 rounded-md border border-stone-100"></div>
+                    </div>
+                    <div class="w-full h-1 bg-stone-100 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start bg-white p-6 rounded-2xl shadow-sm">
+            <div class="mt-1">
+              <i data-lucide="check-circle" class="w-5 h-5 text-orange-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-900 text-lg mb-1">Call-to-Action (CTA)</h4>
+              <p class="text-stone-600 leading-relaxed">A button or prompt (like 'Request Info' or 'Get Started') that
+                encourages visitors to take the next step.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start bg-white p-6 rounded-2xl shadow-sm">
+            <div class="mt-1">
+              <i data-lucide="check-circle" class="w-5 h-5 text-orange-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-900 text-lg mb-1">User Experience (UX)</h4>
+              <p class="text-stone-600 leading-relaxed">How easy and clear the website is to use. Good UX makes it
+                effortless for visitors to understand you and reach out.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start bg-white p-6 rounded-2xl shadow-sm">
+            <div class="mt-1">
+              <i data-lucide="check-circle" class="w-5 h-5 text-orange-400"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-900 text-lg mb-1">Conversion-Optimized</h4>
+              <p class="text-stone-600 leading-relaxed">A design built specifically to turn visitors into customers
+                using proven layouts, messaging, and visual psychology.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Spotlight Section -->
+    <section class="py-16 px-6 bg-orange-50/30 border-y border-orange-100">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-stone-900 mb-6">Feature Spotlight: Toy Management</h2>
+            <p class="text-lg text-stone-600 mb-8">Say goodbye to manual catalog updates. We're building a custom,
+              intuitive backend system tailored specifically for your workflow.</p>
+            <ul class="space-y-6">
+              <li class="flex gap-4"><i data-lucide="mouse-pointer-click"
+                  class="w-6 h-6 text-orange-500 shrink-0 mt-1"></i>
+                <div><strong class="text-stone-900 text-lg block mb-1">Drag-and-Drop Interface</strong> <span
+                    class="text-stone-600">Simply drag new toy images from your computer directly into the system. No
+                    technical knowledge required.</span></div>
+              </li>
+              <li class="flex gap-4"><i data-lucide="folder-tree" class="w-6 h-6 text-orange-500 shrink-0 mt-1"></i>
+                <div><strong class="text-stone-900 text-lg block mb-1">Automatic Sorting</strong> <span
+                    class="text-stone-600">The system automatically places toys into the correct categories. No manual
+                    sorting or organizing needed.</span></div>
+              </li>
+              <li class="flex gap-4"><i data-lucide="zap" class="w-6 h-6 text-orange-500 shrink-0 mt-1"></i>
+                <div><strong class="text-stone-900 text-lg block mb-1">Instant Sync</strong> <span
+                    class="text-stone-600">Changes appear on the live website immediately, saving you hours of
+                    administrative work.</span></div>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-white rounded-3xl p-8 shadow-sm border border-stone-200 flex flex-col items-center justify-center h-full min-h-[350px] border-dashed border-2">
+            <div class="text-center">
+              <div class="w-20 h-20 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="upload-cloud" class="w-10 h-10 text-orange-400"></i>
+              </div>
+              <h4 class="font-bold text-stone-900 text-xl mb-2">Upload Toys</h4>
+              <p class="text-stone-500 font-medium">Drag & Drop Images Here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-24 px-6 bg-stone-900 text-stone-50" id="pricing">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-white mb-4">Website Transformation Options</h2>
+          <p class="text-xl text-stone-400">Choose the path that best fits your current growth goals.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+          <!-- Package 3 -->
+          <div class="bg-stone-800 rounded-3xl p-8 border border-stone-700 flex flex-col h-full">
+            <h3 class="text-xl font-medium text-stone-300 mb-2">Package 3</h3>
+            <div class="flex justify-between items-start mb-4">
+              <div class="text-2xl font-bold text-white">Hero Section Redesign</div>
+              <!-- Mini Wireframe Visual -->
+              <div
+                class="w-16 h-12 bg-stone-900 rounded border border-stone-700 overflow-hidden relative shrink-0 shadow-inner">
+                <div class="h-1.5 bg-stone-800 border-b border-stone-700"></div>
+                <!-- Highlighted Top -->
+                <div
+                  class="absolute top-1.5 left-0 right-0 h-5 bg-orange-500/30 border-b border-orange-500/20 flex flex-col items-center justify-center gap-0.5">
+                  <div class="w-8 h-0.5 bg-orange-400/40 rounded-full"></div>
+                  <div class="w-4 h-1 bg-orange-500/50 rounded-[1px]"></div>
+                </div>
+                <div class="absolute bottom-2 left-1.5 w-10 h-0.5 bg-stone-800 rounded-full"></div>
+                <div class="absolute bottom-1 left-1.5 w-6 h-0.5 bg-stone-800 rounded-full"></div>
+              </div>
+            </div>
+            <div class="text-4xl font-bold text-white mb-6">$450</div>
+            <p class="text-stone-400 text-sm mb-8 h-12">Best for: Improving the most important part of the website
+              quickly.</p>
+
+            <ul class="space-y-4 mb-8 flex-grow">
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Clear explanation & immediate value communication</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Conversion-optimized headline & modern hero design</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Improved professional appearance</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Strong CTA placement & clear contact prompts</span></li>
+            </ul>
+            <div class="text-sm font-medium text-stone-400 flex items-center gap-2 border-t border-stone-700 pt-6 pb-6">
+              <i data-lucide="clock" class="w-4 h-4"></i> Timeline: 3–5 days
+            </div>
+
+            <!-- Direct Payment Links -->
+            <div class="space-y-3 mt-auto">
+              <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=225&note=Toy%20Towers%20-%20Hero%20Section%20(50%25%20Deposit)"
+                target="_blank"
+                class="w-full py-3 px-4 bg-white hover:bg-stone-200 text-stone-900 rounded-xl font-medium transition-colors flex items-center justify-center gap-2">
+                Start with 50% Deposit ($225) <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=427&note=Toy%20Towers%20-%20Hero%20Section%20(Pay%20in%20Full)"
+                target="_blank"
+                class="w-full py-2 px-4 bg-stone-700 hover:bg-stone-600 text-white rounded-xl font-medium transition-colors flex items-center justify-center gap-2 text-sm">
+                Pay in full & save 5% ($427)
+              </a>
+            </div>
+          </div>
+
+          <!-- Package 1 (Recommended) -->
+          <div
+            class="bg-gradient-to-b from-orange-500 to-red-500 rounded-3xl p-1 shadow-2xl relative lg:scale-105 z-20 flex flex-col h-full transition-transform hover:scale-[1.07]">
+            <div
+              class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-stone-900 text-white px-4 py-1 rounded-full text-sm font-bold tracking-wide border border-orange-500 flex items-center gap-1">
+              <i data-lucide="star" class="w-4 h-4 text-orange-400 fill-orange-400"></i> RECOMMENDED
+            </div>
+            <div class="bg-white rounded-[23px] p-8 h-full flex flex-col">
+              <h3 class="text-xl font-medium text-orange-600 mb-2">Package 1</h3>
+              <div class="text-2xl font-bold text-stone-900 mb-4">Complete Transformation</div>
+              <div class="text-4xl font-bold text-stone-900 mb-6">$1,850</div>
+              <p class="text-stone-600 text-sm mb-8 h-12">Best for: Maximum growth, generating inquiries, and
+                streamlined customer support.</p>
+
+              <ul class="space-y-4 mb-8 flex-grow">
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 font-medium text-sm">Everything in smaller packages</span></li>
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 text-sm"><strong>UX Architecture:</strong> Targeted Audience Pages
+                    (Dental/Medical/Schools)</span></li>
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 text-sm"><strong>Visual & UI Redesign:</strong> 2026-level professional
+                    aesthetic</span></li>
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 text-sm"><strong>Lead Optimization:</strong> Strategic CTAs to reduce
+                    friction</span></li>
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 text-sm">Custom Drag-and-Drop Toy Management System</span></li>
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 text-sm">Dedicated Existing Customer Support System</span></li>
+                <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-500 shrink-0"></i> <span
+                    class="text-stone-700 font-medium text-sm text-orange-700 bg-orange-50 px-2 py-0.5 rounded border border-orange-100">$2,300
+                    in Bonus Enhancements included</span></li>
+              </ul>
+              <div class="text-sm font-bold text-stone-900 flex items-center gap-2 border-t border-stone-100 pt-6 pb-6">
+                <i data-lucide="clock" class="w-4 h-4 text-orange-500"></i> Timeline: 2–3 weeks
+              </div>
+
+              <div class="space-y-3 mt-auto border-t border-stone-100 pt-6">
+                <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=925&note=Toy%20Towers%20-%20Complete%20Transformation%20(50%25%20Deposit)"
+                  target="_blank"
+                  class="w-full py-3.5 px-4 bg-stone-900 hover:bg-stone-800 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-md">
+                  Start with 50% Deposit ($925) <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+                <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=1757&note=Toy%20Towers%20-%20Complete%20Transformation%20(Pay%20in%20Full)"
+                  target="_blank"
+                  class="w-full py-2.5 px-4 bg-orange-50 hover:bg-orange-100 text-orange-800 rounded-xl font-medium transition-colors flex items-center justify-center gap-2 text-sm border border-orange-200">
+                  Pay in full & save 5% ($1,757)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 2 -->
+          <div class="bg-stone-800 rounded-3xl p-8 border border-stone-700 flex flex-col h-full">
+            <h3 class="text-xl font-medium text-stone-300 mb-2">Package 2</h3>
+            <div class="text-2xl font-bold text-white mb-4">Homepage Redesign</div>
+            <div class="text-4xl font-bold text-white mb-6">$950</div>
+            <p class="text-stone-400 text-sm mb-8 h-12">Best for: Improving results quickly while keeping the rest of
+              the site intact.</p>
+
+            <ul class="space-y-4 mb-8 flex-grow">
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Complete UX redesign of the homepage</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Clearly explain your service with targeted messaging</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Improve first impressions & trust via visual hierarchy</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-orange-400 shrink-0"></i> <span
+                  class="text-stone-300 text-sm">Strong CTAs to encourage more contact inquiries</span></li>
+            </ul>
+            <div class="text-sm font-medium text-stone-400 flex items-center gap-2 border-t border-stone-700 pt-6 pb-6">
+              <i data-lucide="clock" class="w-4 h-4"></i> Timeline: 5–10 days
+            </div>
+
+            <!-- Direct Payment Links -->
+            <div class="space-y-3 mt-auto">
+              <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=475&note=Toy%20Towers%20-%20Homepage%20Redesign%20(50%25%20Deposit)"
+                target="_blank"
+                class="w-full py-3 px-4 bg-white hover:bg-stone-200 text-stone-900 rounded-xl font-medium transition-colors flex items-center justify-center gap-2">
+                Start with 50% Deposit ($475) <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=902&note=Toy%20Towers%20-%20Homepage%20Redesign%20(Pay%20in%20Full)"
+                target="_blank"
+                class="w-full py-2 px-4 bg-stone-700 hover:bg-stone-600 text-white rounded-xl font-medium transition-colors flex items-center justify-center gap-2 text-sm">
+                Pay in full & save 5% ($902)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Included Bonus Enhancements Section -->
+    <section class="py-20 px-6 bg-orange-50/50 border-y border-orange-100">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 font-bold text-sm mb-4">
+            <i data-lucide="gift" class="w-4 h-4"></i> Exclusive to Full Website Transformation
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">Included Bonus Enhancements</h2>
+          <p class="text-lg text-stone-600 max-w-3xl mx-auto">To ensure Toy Towers achieves maximum long-term value and
+            growth from this redesign, the following premium enhancements are included at no additional cost.</p>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Bonus 1 -->
+          <div
+            class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-orange-100 flex flex-col md:flex-row gap-6 items-start">
+            <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+              <i data-lucide="line-chart" class="w-6 h-6 text-orange-600"></i>
+            </div>
+            <div class="flex-grow">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2 gap-2">
+                <h3 class="text-xl font-bold text-stone-900">Bonus 1: Conversion Intelligence Review & Optimization</h3>
+                <span class="bg-stone-100 text-stone-600 text-xs font-bold px-3 py-1 rounded-md shrink-0">Value:
+                  $800</span>
+              </div>
+              <p class="text-stone-600 mb-4">The website will be strategically optimized using proven conversion
+                principles that guide visitors naturally toward contacting Toy Towers. This includes:</p>
+              <ul class="space-y-2 mb-5">
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Strategic placement of inquiry prompts throughout the site</span>
+                </li>
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Optimization of page structure to reduce visitor
+                    hesitation</span>
+                </li>
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Refinement of messaging to improve clarity and engagement</span>
+                </li>
+              </ul>
+              <div class="bg-orange-50 p-4 rounded-xl border border-orange-100 flex gap-3 items-start">
+                <i data-lucide="zap" class="w-5 h-5 text-orange-500 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="text-stone-900 text-sm block mb-0.5">Benefit:</strong>
+                  <span class="text-stone-700 text-sm">Increases the percentage of visitors who become qualified
+                    inquiries.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bonus 2 -->
+          <div
+            class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-orange-100 flex flex-col md:flex-row gap-6 items-start">
+            <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+              <i data-lucide="shield" class="w-6 h-6 text-orange-600"></i>
+            </div>
+            <div class="flex-grow">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2 gap-2">
+                <h3 class="text-xl font-bold text-stone-900">Bonus 2: Professional Trust & Credibility Enhancement</h3>
+                <span class="bg-stone-100 text-stone-600 text-xs font-bold px-3 py-1 rounded-md shrink-0">Value:
+                  $600</span>
+              </div>
+              <p class="text-stone-600 mb-4">The website will include specialized trust-building elements designed to
+                increase confidence among dental offices, medical offices, and schools. This includes:</p>
+              <ul class="space-y-2 mb-5">
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Structured presentation of key benefits</span>
+                </li>
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Professional visual hierarchy that communicates
+                    reliability</span>
+                </li>
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Strategic positioning of credibility-enhancing content</span>
+                </li>
+              </ul>
+              <div class="bg-orange-50 p-4 rounded-xl border border-orange-100 flex gap-3 items-start">
+                <i data-lucide="zap" class="w-5 h-5 text-orange-500 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="text-stone-900 text-sm block mb-0.5">Benefit:</strong>
+                  <span class="text-stone-700 text-sm">Positions Toy Towers as the trusted, premium provider in its
+                    region.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bonus 3 -->
+          <div
+            class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-orange-100 flex flex-col md:flex-row gap-6 items-start">
+            <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center shrink-0">
+              <i data-lucide="layout-template" class="w-6 h-6 text-orange-600"></i>
+            </div>
+            <div class="flex-grow">
+              <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2 gap-2">
+                <h3 class="text-xl font-bold text-stone-900">Bonus 3: Future-Proof, Easily Expandable Structure</h3>
+                <span class="bg-stone-100 text-stone-600 text-xs font-bold px-3 py-1 rounded-md shrink-0">Value:
+                  $900</span>
+              </div>
+              <p class="text-stone-600 mb-4">The website will be built with a flexible structure that allows for easy
+                future additions. No redesign will be required to expand.</p>
+              <ul class="space-y-2 mb-5">
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Adding new service areas & toy categories</span>
+                </li>
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Adding testimonials or new locations</span>
+                </li>
+                <li class="flex gap-3 items-start"><i data-lucide="check" class="w-5 h-5 text-orange-500 shrink-0"></i>
+                  <span class="text-stone-600 text-sm">Expanding marketing pages seamlessly</span>
+                </li>
+              </ul>
+              <div class="bg-orange-50 p-4 rounded-xl border border-orange-100 flex gap-3 items-start">
+                <i data-lucide="zap" class="w-5 h-5 text-orange-500 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="text-stone-900 text-sm block mb-0.5">Benefit:</strong>
+                  <span class="text-stone-700 text-sm">Protects the investment and prevents costly rebuilds
+                    later.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-gradient-to-r from-orange-500 to-red-500 p-1 rounded-2xl shadow-md">
+          <div class="bg-white rounded-[15px] p-6 text-center">
+            <h3 class="text-2xl font-bold text-stone-900 mb-2">Total Bonus Value: <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">$2,300</span></h3>
+            <p class="text-stone-600 font-medium">Included at No Additional Cost with the Full Website Transformation
+              package.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logistics Section -->
+    <section class="py-20 px-6 max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-stone-900 mb-6">Flexible Payment Options Details</h2>
+          <p class="text-lg text-stone-600 mb-8">Review the payment structures available to find what works best for
+            your cash flow. You can start any package using the buttons above.</p>
+
+          <div class="space-y-4">
+            <div class="p-5 border border-stone-200 rounded-2xl bg-white shadow-sm">
+              <h4 class="font-bold text-stone-900 mb-2">Option 1: Standard (50/50)</h4>
+              <p class="text-stone-600 text-sm">50% deposit to begin, 50% upon completion. <br /><em>(e.g., $925 / $925
+                  for Full Transformation)</em></p>
+            </div>
+
+            <div class="p-5 border-2 border-orange-100 rounded-2xl bg-orange-50/50 shadow-sm">
+              <div class="flex justify-between items-center mb-2">
+                <h4 class="font-bold text-stone-900">Option 2: Pay in Full</h4>
+                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-1 rounded-md">SAVE 5%</span>
+              </div>
+              <p class="text-stone-600 text-sm">Full Transformation: <strong class="text-stone-800">$1,757</strong> |
+                Homepage: <strong class="text-stone-800">$902</strong> | Hero: <strong
+                  class="text-stone-800">$427</strong></p>
+            </div>
+          </div>
+
+          <div class="mt-8 p-6 bg-[#008CFF]/10 border border-[#008CFF]/20 rounded-2xl flex items-start gap-4">
+            <div class="p-3 bg-[#008CFF] rounded-xl shrink-0">
+              <i data-lucide="smartphone" class="w-6 h-6 text-white"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-stone-900 text-lg">Preferred Payment Method</h4>
+              <p class="text-stone-600 mt-1">Payments are easily processed via Venmo.<br />Send to: <a
+                  href="https://venmo.com/u/David-Darling-8" target="_blank"
+                  class="text-[#008CFF] font-mono bg-white px-2 py-0.5 rounded border border-[#008CFF]/20 ml-1 hover:bg-[#008CFF] hover:text-white transition-colors">@David-Darling-8</a>
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="bg-stone-50 p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold text-stone-900 mb-6">Why This Matters</h3>
+          <p class="text-stone-600 leading-relaxed mb-6">
+            Toy Towers already has a great product. This redesign ensures the website properly communicates that value
+            and converts visitors into customers. A modern, conversion-focused site becomes a long-term growth asset.
+          </p>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
+            <h4 class="font-bold text-stone-900 mb-2 flex items-center gap-2">
+              <i data-lucide="star" class="w-5 h-5 text-orange-500 fill-orange-500"></i>
+              My Recommendation
+            </h4>
+            <p class="text-stone-600 text-sm leading-relaxed mb-4">
+              I highly recommend the <strong>Complete Website Transformation ($1,850)</strong>. It provides the greatest
+              long-term value, the largest increase in inquiries, integrates a dedicated service request system for
+              existing customers, and makes managing the toy inventory drastically easier for your team.
+            </p>
+            <a href="https://venmo.com/u/David-Darling-8?txn=pay&amount=925&note=Toy%20Towers%20-%20Complete%20Transformation%20(50%25%20Deposit)"
+              target="_blank"
+              class="w-full py-3 px-4 bg-stone-900 hover:bg-stone-800 text-white rounded-xl font-medium transition-colors flex items-center justify-center gap-2">
+              Approve Full Transformation <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-stone-200 py-10 text-center px-6">
+    <p class="text-stone-500 font-medium">Prepared for Toy Towers of Denver</p>
+    <p class="text-stone-400 text-sm mt-2">Conversion-Focused UX, UI, and Web Implementation by David Darling</p>
+  </footer>
+
+  <!-- Initialize Icons & Interactivity -->
+  <script>
+    // This replaces all elements with a 'data-lucide' attribute with the corresponding SVG icon
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
