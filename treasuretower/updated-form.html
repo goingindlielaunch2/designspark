@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Tower - Request Info</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hide steps by default */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        /* Input standard & error classes managed by JS */
+        .input-base {
+            width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-radius: 0.75rem;
+            border-width: 1px;
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+
+        .input-normal {
+            border-color: #e2e8f0;
+            background-color: rgb(248 250 252 / 0.5);
+        }
+
+        .input-normal:focus {
+            background-color: #ffffff;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 4px #e0e7ff;
+        }
+
+        .input-error {
+            border-color: #f87171;
+            background-color: rgb(248 250 252 / 0.5);
+            box-shadow: 0 0 0 4px #fee2e2;
+        }
+
+        .input-error:focus {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-slate-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 font-sans text-slate-900">
+
+    <!-- Success Screen (Hidden initially) -->
+    <div id="success-screen"
+        class="hidden max-w-md w-full bg-white rounded-3xl shadow-xl p-8 text-center border border-slate-100 fade-in">
+        <div
+            class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mb-3">Request Received!</h2>
+        <p class="text-slate-600 mb-8 leading-relaxed" id="success-message">
+            Thank you for your interest. We've received your information and a Treasure Tower representative will
+            contact you shortly.
+        </p>
+        <button onclick="window.location.reload()"
+            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors">
+            Return to Homepage
+        </button>
+    </div>
+
+    <!-- Main Form Container -->
+    <div id="main-container"
+        class="max-w-5xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-slate-100">
+
+        <!-- Left Column: Value Proposition -->
+        <div
+            class="hidden md:flex md:w-5/12 bg-indigo-600 flex-col justify-between p-10 text-white relative overflow-hidden">
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-indigo-500 rounded-full opacity-50 blur-3xl">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 bg-indigo-700 rounded-full opacity-50 blur-3xl">
+            </div>
+
+            <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-12">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                        <i data-lucide="star" class="text-white fill-current w-5 h-5"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Treasure Tower</span>
+                </div>
+
+                <h1 class="text-4xl font-extrabold mb-6 leading-tight">
+                    Unlock Your <br /><span class="text-indigo-200">Potential.</span>
+                </h1>
+                <p class="text-indigo-100 text-lg mb-8 leading-relaxed">
+                    Join hundreds of successful entrepreneurs operating their own Treasure Tower business nationwide.
+                </p>
+
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-3 text-indigo-50">
+                        <i data-lucide="check-circle-2" class="text-emerald-400 shrink-0 mt-0.5 w-5 h-5"></i>
+                        <span class="font-medium">Be your own boss with a proven model</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-indigo-50">
+                        <i data-lucide="check-circle-2" class="text-emerald-400 shrink-0 mt-0.5 w-5 h-5"></i>
+                        <span class="font-medium">Enjoy a highly flexible schedule</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-indigo-50">
+                        <i data-lucide="check-circle-2" class="text-emerald-400 shrink-0 mt-0.5 w-5 h-5"></i>
+                        <span class="font-medium">Provide a sought-after reward program</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-indigo-50">
+                        <i data-lucide="check-circle-2" class="text-emerald-400 shrink-0 mt-0.5 w-5 h-5"></i>
+                        <span class="font-medium">Low overhead, high income potential</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="relative z-10 mt-16 p-5 bg-white/10 rounded-2xl backdrop-blur-md border border-white/20">
+                <p class="text-sm italic text-indigo-50 leading-relaxed mb-3">
+                    "Treasure Tower gave me the independence and security I was looking for to control my own future."
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-indigo-400 flex items-center justify-center text-xs font-bold">
+                        JD</div>
+                    <span class="text-xs font-semibold text-indigo-100">Jane Doe, Business Owner</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Form Wizard -->
+        <div class="w-full md:w-7/12 p-6 sm:p-10 lg:p-12 relative flex flex-col">
+
+            <!-- Mobile Header -->
+            <div class="md:hidden mb-8 mt-10 sm:mt-6 text-center">
+                <h1 class="text-2xl font-extrabold text-slate-900 mb-2">Request Information</h1>
+                <p class="text-slate-500 text-sm">Fill out the form below to learn more about the Treasure Tower
+                    opportunity.</p>
+            </div>
+
+            <!-- Login Link -->
+            <div
+                class="absolute top-6 right-6 sm:top-8 sm:right-10 text-sm font-medium z-10 bg-white/80 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-1 md:p-0 rounded-lg">
+                <span class="text-slate-500">Already a member? </span>
+                <a href="#" class="text-indigo-600 hover:text-indigo-700 hover:underline">Log in</a>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="mb-10 mt-6 md:mt-10">
+                <div class="flex items-center justify-between relative">
+                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-100 rounded-full z-0">
+                    </div>
+                    <div id="progress-bar"
+                        class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-indigo-600 rounded-full z-0 transition-all duration-500"
+                        style="width: 0%;"></div>
+
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div id="step-indicator-1"
+                            class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors bg-indigo-600 text-white ring-4 ring-indigo-50">
+                            1
+                        </div>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div id="step-indicator-2"
+                            class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors bg-white text-slate-400 border-2 border-slate-200">
+                            2
+                        </div>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center gap-2">
+                        <div id="step-indicator-3"
+                            class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors bg-white text-slate-400 border-2 border-slate-200">
+                            3
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-2 px-1">
+                    <span class="text-xs font-semibold text-indigo-600" id="step-text-1">Basics</span>
+                    <span class="text-xs font-semibold text-slate-400" id="step-text-2">Location</span>
+                    <span class="text-xs font-semibold text-slate-400" id="step-text-3">Details</span>
+                </div>
+            </div>
+
+            <!-- Form Elements -->
+            <form id="lead-form" class="min-h-[400px] flex flex-col flex-grow">
+
+                <!-- --- STEP 1: Intent & Basics --- -->
+                <div id="step-1" class="step-content active fade-in flex-grow space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 mb-1">What are you looking for? <span
+                                class="text-indigo-500">*</span></h2>
+                        <p class="text-sm text-slate-500 mb-4">Select the option that best describes your interest.</p>
+
+                        <input type="hidden" id="intent" name="intent" value="business">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <button type="button" onclick="setIntent('business')" id="btn-intent-business"
+                                class="p-5 rounded-2xl border-2 text-left transition-all border-indigo-600 bg-indigo-50/50 shadow-sm">
+                                <div id="icon-intent-business"
+                                    class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors bg-indigo-600 text-white">
+                                    <i data-lucide="briefcase" class="w-6 h-6"></i>
+                                </div>
+                                <h3 id="title-intent-business" class="font-bold text-indigo-900">Start a Business</h3>
+                                <p class="text-sm text-slate-500 mt-1 leading-snug">I want to own and operate Treasure
+                                    Towers in my area.</p>
+                            </button>
+
+                            <button type="button" onclick="setIntent('location')" id="btn-intent-location"
+                                class="p-5 rounded-2xl border-2 text-left transition-all border-slate-200 hover:border-indigo-300 hover:bg-slate-50">
+                                <div id="icon-intent-location"
+                                    class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors bg-slate-100 text-slate-500">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <h3 id="title-intent-location" class="font-bold text-slate-800">Host a Tower</h3>
+                                <p class="text-sm text-slate-500 mt-1 leading-snug">I am interested in having a Treasure
+                                    Tower in my location.</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">First Name <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="text" id="firstName" class="input-base input-normal"
+                                oninput="clearError('firstName')">
+                            <span id="error-firstName"
+                                class="text-xs text-red-500 font-medium hidden items-center gap-1"><i data-lucide="info"
+                                    class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">Last Name <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="text" id="lastName" class="input-base input-normal"
+                                oninput="clearError('lastName')">
+                            <span id="error-lastName"
+                                class="text-xs text-red-500 font-medium hidden items-center gap-1"><i data-lucide="info"
+                                    class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">Email Address <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="email" id="email" class="input-base input-normal"
+                                oninput="clearError('email')">
+                            <span id="error-email" class="text-xs text-red-500 font-medium hidden items-center gap-1"><i
+                                    data-lucide="info" class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">Best Phone Number <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="tel" id="phone" class="input-base input-normal" oninput="clearError('phone')">
+                            <span id="error-phone" class="text-xs text-red-500 font-medium hidden items-center gap-1"><i
+                                    data-lucide="info" class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500 mt-1">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-500"></i>
+                        <span>Your information is kept strictly confidential.</span>
+                    </div>
+                </div>
+
+                <!-- --- STEP 2: Location --- -->
+                <div id="step-2" class="step-content fade-in flex-grow space-y-5">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 mb-1">Where are you located?</h2>
+                        <p class="text-sm text-slate-500 mb-6">This helps us understand available territories and
+                            distribution.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-slate-700">Street Address <span
+                                class="text-indigo-500">*</span></label>
+                        <input type="text" id="address" class="input-base input-normal" oninput="clearError('address')">
+                        <span id="error-address" class="text-xs text-red-500 font-medium hidden items-center gap-1"><i
+                                data-lucide="info" class="w-3 h-3"></i> <span></span></span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-6 gap-5">
+                        <div class="sm:col-span-3 flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">City <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="text" id="city" class="input-base input-normal" oninput="clearError('city')">
+                            <span id="error-city" class="text-xs text-red-500 font-medium hidden items-center gap-1"><i
+                                    data-lucide="info" class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                        <div class="sm:col-span-1 flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">State <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="text" id="state" placeholder="NY" class="input-base input-normal"
+                                oninput="clearError('state')">
+                            <span id="error-state" class="text-xs text-red-500 font-medium hidden items-center gap-1"><i
+                                    data-lucide="info" class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                        <div class="sm:col-span-2 flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">ZIP Code <span
+                                    class="text-indigo-500">*</span></label>
+                            <input type="text" id="zip" class="input-base input-normal" oninput="clearError('zip')">
+                            <span id="error-zip" class="text-xs text-red-500 font-medium hidden items-center gap-1"><i
+                                    data-lucide="info" class="w-3 h-3"></i> <span></span></span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5 pt-2">
+                        <label class="text-sm font-semibold text-slate-700">Country <span
+                                class="text-indigo-500">*</span></label>
+                        <select id="country" class="input-base input-normal appearance-none"
+                            style="background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e&quot;); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em;">
+                            <option value="United States">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- --- STEP 3: Details & Agreement --- -->
+                <div id="step-3" class="step-content fade-in flex-grow space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 mb-1">Final Details</h2>
+                        <p class="text-sm text-slate-500 mb-6">Almost done! Tell us a bit more about how you found us.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5">
+                        <label class="text-sm font-semibold text-slate-700">How did you hear about Treasure
+                            Tower?</label>
+                        <select id="source" class="input-base input-normal appearance-none"
+                            style="background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e&quot;); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em;">
+                            <option value="">Select an option...</option>
+                            <option value="search">Search Engine (Google, Bing, etc.)</option>
+                            <option value="social">Social Media (Facebook, Instagram)</option>
+                            <option value="referral">Friend / Referral</option>
+                            <option value="saw_tower">Saw a Treasure Tower in person</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">Website URL (Optional)</label>
+                            <input type="text" id="website" placeholder="https://" class="input-base input-normal">
+                        </div>
+                        <div class="flex flex-col gap-1.5">
+                            <label class="text-sm font-semibold text-slate-700">Facebook Page (Optional)</label>
+                            <input type="text" id="facebook" placeholder="facebook.com/yourpage"
+                                class="input-base input-normal">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-1.5 pt-2">
+                        <label class="text-sm font-semibold text-slate-700">Comments or Questions (Optional)</label>
+                        <textarea id="comments" rows="3" class="input-base input-normal resize-none"
+                            placeholder="Anything specific you'd like to know?"></textarea>
+                    </div>
+
+                    <!-- Confidentiality Agreement Box -->
+                    <div class="pt-4">
+                        <label id="agreement-container"
+                            class="flex items-start gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-colors border-slate-200 bg-slate-50 hover:bg-slate-100">
+                            <div class="flex-shrink-0 mt-0.5">
+                                <input type="checkbox" id="agreement" onchange="clearAgreementError()"
+                                    class="w-5 h-5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer">
+                            </div>
+                            <div class="flex flex-col">
+                                <div class="flex items-center gap-2">
+                                    <i data-lucide="lock" id="icon-agreement" class="w-4 h-4 text-slate-500"></i>
+                                    <span id="text-agreement" class="text-sm font-bold text-slate-800">
+                                        Treasure Tower Confidentiality Agreement <span class="text-red-500">*</span>
+                                    </span>
+                                </div>
+                                <span id="desc-agreement" class="text-xs mt-1.5 leading-relaxed text-slate-500">
+                                    By checking this box, I agree to keep all business information, pricing, and
+                                    operational details provided by Treasure Tower confidential.
+                                </span>
+                            </div>
+                        </label>
+                        <span id="error-agreement"
+                            class="text-xs text-red-500 font-medium hidden items-center gap-1 mt-2 ml-1"><i
+                                data-lucide="info" class="w-3 h-3"></i> <span>You must agree to proceed.</span></span>
+                    </div>
+                </div>
+
+                <!-- Form Actions / Buttons -->
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between mt-auto">
+
+                    <button type="button" id="btn-prev" onclick="handlePrev()"
+                        class="hidden flex items-center gap-2 px-5 py-3 rounded-xl text-slate-600 font-semibold hover:bg-slate-100 transition-colors">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i> Back
+                    </button>
+
+                    <!-- Spacer when prev button is hidden -->
+                    <div id="btn-spacer"></div>
+
+                    <button type="button" id="btn-next" onclick="handleNext()"
+                        class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl shadow-md shadow-indigo-200 transition-all active:scale-95">
+                        Continue <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+
+                    <button type="submit" id="btn-submit"
+                        class="hidden flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl shadow-md shadow-indigo-200 transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed">
+                        <span id="submit-text">Submit Request</span> <i data-lucide="arrow-right" class="w-4 h-4"
+                            id="submit-icon"></i>
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Form State
+        let currentStep = 1;
+
+        // Elements mapping
+        const el = {
+            progress: document.getElementById('progress-bar'),
+            steps: [
+                document.getElementById('step-1'),
+                document.getElementById('step-2'),
+                document.getElementById('step-3')
+            ],
+            indicators: [
+                document.getElementById('step-indicator-1'),
+                document.getElementById('step-indicator-2'),
+                document.getElementById('step-indicator-3')
+            ],
+            stepTexts: [
+                document.getElementById('step-text-1'),
+                document.getElementById('step-text-2'),
+                document.getElementById('step-text-3')
+            ],
+            btnPrev: document.getElementById('btn-prev'),
+            btnSpacer: document.getElementById('btn-spacer'),
+            btnNext: document.getElementById('btn-next'),
+            btnSubmit: document.getElementById('btn-submit')
+        };
+
+        // Set Intent UI toggles
+        function setIntent(type) {
+            document.getElementById('intent').value = type;
+
+            const bBtn = document.getElementById('btn-intent-business');
+            const lBtn = document.getElementById('btn-intent-location');
+            const bIcon = document.getElementById('icon-intent-business');
+            const lIcon = document.getElementById('icon-intent-location');
+            const bTitle = document.getElementById('title-intent-business');
+            const lTitle = document.getElementById('title-intent-location');
+
+            if (type === 'business') {
+                // Active Business
+                bBtn.className = "p-5 rounded-2xl border-2 text-left transition-all border-indigo-600 bg-indigo-50/50 shadow-sm";
+                bIcon.className = "w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors bg-indigo-600 text-white";
+                bTitle.className = "font-bold text-indigo-900";
+                // Inactive Location
+                lBtn.className = "p-5 rounded-2xl border-2 text-left transition-all border-slate-200 hover:border-indigo-300 hover:bg-slate-50";
+                lIcon.className = "w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors bg-slate-100 text-slate-500";
+                lTitle.className = "font-bold text-slate-800";
+            } else {
+                // Active Location
+                lBtn.className = "p-5 rounded-2xl border-2 text-left transition-all border-indigo-600 bg-indigo-50/50 shadow-sm";
+                lIcon.className = "w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors bg-indigo-600 text-white";
+                lTitle.className = "font-bold text-indigo-900";
+                // Inactive Business
+                bBtn.className = "p-5 rounded-2xl border-2 text-left transition-all border-slate-200 hover:border-indigo-300 hover:bg-slate-50";
+                bIcon.className = "w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors bg-slate-100 text-slate-500";
+                bTitle.className = "font-bold text-slate-800";
+            }
+        }
+
+        // Validation Functions
+        function showError(id, message) {
+            const input = document.getElementById(id);
+            const errorSpan = document.getElementById(`error-${id}`);
+
+            input.classList.remove('input-normal');
+            input.classList.add('input-error');
+
+            errorSpan.querySelector('span').innerText = message;
+            errorSpan.classList.remove('hidden');
+            errorSpan.classList.add('flex');
+        }
+
+        function clearError(id) {
+            const input = document.getElementById(id);
+            const errorSpan = document.getElementById(`error-${id}`);
+
+            input.classList.remove('input-error');
+            input.classList.add('input-normal');
+
+            errorSpan.classList.add('hidden');
+            errorSpan.classList.remove('flex');
+        }
+
+        function validateEmail(email) {
+            return /\S+@\S+\.\S+/.test(email);
+        }
+
+        function validateStep() {
+            let isValid = true;
+
+            if (currentStep === 1) {
+                if (!document.getElementById('firstName').value.trim()) { showError('firstName', 'First name is required'); isValid = false; }
+                if (!document.getElementById('lastName').value.trim()) { showError('lastName', 'Last name is required'); isValid = false; }
+                const email = document.getElementById('email').value.trim();
+                if (!email || !validateEmail(email)) { showError('email', 'Valid email is required'); isValid = false; }
+                if (!document.getElementById('phone').value.trim()) { showError('phone', 'Phone number is required'); isValid = false; }
+            }
+            else if (currentStep === 2) {
+                if (!document.getElementById('address').value.trim()) { showError('address', 'Address is required'); isValid = false; }
+                if (!document.getElementById('city').value.trim()) { showError('city', 'City is required'); isValid = false; }
+                if (!document.getElementById('state').value.trim()) { showError('state', 'State is required'); isValid = false; }
+                if (!document.getElementById('zip').value.trim()) { showError('zip', 'ZIP Code is required'); isValid = false; }
+            }
+            else if (currentStep === 3) {
+                const agreement = document.getElementById('agreement').checked;
+                const container = document.getElementById('agreement-container');
+                const icon = document.getElementById('icon-agreement');
+                const text = document.getElementById('text-agreement');
+                const desc = document.getElementById('desc-agreement');
+                const errorSpan = document.getElementById('error-agreement');
+
+                if (!agreement) {
+                    container.className = "flex items-start gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-colors border-red-300 bg-red-50";
+                    icon.classList.replace('text-slate-500', 'text-red-500');
+                    text.className = "text-sm font-bold text-red-700";
+                    desc.className = "text-xs mt-1.5 leading-relaxed text-red-600";
+                    errorSpan.classList.remove('hidden');
+                    errorSpan.classList.add('flex');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        function clearAgreementError() {
+            const container = document.getElementById('agreement-container');
+            const icon = document.getElementById('icon-agreement');
+            const text = document.getElementById('text-agreement');
+            const desc = document.getElementById('desc-agreement');
+            const errorSpan = document.getElementById('error-agreement');
+
+            container.className = "flex items-start gap-4 p-5 rounded-2xl border-2 cursor-pointer transition-colors border-slate-200 bg-slate-50 hover:bg-slate-100";
+            icon.classList.replace('text-red-500', 'text-slate-500');
+            text.className = "text-sm font-bold text-slate-800";
+            desc.className = "text-xs mt-1.5 leading-relaxed text-slate-500";
+            errorSpan.classList.add('hidden');
+            errorSpan.classList.remove('flex');
+        }
+
+        // Navigation & UI Update
+        function updateUI() {
+            // Update Progress Bar
+            el.progress.style.width = `${((currentStep - 1) / 2) * 100}%`;
+
+            // Update Indicators
+            [1, 2, 3].forEach(num => {
+                const indicator = el.indicators[num - 1];
+                const text = el.stepTexts[num - 1];
+
+                if (currentStep >= num) {
+                    indicator.className = "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors bg-indigo-600 text-white ring-4 ring-indigo-50";
+                    text.className = "text-xs font-semibold text-indigo-600";
+                    if (currentStep > num) {
+                        indicator.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i>`;
+                    } else {
+                        indicator.innerHTML = num;
+                    }
+                } else {
+                    indicator.className = "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors bg-white text-slate-400 border-2 border-slate-200";
+                    text.className = "text-xs font-semibold text-slate-400";
+                    indicator.innerHTML = num;
+                }
+            });
+            lucide.createIcons(); // Re-render newly injected checkmark icons
+
+            // Show/Hide Steps
+            el.steps.forEach((step, index) => {
+                if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+
+            // Show/Hide Buttons
+            if (currentStep > 1) {
+                el.btnPrev.classList.remove('hidden');
+                el.btnPrev.classList.add('flex');
+                el.btnSpacer.classList.add('hidden');
+            } else {
+                el.btnPrev.classList.add('hidden');
+                el.btnPrev.classList.remove('flex');
+                el.btnSpacer.classList.remove('hidden');
+            }
+
+            if (currentStep < 3) {
+                el.btnNext.classList.remove('hidden');
+                el.btnNext.classList.add('flex');
+                el.btnSubmit.classList.add('hidden');
+                el.btnSubmit.classList.remove('flex');
+            } else {
+                el.btnNext.classList.add('hidden');
+                el.btnNext.classList.remove('flex');
+                el.btnSubmit.classList.remove('hidden');
+                el.btnSubmit.classList.add('flex');
+            }
+        }
+
+        function handleNext() {
+            if (validateStep()) {
+                currentStep++;
+                updateUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function handlePrev() {
+            currentStep--;
+            updateUI();
+        }
+
+        // Form Submission
+        document.getElementById('lead-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (validateStep()) {
+                const btn = el.btnSubmit;
+                const btnText = document.getElementById('submit-text');
+                const btnIcon = document.getElementById('submit-icon');
+
+                // Loading State
+                btn.disabled = true;
+                btnText.innerText = "Processing...";
+                btnIcon.classList.add('hidden');
+
+                // Simulate API Request
+                setTimeout(() => {
+                    document.getElementById('main-container').classList.add('hidden');
+
+                    // Get name to personalize success message
+                    const firstName = document.getElementById('firstName').value;
+                    document.getElementById('success-message').innerText = `Thank you for your interest, ${firstName}. We've received your information and a Treasure Tower representative will contact you shortly.`;
+
+                    document.getElementById('success-screen').classList.remove('hidden');
+                }, 1500);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
