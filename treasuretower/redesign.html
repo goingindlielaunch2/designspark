@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Tower | Re-Design Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            base: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            gray: '#86868b',
+                            blue: '#0066cc',
+                            blueHover: '#0071e3',
+                            black: '#000000',
+                            white: '#ffffff'
+                        },
+                        brand: {
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                        }
+                    },
+                    boxShadow: {
+                        'apple': '0 4px 24px rgba(0,0,0,0.04)',
+                        'apple-hover': '0 10px 40px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #14b8a6 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bento-card {
+            background-color: #f5f5f7;
+            border-radius: 32px;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+        }
+
+        .bento-card:hover {
+            transform: scale(1.015);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            background-color: #ffffff;
+        }
+
+        .step-line {
+            position: absolute;
+            left: 1.15rem;
+            top: 3rem;
+            bottom: -1rem;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+
+        .last-step .step-line {
+            display: none;
+        }
+
+        .segmented-control {
+            background-color: #e3e3e8;
+            border-radius: 999px;
+            padding: 4px;
+            display: inline-flex;
+            position: relative;
+        }
+
+        .segment-btn {
+            padding: 8px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1d1d1f;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .segment-btn.active {
+            color: #1d1d1f;
+        }
+
+        .segment-bg {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            background: #ffffff;
+            border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.3s ease;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-apple-dark selection:bg-apple-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-14 items-center">
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold text-lg tracking-tight text-apple-dark">Re-Design Proposal</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-xs font-normal text-apple-dark/80 tracking-wide">
+                    <a href="#strategy" class="hover:text-apple-dark transition">Strategy</a>
+                    <a href="#journey" class="hover:text-apple-dark transition">Experience</a>
+                    <a href="#bonuses" class="hover:text-apple-dark transition">Bonuses</a>
+                    <a href="#roadmap" class="hover:text-apple-dark transition">Roadmap</a>
+                </div>
+                <a href="#investment"
+                    class="bg-apple-blue text-white px-4 py-1.5 rounded-full text-xs font-medium hover:bg-apple-blueHover transition">
+                    See pricing
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header
+        class="pt-40 pb-32 lg:pt-56 lg:pb-40 px-4 overflow-hidden relative flex flex-col items-center justify-center text-center">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <h2 class="text-xs md:text-sm font-semibold tracking-widest uppercase text-apple-gray mb-6">UX, UI & Lead
+                Conversion</h2>
+
+            <h1 class="text-5xl md:text-[80px] font-bold tracking-tighter leading-[1.05] mb-8 text-apple-dark">
+                Treasure Tower <br class="hidden md:block" />
+                <span class="text-gradient">Re-Design Proposal.</span>
+            </h1>
+
+            <p
+                class="text-xl md:text-2xl text-apple-gray font-medium tracking-tight max-w-3xl mx-auto leading-relaxed mb-12">
+                The goal is simple: turn the website into a reliable tool for attracting and converting more business
+                owners, while remaining a valuable resource for your existing business owners.
+            </p>
+
+            <a href="#strategy"
+                class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-apple-blue hover:bg-apple-blueHover rounded-full transition-colors duration-300">
+                Explore the strategy
+            </a>
+        </div>
+    </header>
+
+    <!-- Strategy Section -->
+    <section id="strategy" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">The Strategy.</h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight max-w-2xl mx-auto">Upgrading aesthetics,
+                    performance, and user experience to drive measurable business growth.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-between">
+                    <div>
+                        <svg class="w-12 h-12 text-brand-500 mb-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Higher Conversion.</h3>
+                        <p class="text-apple-gray text-lg leading-relaxed font-medium">
+                            A streamlined 3-step inline form allows visitors to request information instantly. By
+                            removing unnecessary steps, we dramatically increase the likelihood that interested visitors
+                            complete the process.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-between">
+                    <div>
+                        <svg class="w-12 h-12 text-brand-500 mb-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-4">Modernized Brand.</h3>
+                        <p class="text-apple-gray text-lg leading-relaxed font-medium">
+                            A clean, premium aesthetic that reflects the quality of the Treasure Tower program. We can
+                            optionally tie the hero theme directly to your direct mail campaigns for a cohesive
+                            experience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Conversion Journey Section -->
+    <section id="journey" class="py-32 bg-apple-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">The Post-Submission Experience.</h2>
+                <p class="text-xl text-white/80 font-medium tracking-tight max-w-2xl mx-auto">Exactly what happens the
+                    moment a prospective owner takes action.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-16 relative text-center">
+                <div class="relative z-10 flex flex-col items-center">
+                    <div
+                        class="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.15)] relative backdrop-blur-sm">
+                        <div
+                            class="absolute inset-0 border border-white/30 rounded-full animate-[spin_4s_linear_infinite]">
+                        </div>
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">1. Instant Engagement</h3>
+                    <p class="text-white/80 text-base leading-relaxed font-medium">
+                        Upon submitting the request info form, the prospect is seamlessly shown a high-quality
+                        introductory video, capitalizing on their peak interest.
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center">
+                    <div
+                        class="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.15)] relative backdrop-blur-sm">
+                        <div class="absolute inset-0 border border-white/30 rounded-full"></div>
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">2. Automated Nurture</h3>
+                    <p class="text-white/80 text-base leading-relaxed font-medium">
+                        Simultaneously, a branded welcome email is dispatched. This provides additional resources and
+                        keeps the opportunity top-of-mind.
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center">
+                    <div
+                        class="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.15)] relative backdrop-blur-sm">
+                        <div class="absolute inset-0 border border-white/30 rounded-full"></div>
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">3. Actionable Lead</h3>
+                    <p class="text-white/80 text-base leading-relaxed font-medium">
+                        The data is securely logged into your WordPress / CRM ecosystem. Your team is alerted with a
+                        rich lead profile, ready for a warm follow-up.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Suite Section -->
+    <section id="bonuses" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">Added Value Bonus.</h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight max-w-2xl mx-auto italic">Choose one of the
+                    following (or an equivalent) to be included with your project at no extra cost.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Dashboard Bonus -->
+                <div class="bento-card p-10 md:p-14 bg-apple-base border border-slate-100 flex flex-col">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-apple-blue rounded-xl flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold tracking-tight">Option A: Lead Dashboard</h3>
+                    </div>
+                    <p class="text-apple-gray text-lg font-medium leading-relaxed mb-8">
+                        Stop guessing where your leads are coming from. We build a central dashboard that captures all
+                        form submissions and shows you critical data at a glance.
+                    </p>
+                    <ul class="grid grid-cols-2 gap-4 text-sm font-semibold text-apple-dark mt-auto">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Total Lead Count</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Source Tracking</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Conversion Rates</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Top Pages</li>
+                    </ul>
+                </div>
+
+                <!-- Ad Landing Page Bonus -->
+                <div class="bento-card p-10 md:p-14 bg-apple-base border border-slate-100 flex flex-col">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold tracking-tight">Option B: Ad Landing Page</h3>
+                    </div>
+                    <p class="text-apple-gray text-lg font-medium leading-relaxed mb-8">
+                        A dedicated, high-conversion landing page optimized specifically for Facebook or Google ads.
+                        Perfect for testing specific territories or owner hooks.
+                    </p>
+                    <ul class="grid grid-cols-1 gap-4 text-sm font-semibold text-apple-dark mt-auto">
+                        <li class="flex items-center gap-2"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Single Call-to-Action</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Mobile-first Design</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Blazing Fast Load Speed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-apple-gray font-semibold text-lg tracking-tight">
+                    <span class="text-apple-dark">OR</span> Suggest an equivalent bonus specific to your needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="py-24 bg-apple-base">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">Execution Timeline.
+                </h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight">A structured approach to launch within a
+                    fast two-week sprint.</p>
+            </div>
+
+            <div class="relative pl-4 md:pl-0">
+                <!-- Phase 1 -->
+                <div class="relative pb-16 md:flex md:items-start md:justify-between group">
+                    <div class="hidden md:block absolute left-[27%] top-8 bottom-[-2rem] w-[1px] bg-gray-300"></div>
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week
+                            1</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Strategy & Design</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Designing the
+                                request info form, page content, and overall layout while exploring variations.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Creating full-color
+                                page designs that seamlessly align with your brand and marketing.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Presenting two
+                                distinct layout and design concepts for your review and approval.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative pb-16 md:flex md:items-start md:justify-between group">
+                    <div class="hidden md:block absolute left-[27%] top-8 bottom-[-2rem] w-[1px] bg-gray-300"></div>
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week
+                            1-2</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Development</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Developing in a
+                                secure, local staging environment to ensure zero disruption to the live site.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Building out the
+                                form and all page elements so the experience feels incredibly smooth.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Ensuring
+                                pixel-perfect execution on mobile devices.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative pb-16 md:flex md:items-start md:justify-between group">
+                    <div class="hidden md:block absolute left-[27%] top-8 bottom-[-2rem] w-[1px] bg-gray-300"></div>
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week
+                            2</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Wrapping Up Development</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Adding safety
+                                checks to prevent fake phone numbers or zip codes.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Connecting the form
+                                directly to the existing WordPress system and/or CRM.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Implementing
+                                partial data capture to follow up with leads who start but drop off.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Conducting initial
+                                testing of data routing and form functionality.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="relative md:flex md:items-start md:justify-between group">
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week 2
+                            End</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Final Testing & Go-Live</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Final rigorous
+                                cross-browser and cross-device testing to ensure pixel-perfect presentation.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Optionally setting
+                                up custom tracking links for tracking postcard leads.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Final review and
+                                official launch of the new pages.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Commencement of
+                                30-day post-launch support for tweaks, adjustments, and fixes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section id="investment" class="py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">Your Growth Plan.</h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight mb-10">Choose the structure that works best
+                    for your you.</p>
+
+                <div class="segmented-control" role="group">
+                    <div class="segment-bg" id="segment-bg" style="width: 50%; left: 4px;"></div>
+                    <button id="btn-monthly" onclick="togglePricing('monthly')" class="segment-btn active w-40">Monthly
+                        Plans</button>
+                    <button id="btn-full" onclick="togglePricing('full')" class="segment-btn w-40">Pay in Full</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto" id="pricing-cards">
+
+                <!-- Monthly View: Extended Plan -->
+                <div class="monthly-card bento-card p-12 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-semibold tracking-tight text-apple-dark mb-2">Extended Plan</h3>
+                        <p class="text-apple-gray font-medium mb-8">6-month structured plan.</p>
+                        <div class="mb-10">
+                            <span class="text-5xl font-bold tracking-tighter text-apple-dark">$275</span>
+                            <span class="text-apple-gray font-medium text-lg">/mo</span>
+                        </div>
+                        <ul class="space-y-4 text-apple-dark font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Homepage & Request Page Redesign</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 3-Step Inline Request Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> WordPress / CRM Integration</li>
+                            <li class="flex items-center text-apple-blue font-bold"><svg class="w-5 h-5 mr-3"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg> Choice of 1 Bonus or Equivalent</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-dark mr-3 opacity-60"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30-Day Post-Launch Support</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-gray-200 text-apple-gray"><svg
+                                    class="w-5 h-5 mr-3 opacity-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24"></svg> Total: $1,650</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?txn=pay&note=1st%20of%206%20payments%20for%20Treasure%20Tower%20Redesign"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-gray-200 hover:bg-gray-300 transition-colors">Select
+                        Extended</a>
+                </div>
+
+                <!-- Monthly View: Standard Plan (Highlighted) -->
+                <div
+                    class="monthly-card rounded-[32px] p-12 flex flex-col justify-between bg-apple-dark text-white shadow-2xl scale-[1.02]">
+                    <div>
+                        <div
+                            class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
+                            Most Popular</div>
+                        <h3 class="text-2xl font-semibold tracking-tight mb-2">Standard Plan</h3>
+                        <p class="text-gray-400 font-medium mb-8">3-month project duration.</p>
+                        <div class="mb-10">
+                            <span class="text-5xl font-bold tracking-tighter">$500</span>
+                            <span class="text-gray-400 font-medium text-lg">/mo</span>
+                        </div>
+                        <ul class="space-y-4 font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Homepage & Request Page Redesign</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 3-Step Inline Request Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> WordPress / CRM Integration</li>
+                            <li class="flex items-center text-brand-500 font-bold"><svg class="w-5 h-5 mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg> Choice of 1 Bonus or Equivalent</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30-Day Post-Launch Support</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-white/10 text-gray-400"><svg
+                                    class="w-5 h-5 mr-3 opacity-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24"></svg> Total: $1,500</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?txn=pay&note=1st%20of%203%20payments%20for%20Treasure%20Tower%20Redesign"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-white hover:bg-gray-100 transition-colors">Select
+                        Standard</a>
+                </div>
+
+                <!-- Full Pay Plan -->
+                <div id="full-card"
+                    class="hidden md:col-span-2 max-w-lg mx-auto w-full rounded-[32px] p-12 flex-col justify-between bg-apple-dark text-white shadow-2xl">
+                    <div>
+                        <div
+                            class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
+                            Best Value</div>
+                        <h3 class="text-2xl font-semibold tracking-tight mb-2">Paid in Full</h3>
+                        <p class="text-gray-400 font-medium mb-8">One-time payment.</p>
+                        <div class="mb-10 flex items-end gap-4">
+                            <span class="text-6xl font-bold tracking-tighter">$1,350</span>
+                            <span class="text-gray-500 font-medium text-lg line-through mb-1">$1,500</span>
+                        </div>
+                        <ul class="space-y-4 font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Homepage & Request Page Redesign</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 3-Step Inline Request Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> WordPress / CRM Integration</li>
+                            <li class="flex items-center text-brand-500 font-bold"><svg class="w-5 h-5 mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg> Choice of 1 Bonus or Equivalent</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30-Day Post-Launch Support</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-white/10 text-white"><svg
+                                    class="w-5 h-5 text-white mr-3" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg> 10% Discount Applied</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?txn=pay&note=Full%20Pay%20for%20Treasure%20Tower%20Redesign"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-white hover:bg-gray-100 transition-colors">Select
+                        Full Pay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-apple-base text-apple-dark py-20 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-6">Ready to get started?</h2>
+            <p class="text-apple-gray font-medium mb-10 max-w-xl mx-auto text-lg">
+                Let's finalize the architecture and hit the ground running for a fast, two-week launch.
+            </p>
+            <a href="mailto:client@example.com"
+                class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-apple-blue hover:bg-apple-blueHover rounded-full transition-colors duration-300">
+                Approve & Start Phase 1
+            </a>
+            <p class="mt-16 text-xs text-gray-500 font-medium tracking-wide">
+                Prepared exclusively for Treasure Tower. Prices valid for 30 days.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Pricing Script -->
+    <script>
+        function togglePricing(view) {
+            const monthlyCards = document.querySelectorAll('.monthly-card');
+            const fullCard = document.getElementById('full-card');
+            const bg = document.getElementById('segment-bg');
+
+            if (view === 'monthly') {
+                bg.style.transform = 'translateX(0)';
+
+                monthlyCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.add('flex');
+                });
+                fullCard.classList.remove('flex');
+                fullCard.classList.add('hidden');
+
+            } else {
+                bg.style.transform = 'translateX(100%)';
+
+                monthlyCards.forEach(card => {
+                    card.classList.remove('flex');
+                    card.classList.add('hidden');
+                });
+                fullCard.classList.remove('hidden');
+                fullCard.classList.add('flex');
+            }
+        }
+    </script>
+</body>
+
+</html>
