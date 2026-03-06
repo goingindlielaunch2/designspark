@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Tower | Re-Design Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            base: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            gray: '#86868b',
+                            blue: '#0066cc',
+                            blueHover: '#0071e3',
+                            black: '#000000',
+                            white: '#ffffff'
+                        },
+                        brand: {
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                        }
+                    },
+                    boxShadow: {
+                        'apple': '0 4px 24px rgba(0,0,0,0.04)',
+                        'apple-hover': '0 10px 40px rgba(0,0,0,0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #14b8a6 0%, #0ea5e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bento-card {
+            background-color: #f5f5f7;
+            border-radius: 32px;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+        }
+
+        .bento-card:hover {
+            transform: scale(1.015);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            background-color: #ffffff;
+        }
+
+        .step-line {
+            position: absolute;
+            left: 1.15rem;
+            top: 3rem;
+            bottom: -1rem;
+            width: 2px;
+            background-color: #e5e7eb;
+            z-index: 0;
+        }
+
+        .last-step .step-line {
+            display: none;
+        }
+
+        .segmented-control {
+            background-color: #e3e3e8;
+            border-radius: 999px;
+            padding: 4px;
+            display: inline-flex;
+            position: relative;
+        }
+
+        .segment-btn {
+            padding: 8px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #1d1d1f;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .segment-btn.active {
+            color: #1d1d1f;
+        }
+
+        .segment-bg {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            background: #ffffff;
+            border-radius: 999px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.3s ease;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-apple-dark selection:bg-apple-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-14 items-center">
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold text-lg tracking-tight text-apple-dark">Re-Design Proposal</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-xs font-normal text-apple-dark/80 tracking-wide">
+                    <a href="#strategy" class="hover:text-apple-dark transition">Our Plan</a>
+                    <a href="#journey" class="hover:text-apple-dark transition">Visitor Journey</a>
+                    <a href="#bonuses" class="hover:text-apple-dark transition">Extras</a>
+                    <a href="#roadmap" class="hover:text-apple-dark transition">Timeline</a>
+                </div>
+                <a href="#investment"
+                    class="bg-apple-blue text-white px-4 py-1.5 rounded-full text-xs font-medium hover:bg-apple-blueHover transition">
+                    See pricing
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top Banner Area (Hero) -->
+    <header
+        class="pt-40 pb-32 lg:pt-56 lg:pb-40 px-4 overflow-hidden relative flex flex-col items-center justify-center text-center">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <h2 class="text-xs md:text-sm font-semibold tracking-widest uppercase text-apple-gray mb-6">Better Design &
+                Getting More Customers</h2>
+
+            <h1 class="text-5xl md:text-[80px] font-bold tracking-tighter leading-[1.05] mb-8 text-apple-dark">
+                Treasure Tower <br class="hidden md:block" />
+                <span class="text-gradient">Re-Design Proposal.</span>
+            </h1>
+
+            <p
+                class="text-xl md:text-2xl text-apple-gray font-medium tracking-tight max-w-3xl mx-auto leading-relaxed mb-12">
+                The goal is simple: turn the website into a reliable tool for attracting and signing up more business
+                owners, while remaining a valuable resource for your existing business owners.
+            </p>
+
+            <a href="#strategy"
+                class="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-apple-blue hover:bg-apple-blueHover rounded-full transition-colors duration-300">
+                See the plan
+            </a>
+        </div>
+    </header>
+
+    <!-- The Plan Section (Strategy) -->
+    <section id="strategy" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">The Plan.</h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight max-w-2xl mx-auto">Upgrading the look,
+                    speed, and ease of use to help your business grow. <span
+                        class="block mt-2 font-semibold text-apple-dark">Specifically focusing on the Homepage and
+                        Request Info page.</span></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-between">
+                    <div>
+                        <svg class="w-12 h-12 text-brand-500 mb-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-4">More Sign-Ups.</h3>
+                        <p class="text-apple-gray text-lg leading-relaxed font-medium">
+                            A simple 3-step form right on the page allows visitors to request information instantly. By
+                            removing extra steps, we make it much more likely that interested visitors will actually
+                            finish filling it out.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bento-card p-10 md:p-14 flex flex-col justify-between">
+                    <div>
+                        <svg class="w-12 h-12 text-brand-500 mb-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <h3 class="text-2xl md:text-3xl font-semibold tracking-tight mb-4">A Fresh, Modern Look.</h3>
+                        <p class="text-apple-gray text-lg leading-relaxed font-medium mb-8">
+                            A clean, high-quality design that reflects the value of the Treasure Tower program. We can
+                            optionally match the top website banner directly to your direct mail flyers so everything
+                            looks connected.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-auto bg-white rounded-2xl p-6 border border-gray-100 shadow-sm flex flex-col items-center">
+                        <span class="text-xs font-semibold text-apple-gray mb-4 uppercase tracking-wider">The "Top
+                            Banner" Area</span>
+                        <svg class="w-full max-w-[240px] h-auto text-gray-200" viewBox="0 0 200 140" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="180" height="120" rx="6" stroke="currentColor" stroke-width="2"
+                                fill="#ffffff" />
+                            <path d="M10 26C10 21.5817 13.5817 18 18 18H182C186.418 18 190 21.5817 190 26V32H10V26Z"
+                                fill="currentColor" opacity="0.5" />
+                            <circle cx="22" cy="25" r="3" fill="#ffffff" />
+                            <circle cx="32" cy="25" r="3" fill="#ffffff" />
+                            <circle cx="42" cy="25" r="3" fill="#ffffff" />
+                            <rect x="10" y="32" width="180" height="45" fill="#14b8a6" opacity="0.15" />
+                            <rect x="10" y="32" width="180" height="45" stroke="#14b8a6" stroke-width="2"
+                                stroke-dasharray="4 2" />
+                            <rect x="30" y="45" width="80" height="6" rx="3" fill="#14b8a6" />
+                            <rect x="30" y="57" width="100" height="4" rx="2" fill="#14b8a6" opacity="0.6" />
+                            <rect x="20" y="87" width="45" height="30" rx="4" fill="currentColor" opacity="0.3" />
+                            <rect x="77" y="87" width="45" height="30" rx="4" fill="currentColor" opacity="0.3" />
+                            <rect x="134" y="87" width="45" height="30" rx="4" fill="currentColor" opacity="0.3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Happens Next Section (Journey) -->
+    <section id="journey" class="py-32 bg-apple-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-24">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter mb-6">What Happens After They Sign Up.</h2>
+                <p class="text-xl text-white/80 font-medium tracking-tight max-w-2xl mx-auto">Exactly what happens the
+                    moment a potential owner fills out the form.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-16 relative text-center">
+                <div class="relative z-10 flex flex-col items-center">
+                    <div
+                        class="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.15)] relative backdrop-blur-sm">
+                        <div
+                            class="absolute inset-0 border border-white/30 rounded-full animate-[spin_4s_linear_infinite]">
+                        </div>
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">1. Immediate Connection</h3>
+                    <p class="text-white/80 text-base leading-relaxed font-medium">
+                        As soon as they submit the form, the visitor is smoothly shown a high-quality introductory video
+                        while they are most interested.
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center">
+                    <div
+                        class="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.15)] relative backdrop-blur-sm">
+                        <div class="absolute inset-0 border border-white/30 rounded-full"></div>
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">2. Automatic Follow-Up</h3>
+                    <p class="text-white/80 text-base leading-relaxed font-medium">
+                        At the same time, a welcoming email with your branding is sent. This gives them more helpful
+                        resources and keeps your business fresh in their minds.
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center">
+                    <div
+                        class="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(255,255,255,0.15)] relative backdrop-blur-sm">
+                        <div class="absolute inset-0 border border-white/30 rounded-full"></div>
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold tracking-tight mb-4">3. Ready-to-Call Contact</h3>
+                    <p class="text-white/80 text-base leading-relaxed font-medium">
+                        Their information is securely saved into your website's database. Your team gets an alert with
+                        all their details, ready for a friendly follow-up call.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extras Section (Bonuses) -->
+    <section id="bonuses" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">Included Extras.</h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight max-w-2xl mx-auto italic">Choose one of the
+                    following (or an equivalent) to be included with your project at no extra cost.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <!-- Dashboard Bonus -->
+                <div class="bento-card p-10 md:p-14 bg-apple-base border border-slate-100 flex flex-col">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-apple-blue rounded-xl flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold tracking-tight">Option A: Contact Tracker Board</h3>
+                    </div>
+                    <p class="text-apple-gray text-lg font-medium leading-relaxed mb-8">
+                        Stop guessing where your new contacts are coming from. We build a simple screen that tracks all
+                        form submissions and shows you the most important numbers at a glance.
+                    </p>
+                    <ul class="grid grid-cols-2 gap-4 text-sm font-semibold text-apple-dark mt-auto">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Total Number of Contacts</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Where They Came From</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Sign-Up Success Rate</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-apple-blue"></span>
+                            Most Visited Pages</li>
+                    </ul>
+                </div>
+
+                <!-- Ad Landing Page Bonus -->
+                <div class="bento-card p-10 md:p-14 bg-apple-base border border-slate-100 flex flex-col">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold tracking-tight">Option B: Redesign an Additional Page</h3>
+                    </div>
+                    <p class="text-apple-gray text-lg font-medium leading-relaxed mb-8">
+                        Choose one more existing page on treasuretower.net (like an About, FAQ, or Contact page) and we
+                        will give it the same modern, high-quality redesign to perfectly match your new homepage.
+                    </p>
+                    <ul class="grid grid-cols-1 gap-4 text-sm font-semibold text-apple-dark mt-auto">
+                        <li class="flex items-center gap-2"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Matches New Design Style</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Mobile-Friendly Update</li>
+                        <li class="flex items-center gap-2"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Improved Reading Experience</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-apple-gray font-semibold text-lg tracking-tight">
+                    <span class="text-apple-dark">OR</span> Suggest an equivalent bonus specific to your needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section (Roadmap) -->
+    <section id="roadmap" class="py-24 bg-apple-base">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">Project Timeline.
+                </h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight">A clear step-by-step plan to get your new
+                    site live in just two weeks.</p>
+            </div>
+
+            <div class="relative pl-4 md:pl-0">
+                <!-- Phase 1 -->
+                <div class="relative pb-16 md:flex md:items-start md:justify-between group">
+                    <div class="hidden md:block absolute left-[27%] top-8 bottom-[-2rem] w-[1px] bg-gray-300"></div>
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week
+                            1</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Planning & Design</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Designing the form,
+                                the text on the page, and how everything is arranged.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Creating page
+                                designs that perfectly match your business colors and style.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Showing you two
+                                different design options to pick from.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative pb-16 md:flex md:items-start md:justify-between group">
+                    <div class="hidden md:block absolute left-[27%] top-8 bottom-[-2rem] w-[1px] bg-gray-300"></div>
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week
+                            1-2</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Building the Site</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Building the new
+                                pages on a private hidden link so your current website stays exactly as it is until we
+                                are ready.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Putting together
+                                the form and all the pieces of the page so everything works smoothly.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Making sure
+                                everything looks perfect and is easy to tap on mobile phones.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative pb-16 md:flex md:items-start md:justify-between group">
+                    <div class="hidden md:block absolute left-[27%] top-8 bottom-[-2rem] w-[1px] bg-gray-300"></div>
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week
+                            2</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Finishing the Build</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Adding safety
+                                checks to prevent fake phone numbers or zip codes.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Connecting the form
+                                straight to your current website's database.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Setting up a way to
+                                save info from people who start filling out the form but don't finish it.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Testing the form to
+                                make sure emails and details go to the right place.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="relative md:flex md:items-start md:justify-between group">
+                    <div class="md:w-1/4 mb-4 md:mb-0 relative z-10 bg-apple-base md:pr-4">
+                        <span class="text-sm font-bold text-apple-gray tracking-widest uppercase block mb-1">Week 2
+                            End</span>
+                        <h4 class="text-xl font-semibold text-apple-dark">Final Checks & Launch</h4>
+                    </div>
+                    <div
+                        class="md:w-[65%] bg-white rounded-3xl p-8 shadow-apple border border-gray-100 group-hover:shadow-apple-hover transition-shadow duration-300 relative z-10">
+                        <ul class="space-y-4 text-apple-gray font-medium">
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Final testing on
+                                different phones, tablets, and web browsers (like Chrome and Safari) to make sure it
+                                looks great everywhere.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Optionally setting
+                                up special web links so you know which contacts came from your postcards.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Final review and
+                                official launch of the new pages.</li>
+                            <li class="flex items-start"><span class="text-apple-dark mr-3">•</span> Starting your 30
+                                days of free support after launch for any small changes or fixes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section (Investment) -->
+    <section id="investment" class="py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold tracking-tighter text-apple-dark mb-6">Pricing Options.</h2>
+                <p class="text-xl text-apple-gray font-medium tracking-tight mb-10">Choose the payment plan that works
+                    best
+                    for you.</p>
+
+                <div class="segmented-control" role="group">
+                    <div class="segment-bg" id="segment-bg" style="width: calc(50% - 4px); left: 4px;"></div>
+                    <button id="btn-monthly" onclick="togglePricing('monthly')" class="segment-btn active w-40">Monthly
+                        Plans</button>
+                    <button id="btn-full" onclick="togglePricing('full')" class="segment-btn w-40">Pay in Full</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="pricing-cards">
+
+                <!-- Monthly View: Extended Plan -->
+                <div class="monthly-card bento-card p-12 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-semibold tracking-tight text-apple-dark mb-2">Extended Payment Plan
+                        </h3>
+                        <p class="text-apple-gray font-medium mb-8">Pay over 6 months.</p>
+                        <div class="mb-10">
+                            <span class="text-5xl font-bold tracking-tighter text-apple-dark">$275</span>
+                            <span class="text-apple-gray font-medium text-lg">/mo</span>
+                        </div>
+                        <ul class="space-y-4 text-apple-dark font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> New Design for Homepage & Sign-Up Page</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Simple 3-Step Sign-Up Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Connects to Your Website Database</li>
+                            <li class="flex items-center text-apple-blue font-bold"><svg class="w-5 h-5 mr-3"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg> Choice of 1 Extra Bonus</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-dark mr-3 opacity-60"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30 Days of Free Support After Launch</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-gray-200 text-apple-gray"><svg
+                                    class="w-5 h-5 mr-3 opacity-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24"></svg> Total: $1,650</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?txn=pay&amount=275&note=1st%20of%206%20payments%20for%20Treasure%20Tower%20Redesign%20(homepage%20and%20request%20info%20page)"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-gray-200 hover:bg-gray-300 transition-colors">Select
+                        Extended</a>
+                </div>
+
+                <!-- Monthly View: Standard Plan (Highlighted) -->
+                <div
+                    class="monthly-card rounded-[32px] p-12 flex flex-col justify-between bg-apple-dark text-white shadow-2xl scale-[1.02]">
+                    <div>
+                        <div
+                            class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
+                            Most Popular</div>
+                        <h3 class="text-2xl font-semibold tracking-tight mb-2">Standard Payment Plan</h3>
+                        <p class="text-gray-400 font-medium mb-8">Pay over 3 months.</p>
+                        <div class="mb-10">
+                            <span class="text-5xl font-bold tracking-tighter">$500</span>
+                            <span class="text-gray-400 font-medium text-lg">/mo</span>
+                        </div>
+                        <ul class="space-y-4 font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> New Design for Homepage & Sign-Up Page</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Simple 3-Step Sign-Up Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Connects to Your Website Database</li>
+                            <li class="flex items-center text-brand-500 font-bold"><svg class="w-5 h-5 mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg> Choice of 1 Extra Bonus</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30 Days of Free Support After Launch</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-white/10 text-gray-400"><svg
+                                    class="w-5 h-5 mr-3 opacity-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24"></svg> Total: $1,500</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?txn=pay&amount=500&note=1st%20of%203%20payments%20for%20Treasure%20Tower%20Redesign%20(homepage%20and%20request%20info%20page)"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-white hover:bg-gray-100 transition-colors">Select
+                        Standard</a>
+                </div>
+
+                <!-- Monthly View: Pay-As-You-Grow Plan -->
+                <div class="monthly-card bento-card p-12 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-semibold tracking-tight text-apple-dark mb-2">Pay-As-You-Grow Plan</h3>
+                        <p class="text-apple-gray font-medium mb-8">Aligned with your revenue.</p>
+                        <div class="mb-10">
+                            <span class="text-4xl font-bold tracking-tighter text-apple-dark">Flexible</span>
+                        </div>
+                        <ul class="space-y-4 text-apple-dark font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> New Design for Homepage & Sign-Up Page</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Simple 3-Step Sign-Up Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-blue mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Choice of 1 Extra Bonus</li>
+                            <li class="flex items-start text-brand-600 font-bold"><svg
+                                    class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                                <span>No Fixed Monthly Minimum
+                                    <span class="block text-sm font-normal text-apple-gray mt-1 leading-snug">Pay down
+                                        the balance using the extra income generated by your new leads.</span>
+                                </span>
+                            </li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-apple-dark mr-3 opacity-60"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30 Days of Free Support After Launch</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-gray-200 text-apple-gray"><svg
+                                    class="w-5 h-5 mr-3 opacity-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24"></svg> Total: $1,750</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?note=Starting%20Pay-As-You-Grow%20Plan%20for%20Treasure%20Tower%20Redesign"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-gray-200 hover:bg-gray-300 transition-colors">Select
+                        Flexible</a>
+                </div>
+
+                <!-- Full Pay Plan -->
+                <div id="full-card"
+                    class="hidden lg:col-span-3 md:col-span-2 max-w-lg mx-auto w-full rounded-[32px] p-12 flex-col justify-between bg-apple-dark text-white shadow-2xl">
+                    <div>
+                        <div
+                            class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
+                            Best Value</div>
+                        <h3 class="text-2xl font-semibold tracking-tight mb-2">Paid in Full</h3>
+                        <p class="text-gray-400 font-medium mb-8">One-time payment.</p>
+                        <div class="mb-10 flex items-end gap-4">
+                            <span class="text-6xl font-bold tracking-tighter">$1,350</span>
+                            <span class="text-gray-500 font-medium text-lg line-through mb-1">$1,500</span>
+                        </div>
+                        <ul class="space-y-4 font-medium mb-12">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> New Design for Homepage & Sign-Up Page</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Simple 3-Step Sign-Up Form</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> Connects to Your Website Database</li>
+                            <li class="flex items-center text-brand-500 font-bold"><svg class="w-5 h-5 mr-3" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg> Choice of 1 Extra Bonus</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-white mr-3 opacity-60" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg> 30 Days of Free Support After Launch</li>
+                            <li class="flex items-center mt-6 pt-6 border-t border-white/10 text-white"><svg
+                                    class="w-5 h-5 text-white mr-3" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg> 10% Discount Applied</li>
+                        </ul>
+                    </div>
+                    <a href="https://venmo.com/David-Darling-8?txn=pay&amount=1350&note=Full%20Pay%20for%20Treasure%20Tower%20Redesign%20(homepage%20and%20request%20info%20page)"
+                        target="_blank"
+                        class="w-full py-4 px-6 rounded-full font-medium text-center text-apple-dark bg-white hover:bg-gray-100 transition-colors">Select
+                        Full Pay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-apple-base text-apple-dark py-20 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tighter mb-6">Ready to get started?</h2>
+            <p class="text-apple-gray font-medium mb-10 max-w-xl mx-auto text-lg">
+                Let's agree on the plan and get started right away for a fast, two-week launch.
+            </p>
+            <a href="https://venmo.com/David-Darling-8?txn=pay&amount=1350&note=Full%20Pay%20for%20Treasure%20Tower%20Redesign%20(homepage%20and%20request%20info%20page)"
+                target="_blank"
+                class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-apple-blue hover:bg-apple-blueHover rounded-full transition-colors duration-300">
+                Approve & Start Phase 1
+            </a>
+            <p class="mt-16 text-xs text-gray-500 font-medium tracking-wide">
+                Prepared exclusively for Treasure Tower. Prices valid for 30 days.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive Pricing Script -->
+    <script>
+        function togglePricing(view) {
+            const monthlyCards = document.querySelectorAll('.monthly-card');
+            const fullCard = document.getElementById('full-card');
+            const bg = document.getElementById('segment-bg');
+
+            if (view === 'monthly') {
+                bg.style.transform = 'translateX(0)';
+
+                monthlyCards.forEach(card => {
+                    card.classList.remove('hidden');
+                    card.classList.add('flex');
+                });
+                fullCard.classList.remove('flex');
+                fullCard.classList.add('hidden');
+
+            } else {
+                bg.style.transform = 'translateX(100%)';
+
+                monthlyCards.forEach(card => {
+                    card.classList.remove('flex');
+                    card.classList.add('hidden');
+                });
+                fullCard.classList.remove('hidden');
+                fullCard.classList.add('flex');
+            }
+        }
+    </script>
+</body>
+
+</html>
