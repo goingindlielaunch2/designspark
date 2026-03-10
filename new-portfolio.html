@@ -24,6 +24,16 @@
                             600: '#0d9488',
                             900: '#134e4a',
                         }
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
                     }
                 }
             }
@@ -63,6 +73,24 @@
         .mockup-shadow {
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
         }
+
+        /* Premium Dot Grid Background */
+        .bg-dot-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Custom Aqua Shading */
+        .aqua-button {
+            background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 49%, #2563eb 50%, #1d4ed8 100%);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7), inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(37, 99, 235, 0.4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .aqua-button:active {
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 49%, #1d4ed8 50%, #1e40af 100%);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
     </style>
 </head>
 
@@ -77,6 +105,7 @@
                     class="font-bold text-xl tracking-tight text-slate-900 hover:text-brand-600 transition-colors">DesignSpark.</a>
                 <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
                     <a href="#work" class="hover:text-brand-600 transition-colors">Work</a>
+                    <a href="#visuals" class="hover:text-brand-600 transition-colors">Aesthetics</a>
                     <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
                     <a href="#" class="hover:text-brand-600 transition-colors flex items-center gap-1">Resume <i
                             data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
@@ -88,21 +117,28 @@
         </nav>
 
         <!-- Hero Section -->
-        <header class="pt-40 pb-24 px-6">
-            <div class="max-w-5xl mx-auto">
+        <header class="pt-40 pb-24 px-6 relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0 bg-dot-pattern opacity-50 z-0 mask-image-gradient"></div>
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/10 blur-[100px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="max-w-5xl mx-auto relative z-10">
                 <div
-                    class="inline-flex items-center space-x-2 bg-white border border-slate-200 px-3 py-1.5 rounded-full text-sm font-medium text-slate-600 mb-8 shadow-sm">
+                    class="inline-flex items-center space-x-2 bg-white border border-slate-200 px-3 py-1.5 rounded-full text-sm font-medium text-slate-600 mb-8 shadow-sm hover:shadow transition-shadow cursor-default">
                     <span class="relative flex h-2 w-2">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
                     </span>
-                    <span>Actively interviewing for Senior Product Design roles</span>
+                    <span>Available for Senior / Lead Product Design Roles</span>
                 </div>
                 <h1
                     class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-slate-900 max-w-4xl mb-6">
-                    I design complex workflows that <span class="text-brand-600">drive measurable behavior
-                        change.</span>
+                    I design complex workflows that <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-emerald-500">drive
+                        measurable behavior change.</span>
                 </h1>
                 <p class="text-xl text-slate-600 max-w-2xl leading-relaxed mb-10">
                     Product Designer specialized in 0→1 SaaS products, neurodivergent-friendly experiences, and bridging
@@ -153,15 +189,16 @@
                                     Native</span>
                             </div>
                             <div
-                                class="inline-flex items-center text-brand-600 font-bold group-hover:translate-x-2 transition-transform">
-                                Read Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                class="inline-flex items-center px-6 py-3 bg-brand-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-brand-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </div>
                         </div>
                         <div
                             class="md:w-1/2 bg-slate-200 min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-300 transition-colors duration-500">
-                            <!-- Abstract Mockup Graphic -->
+                            <!-- Abstract Mockup Graphic (Now with float animation) -->
                             <div
-                                class="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-slate-100 p-5 transform group-hover:scale-[1.02] group-hover:-rotate-1 transition-all duration-500">
+                                class="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-slate-100 p-5 transform group-hover:scale-[1.02] group-hover:-rotate-1 transition-all duration-500 animate-float">
                                 <div class="flex justify-between items-center mb-6">
                                     <div
                                         class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-lg">
@@ -223,15 +260,16 @@
                                     (A11y)</span>
                             </div>
                             <div
-                                class="inline-flex items-center text-violet-600 font-bold group-hover:translate-x-2 transition-transform">
-                                Read Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                class="inline-flex items-center px-6 py-3 bg-violet-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-violet-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </div>
                         </div>
                         <div
                             class="md:w-1/2 bg-slate-900 min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-800 transition-colors duration-500">
-                            <!-- Abstract Dashboard Mockup for Lumina -->
+                            <!-- Abstract Dashboard Mockup for Lumina (Now with float animation) -->
                             <div
-                                class="w-full max-w-sm bg-slate-50 rounded-lg shadow-2xl border border-slate-700 p-4 transform group-hover:scale-[1.02] group-hover:rotate-1 transition-all duration-500 flex flex-col h-64">
+                                class="w-full max-w-sm bg-slate-50 rounded-lg shadow-2xl border border-slate-700 p-4 transform group-hover:scale-[1.02] group-hover:rotate-1 transition-all duration-500 flex flex-col h-64 animate-float">
                                 <!-- Top Nav -->
                                 <div class="flex justify-between items-center mb-4 border-b border-slate-200 pb-3">
                                     <div class="w-24 h-3 bg-violet-200 rounded"></div>
@@ -312,15 +350,16 @@
                                     Rate (CRO)</span>
                             </div>
                             <div
-                                class="inline-flex items-center text-indigo-600 font-bold group-hover:translate-x-2 transition-transform">
-                                Read Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-indigo-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </div>
                         </div>
                         <div
                             class="md:w-1/2 bg-indigo-50 min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-indigo-100 transition-colors duration-500">
-                            <!-- Abstract Mobile E-commerce Mockup -->
+                            <!-- Abstract Mobile E-commerce Mockup (Now with float animation) -->
                             <div
-                                class="w-full max-w-xs bg-white rounded-[2.5rem] shadow-xl border-8 border-slate-900 p-4 transform group-hover:scale-[1.02] group-hover:-rotate-1 transition-all duration-500 flex flex-col h-72 relative">
+                                class="w-full max-w-xs bg-white rounded-[2.5rem] shadow-xl border-8 border-slate-900 p-4 transform group-hover:scale-[1.02] group-hover:-rotate-1 transition-all duration-500 flex flex-col h-72 relative animate-float">
                                 <!-- App Header -->
                                 <div class="flex justify-between items-center mb-6 pt-2">
                                     <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center"><i
@@ -390,15 +429,16 @@
                                     Economy</span>
                             </div>
                             <div
-                                class="inline-flex items-center text-rose-600 font-bold group-hover:translate-x-2 transition-transform">
-                                Read Case Study <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                                class="inline-flex items-center px-6 py-3 bg-rose-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-rose-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
                             </div>
                         </div>
                         <div
                             class="md:w-1/2 bg-rose-100 min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-rose-200 transition-colors duration-500">
-                            <!-- Abstract Playful Fintech Mockup -->
+                            <!-- Abstract Playful Fintech Mockup (Now with float animation) -->
                             <div
-                                class="w-full max-w-xs bg-white/90 backdrop-blur-sm rounded-[2rem] shadow-2xl border border-white p-5 transform group-hover:scale-[1.05] group-hover:rotate-2 transition-all duration-500 flex flex-col h-72 relative overflow-hidden">
+                                class="w-full max-w-xs bg-white/90 backdrop-blur-sm rounded-[2rem] shadow-2xl border border-white p-5 transform group-hover:scale-[1.05] group-hover:rotate-2 transition-all duration-500 flex flex-col h-72 relative overflow-hidden animate-float">
                                 <!-- Confetti Elements -->
                                 <div class="absolute top-4 right-4 w-2 h-2 bg-yellow-400 rounded-full"></div>
                                 <div class="absolute top-10 right-12 w-3 h-3 bg-blue-400 rounded-sm rotate-45"></div>
@@ -429,64 +469,205 @@
                         </div>
                     </div>
 
-                    <!-- Micro Case Study 1 -->
+                    <!-- REPLACED FALSE AFFORDANCE CARDS WITH "QUICK WINS" LIST -->
                     <div
-                        class="bg-white rounded-2xl border border-slate-200 p-8 hover:border-slate-300 hover:shadow-md transition-all">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
-                                <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+                        class="col-span-1 md:col-span-2 bg-slate-900 rounded-2xl p-8 md:p-12 text-white shadow-xl mt-8">
+                        <div
+                            class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-slate-800 pb-6 gap-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2 tracking-tight">Additional Impact</h3>
+                                <p class="text-slate-400 text-sm">Rapid execution and measurable results across other
+                                    domains.</p>
                             </div>
-                            <span
-                                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-green-50 text-green-700 border border-green-200">
-                                <i data-lucide="trending-down" class="w-3 h-3"></i> 40% time-on-task
-                            </span>
+                            <a href="#"
+                                class="text-brand-400 hover:text-brand-300 text-sm font-bold flex items-center gap-1 transition-colors">
+                                Request full resume <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900">Enterprise Data Consolidation</h3>
-                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
-                            <strong>The Challenge:</strong> Operations teams were using 4 different legacy tools to
-                            generate weekly reports.<br><br>
-                            <strong>The Impact:</strong> Partnered with front-end engineers to build a unified React
-                            dashboard and a scalable component library. Reduced report generation time from 2 hours to
-                            15 minutes.
-                        </p>
-                        <div class="flex gap-2">
-                            <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">B2B</span>
-                            <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Design Systems</span>
-                        </div>
-                    </div>
 
-                    <!-- Micro Case Study 2 -->
-                    <div
-                        class="bg-white rounded-2xl border border-slate-200 p-8 hover:border-slate-300 hover:shadow-md transition-all">
-                        <div class="flex justify-between items-start mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                             <div
-                                class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
-                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                class="relative pl-6 border-l-2 border-slate-800 hover:border-blue-500 transition-colors group">
+                                <div
+                                    class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-900 border-2 border-slate-700 group-hover:border-blue-500 rounded-full transition-colors">
+                                </div>
+                                <h4 class="font-bold text-lg mb-1">Enterprise Data Consolidation</h4>
+                                <p class="text-slate-400 text-sm mb-3">Partnered with front-end engineers to build a
+                                    unified React dashboard, replacing 4 legacy tools.</p>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-blue-400 text-xs font-bold uppercase tracking-wider">
+                                    <i data-lucide="trending-down" class="w-4 h-4"></i> Reduced reporting time by 87%
+                                </span>
                             </div>
-                            <span
-                                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-bold bg-green-50 text-green-700 border border-green-200">
-                                <i data-lucide="trending-up" class="w-3 h-3"></i> 18% conversion
-                            </span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-900">Frictionless Fintech KYC</h3>
-                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
-                            <strong>The Challenge:</strong> 35% of users dropped off during the identity verification
-                            step of onboarding.<br><br>
-                            <strong>The Impact:</strong> Implemented progressive disclosure, contextual tooltips, and
-                            friendlier error-states. Successfully increased onboarding completion rates without
-                            compromising legal compliance.
-                        </p>
-                        <div class="flex gap-2">
-                            <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Growth Design</span>
-                            <span class="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">A/B Testing</span>
+
+                            <div
+                                class="relative pl-6 border-l-2 border-slate-800 hover:border-green-500 transition-colors group">
+                                <div
+                                    class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-900 border-2 border-slate-700 group-hover:border-green-500 rounded-full transition-colors">
+                                </div>
+                                <h4 class="font-bold text-lg mb-1">Frictionless Fintech KYC</h4>
+                                <p class="text-slate-400 text-sm mb-3">Implemented progressive disclosure and clear
+                                    error-states in a legally complex onboarding flow.</p>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-green-400 text-xs font-bold uppercase tracking-wider">
+                                    <i data-lucide="trending-up" class="w-4 h-4"></i> Increased conversion by 18%
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- NEW: About / Philosophy Section -->
+        <section id="about" class="py-24 px-6 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 items-center">
+                <div class="w-full md:w-1/3 relative">
+                    <div
+                        class="aspect-square rounded-full bg-slate-200 overflow-hidden border-4 border-white shadow-xl relative z-10">
+                        <!-- Placeholder for your actual photo -->
+                        <img src="https://ui-avatars.com/api/?name=Designer&background=0d9488&color=fff&size=512"
+                            alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative blobs -->
+                    <div
+                        class="absolute -top-4 -left-4 w-24 h-24 bg-brand-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float">
+                    </div>
+                    <div
+                        class="absolute -bottom-8 -right-4 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float-delayed">
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3 space-y-6">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-brand-600 mb-2">My Philosophy</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Great design is invisible.
+                        It feels like common sense.</h3>
+                    <div class="prose prose-lg text-slate-600">
+                        <p>I don't design for Dribbble; I design for the user who is tired, overwhelmed, and just trying
+                            to get their job done. Whether I'm organizing a complex B2B database or designing a
+                            delightful consumer interaction, my process is rooted in <strong>behavioral
+                                psychology</strong> and <strong>technical feasibility</strong>.</p>
+                        <p>I believe designers should be fluent in the constraints of engineering. I prototype heavily,
+                            test early, and collaborate daily with product managers and developers to ensure what we
+                            design actually ships.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-6 border-t border-slate-200">
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2 text-sm">Core Skills</div>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>End-to-End UX/UI</li>
+                                <li>Service Blueprinting</li>
+                                <li>Information Architecture</li>
+                                <li>Design Systems</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2 text-sm">Toolkit</div>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>Figma (Advanced)</li>
+                                <li>Protopie / Lottie</li>
+                                <li>HTML / CSS / JS</li>
+                                <li>Amplitude / Pendo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus: Visual Aesthetics Section -->
+        <section id="visuals" class="py-20 px-6 bg-slate-900 text-white">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Bonus: Aesthetics as a UX Tool</h2>
+                    <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
+                        Like fashion, UI aesthetics run in cycles. Aspects of the 70s or 80s re-appear in our clothing,
+                        just as the early 2000s web is influencing modern interfaces. But bringing back these aesthetics
+                        isn't just about nostalgia—it drastically impacts user behavior. By stepping away from the
+                        hyper-flat designs of the 2010s and re-introducing tactile depth, we lower cognitive weight.
+                        Interactive elements actually <span class="text-white italic">look</span> interactive, improving
+                        user flow and engagement.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Example 1: Neo-Aqua -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 relative overflow-hidden group">
+                        <!-- Ambient background glow -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2">The "Neo-Aqua" Look</h3>
+                            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                Inspired by early Mac OS. By using deep inner-shadows and glossy gradients, buttons
+                                invite the user to click. The high visual affordance means users don't have to guess if
+                                a shape is a button or just a label.
+                            </p>
+
+                            <!-- UI Playground -->
+                            <div
+                                class="h-40 bg-slate-900 rounded-xl border border-slate-700/50 flex items-center justify-center p-6 relative overflow-hidden">
+                                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full">
+                                </div>
+                                <button
+                                    class="aqua-button px-8 py-3 rounded-full text-white font-bold tracking-wide transition-all duration-200">
+                                    Subscribe Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example 2: Neo-Brutalism -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 relative group">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2">Neo-Brutalism</h3>
+                            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                A reaction to over-polished corporate flat design. Characterized by high-contrast, harsh
+                                borders, and raw colors. It dominates Gen-Z tools because it cuts through the noise and
+                                establishes an unmistakable visual hierarchy.
+                            </p>
+
+                            <!-- UI Playground -->
+                            <div class="h-40 bg-[#e5e5f7] rounded-xl flex items-center justify-center p-6 relative"
+                                style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 10px 10px;">
+                                <button
+                                    class="px-8 py-3 bg-[#ff90e8] border-4 border-black text-black font-black uppercase tracking-widest shadow-[4px_4px_0_0_#000] hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#000] active:translate-y-1 active:shadow-[0px_0px_0_0_#000] transition-all duration-150">
+                                    Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example 3: Soft Skeuomorphism (Neumorphism) -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 relative group">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2">Soft Skeuomorphism</h3>
+                            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                Elements appear extruded from the background itself. While it must be used carefully due
+                                to contrast limits, its extreme softness reduces eye strain in high-density dashboards
+                                where flat lines would cause visual clutter.
+                            </p>
+
+                            <!-- UI Playground -->
+                            <div class="h-40 bg-[#e0e5ec] rounded-xl flex items-center justify-center p-6">
+                                <button
+                                    class="px-8 py-3 bg-[#e0e5ec] text-slate-500 font-bold rounded-xl shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] active:shadow-[inset_6px_6px_10px_0_rgba(163,177,198,0.6),inset_-6px_-6px_10px_0_rgba(255,255,255,0.5)] transition-shadow duration-200">
+                                    <i data-lucide="power" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
-        <footer class="bg-slate-900 text-slate-400 py-12 px-6">
+        <footer class="bg-slate-950 text-slate-500 py-12 px-6">
             <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
                     <a href="#" class="font-bold text-xl tracking-tight text-white mb-2 block">DesignSpark.</a>
@@ -507,20 +688,21 @@
     <div id="adhd-planner" class="case-study-container hidden min-h-screen bg-white">
         <!-- Sticky Header -->
         <div
-            class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
             <button onclick="closeCaseStudy('adhd-planner')"
-                class="flex items-center text-slate-600 hover:text-slate-900 font-medium transition-colors group">
-                <i data-lucide="arrow-left" class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                class="flex items-center text-slate-700 hover:text-brand-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
                 Back to Portfolio
             </button>
             <div class="flex gap-4">
-                <a href="#" class="text-sm font-bold text-brand-600 hover:text-brand-700 hidden sm:block">View
+                <a href="#"
+                    class="text-sm font-bold text-brand-600 hover:text-brand-700 hidden sm:block bg-brand-50 px-4 py-1.5 rounded-full">View
                     Prototype</a>
             </div>
         </div>
 
         <!-- Case Study Header -->
-        <header class="pt-32 pb-16 px-6 bg-slate-50 border-b border-slate-200">
+        <header class="pt-16 pb-16 px-6 bg-slate-50 border-b border-slate-200">
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span
@@ -825,20 +1007,21 @@
     <div id="lumina-platform" class="case-study-container hidden min-h-screen bg-white">
         <!-- Sticky Header -->
         <div
-            class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+            class="sticky top-0 w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
             <button onclick="closeCaseStudy('lumina-platform')"
-                class="flex items-center text-slate-600 hover:text-slate-900 font-medium transition-colors group">
-                <i data-lucide="arrow-left" class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                class="flex items-center text-slate-300 hover:text-white font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
                 Back to Portfolio
             </button>
             <div class="flex gap-4">
-                <span class="text-sm font-bold text-violet-600 hidden sm:flex items-center gap-1"><i
-                        data-lucide="flask-conical" class="w-4 h-4"></i> Product Concept</span>
+                <span
+                    class="text-sm font-bold text-violet-400 hidden sm:flex items-center gap-1.5 bg-violet-500/10 border border-violet-500/20 px-4 py-1.5 rounded-full"><i
+                        data-lucide="flask-conical" class="w-3.5 h-3.5"></i> Product Concept</span>
             </div>
         </div>
 
         <!-- Case Study Header -->
-        <header class="pt-32 pb-16 px-6 bg-slate-900 text-white border-b border-slate-800">
+        <header class="pt-16 pb-16 px-6 bg-slate-900 text-white border-b border-slate-800">
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span
@@ -1073,20 +1256,21 @@
     <div id="shift-ecommerce" class="case-study-container hidden min-h-screen bg-white">
         <!-- Sticky Header -->
         <div
-            class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
             <button onclick="closeCaseStudy('shift-ecommerce')"
-                class="flex items-center text-slate-600 hover:text-slate-900 font-medium transition-colors group">
-                <i data-lucide="arrow-left" class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                class="flex items-center text-slate-700 hover:text-indigo-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
                 Back to Portfolio
             </button>
             <div class="flex gap-4">
-                <span class="text-sm font-bold text-indigo-600 hidden sm:flex items-center gap-1"><i
-                        data-lucide="package" class="w-4 h-4"></i> B2B2C Product</span>
+                <span
+                    class="text-sm font-bold text-indigo-600 hidden sm:flex items-center gap-1.5 bg-indigo-50 px-4 py-1.5 rounded-full"><i
+                        data-lucide="package" class="w-3.5 h-3.5"></i> B2B2C Product</span>
             </div>
         </div>
 
         <!-- Case Study Header -->
-        <header class="pt-32 pb-16 px-6 bg-slate-50 border-b border-slate-200">
+        <header class="pt-16 pb-16 px-6 bg-slate-50 border-b border-slate-200">
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span
@@ -1307,20 +1491,21 @@
     <div id="aura-fintech" class="case-study-container hidden min-h-screen bg-white">
         <!-- Sticky Header -->
         <div
-            class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
             <button onclick="closeCaseStudy('aura-fintech')"
-                class="flex items-center text-slate-600 hover:text-slate-900 font-medium transition-colors group">
-                <i data-lucide="arrow-left" class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                class="flex items-center text-slate-700 hover:text-rose-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
                 Back to Portfolio
             </button>
             <div class="flex gap-4">
-                <span class="text-sm font-bold text-rose-500 hidden sm:flex items-center gap-1"><i data-lucide="palette"
-                        class="w-4 h-4"></i> Interaction Design</span>
+                <span
+                    class="text-sm font-bold text-rose-600 hidden sm:flex items-center gap-1.5 bg-rose-50 px-4 py-1.5 rounded-full"><i
+                        data-lucide="palette" class="w-3.5 h-3.5"></i> Interaction Design</span>
             </div>
         </div>
 
         <!-- Case Study Header -->
-        <header class="pt-32 pb-16 px-6 bg-[#fff0f2] border-b border-rose-100">
+        <header class="pt-16 pb-16 px-6 bg-[#fff0f2] border-b border-rose-100">
             <div class="max-w-4xl mx-auto">
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span
@@ -1534,37 +1719,94 @@
         // Initialize Icons
         lucide.createIcons();
 
-        // Simple SPA routing logic
+        // Advanced SPA Hash-Based Routing
         const mainView = document.getElementById('main-view');
 
-        function openCaseStudy(id) {
+        // List of valid case study IDs
+        const caseStudies = ['adhd-planner', 'lumina-platform', 'shift-ecommerce', 'aura-fintech'];
+
+        function openCaseStudy(id, pushHistory = true) {
             const activeView = document.getElementById(id);
             if (activeView) {
+                // Hide main view
                 mainView.classList.add('hidden');
+
+                // Hide all other case studies just in case
+                caseStudies.forEach(studyId => {
+                    if (studyId !== id) document.getElementById(studyId).classList.add('hidden');
+                });
+
+                // Show target case study
                 activeView.classList.remove('hidden');
-
-                // Trigger reflow
-                void activeView.offsetWidth;
-
+                void activeView.offsetWidth; // Trigger reflow
                 activeView.classList.add('fade-enter-active');
                 window.scrollTo(0, 0);
+
+                // Update URL without refreshing page
+                if (pushHistory) {
+                    try {
+                        history.pushState({ view: id }, '', `#${id}`);
+                    } catch (e) {
+                        console.warn('History API pushState blocked in preview environment.', e);
+                    }
+                }
             }
         }
 
-        function closeCaseStudy(id) {
-            const activeView = document.getElementById(id);
-            if (activeView) {
-                activeView.classList.add('hidden');
-                activeView.classList.remove('fade-enter-active');
-            }
+        function closeCaseStudy(activeId, pushHistory = true) {
+            // Hide all case studies
+            caseStudies.forEach(studyId => {
+                const view = document.getElementById(studyId);
+                if (view) {
+                    view.classList.add('hidden');
+                    view.classList.remove('fade-enter-active');
+                }
+            });
+
+            // Show main view
             mainView.classList.remove('hidden');
-
-            // Trigger reflow
-            void mainView.offsetWidth;
-
+            void mainView.offsetWidth; // Trigger reflow
             mainView.classList.add('fade-enter-active');
-            window.scrollTo(0, document.getElementById('work').offsetTop - 80);
+
+            // Scroll to work section if returning from a study
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                window.scrollTo(0, workSection.offsetTop - 80);
+            }
+
+            // Update URL
+            if (pushHistory) {
+                try {
+                    // Remove hash without scrolling
+                    history.pushState({ view: 'home' }, '', window.location.pathname);
+                } catch (e) {
+                    console.warn('History API pushState blocked in preview environment.', e);
+                }
+            }
         }
+
+        // Handle Browser Back/Forward Buttons
+        window.addEventListener('popstate', (e) => {
+            const hash = window.location.hash.replace('#', '');
+
+            // If the hash is a case study, open it
+            if (caseStudies.includes(hash)) {
+                openCaseStudy(hash, false);
+            }
+            // If there's no hash, or it's a standard anchor link (#work, #about), go home
+            else {
+                // Just pass null as activeId, it hides all of them
+                closeCaseStudy(null, false);
+            }
+        });
+
+        // Handle direct links on initial page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (caseStudies.includes(hash)) {
+                openCaseStudy(hash, false);
+            }
+        });
     </script>
 </body>
 
