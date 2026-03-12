@@ -1498,9 +1498,11 @@
                                         <span style="color:var(--text-muted); font-weight:500; font-size:0.85rem">${lead.date}</span>
                                         <div class="quick-actions">
                                             ${currentPersona === 'admin'
-                    ? (lead.owner === 'Unassigned'
-                        ? `<button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); simAction('Assign Owner')">${icons.userPlus} Assign</button>`
-                        : `<button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); simAction('Nudge Owner')">Nudge</button>`)
+                    ? (lead.type === 'Prospective Owner'
+                        ? `<button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); simAction('Contact Lead')">${icons.phone} Contact</button>`
+                        : (lead.owner === 'Unassigned'
+                            ? `<button class="btn btn-primary btn-sm" onclick="event.stopPropagation(); simAction('Assign Owner')">${icons.userPlus} Assign</button>`
+                            : `<button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); simAction('Nudge Owner')">Nudge</button>`))
                     : `<button class="btn btn-success btn-sm" onclick="event.stopPropagation(); simAction('Log Contact')">${icons.check} Contacted</button>
                                                    <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); simAction('Log Call')">${icons.phone} Call</button>`
                 }
@@ -1783,7 +1785,9 @@
             // Build Actions based on persona and status
             let actionsHtml = '';
             if (currentPersona === 'admin') {
-                if (lead.owner === 'Unassigned') {
+                if (lead.type === 'Prospective Owner') {
+                    actionsHtml = `<button class="btn btn-primary" onclick="simAction('Contact Lead')">${icons.phone} Contact</button>`;
+                } else if (lead.owner === 'Unassigned') {
                     actionsHtml = `<button class="btn btn-primary" onclick="simAction('Assign Owner')">${icons.userPlus} Assign Owner</button>`;
                 } else {
                     actionsHtml = `<button class="btn btn-outline" onclick="simAction('Reassign')">Reassign</button>
