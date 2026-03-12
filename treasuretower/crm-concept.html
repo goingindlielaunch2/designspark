@@ -1192,7 +1192,7 @@
                 name: 'Dr. Robert Chen',
                 organization: 'Smile Bright Pediatric Dentistry',
                 type: 'Location',
-                source: 'TreasureTower.com',
+                source: 'treasuretower.net',
                 status: 'Awaiting Follow-Up',
                 urgency: 'Overdue',
                 owner: 'Sarah Jenkins',
@@ -1210,8 +1210,8 @@
                 id: 'L-1002',
                 name: 'Marcus Williams',
                 organization: '-',
-                type: 'Business Owner',
-                source: 'FranchiseSite.com',
+                type: 'Prospective Owner',
+                source: 'treasuretowerrewards.com',
                 status: 'New',
                 urgency: 'Fresh',
                 owner: 'Unassigned',
@@ -1220,7 +1220,7 @@
                 date: 'Today, 2:30 PM',
                 notes: 'Looking to start a side business in the Chicago area. Have 10k to invest.',
                 timeline: [
-                    { type: 'system', title: 'Franchise Inquiry Received', meta: 'Today, 2:30 PM' }
+                    { type: 'system', title: 'New Owner Inquiry Received', meta: 'Today, 2:30 PM' }
                 ]
             },
             {
@@ -1228,7 +1228,7 @@
                 name: 'Elena Rodriguez',
                 organization: 'Cuts & Curls Salon',
                 type: 'Location',
-                source: 'TreasureTower.com',
+                source: 'treasuretower.net',
                 status: 'Contacted',
                 urgency: 'Neutral',
                 owner: 'Sarah Jenkins',
@@ -1247,7 +1247,7 @@
                 name: 'David Kim',
                 organization: 'Kim Family Martial Arts',
                 type: 'Location',
-                source: 'TreasureTower.com',
+                source: 'treasuretower.net',
                 status: 'New',
                 urgency: 'Needs Attention',
                 owner: 'Sarah Jenkins',
@@ -1299,7 +1299,7 @@
 
         function getTypeBadge(type) {
             if (type === 'Location') return `<span class="type-badge type-loc">Location Lead</span>`;
-            return `<span class="type-badge type-owner">Business Owner</span>`;
+            return `<span class="type-badge type-owner">Prospective Owner</span>`;
         }
 
         function getStatusBadge(status) {
@@ -1331,7 +1331,7 @@
                 <div class="card stat-card warning" onclick="navigate('leads', 'Unassigned')" tabindex="0" onkeydown="if(event.key==='Enter') navigate('leads', 'Unassigned')">
                     <span class="stat-title">Awaiting Assignment</span>
                     <span class="stat-value">1</span>
-                    <span class="stat-desc">New Franchise Inquiries</span>
+                    <span class="stat-desc">Prospective Owner Inquiries</span>
                 </div>
                 <div class="card stat-card primary" onclick="navigate('leads')" tabindex="0" onkeydown="if(event.key==='Enter') navigate('leads')">
                     <span class="stat-title">New Leads Today</span>
@@ -1453,7 +1453,7 @@
                     <select class="filter-select" aria-label="Filter by Lead Type">
                         <option>All Lead Types</option>
                         <option>Location Leads</option>
-                        <option>Business Owner Leads</option>
+                        <option>Prospective Owner Leads</option>
                     </select>
                     <select class="filter-select" aria-label="Filter by Status">
                         <option>All Statuses</option>
@@ -1642,7 +1642,7 @@
                     <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 24px; color: var(--text-main);">Leads by Source Website</h3>
                     
                     <div class="report-row">
-                        <div style="width: 150px; font-weight: 500;">TreasureTower.com</div>
+                        <div style="width: 150px; font-weight: 500;">treasuretower.net</div>
                         <div style="flex-grow: 1; margin: 0 16px;">
                             <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 75%; background: var(--primary);"></div></div>
                         </div>
@@ -1650,7 +1650,7 @@
                     </div>
                     
                     <div class="report-row">
-                        <div style="width: 150px; font-weight: 500;">FranchiseSite.com</div>
+                        <div style="width: 150px; font-weight: 500;">treasuretowerrewards.com</div>
                         <div style="flex-grow: 1; margin: 0 16px;">
                             <div class="progress-bar-container"><div class="progress-bar-fill" style="width: 25%; background: #8b5cf6;"></div></div>
                         </div>
