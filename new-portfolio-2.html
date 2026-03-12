@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Designer Portfolio | DesignSpark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        }
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Transitions */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mockup-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Premium Dot Grid Background */
+        .bg-dot-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+
+        /* Custom Aqua Shading */
+        .aqua-button {
+            background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 49%, #2563eb 50%, #1d4ed8 100%);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.7), inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(37, 99, 235, 0.4);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .aqua-button:active {
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 49%, #1d4ed8 50%, #1e40af 100%);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-900">
+
+    <!-- MAIN PORTFOLIO VIEW -->
+    <div id="main-view" class="block transition-all duration-300">
+        <!-- Navigation -->
+        <nav class="fixed w-full bg-slate-50/90 backdrop-blur-md z-40 border-b border-slate-200/50">
+            <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+                <a href="#"
+                    class="font-bold text-xl tracking-tight text-slate-900 hover:text-brand-600 transition-colors">DesignSpark.</a>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#work" class="hover:text-brand-600 transition-colors">Work</a>
+                    <a href="#visuals" class="hover:text-brand-600 transition-colors">Aesthetics</a>
+                    <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
+                    <a href="#" class="hover:text-brand-600 transition-colors flex items-center gap-1">Resume <i
+                            data-lucide="arrow-up-right" class="w-3 h-3"></i></a>
+                    <a href="mailto:hello@withdesignspark.com"
+                        class="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors">Get in
+                        touch</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="pt-40 pb-24 px-6 relative overflow-hidden">
+            <!-- Decorative Background -->
+            <div class="absolute inset-0 bg-dot-pattern opacity-50 z-0 mask-image-gradient"></div>
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-500/10 blur-[100px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="max-w-5xl mx-auto relative z-10">
+                <div
+                    class="inline-flex items-center space-x-2 bg-white border border-slate-200 px-3 py-1.5 rounded-full text-sm font-medium text-slate-600 mb-8 shadow-sm hover:shadow transition-shadow cursor-default">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    <span>Available for Senior / Lead Product Design Roles</span>
+                </div>
+                <h1
+                    class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-slate-900 max-w-4xl mb-6">
+                    I design complex workflows that <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-emerald-500">drive
+                        measurable behavior change.</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-2xl leading-relaxed mb-10">
+                    Product Designer specialized in 0→1 SaaS products, neurodivergent-friendly experiences, and bridging
+                    the gap between user psychology and engineering constraints.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#work"
+                        class="bg-brand-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-700 transition-colors shadow-lg shadow-brand-500/20 flex items-center gap-2">
+                        View Case Studies <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Projects Section -->
+        <section id="work" class="py-20 px-6 bg-white border-t border-slate-100">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex items-center justify-between mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight">Selected Work</h2>
+                    <span class="text-slate-500 text-sm font-medium">2024 — 2026</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Featured Case Study: ADHD Planner -->
+                    <div onclick="openCaseStudy('adhd-planner')"
+                        class="group cursor-pointer col-span-1 md:col-span-2 flex flex-col md:flex-row bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:border-brand-300 hover:shadow-xl transition-all duration-300">
+                        <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                            <div
+                                class="text-brand-600 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <i data-lucide="star" class="w-4 h-4 fill-brand-600"></i> Featured Deep Dive
+                            </div>
+                            <h3
+                                class="text-3xl font-bold mb-4 text-slate-900 group-hover:text-brand-600 transition-colors">
+                                CogniPlan: Designing for Executive Dysfunction</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                                Traditional planners cause "setup overwhelm" for neurodivergent minds. I redesigned the
+                                task initiation flow to reduce cognitive load, increasing 7-day habit streaks by 42%.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">UX
+                                    Strategy</span>
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">Behavioral
+                                    Psych</span>
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">iOS
+                                    Native</span>
+                            </div>
+                            <div
+                                class="inline-flex items-center px-6 py-3 bg-brand-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-brand-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="md:w-1/2 bg-slate-200 min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-300 transition-colors duration-500">
+                            <!-- Abstract Mockup Graphic (Now with float animation) -->
+                            <div
+                                class="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-slate-100 p-5 transform group-hover:scale-[1.02] group-hover:-rotate-1 transition-all duration-500 animate-float">
+                                <div class="flex justify-between items-center mb-6">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-lg">
+                                        C</div>
+                                    <div class="w-20 h-2 bg-slate-100 rounded-full"></div>
+                                </div>
+                                <div class="space-y-4">
+                                    <div
+                                        class="h-24 bg-brand-500 rounded-xl shadow-md shadow-brand-500/20 flex items-center px-5 gap-4">
+                                        <div
+                                            class="w-6 h-6 rounded-full border-2 border-white/50 flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                                        </div>
+                                        <div class="flex-1 space-y-2">
+                                            <div class="h-3 bg-white/90 rounded-full w-3/4"></div>
+                                            <div class="h-2 bg-white/50 rounded-full w-1/2"></div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="h-16 bg-slate-50 rounded-xl border border-slate-100 flex items-center px-5 gap-4">
+                                        <div class="w-5 h-5 rounded-full border-2 border-slate-300"></div>
+                                        <div class="w-1/2 h-3 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                    <div
+                                        class="h-16 bg-slate-50 rounded-xl border border-slate-100 flex items-center px-5 gap-4">
+                                        <div class="w-5 h-5 rounded-full border-2 border-slate-300"></div>
+                                        <div class="w-2/3 h-3 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Case Study: Lumina Accessibility Platform -->
+                    <div onclick="openCaseStudy('lumina-platform')"
+                        class="group cursor-pointer col-span-1 md:col-span-2 flex flex-col md:flex-row-reverse bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:border-violet-300 hover:shadow-xl transition-all duration-300 mt-4">
+                        <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                            <div
+                                class="text-violet-600 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <i data-lucide="eye" class="w-4 h-4 text-violet-600"></i> B2B Product Concept
+                            </div>
+                            <h3
+                                class="text-3xl font-bold mb-4 text-slate-900 group-hover:text-violet-600 transition-colors">
+                                Lumina: Curing WCAG Remediation Paralysis</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                                Automated accessibility scanners dump thousands of errors on teams, causing overwhelming
+                                anxiety. I designed a B2B monitoring platform that translates raw WCAG violations into
+                                prioritized, human-centric workflows based on critical user journeys.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">Complex
+                                    IA</span>
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">Service
+                                    Blueprinting</span>
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">Accessibility
+                                    (A11y)</span>
+                            </div>
+                            <div
+                                class="inline-flex items-center px-6 py-3 bg-violet-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-violet-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="md:w-1/2 bg-slate-900 min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-800 transition-colors duration-500">
+                            <!-- Abstract Dashboard Mockup for Lumina (Now with float animation) -->
+                            <div
+                                class="w-full max-w-sm bg-slate-50 rounded-lg shadow-2xl border border-slate-700 p-4 transform group-hover:scale-[1.02] group-hover:rotate-1 transition-all duration-500 flex flex-col h-64 animate-float">
+                                <!-- Top Nav -->
+                                <div class="flex justify-between items-center mb-4 border-b border-slate-200 pb-3">
+                                    <div class="w-24 h-3 bg-violet-200 rounded"></div>
+                                    <div class="flex gap-2">
+                                        <div class="w-16 h-4 bg-red-100 border border-red-200 rounded-full"></div>
+                                    </div>
+                                </div>
+                                <!-- Content Area -->
+                                <div class="flex flex-col gap-3 flex-1">
+                                    <!-- Journey Node 1 -->
+                                    <div
+                                        class="w-full bg-white border border-slate-200 rounded p-3 flex justify-between items-center shadow-sm">
+                                        <div class="flex items-center gap-3">
+                                            <div
+                                                class="w-6 h-6 rounded-full bg-violet-100 flex items-center justify-center border border-violet-200">
+                                            </div>
+                                            <div>
+                                                <div class="h-2 w-20 bg-slate-700 rounded mb-1"></div>
+                                                <div class="h-1.5 w-12 bg-slate-400 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-1">
+                                            <div class="w-2 h-8 bg-red-400 rounded-full"></div>
+                                            <div class="w-2 h-8 bg-amber-400 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Journey Node 2 -->
+                                    <div
+                                        class="w-full bg-white border border-slate-200 rounded p-3 flex justify-between items-center shadow-sm ml-4 w-[calc(100%-1rem)]">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200">
+                                            </div>
+                                            <div>
+                                                <div class="h-2 w-24 bg-slate-700 rounded mb-1"></div>
+                                                <div class="h-1.5 w-16 bg-slate-400 rounded"></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-2 h-8 bg-emerald-400 rounded-full"></div>
+                                    </div>
+                                    <!-- Journey Node 3 -->
+                                    <div
+                                        class="w-full bg-white border border-slate-200 rounded p-3 flex justify-between items-center shadow-sm ml-8 w-[calc(100%-2rem)] opacity-70">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 rounded-full bg-slate-100 border border-slate-200">
+                                            </div>
+                                            <div class="h-2 w-16 bg-slate-400 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Case Study: FoxTrot Aviation -->
+                    <div onclick="openCaseStudy('foxtrot-platform')"
+                        class="group cursor-pointer col-span-1 md:col-span-2 flex flex-col md:flex-row bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden hover:border-amber-300 hover:shadow-xl transition-all duration-300 mt-4">
+                        <div class="md:w-1/2 p-10 flex flex-col justify-center">
+                            <div
+                                class="text-amber-600 text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                                <i data-lucide="plane" class="w-4 h-4 text-amber-600"></i> Aviation SaaS
+                            </div>
+                            <h3
+                                class="text-3xl font-bold mb-4 text-slate-900 group-hover:text-amber-600 transition-colors">
+                                FoxTrot: Task-Optimized Flight School SaaS</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                                Designed and developed a task-optimized dashboard for aviation management. Focused on
+                                aircraft scheduling, maintenance tracking, and complex certification workflows for
+                                time-critical decision making.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">UI/Frontend</span>
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">Data
+                                    Density</span>
+                                <span
+                                    class="px-3 py-1 bg-white border border-slate-200 rounded-md text-xs font-semibold text-slate-600">AngularJS</span>
+                            </div>
+                            <div
+                                class="inline-flex items-center px-6 py-3 bg-amber-600 text-white font-bold rounded-full transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:bg-amber-700 group-hover:-translate-y-0.5 w-max">
+                                Read Case Study <i data-lucide="arrow-right"
+                                    class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="md:w-1/2 bg-[#f4ece3] min-h-[350px] relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-[#ebdccc] transition-colors duration-500">
+                            <!-- Abstract Dashboard Mockup (Matching the provided UI) -->
+                            <div
+                                class="w-full max-w-sm bg-white rounded-xl shadow-2xl overflow-hidden transform group-hover:scale-[1.02] group-hover:-rotate-1 transition-all duration-500 flex flex-col relative animate-float">
+                                <!-- Top Nav -->
+                                <div
+                                    class="bg-[#3f474d] px-4 py-3 flex items-center justify-between shadow-md relative z-10">
+                                    <div class="flex items-center gap-3">
+                                        <!-- Propeller icon abstraction -->
+                                        <div class="w-5 h-5 flex items-center justify-center relative">
+                                            <div class="absolute w-1 h-5 bg-slate-400 rounded-full rotate-45"></div>
+                                            <div class="absolute w-1 h-5 bg-slate-400 rounded-full -rotate-45"></div>
+                                            <div class="absolute w-2 h-2 bg-slate-300 rounded-full"></div>
+                                        </div>
+                                        <div class="h-2.5 w-32 bg-slate-400/50 rounded uppercase tracking-widest"></div>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="h-2 w-12 bg-sky-400/80 rounded"></div>
+                                        <div class="h-2 w-12 bg-slate-500 rounded"></div>
+                                    </div>
+                                </div>
+
+                                <div class="p-5 flex-1 flex flex-col gap-5 bg-[#fafafa]">
+                                    <!-- Maintenance Section -->
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-3 border-b border-slate-200 pb-2">
+                                            <i data-lucide="wrench" class="w-5 h-5 text-slate-400"></i>
+                                            <div class="h-3 w-32 bg-slate-500 rounded"></div>
+                                        </div>
+                                        <!-- Data Rows -->
+                                        <div class="space-y-1">
+                                            <div class="flex bg-white h-8 w-full shadow-sm rounded-sm overflow-hidden">
+                                                <div class="w-1.5 bg-[#93272e] h-full"></div>
+                                                <div class="flex-1 flex justify-between items-center px-3">
+                                                    <div class="h-1.5 w-1/3 bg-slate-700 rounded"></div>
+                                                    <div class="h-1.5 w-1/5 bg-slate-400 rounded"></div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="flex bg-slate-50 h-8 w-full shadow-sm rounded-sm overflow-hidden">
+                                                <div class="w-1.5 bg-transparent h-full"></div>
+                                                <div class="flex-1 flex justify-between items-center px-3">
+                                                    <div class="h-1.5 w-1/3 bg-slate-700 rounded"></div>
+                                                    <div class="h-1.5 w-1/5 bg-slate-400 rounded"></div>
+                                                </div>
+                                            </div>
+                                            <div class="flex bg-white h-8 w-full shadow-sm rounded-sm overflow-hidden">
+                                                <div class="w-1.5 bg-[#ad9552] h-full"></div>
+                                                <div class="flex-1 flex justify-between items-center px-3">
+                                                    <div class="h-1.5 w-1/3 bg-slate-700 rounded"></div>
+                                                    <div class="h-1.5 w-1/5 bg-slate-400 rounded"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Schedule Section -->
+                                    <div>
+                                        <div class="flex items-center gap-2 mb-3 border-b border-slate-200 pb-2">
+                                            <i data-lucide="plane-takeoff" class="w-5 h-5 text-slate-400"></i>
+                                            <div class="h-3 w-24 bg-slate-500 rounded"></div>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <div class="flex-1 bg-slate-100 rounded p-2">
+                                                <div class="h-2 w-16 bg-slate-400 rounded mb-2"></div>
+                                                <div
+                                                    class="h-6 bg-white border border-slate-200 rounded shadow-sm flex items-center px-2 gap-2">
+                                                    <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                                                    <div class="h-1 w-full bg-slate-300 rounded"></div>
+                                                </div>
+                                            </div>
+                                            <div class="flex-1 bg-slate-100 rounded p-2">
+                                                <div class="h-2 w-16 bg-slate-400 rounded mb-2"></div>
+                                                <div
+                                                    class="h-6 bg-white border border-slate-200 rounded shadow-sm flex items-center px-2 gap-2">
+                                                    <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                                                    <div class="h-1 w-full bg-slate-300 rounded"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REPLACED FALSE AFFORDANCE CARDS WITH "QUICK WINS" LIST -->
+                    <div
+                        class="col-span-1 md:col-span-2 bg-slate-900 rounded-2xl p-8 md:p-12 text-white shadow-xl mt-8">
+                        <div
+                            class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-slate-800 pb-6 gap-4">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2 tracking-tight">Additional Impact</h3>
+                                <p class="text-slate-400 text-sm">Rapid execution and measurable results across other
+                                    domains.</p>
+                            </div>
+                            <a href="#"
+                                class="text-brand-400 hover:text-brand-300 text-sm font-bold flex items-center gap-1 transition-colors">
+                                Request full resume <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                            <div
+                                class="relative pl-6 border-l-2 border-slate-800 hover:border-blue-500 transition-colors group">
+                                <div
+                                    class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-900 border-2 border-slate-700 group-hover:border-blue-500 rounded-full transition-colors">
+                                </div>
+                                <h4 class="font-bold text-lg mb-1">Enterprise Data Consolidation</h4>
+                                <p class="text-slate-400 text-sm mb-3">Partnered with front-end engineers to build a
+                                    unified React dashboard, replacing 4 legacy tools.</p>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-blue-400 text-xs font-bold uppercase tracking-wider">
+                                    <i data-lucide="trending-down" class="w-4 h-4"></i> Reduced reporting time by 87%
+                                </span>
+                            </div>
+
+                            <div
+                                class="relative pl-6 border-l-2 border-slate-800 hover:border-green-500 transition-colors group">
+                                <div
+                                    class="absolute -left-[9px] top-1 w-4 h-4 bg-slate-900 border-2 border-slate-700 group-hover:border-green-500 rounded-full transition-colors">
+                                </div>
+                                <h4 class="font-bold text-lg mb-1">Frictionless Fintech KYC</h4>
+                                <p class="text-slate-400 text-sm mb-3">Implemented progressive disclosure and clear
+                                    error-states in a legally complex onboarding flow.</p>
+                                <span
+                                    class="inline-flex items-center gap-1.5 text-green-400 text-xs font-bold uppercase tracking-wider">
+                                    <i data-lucide="trending-up" class="w-4 h-4"></i> Increased conversion by 18%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: About / Philosophy Section -->
+        <section id="about" class="py-24 px-6 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24 items-center">
+                <div class="w-full md:w-1/3 relative">
+                    <div
+                        class="aspect-square rounded-full bg-slate-200 overflow-hidden border-4 border-white shadow-xl relative z-10">
+                        <!-- Placeholder for your actual photo -->
+                        <img src="https://ui-avatars.com/api/?name=Designer&background=0d9488&color=fff&size=512"
+                            alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative blobs -->
+                    <div
+                        class="absolute -top-4 -left-4 w-24 h-24 bg-brand-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float">
+                    </div>
+                    <div
+                        class="absolute -bottom-8 -right-4 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-float-delayed">
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3 space-y-6">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-brand-600 mb-2">My Philosophy</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Great design is invisible.
+                        It feels like common sense.</h3>
+                    <div class="prose prose-lg text-slate-600">
+                        <p>I don't design for Dribbble; I design for the user who is tired, overwhelmed, and just trying
+                            to get their job done. Whether I'm organizing a complex B2B database or designing a
+                            delightful consumer interaction, my process is rooted in <strong>behavioral
+                                psychology</strong> and <strong>technical feasibility</strong>.</p>
+                        <p>I believe designers should be fluent in the constraints of engineering. I prototype heavily,
+                            test early, and collaborate daily with product managers and developers to ensure what we
+                            design actually ships.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-6 border-t border-slate-200">
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2 text-sm">Core Skills</div>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>End-to-End UX/UI</li>
+                                <li>Service Blueprinting</li>
+                                <li>Information Architecture</li>
+                                <li>Design Systems</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900 mb-2 text-sm">Toolkit</div>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>Figma (Advanced)</li>
+                                <li>Protopie / Lottie</li>
+                                <li>HTML / CSS / JS</li>
+                                <li>Amplitude / Pendo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus: Visual Aesthetics Section -->
+        <section id="visuals" class="py-20 px-6 bg-slate-900 text-white">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight mb-4">Bonus: Aesthetics as a UX Tool</h2>
+                    <p class="text-slate-400 text-lg max-w-3xl leading-relaxed">
+                        Like fashion, UI aesthetics run in cycles. Aspects of the 70s or 80s re-appear in our clothing,
+                        just as the early 2000s web is influencing modern interfaces. But bringing back these aesthetics
+                        isn't just about nostalgia—it drastically impacts user behavior. By stepping away from the
+                        hyper-flat designs of the 2010s and re-introducing tactile depth, we lower cognitive weight.
+                        Interactive elements actually <span class="text-white italic">look</span> interactive, improving
+                        user flow and engagement.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Example 1: Neo-Aqua -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 relative overflow-hidden group">
+                        <!-- Ambient background glow -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        </div>
+
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2">The "Neo-Aqua" Look</h3>
+                            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                Inspired by early Mac OS. By using deep inner-shadows and glossy gradients, buttons
+                                invite the user to click. The high visual affordance means users don't have to guess if
+                                a shape is a button or just a label.
+                            </p>
+
+                            <!-- UI Playground -->
+                            <div
+                                class="h-40 bg-slate-900 rounded-xl border border-slate-700/50 flex items-center justify-center p-6 relative overflow-hidden">
+                                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full">
+                                </div>
+                                <button
+                                    class="aqua-button px-8 py-3 rounded-full text-white font-bold tracking-wide transition-all duration-200">
+                                    Subscribe Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example 2: Neo-Brutalism -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 relative group">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2">Neo-Brutalism</h3>
+                            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                A reaction to over-polished corporate flat design. Characterized by high-contrast, harsh
+                                borders, and raw colors. It dominates Gen-Z tools because it cuts through the noise and
+                                establishes an unmistakable visual hierarchy.
+                            </p>
+
+                            <!-- UI Playground -->
+                            <div class="h-40 bg-[#e5e5f7] rounded-xl flex items-center justify-center p-6 relative"
+                                style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 10px 10px;">
+                                <button
+                                    class="px-8 py-3 bg-[#ff90e8] border-4 border-black text-black font-black uppercase tracking-widest shadow-[4px_4px_0_0_#000] hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#000] active:translate-y-1 active:shadow-[0px_0px_0_0_#000] transition-all duration-150">
+                                    Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Example 3: Soft Skeuomorphism (Neumorphism) -->
+                    <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 relative group">
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold mb-2">Soft Skeuomorphism</h3>
+                            <p class="text-slate-400 text-sm mb-8 leading-relaxed">
+                                Elements appear extruded from the background itself. While it must be used carefully due
+                                to contrast limits, its extreme softness reduces eye strain in high-density dashboards
+                                where flat lines would cause visual clutter.
+                            </p>
+
+                            <!-- UI Playground -->
+                            <div class="h-40 bg-[#e0e5ec] rounded-xl flex items-center justify-center p-6">
+                                <button
+                                    class="px-8 py-3 bg-[#e0e5ec] text-slate-500 font-bold rounded-xl shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)] active:shadow-[inset_6px_6px_10px_0_rgba(163,177,198,0.6),inset_-6px_-6px_10px_0_rgba(255,255,255,0.5)] transition-shadow duration-200">
+                                    <i data-lucide="power" class="w-6 h-6"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-950 text-slate-500 py-12 px-6">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>
+                    <a href="#" class="font-bold text-xl tracking-tight text-white mb-2 block">DesignSpark.</a>
+                    <p class="text-sm">Designed & built from scratch with Vanilla HTML/Tailwind.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i
+                            data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn</a>
+                    <a href="#" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="mail"
+                            class="w-4 h-4"></i> Email</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- CASE STUDY VIEW: ADHD PLANNER (Hidden by default) -->
+    <div id="adhd-planner" class="case-study-container hidden min-h-screen bg-white">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('adhd-planner')"
+                class="flex items-center text-slate-700 hover:text-brand-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <a href="#"
+                    class="text-sm font-bold text-brand-600 hover:text-brand-700 hidden sm:block bg-brand-50 px-4 py-1.5 rounded-full">View
+                    Prototype</a>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-xs font-bold uppercase tracking-wide">0
+                        → 1 Product Design</span>
+                    <span
+                        class="px-3 py-1 bg-slate-200 text-slate-700 rounded-full text-xs font-bold uppercase tracking-wide">Case
+                        Study</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-[1.1] tracking-tight">
+                    CogniPlan: Designing a planner that respects executive dysfunction.
+                </h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-10 max-w-3xl">
+                    Most productivity tools fail ADHD users by demanding too much working memory just to set up a task.
+                    I led the design of CogniPlan, trading deep customization for immediate, visual actionability.
+                </p>
+
+                <!-- TL;DR Block for Hiring Managers -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border-l-4 border-brand-500 shadow-sm mb-12">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-brand-600 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Problem:</strong> Competitor
+                                apps relied on complex taxonomy (tags, folders, nested lists), causing "setup overwhelm"
+                                that prevented neurodivergent users from actually starting their work.</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Impact:</strong> By
+                                restricting users to a single "Today View" and utilizing visual progress rings, we
+                                reduced time-to-first-task by 2.5x and improved 7-day retention by 42%.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Role</div>
+                        <div class="font-medium text-slate-900">Lead Product Designer</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Timeline</div>
+                        <div class="font-medium text-slate-900">12 Weeks (2025)</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Team</div>
+                        <div class="font-medium text-slate-900">1 PM, 2 iOS Eng</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Platform</div>
+                        <div class="font-medium text-slate-900">Native iOS</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- Section 1: The Problem -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 text-red-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="target" class="w-5 h-5"></i></div>
+                    Defining "Setup Overwhelm"
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Current productivity apps (like Notion or Todoist) are incredibly powerful, but they require
+                        users to build their own systems. For individuals with ADHD, this creates a barrier known as
+                        <strong>executive dysfunction</strong>. The mental energy required to plan the task exhausts the
+                        energy needed to <em>do</em> the task.</p>
+                    <blockquote
+                        class="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-200 text-slate-700 text-lg md:text-xl font-medium !leading-relaxed shadow-inner">
+                        "I spend 45 minutes organizing my tasks into perfectly color-coded folders, and by the time I'm
+                        done, I'm too mentally exhausted to actually start working."
+                        <span class="block text-sm text-slate-500 mt-4 font-normal">— User Interview #4</span>
+                    </blockquote>
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 flex gap-4 items-start">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-amber-600 shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-amber-900 mb-1">Business Constraint</h4>
+                            <p class="text-amber-800 text-sm m-0">We needed an MVP shipped in 3 months to secure seed
+                                funding. We couldn't build complex two-way calendar syncs right away; we had to focus
+                                purely on core habit formation mechanics.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Decision & Trade-offs -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-brand-50 border border-brand-100 text-brand-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                    Decision: Trading Customization for Clarity
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Early wireframes included a traditional 7-day calendar. However, usability testing revealed that
+                        seeing a full week of tasks triggered "time blindness" and anxiety in our neurodivergent
+                        testers.</p>
+                    <p><strong>The Strategic Pivot:</strong> I made the controversial decision to remove the weekly view
+                        entirely from the MVP. Instead, we forced users into a "Today Only" paradigm.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-10 not-prose">
+                        <div
+                            class="border border-slate-200 bg-white rounded-2xl p-6 relative shadow-sm hover:shadow-md transition-shadow">
+                            <div class="absolute top-6 right-6 text-slate-400"><i data-lucide="x-circle"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-4 text-lg">Original Approach (Rejected)</h4>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm text-slate-600">
+                                    <i data-lucide="calendar-days" class="w-5 h-5 text-slate-400 shrink-0"></i>
+                                    <span>Complex infinite scroll calendar</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-slate-600">
+                                    <i data-lucide="brain" class="w-5 h-5 text-slate-400 shrink-0"></i>
+                                    <span>High cognitive load (seeing tomorrow's problems today causes anxiety)</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-slate-600">
+                                    <i data-lucide="mouse-pointer-click" class="w-5 h-5 text-slate-400 shrink-0"></i>
+                                    <span>Required 5+ taps to create a task</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            class="border-2 border-brand-500 bg-brand-50/30 rounded-2xl p-6 relative shadow-sm hover:shadow-md transition-shadow">
+                            <div class="absolute top-6 right-6 text-brand-500"><i data-lucide="check-circle-2"
+                                    class="fill-white"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-4 text-lg">Final Approach (Shipped)</h4>
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-3 text-sm text-slate-700">
+                                    <i data-lucide="layout" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                                    <span>Visual "Now / Next / Later" spatial blocks</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-slate-700">
+                                    <i data-lucide="eye-off" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                                    <span>Future tasks are strictly hidden to maintain present-focus</span>
+                                </li>
+                                <li class="flex items-start gap-3 text-sm text-slate-700">
+                                    <i data-lucide="zap" class="w-5 h-5 text-brand-600 shrink-0"></i>
+                                    <span>1 tap to initiate a preset "micro-task"</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Engineering Collaboration -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="code-2" class="w-5 h-5"></i></div>
+                    Navigating Engineering Constraints
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>To make time visually tangible, I initially designed a feature where active task cards slowly
+                        drained of color as time passed. However, during a technical spike, engineering flagged that
+                        constant re-rendering of custom UI gradients on iOS was causing severe battery drain.</p>
+                    <p>Instead of fighting for the "dribbble-perfect" animation, I collaborated with the iOS lead to
+                        find a native compromise. We replaced the draining gradient with native iOS circular progress
+                        rings combined with distinct haptic feedback at 15-minute intervals. It preserved the
+                        psychological "tangible time" feeling while maintaining 60fps performance and saving battery.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 4: The Final Output -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">The Solution in Action</h2>
+                <div
+                    class="bg-slate-100 rounded-3xl p-8 md:p-16 flex justify-center items-center shadow-inner border border-slate-200">
+                    <!-- High-Fidelity Abstract UI Representation -->
+                    <div
+                        class="w-full max-w-sm bg-slate-50 rounded-[3rem] shadow-2xl border-[12px] border-slate-900 p-6 overflow-hidden relative min-h-[650px] transform hover:scale-[1.02] transition-transform duration-500">
+                        <!-- Dynamic Island mock -->
+                        <div class="absolute top-2 left-1/2 -translate-x-1/2 w-32 h-7 bg-slate-900 rounded-full"></div>
+
+                        <!-- App Header -->
+                        <div class="flex justify-between items-center mb-10 pt-10">
+                            <div>
+                                <h3 class="font-bold text-3xl text-slate-900 tracking-tight">Today</h3>
+                                <p class="text-sm text-brand-600 font-bold mt-1">3 tasks remaining</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center text-slate-500 font-bold overflow-hidden">
+                                <img src="https://ui-avatars.com/api/?name=User&background=f1f5f9&color=64748b"
+                                    alt="User" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <!-- Now Block -->
+                        <div class="mb-8 relative z-10">
+                            <div
+                                class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span> Doing Now
+                            </div>
+                            <div
+                                class="bg-brand-500 text-white rounded-3xl p-6 shadow-xl shadow-brand-500/30 transform transition hover:-translate-y-1">
+                                <div class="flex justify-between items-start mb-6">
+                                    <div
+                                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/20">
+                                        <i data-lucide="mail" class="w-6 h-6"></i></div>
+                                    <span
+                                        class="text-sm font-bold bg-slate-900/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">15:00</span>
+                                </div>
+                                <h4 class="font-bold text-xl mb-2 tracking-tight">Clear Inbox</h4>
+                                <div class="w-full bg-slate-900/20 rounded-full h-2 mt-6 overflow-hidden">
+                                    <div class="bg-white h-full rounded-full w-[45%] relative">
+                                        <div class="absolute right-0 top-0 bottom-0 w-4 bg-white/50 blur-sm"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Block -->
+                        <div class="relative z-0">
+                            <div class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-3 ml-2">Up
+                                Next</div>
+                            <div class="space-y-3">
+                                <div
+                                    class="bg-white border border-slate-100 shadow-sm rounded-2xl p-4 flex items-center gap-4 hover:border-brand-200 transition-colors cursor-pointer">
+                                    <div class="w-6 h-6 rounded-full border-2 border-slate-200 flex-shrink-0"></div>
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 text-sm">Review PR #142</h5>
+                                        <p class="text-xs text-slate-500 mt-0.5">Deep Work</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-white border border-slate-100 shadow-sm rounded-2xl p-4 flex items-center gap-4 hover:border-brand-200 transition-colors cursor-pointer opacity-70">
+                                    <div class="w-6 h-6 rounded-full border-2 border-slate-200 flex-shrink-0"></div>
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 text-sm">Pay electricity bill</h5>
+                                        <p class="text-xs text-slate-500 mt-0.5">Admin</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Action Button -->
+                        <div
+                            class="absolute bottom-10 right-8 w-16 h-16 bg-slate-900 rounded-full shadow-2xl flex items-center justify-center text-white hover:bg-slate-800 transition-colors cursor-pointer hover:scale-105 active:scale-95">
+                            <i data-lucide="plus" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Outcomes & Learnings -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">Outcomes & Reflections</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="text-5xl font-extrabold text-brand-600 mb-3 tracking-tighter">42%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Increase in 7-day habit streaks
+                            among beta users.</div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="text-5xl font-extrabold text-brand-600 mb-3 tracking-tighter">2.5x</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Faster "Time-to-first-task"
+                            setup compared to control.</div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="text-5xl font-extrabold text-brand-600 mb-3 tracking-tighter">180+</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Qualitative feedback tickets
+                            praising "reduced anxiety".</div>
+                    </div>
+                </div>
+
+                <div
+                    class="prose prose-lg text-slate-600 max-w-none bg-slate-50 p-8 rounded-2xl border border-slate-100">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-5 h-5 text-slate-400"></i> Hindsight & Learnings
+                    </h3>
+                    <p>If I had more time before the MVP freeze, I would have invested earlier in accessibility testing
+                        for screen readers. Because we relied heavily on visual color cues (which worked great for our
+                        specific ADHD personas), we initially neglected how those states would be announced via
+                        VoiceOver for users with compounding visual impairments. I had to retroactively define
+                        `aria-labels` and semantic states for the engineering team, which was a great learning moment
+                        regarding "shift-left" accessibility.</p>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-900 text-white py-24 text-center cursor-pointer hover:bg-slate-800 transition-colors group"
+            onclick="closeCaseStudy('adhd-planner')">
+            <span
+                class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-brand-400 transition-colors">Up
+                Next</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Return to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- CASE STUDY VIEW: LUMINA PLATFORM (Hidden by default) -->
+    <div id="lumina-platform" class="case-study-container hidden min-h-screen bg-white">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('lumina-platform')"
+                class="flex items-center text-slate-300 hover:text-white font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <span
+                    class="text-sm font-bold text-violet-400 hidden sm:flex items-center gap-1.5 bg-violet-500/10 border border-violet-500/20 px-4 py-1.5 rounded-full"><i
+                        data-lucide="flask-conical" class="w-3.5 h-3.5"></i> Product Concept</span>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-slate-900 text-white border-b border-slate-800">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-violet-500/20 text-violet-300 border border-violet-500/30 rounded-full text-xs font-bold uppercase tracking-wide">B2B
+                        SaaS</span>
+                    <span
+                        class="px-3 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-bold uppercase tracking-wide">Developer
+                        Tools</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                    Lumina: Curing "Remediation Paralysis" in enterprise accessibility.
+                </h1>
+                <p class="text-xl text-slate-400 leading-relaxed mb-10 max-w-3xl">
+                    Digital accessibility is a legal requirement, but automated scanners overwhelm product teams with
+                    thousands of raw code errors. I designed a standalone SaaS product that translates these chaotic
+                    scans into prioritized, human-centric workflows.
+                </p>
+
+                <!-- TL;DR Block -->
+                <div
+                    class="bg-slate-800/50 p-6 md:p-8 rounded-2xl border-l-4 border-violet-500 shadow-sm mb-12 backdrop-blur-sm">
+                    <h3
+                        class="text-sm font-bold uppercase tracking-widest text-violet-400 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>The Strategy:</strong> Flipped the
+                                standard Information Architecture from a "Flat List of URLs" to a "Journey-Based
+                                Hierarchy," allowing teams to fix critical user flows (like Checkout) before worrying
+                                about obscure footer links.</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>The Impact:</strong> By
+                                blueprinting the offline triage-to-Jira handoff and designing an intuitive dashboard,
+                                this concept reduces the time required for a Product Manager to triage an accessibility
+                                audit by an estimated 70%.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6 border-t border-slate-800">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Role</div>
+                        <div class="font-medium text-slate-200">Lead Product Designer</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Methods</div>
+                        <div class="font-medium text-slate-200">Service Blueprinting, IA</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Focus</div>
+                        <div class="font-medium text-slate-200">Accessibility (WCAG)</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Context</div>
+                        <div class="font-medium text-slate-200">Standalone SaaS Concept</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- Section 1: The Problem & Emotional Job -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center shadow-sm">
+                        <i data-lucide="brain" class="w-5 h-5"></i></div>
+                    The Emotional Job: Remediation Paralysis
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>In B2B software, getting hit with an accessibility audit is a high-stress event. When a Product
+                        Manager runs an automated WCAG scanner on an enterprise site, it often returns <strong>10,000+
+                            individual violations</strong> (missing aria-labels, contrast issues, trap focuses).</p>
+                    <p>The emotional job here isn't just "showing the data." It is entirely about <strong>reducing the
+                            crushing anxiety of legal risk and unmanageable workload.</strong> Teams experience
+                        "remediation paralysis"—the list is so big, they don't know where to start, so they do nothing.
+                    </p>
+                    <blockquote
+                        class="bg-violet-50 p-6 md:p-8 rounded-2xl border border-violet-100 text-violet-900 text-lg md:text-xl font-medium !leading-relaxed shadow-inner">
+                        "The scanner told us we had 4,000 contrast errors. My devs looked at the spreadsheet, panicked,
+                        and said it would take 3 sprints just to verify them. We just gave up."
+                        <span class="block text-sm text-violet-700 mt-4 font-normal">— Hypothetical Target Persona
+                            (Enterprise PM)</span>
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- Section 2: Information Architecture -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="network" class="w-5 h-5"></i></div>
+                    Flipping the Information Architecture
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Legacy tools use a <strong>Page-Based Architecture</strong> (e.g., "Here are all the errors on
+                        /about-us"). This is functionally useless for a business, because a broken button on the
+                        checkout page is infinitely more critical than a broken image tag in a 2018 blog post.</p>
+                    <p>I completely restructured the IA to be <strong>Journey-Based.</strong></p>
+                    <p>Lumina ingests the scan data and maps it to core user flows (Onboarding, Search, Checkout). By
+                        changing the taxonomy, we immediately solve the prioritization problem. A PM can now see:
+                        <em>"The 'Add to Cart' flow has 3 critical blocking errors. Fix those today."</em></p>
+
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm my-8 not-prose">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="flex-1 bg-slate-50 p-5 rounded-xl border border-slate-100 relative opacity-70">
+                                <div
+                                    class="absolute -top-3 -right-3 w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500">
+                                    <i data-lucide="x" class="w-4 h-4"></i></div>
+                                <div class="font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2">Old IA (Flat
+                                    List)</div>
+                                <ul class="space-y-2 text-sm text-slate-600 font-mono">
+                                    <li>1. /home (241 errors)</li>
+                                    <li>2. /checkout (89 errors)</li>
+                                    <li>3. /blog/post-1 (412 errors)</li>
+                                    <li>4. /contact (12 errors)</li>
+                                </ul>
+                            </div>
+                            <div class="flex-1 bg-violet-50 p-5 rounded-xl border border-violet-200 relative shadow-sm">
+                                <div
+                                    class="absolute -top-3 -right-3 w-8 h-8 bg-violet-500 rounded-full flex items-center justify-center text-white shadow-md">
+                                    <i data-lucide="check" class="w-4 h-4"></i></div>
+                                <div class="font-bold text-violet-900 mb-4 border-b border-violet-200 pb-2">New IA
+                                    (Journey-Based)</div>
+                                <ul class="space-y-3 text-sm text-violet-800">
+                                    <li class="flex items-center gap-2">
+                                        <div class="w-2 h-2 rounded-full bg-red-500"></div> <strong>Critical:</strong>
+                                        Checkout Flow
+                                    </li>
+                                    <li class="flex items-center gap-2 ml-4"><i data-lucide="corner-down-right"
+                                            class="w-3 h-3"></i> Step 1: Payment (3 blockers)</li>
+                                    <li class="flex items-center gap-2">
+                                        <div class="w-2 h-2 rounded-full bg-amber-500"></div> <strong>Warning:</strong>
+                                        Lead Gen Form
+                                    </li>
+                                    <li class="flex items-center gap-2">
+                                        <div class="w-2 h-2 rounded-full bg-slate-300"></div> <strong>Low:</strong> Blog
+                                        Archive
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Service Blueprinting -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="map" class="w-5 h-5"></i></div>
+                    Service Blueprinting the Offline Handoff
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Detecting an error is only 10% of the job. The real friction happens in the <strong>offline
+                            service blueprint:</strong></p>
+                    <ol>
+                        <li>PM reviews the dashboard.</li>
+                        <li>PM manually copies code snippets into Jira.</li>
+                        <li>Developer asks for visual context.</li>
+                        <li>QA analyst has to manually re-test with a screen reader.</li>
+                    </ol>
+                    <p>I mapped this exact workflow and designed Lumina to bridge these gaps. I designed a "One-Click
+                        Jira Ticket" feature that automatically bundles the DOM element, the WCAG guideline, and a
+                        visual screenshot of the violation into a developer-ready format, drastically reducing the
+                        offline back-and-forth.</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Validation & Analytics Design -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-brand-50 border border-brand-100 text-brand-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="pie-chart" class="w-5 h-5"></i></div>
+                    Designing for Data-Driven Analytics
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>To ensure this concept would thrive in an Agile environment, I factored product analytics (like
+                        Amplitude or Heap) directly into the UX strategy.</p>
+                    <p>If we notice through Pendo event tracking that users are dismissing "Contrast Ratio" warnings
+                        without actioning them, the UX implies we haven't provided enough context. By anticipating this
+                        in the design phase, I added a "Visual Contrast Simulator" modal that allows the user to see
+                        <em>exactly</em> how a visually impaired user sees the button, directly linking the code error
+                        to human empathy to drive action.</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Projected Outcomes -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">Projected Value Proposition</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="text-5xl font-extrabold text-violet-600 mb-3 tracking-tighter">70%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Estimated reduction in manual
+                            triage time for Product Managers.</div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="text-5xl font-extrabold text-violet-600 mb-3 tracking-tighter">100%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Alignment with WCAG 2.2 AA
+                            standards via actionable developer tickets.</div>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="text-5xl font-extrabold text-violet-600 mb-3 tracking-tighter">Zero</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Need for developers to learn
+                            complex accessibility auditing software.</div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-900 text-white py-24 text-center cursor-pointer hover:bg-slate-800 transition-colors group"
+            onclick="closeCaseStudy('lumina-platform')">
+            <span
+                class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-violet-400 transition-colors">Return
+                Home</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Back to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- CASE STUDY VIEW: SHIFT E-COMMERCE (Hidden by default) -->
+    <div id="shift-ecommerce" class="case-study-container hidden min-h-screen bg-white">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('shift-ecommerce')"
+                class="flex items-center text-slate-700 hover:text-indigo-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <span
+                    class="text-sm font-bold text-indigo-600 hidden sm:flex items-center gap-1.5 bg-indigo-50 px-4 py-1.5 rounded-full"><i
+                        data-lucide="package" class="w-3.5 h-3.5"></i> B2B2C Product</span>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wide">E-commerce
+                        UX</span>
+                    <span
+                        class="px-3 py-1 bg-slate-200 text-slate-700 rounded-full text-xs font-bold uppercase tracking-wide">Conversion
+                        Optimization</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-[1.1] tracking-tight">
+                    Shift: Turning post-purchase regret into retained revenue.
+                </h1>
+                <p class="text-xl text-slate-600 leading-relaxed mb-10 max-w-3xl">
+                    Returns are the most frustrating part of online shopping and a multi-billion dollar leak for D2C
+                    brands. I designed a white-label returns portal that uses behavioral nudges to effortlessly convert
+                    refunds into instant exchanges.
+                </p>
+
+                <!-- TL;DR Block -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border-l-4 border-indigo-500 shadow-sm mb-12">
+                    <h3
+                        class="text-sm font-bold uppercase tracking-widest text-indigo-600 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Problem:</strong> The standard
+                                return flow forces users to find a printer, buy tape, and wait weeks for a refund.
+                                Because of this friction, users almost never exchange items; they just refund and churn.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Impact:</strong> By
+                                introducing QR-code drop-offs and a "Bonus Credit" UI nudge right at the moment of
+                                decision, this product concept theoretically converts 38% of traditional refunds into
+                                retained revenue.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Role</div>
+                        <div class="font-medium text-slate-900">Lead Product Designer</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Core Metric</div>
+                        <div class="font-medium text-slate-900">Revenue Retention %</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Focus</div>
+                        <div class="font-medium text-slate-900">Behavioral Psych</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-1">Context</div>
+                        <div class="font-medium text-slate-900">SaaS Product Concept</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- Section 1: The Problem -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-red-50 border border-red-100 text-red-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="printer" class="w-5 h-5"></i></div>
+                    The "Printer Friction" Trap
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>When a customer buys a pair of shoes that don't fit, they actually <em>want</em> the shoes—they
+                        just need a different size. But the traditional e-commerce return UX actively punishes them for
+                        trying to exchange.</p>
+                    <p>I conducted a friction audit on top e-commerce brands and found a massive disconnect between the
+                        digital and physical experience. A user can buy an item with one tap (Apple Pay), but returning
+                        it requires finding a PDF, locating a physical printer, buying packing tape, and waiting in line
+                        at a post office.</p>
+                    <blockquote
+                        class="bg-indigo-50 p-6 md:p-8 rounded-2xl border border-indigo-100 text-indigo-900 text-lg md:text-xl font-medium !leading-relaxed shadow-inner">
+                        "I wanted the medium sweater instead of the large, but printing the label was such a hassle I
+                        just returned it for cash. I ended up buying a different sweater from Amazon instead."
+                        <span class="block text-sm text-indigo-700 mt-4 font-normal">— User Discovery Interview</span>
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- Section 2: The Core Interaction -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="split-square-horizontal" class="w-5 h-5"></i></div>
+                    Designing the Behavioral Nudge
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>The critical moment in a return flow is the fork in the road: <strong>Refund to Original
+                            Payment</strong> vs <strong>Exchange/Store Credit</strong>.</p>
+                    <p>Most brands treat these equally in the UI as two plain radio buttons. I completely redesigned
+                        this decision matrix using behavioral economics (Loss Aversion and Instant Gratification).</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-10 not-prose">
+                        <div
+                            class="border border-slate-200 bg-white rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                            <div class="text-slate-400 font-bold mb-6 text-sm uppercase tracking-wider">The Standard UI
+                            </div>
+                            <div class="w-full space-y-3">
+                                <div class="border-2 border-slate-200 rounded-xl p-4 flex items-center gap-3">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-300"></div>
+                                    <span class="font-medium text-slate-700">Refund to Visa ending in 1234</span>
+                                </div>
+                                <div class="border-2 border-slate-200 rounded-xl p-4 flex items-center gap-3">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-300"></div>
+                                    <span class="font-medium text-slate-700">Get Store Credit</span>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-6">Result: 85% of users choose Refund. The business
+                                loses the sale.</p>
+                        </div>
+                        <div
+                            class="border-2 border-indigo-500 bg-indigo-50/50 rounded-2xl p-6 shadow-md flex flex-col items-center text-center relative overflow-hidden">
+                            <div class="text-indigo-600 font-bold mb-6 text-sm uppercase tracking-wider">The "Shift" UI
+                            </div>
+                            <div class="w-full space-y-3">
+                                <div
+                                    class="bg-indigo-600 border-2 border-indigo-600 rounded-xl p-4 flex items-center gap-3 shadow-lg shadow-indigo-500/30 transform hover:scale-[1.02] transition-transform cursor-pointer">
+                                    <div
+                                        class="w-5 h-5 rounded-full border-4 border-white flex items-center justify-center">
+                                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                                    </div>
+                                    <div class="text-left flex-1">
+                                        <div class="font-bold text-white flex items-center gap-2">Exchange instantly
+                                            <span
+                                                class="bg-indigo-400 text-white text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-wider">+$10
+                                                Bonus</span></div>
+                                        <div class="text-indigo-200 text-xs mt-0.5">Ships today. No waiting.</div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="border-2 border-slate-200 bg-white rounded-xl p-4 flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-300"></div>
+                                    <div class="text-left flex-1">
+                                        <div class="font-medium text-slate-700">Refund to Original Payment</div>
+                                        <div class="text-slate-500 text-xs mt-0.5">Takes 7-10 business days.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-indigo-700 mt-6 font-medium">Result: Users are incentivized by
+                                immediate shipping and bonus buying power.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Physical-to-Digital Service Design -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="qr-code" class="w-5 h-5"></i></div>
+                    Removing Physical Friction
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Solving the UI wasn't enough; the physical drop-off was still a barrier. I designed the
+                        <strong>Printer-less Drop-off Flow</strong>.</p>
+                    <p>Once a user selects their return, Shift generates a high-contrast QR code. The user simply brings
+                        the unboxed item to a partner location (like a pharmacy or post office). The clerk scans the QR
+                        code from the user's phone, takes the raw item, and handles the packing.</p>
+                    <p><strong>The Magic Moment:</strong> Because the system integrates with logistics APIs, the exact
+                        second the clerk scans the QR code, a webhook triggers the user's exchange order to ship, or
+                        releases their store credit instantly to their wallet. We removed days of anxiety and waiting
+                        from the feedback loop.</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Outcomes -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">Projected Value Proposition</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-indigo-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-indigo-600 mb-3 tracking-tighter">38%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Conversion of traditional
+                            refunds into retained store credit.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-indigo-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-indigo-600 mb-3 tracking-tighter">+45</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Increase in Net Promoter Score
+                            (NPS) for the post-purchase experience.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-indigo-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-indigo-600 mb-3 tracking-tighter">Zero</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Need for users to own a physical
+                            printer, tape, or cardboard boxes.</div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-900 text-white py-24 text-center cursor-pointer hover:bg-slate-800 transition-colors group"
+            onclick="closeCaseStudy('shift-ecommerce')">
+            <span
+                class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-indigo-400 transition-colors">Return
+                Home</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Back to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- CASE STUDY VIEW: AURA FINTECH (Hidden by default) -->
+    <div id="aura-fintech" class="case-study-container hidden min-h-screen bg-white">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('aura-fintech')"
+                class="flex items-center text-slate-700 hover:text-rose-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <span
+                    class="text-sm font-bold text-rose-600 hidden sm:flex items-center gap-1.5 bg-rose-50 px-4 py-1.5 rounded-full"><i
+                        data-lucide="palette" class="w-3.5 h-3.5"></i> Interaction Design</span>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-[#fff0f2] border-b border-rose-100">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-rose-200/50 text-rose-800 rounded-full text-xs font-bold uppercase tracking-wide">Brand
+                        Identity</span>
+                    <span
+                        class="px-3 py-1 bg-white text-slate-700 rounded-full text-xs font-bold uppercase tracking-wide">Motion
+                        Design</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-[1.1] tracking-tight">
+                    Aura: Curing invoice anxiety through personality and motion.
+                </h1>
+                <p class="text-xl text-slate-700 leading-relaxed mb-10 max-w-3xl">
+                    Traditional finance tools look like spreadsheets, making the already-awkward task of asking clients
+                    for money feel cold and corporate. I designed Aura, a freelance invoicing tool that uses vibrant
+                    branding and delightful micro-animations to give creators confidence.
+                </p>
+
+                <!-- TL;DR Block -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border-l-4 border-rose-500 shadow-sm mb-12">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-rose-600 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Strategy:</strong> Treat brand
+                                personality and motion design not as "polish," but as core UX tools to solve the
+                                emotional friction of imposter syndrome and financial anxiety in independent workers.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Impact:</strong> By
+                                implementing conversational UX, the "Gentle Nudge" feature, and dopamine-driven
+                                completion animations, the platform saw a 22% increase in on-time invoice payments
+                                compared to traditional PDFs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-rose-900/50 mb-1">Role</div>
+                        <div class="font-medium text-slate-900">Product & Motion Designer</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-rose-900/50 mb-1">Target Audience
+                        </div>
+                        <div class="font-medium text-slate-900">Gen-Z Freelancers</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-rose-900/50 mb-1">Core Deliverables
+                        </div>
+                        <div class="font-medium text-slate-900">Design System, Lottie Files</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-rose-900/50 mb-1">Context</div>
+                        <div class="font-medium text-slate-900">Startup Concept</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- Section 1: The Emotional Job -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="frown" class="w-5 h-5"></i></div>
+                    The Emotional Toll of Asking for Money
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>When investigating the creator economy, I found that sending an invoice isn't a data-entry
+                        problem; it's a deeply emotional one. Freelancers, especially those early in their careers,
+                        battle intense imposter syndrome.</p>
+                    <p>Traditional accounting tools (like QuickBooks or Xero) are designed for CFOs. They use sterile
+                        "corporate blue" interfaces, heavy data tables, and harsh terminology. This clinical environment
+                        exacerbates the user's anxiety, making them feel like they are initiating a legal confrontation
+                        rather than simply getting paid for their art.</p>
+                    <blockquote
+                        class="bg-rose-50 p-6 md:p-8 rounded-2xl border border-rose-100 text-rose-900 text-lg md:text-xl font-medium !leading-relaxed shadow-inner">
+                        "I will literally put off sending an invoice for three weeks because hitting 'Send' feels so
+                        aggressive. I don't want to ruin the relationship with my client."
+                        <span class="block text-sm text-rose-700 mt-4 font-normal">— Freelance Illustrator, User
+                            Interview</span>
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- Section 2: Brand as UX -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-rose-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="palette" class="w-5 h-5"></i></div>
+                    Brand Voice as a Functional UX Tool
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>To solve this, I deliberately stripped away the "fintech" aesthetic. I developed a design system
+                        for Aura that utilized a warm, optimistic color palette (Sunset Rose, Amber, and Soft Lavender)
+                        and soft, rounded UI geometries.</p>
+                    <p>More importantly, I leveraged <strong>conversational UX</strong>. Instead of a form labeled
+                        <code>Input Client Data</code>, the interface asks, <em>"Who are we celebrating today?"</em>
+                        Instead of <code>Net-30 Terms</code>, the default copy reads, <em>"When should they pop this in
+                            your account?"</em></p>
+                    <p>By changing the structural framing from a "corporate demand" to a "collaborative milestone," the
+                        cognitive friction of filling out the invoice plummeted.</p>
+                </div>
+            </section>
+
+            <!-- Section 3: Micro-Animations -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-yellow-50 border border-yellow-100 text-yellow-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="move" class="w-5 h-5"></i></div>
+                    Motion that Informs and Delights
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>In Aura, micro-animations aren't just decorative confetti—they fulfill a core usability
+                        heuristic: <strong>Visibility of System Status</strong>. I used physics-based motion (via
+                        Lottie) to create moments of intense dopamine that reward the user for completing stressful
+                        tasks.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-10 not-prose">
+                        <div
+                            class="border border-slate-200 bg-white rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4"><i
+                                    data-lucide="send" class="w-6 h-6 text-slate-600"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-2">The "Send" Interaction</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Instead of a static loading spinner,
+                                pressing "Send Invoice" triggers a micro-animation of a paper plane looping and soaring
+                                off-screen. It provides immediate, undeniable system feedback while adding a moment of
+                                playful relief.</p>
+                        </div>
+                        <div
+                            class="border border-slate-200 bg-white rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center mb-4"><i
+                                    data-lucide="coins" class="w-6 h-6 text-rose-600"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-2">The "Paid" Celebration</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">When an invoice is paid, the status badge
+                                physically "pops" open, dropping three animated gold coins into a digital piggy bank.
+                                This visceral feedback turns a dry transaction into a celebrated personal victory.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: The "Gentle Nudge" Feature -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="bell-ring" class="w-5 h-5"></i></div>
+                    Delegating the Awkwardness
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>The highest point of drop-off in freelance finance is following up on late payments. To solve
+                        this, I designed a feature called the <strong>"Gentle Nudge."</strong></p>
+                    <p>Instead of the freelancer having to draft a passive-aggressive email, Aura surfaces a playful,
+                        one-click "Nudge" button. When clicked, the <em>platform itself</em> sends a beautifully
+                        branded, friendly reminder to the client. By positioning the software as the intermediary
+                        "agent," we completely removed the interpersonal tension between the creator and their client.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section 5: Outcomes -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">The Power of Personality</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-rose-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-rose-600 mb-3 tracking-tighter">22%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Increase in on-time invoice
+                            payments due to friendly, automated nudges.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-rose-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-rose-600 mb-3 tracking-tighter">3x</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Higher daily active engagement
+                            compared to legacy accounting software.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-rose-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-rose-600 mb-3 tracking-tighter">100%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">System state visibility achieved
+                            through purposeful Lottie motion design.</div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-900 text-white py-24 text-center cursor-pointer hover:bg-slate-800 transition-colors group"
+            onclick="closeCaseStudy('aura-fintech')">
+            <span
+                class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-rose-400 transition-colors">Return
+                Home</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Back to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- CASE STUDY VIEW: NAVIGATOR AI (Hidden by default) -->
+    <div id="navigator-platform" class="case-study-container hidden min-h-screen bg-white">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-slate-950/90 backdrop-blur-md z-50 border-b border-slate-800 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('navigator-platform')"
+                class="flex items-center text-slate-300 hover:text-sky-400 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <span
+                    class="text-sm font-bold text-sky-400 hidden sm:flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/20 px-4 py-1.5 rounded-full"><i
+                        data-lucide="cpu" class="w-3.5 h-3.5"></i> AI Product Design</span>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-slate-950 text-white border-b border-slate-800 relative overflow-hidden">
+            <!-- Decorative Glow -->
+            <div
+                class="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-600/10 blur-[120px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-sky-500/20 text-sky-300 border border-sky-500/30 rounded-full text-xs font-bold uppercase tracking-wide">Enterprise
+                        UX</span>
+                    <span
+                        class="px-3 py-1 bg-slate-800 text-slate-300 rounded-full text-xs font-bold uppercase tracking-wide">Semantic
+                        Search</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                    Navigator: Designing trust into enterprise AI search.
+                </h1>
+                <p class="text-xl text-slate-400 leading-relaxed mb-10 max-w-3xl">
+                    Information silos cost enterprise companies millions in lost productivity. I designed Navigator—an
+                    OS-level, AI-powered command center that replaces frustrating keyword hunts with conversational,
+                    context-aware discovery.
+                </p>
+
+                <!-- TL;DR Block -->
+                <div
+                    class="bg-slate-900/80 p-6 md:p-8 rounded-2xl border-l-4 border-sky-500 shadow-lg mb-12 backdrop-blur-sm">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-sky-400 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>The Problem:</strong> Employees
+                                were experiencing high cognitive load context-switching between Confluence, Google
+                                Drive, and Slack just to find basic company policies, leading to repeated questions and
+                                bottlenecked workflows.</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-300 text-sm leading-relaxed"><strong>The Impact:</strong> By utilizing
+                                a globally accessible `Cmd+K` interface and designing an AI response system anchored
+                                heavily in verifiable citations, we reduced time-to-document by 3x and deflected 40% of
+                                repetitive IT/HR support tickets.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6 border-t border-slate-800">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Role</div>
+                        <div class="font-medium text-slate-200">Lead UX Designer</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Core Metric</div>
+                        <div class="font-medium text-slate-200">Time-to-Discovery</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Architecture</div>
+                        <div class="font-medium text-slate-200">RAG (Retrieval-Augmented Gen)</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mb-1">Platform</div>
+                        <div class="font-medium text-slate-200">Desktop Overlay</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- Section 1: The Emotional Job -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center shadow-sm">
+                        <i data-lucide="folder-search" class="w-5 h-5"></i></div>
+                    The Emotional Toll of Information Silos
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>In modern enterprises, knowledge is fragmented. The onboarding manual is in Notion, the Q3
+                        financials are in Google Drive, and the engineering architecture is buried in a Slack thread
+                        from eight months ago.</p>
+                    <p>Through user interviews, I discovered that the frustration wasn't just about wasted time—it was
+                        about <strong>imposter syndrome</strong>. Employees felt incompetent when they had to repeatedly
+                        ask their managers for links they "should" already know how to find.</p>
+                    <blockquote
+                        class="bg-sky-50 p-6 md:p-8 rounded-2xl border border-sky-100 text-sky-900 text-lg md:text-xl font-medium !leading-relaxed shadow-inner">
+                        "I spend 20 minutes looking for a specific HR policy, give up, and then ping someone on Slack. I
+                        hate doing it because it interrupts their day and makes me look disorganized."
+                        <span class="block text-sm text-sky-700 mt-4 font-normal">— Mid-level Software Engineer, User
+                            Interview</span>
+                    </blockquote>
+                </div>
+            </section>
+
+            <!-- Section 2: UI Paradigm Shift -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 text-sky-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="layers" class="w-5 h-5"></i></div>
+                    Designing the "Command Center"
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Traditional enterprise search is an independent web portal (e.g., SharePoint). This is a flawed
+                        UX paradigm because it requires a massive context switch. To find an answer, the user must leave
+                        their current flow, open a new tab, navigate to a portal, and formulate a boolean query.</p>
+                    <p>I advocated for a <strong>globally accessible overlay</strong> approach, heavily inspired by
+                        Apple's Spotlight and Raycast.</p>
+                    <p>By defining a global shortcut (`Cmd+K` / `Ctrl+K`), Navigator instantly summons a floating search
+                        interface over whatever application the user is currently in. This entirely eliminated the
+                        friction of context-switching, allowing users to query company data without leaving their IDE or
+                        email client.</p>
+                </div>
+            </section>
+
+            <!-- Section 3: AI UX & Trust -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i></div>
+                    Designing for AI Trust (Solving Hallucinations)
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>The core engine of Navigator is an LLM querying a vector database (RAG). However, users are
+                        acutely aware that AI hallucinates. If an AI gives an employee the wrong parental leave policy,
+                        it creates severe liability.</p>
+                    <p>To solve the "Trust Barrier," I designed the UX strictly around <strong>Transparency and
+                            Verifiable Citations</strong>. The AI's generated summary is treated as secondary; the
+                        primary artifacts are the underlying source documents.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-10 not-prose">
+                        <div
+                            class="border border-slate-200 bg-white rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4"><i
+                                    data-lucide="message-square-dashed" class="w-6 h-6 text-slate-600"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-2">The "ChatGPT" Anti-Pattern</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Just spitting out conversational text
+                                forces the user to blindly trust the machine. In an enterprise environment, un-cited AI
+                                output is viewed as dangerous and unreliable by power users.</p>
+                        </div>
+                        <div
+                            class="border-2 border-sky-500 bg-sky-50/50 rounded-2xl p-6 shadow-md flex flex-col items-center text-center relative overflow-hidden">
+                            <div
+                                class="w-12 h-12 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center mb-4">
+                                <i data-lucide="link" class="w-6 h-6"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-2">The "Citation First" Pattern</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Every sentence generated by Navigator
+                                features a highly visible, clickable pill [1] that anchors directly to the exact
+                                paragraph in Google Drive or Confluence where the data was sourced.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Transitioning States -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="loader-2" class="w-5 h-5"></i></div>
+                    Skeleton Screens over Spinners
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>LLMs are notoriously slow, often taking 2-4 seconds to stream a response. A standard loading
+                        spinner creates a perception of a "broken" or stalled app.</p>
+                    <p>I engineered the interaction design to mask this latency. The moment the user hits Enter, the UI
+                        instantly populates the <em>sources</em> (which are retrieved rapidly via traditional semantic
+                        search) while the LLM summary streams in progressively below. This provides immediate visual
+                        feedback, keeping the user engaged and reducing the perceived waiting time to zero.</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Outcomes -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">Business Impact</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-sky-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-sky-600 mb-3 tracking-tighter">3x</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Reduction in average
+                            "time-to-document" compared to manual portal searches.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-sky-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-sky-600 mb-3 tracking-tighter">40%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Deflection of repetitive,
+                            low-tier questions normally directed at IT and HR Slack channels.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-sky-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-sky-600 mb-3 tracking-tighter">92%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Of surveyed beta users reported
+                            feeling "more confident" finding information independently.</div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-950 text-white py-24 text-center cursor-pointer hover:bg-slate-900 transition-colors group border-t border-slate-800"
+            onclick="closeCaseStudy('navigator-platform')">
+            <span
+                class="text-slate-500 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-sky-400 transition-colors">Return
+                Home</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Back to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- CASE STUDY VIEW: OPTIMA AI (Hidden by default) -->
+    <div id="optima-platform" class="case-study-container hidden min-h-screen bg-white">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('optima-platform')"
+                class="flex items-center text-slate-700 hover:text-emerald-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <span
+                    class="text-sm font-bold text-emerald-600 hidden sm:flex items-center gap-1.5 bg-emerald-50 px-4 py-1.5 rounded-full"><i
+                        data-lucide="scan-line" class="w-3.5 h-3.5"></i> B2B Tool Concept</span>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-[#f0fdf4] border-b border-emerald-100 relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div
+                class="absolute top-20 right-10 w-64 h-64 bg-emerald-300/20 blur-[80px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="max-w-4xl mx-auto relative z-10">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-emerald-200/50 text-emerald-800 rounded-full text-xs font-bold uppercase tracking-wide">Vision
+                        Models</span>
+                    <span
+                        class="px-3 py-1 bg-white text-slate-700 border border-slate-200 rounded-full text-xs font-bold uppercase tracking-wide">Heuristics</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-[1.1] tracking-tight">
+                    Optima: Democratizing UX Audits with Vision AI.
+                </h1>
+                <p class="text-xl text-slate-700 leading-relaxed mb-10 max-w-3xl">
+                    High-quality UX audits are a luxury usually reserved for enterprise budgets. I designed a SaaS
+                    platform that uses multi-modal AI (vision + text) to instantly scan a website, map heuristic
+                    violations, and prescribe exact UI fixes.
+                </p>
+
+                <!-- TL;DR Block -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border-l-4 border-emerald-500 shadow-sm mb-12">
+                    <h3
+                        class="text-sm font-bold uppercase tracking-widest text-emerald-600 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Problem:</strong> Small teams
+                                and startups cannot afford the $5k-$20k price tag of an agency UX audit. As a result,
+                                basic usability flaws (contrast, confusing hierarchy, dead clicks) directly drain their
+                                conversion rates.</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Impact:</strong> By
+                                translating Nielsen's 10 Usability Heuristics into an AI prompt structure, and designing
+                                a "Spatial Diagnostic" UI, Optima allows non-designers to uncover and action
+                                expert-level UX improvements in under 3 minutes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-emerald-900/50 mb-1">Role</div>
+                        <div class="font-medium text-slate-900">Principal Product Designer</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-emerald-900/50 mb-1">Target Persona
+                        </div>
+                        <div class="font-medium text-slate-900">Founders & Solo-Devs</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-emerald-900/50 mb-1">Technology
+                        </div>
+                        <div class="font-medium text-slate-900">Multi-Modal LLMs</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-emerald-900/50 mb-1">Context</div>
+                        <div class="font-medium text-slate-900">SaaS Proof of Concept</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- Section 1: The Domain Strategy -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center shadow-sm">
+                        <i data-lucide="microscope" class="w-5 h-5"></i></div>
+                    The "UX Maturity" Gap
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Good design is systemic, but it's often treated as subjective. When non-designers build software,
+                        they frequently violate basic laws of human-computer interaction (HCI) without realizing
+                        it—burying critical actions, breaking visual hierarchies, or providing zero system feedback.</p>
+                    <p>I conceptualized Optima to bridge this gap. The goal was not to replace senior designers, but to
+                        automate the baseline. By grounding a Vision LLM in <strong>Jakob Nielsen's 10 Usability
+                            Heuristics</strong> and the <strong>WCAG accessibility guidelines</strong>, we could
+                        automate the discovery of foundational flaws.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: UI Design -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="focus" class="w-5 h-5"></i></div>
+                    Designing Spatial Diagnostics
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>The hardest challenge in designing AI tools is the presentation of data. If the AI simply
+                        generates a text document saying, <em>"Your primary button is hard to read,"</em> the user has
+                        to guess which button it means.</p>
+                    <p>I designed a <strong>Spatial Diagnostic Interface</strong>. When a user pastes a URL, Optima
+                        renders a high-fidelity image of the site. The UI uses coordinate-mapping from the LLM to draw
+                        glowing, interactive bounding boxes directly over the offending UI elements.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6 my-10 not-prose">
+                        <div
+                            class="border border-slate-200 bg-white rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-4"><i
+                                    data-lucide="align-left" class="w-6 h-6 text-slate-600"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-2">The Text Output UX (Flawed)</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Reading a long bulleted list of UX issues
+                                lacks context. The cognitive load required to map a text description back to a visual
+                                interface creates massive friction for the user.</p>
+                        </div>
+                        <div
+                            class="border-2 border-emerald-500 bg-emerald-50/50 rounded-2xl p-6 shadow-md flex flex-col items-center text-center relative overflow-hidden">
+                            <div
+                                class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4">
+                                <i data-lucide="mouse-pointer-2" class="w-6 h-6"></i></div>
+                            <h4 class="font-bold text-slate-900 mb-2">The Spatial Output UX (Solved)</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">Hovering over "Issue #3" in the sidebar
+                                physically highlights the corresponding "Add to Cart" button on the preview canvas.
+                                Context is immediate and undeniable.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Actionable Insights -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-teal-50 border border-teal-100 text-teal-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="wrench" class="w-5 h-5"></i></div>
+                    From Critique to Actionable Fix
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>A tool that only points out flaws is annoying; a tool that provides solutions is indispensable. I
+                        structured the AI output to follow a strict 3-part framework for every identified issue:</p>
+                    <ol>
+                        <li><strong>The Heuristic Violated:</strong> (e.g., <em>Consistency and Standards</em>)</li>
+                        <li><strong>The User Impact:</strong> (e.g., <em>"Users expect the 'Cancel' button to be
+                                secondary. Making it the same primary color as 'Save' causes accidental data
+                                loss."</em>)</li>
+                        <li><strong>The Prescriptive Fix:</strong> (e.g., <em>"Change the 'Cancel' button to a ghost
+                                variant with a transparent background."</em>)</li>
+                    </ol>
+                    <p>To finalize the workflow, I included a one-click "Export to Linear/Jira" button on every issue
+                        card, turning abstract design theory directly into an engineering sprint task.</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Ethics and Limitations -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
+                    UX Guardrails for AI Confidence
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Vision LLMs are prone to false positives (e.g., flagging a stylized brand graphic as a "confusing
+                        layout"). To protect the user's trust, I implemented a "Confidence Score" UX pattern.</p>
+                    <p>If the AI flags a low-contrast button, the UI displays a high confidence badge (since contrast
+                        math is objective). If it flags a "confusing value proposition," it displays a low confidence
+                        badge with copy that reads: <em>"AI Suggestion: Consider A/B testing this copy with real
+                            users."</em> This deliberately frames the AI as an assistant, not an absolute authority.</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Projected Impact -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">Market Potential & Outcomes</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-emerald-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-emerald-600 mb-3 tracking-tighter">3 Min</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Time required to generate a
+                            comprehensive heuristic evaluation report.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-emerald-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-emerald-600 mb-3 tracking-tighter">100%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Translation rate of visual
+                            critique into actionable engineering tickets.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-emerald-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-emerald-600 mb-3 tracking-tighter">90%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Cost reduction compared to
+                            hiring an external UX agency for a baseline audit.</div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-900 text-white py-24 text-center cursor-pointer hover:bg-slate-800 transition-colors group"
+            onclick="closeCaseStudy('optima-platform')">
+            <span
+                class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-emerald-400 transition-colors">Return
+                Home</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Back to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- CASE STUDY VIEW: FOXTROT AVIATION (Hidden by default) -->
+    <div id="foxtrot-platform" class="case-study-container hidden min-h-screen bg-[#fafafa]">
+        <!-- Sticky Header -->
+        <div
+            class="sticky top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between transition-all duration-300">
+            <button onclick="closeCaseStudy('foxtrot-platform')"
+                class="flex items-center text-slate-700 hover:text-amber-600 font-bold text-sm transition-colors group">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                Back to Portfolio
+            </button>
+            <div class="flex gap-4">
+                <span
+                    class="text-sm font-bold text-amber-600 hidden sm:flex items-center gap-1.5 bg-amber-50 px-4 py-1.5 rounded-full"><i
+                        data-lucide="plane" class="w-3.5 h-3.5"></i> UI/UX Design & Frontend</span>
+            </div>
+        </div>
+
+        <!-- Case Study Header -->
+        <header class="pt-16 pb-16 px-6 bg-[#f4ece3] border-b border-[#e5d5c5] relative overflow-hidden">
+            <div class="max-w-4xl mx-auto relative z-10">
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span
+                        class="px-3 py-1 bg-amber-200/50 text-amber-900 rounded-full text-xs font-bold uppercase tracking-wide">Enterprise
+                        SaaS</span>
+                    <span
+                        class="px-3 py-1 bg-white text-slate-700 border border-slate-200 rounded-full text-xs font-bold uppercase tracking-wide">Aviation</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-[1.1] tracking-tight">
+                    FoxTrot: Task-optimized design for flight school management.
+                </h1>
+                <p class="text-xl text-slate-700 leading-relaxed mb-10 max-w-3xl">
+                    Aviation management involves time-critical data, high-density schedules, and rigorous safety
+                    maintenance tracking. I designed and developed a bespoke UI that cuts through the noise and provides
+                    absolute operational clarity.
+                </p>
+
+                <!-- TL;DR Block -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border-l-4 border-amber-500 shadow-sm mb-12">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-amber-600 mb-3 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Executive Summary
+                    </h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Problem:</strong>
+                                Off-the-shelf management software lacked the specialized workflows required for
+                                aviation. Data density was too high, making it difficult for dispatchers to assess
+                                aircraft maintenance statuses and student schedules at a glance.</p>
+                        </div>
+                        <div>
+                            <p class="text-slate-700 text-sm leading-relaxed"><strong>The Impact:</strong> By utilizing
+                                user-focused visual cues and a highly customized Bootstrap/AngularJS frontend, I
+                                delivered an application that prioritized scannability and action—directly resulting in
+                                the acquisition of a large national client from competitors.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-amber-900/50 mb-1">Role</div>
+                        <div class="font-medium text-slate-900">UI Designer & Frontend Dev</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-amber-900/50 mb-1">Timeline</div>
+                        <div class="font-medium text-slate-900">4 Weeks</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-amber-900/50 mb-1">Tools</div>
+                        <div class="font-medium text-slate-900">Photoshop, HTML/CSS, Bootstrap</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-wider font-bold text-amber-900/50 mb-1">Outcome</div>
+                        <div class="font-medium text-slate-900">Won Major National Client</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Case Study Body -->
+        <article class="py-20 px-6 max-w-4xl mx-auto space-y-24">
+
+            <!-- High Fidelity Image Section -->
+            <section>
+                <div
+                    class="w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-[#f4ece3] flex items-center justify-center p-4 sm:p-8">
+                    <img src="foxtrot-app.jpg" alt="FoxTrot App Dashboard High Fidelity Mockup"
+                        class="w-full h-auto object-cover rounded shadow-lg mx-auto"
+                        onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540962351504-03099e0a754b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80';">
+                </div>
+                <p class="text-center text-sm text-slate-500 mt-4 italic">Final High-Fidelity Dashboard: Maintenance &
+                    Schedule Views</p>
+            </section>
+
+            <!-- Section 1: The Approach -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center shadow-sm">
+                        <i data-lucide="eye" class="w-5 h-5"></i></div>
+                    The Approach: Designing for Scannability
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>In an aviation dispatch environment, users don't "browse" software; they extract mission-critical
+                        data in seconds. The strategy centered heavily on competitive analysis, determining where legacy
+                        systems failed to provide immediate visual clarity.</p>
+                    <p>I designed the UI with an extreme emphasis on <strong>scannability</strong>. Instead of relying
+                        solely on text to convey aircraft status, I implemented strong, user-focused visual cues. For
+                        example, the maintenance table utilizes thick, color-coded left borders (deep red for critical,
+                        amber for warnings) ensuring that dispatchers can assess fleet health peripherally while
+                        focusing on scheduling.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Technical Implementation -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3 text-slate-900">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 text-sky-600 flex items-center justify-center shadow-sm">
+                        <i data-lucide="code-2" class="w-5 h-5"></i></div>
+                    Technical Implementation & Architecture
+                </h2>
+                <div class="prose prose-lg text-slate-600 max-w-none space-y-6">
+                    <p>Because the data (aircraft status, instructor certifications, and real-time flight schedules)
+                        required constant, dynamic updates without page refreshes, the engineering team utilized
+                        <strong>AngularJS</strong>.</p>
+                    <p>My role was to bridge the gap between static design (Photoshop) and functional front-end code. I
+                        built the responsive foundation using the <strong>Bootstrap grid system</strong> to ensure
+                        robust layout consistency across devices. However, I layered in extensive custom HTML/CSS to
+                        completely override Bootstrap's default "off-the-shelf" aesthetic.</p>
+
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm my-8 not-prose">
+                        <h4
+                            class="font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2 flex items-center gap-2">
+                            <i data-lucide="layout" class="w-4 h-4 text-sky-600"></i> The Grid as a Tool, Not a
+                            Constraint</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            By utilizing custom CSS on top of Bootstrap, we achieved a highly bespoke interface tailored
+                            explicitly for high-density data. We tightened padding, implemented bespoke typography
+                            scales, and created custom data-table components that felt distinctly premium and
+                            "aviation-grade," moving far beyond standard generic SaaS templates.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Outcomes -->
+            <section class="border-t border-slate-200 pt-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-slate-900">Business Impact</h2>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-amber-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-amber-600 mb-3 tracking-tighter">4</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Weeks from initial design
+                            ideation to functional frontend delivery.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-amber-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-amber-600 mb-3 tracking-tighter"><i
+                                data-lucide="building-2" class="w-10 h-10 mx-auto"></i></div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Secured a massive national
+                            enterprise client, unseating their legacy provider.</div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-center hover:border-amber-300 transition-colors">
+                        <div class="text-5xl font-extrabold text-amber-600 mb-3 tracking-tighter">100%</div>
+                        <div class="text-sm font-medium text-slate-600 leading-relaxed">Custom CSS overriding default
+                            Bootstrap to achieve a premium UI.</div>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- Next Project Footer -->
+        <div class="bg-slate-900 text-white py-24 text-center cursor-pointer hover:bg-slate-800 transition-colors group border-t border-slate-800"
+            onclick="closeCaseStudy('foxtrot-platform')">
+            <span
+                class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-4 block group-hover:text-amber-400 transition-colors">Return
+                Home</span>
+            <h2 class="text-4xl md:text-5xl font-bold flex items-center justify-center gap-4">
+                Back to Portfolio <i data-lucide="arrow-right"
+                    class="w-8 h-8 group-hover:translate-x-2 transition-transform"></i>
+            </h2>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Advanced SPA Hash-Based Routing
+        const mainView = document.getElementById('main-view');
+
+        // List of valid case study IDs
+        const caseStudies = ['adhd-planner', 'lumina-platform', 'shift-ecommerce', 'aura-fintech', 'navigator-platform', 'optima-platform', 'foxtrot-platform'];
+
+        function openCaseStudy(id, pushHistory = true) {
+            const activeView = document.getElementById(id);
+            if (activeView) {
+                // Hide main view
+                mainView.classList.add('hidden');
+
+                // Hide all other case studies just in case
+                caseStudies.forEach(studyId => {
+                    if (studyId !== id) document.getElementById(studyId).classList.add('hidden');
+                });
+
+                // Show target case study
+                activeView.classList.remove('hidden');
+                void activeView.offsetWidth; // Trigger reflow
+                activeView.classList.add('fade-enter-active');
+                window.scrollTo(0, 0);
+
+                // Update URL without refreshing page
+                if (pushHistory) {
+                    try {
+                        history.pushState({ view: id }, '', `#${id}`);
+                    } catch (e) {
+                        console.warn('History API pushState blocked in preview environment.', e);
+                    }
+                }
+            }
+        }
+
+        function closeCaseStudy(activeId, pushHistory = true) {
+            // Hide all case studies
+            caseStudies.forEach(studyId => {
+                const view = document.getElementById(studyId);
+                if (view) {
+                    view.classList.add('hidden');
+                    view.classList.remove('fade-enter-active');
+                }
+            });
+
+            // Show main view
+            mainView.classList.remove('hidden');
+            void mainView.offsetWidth; // Trigger reflow
+            mainView.classList.add('fade-enter-active');
+
+            // Scroll to work section if returning from a study
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                window.scrollTo(0, workSection.offsetTop - 80);
+            }
+
+            // Update URL
+            if (pushHistory) {
+                try {
+                    // Remove hash without scrolling
+                    history.pushState({ view: 'home' }, '', window.location.pathname);
+                } catch (e) {
+                    console.warn('History API pushState blocked in preview environment.', e);
+                }
+            }
+        }
+
+        // Handle Browser Back/Forward Buttons
+        window.addEventListener('popstate', (e) => {
+            const hash = window.location.hash.replace('#', '');
+
+            // If the hash is a case study, open it
+            if (caseStudies.includes(hash)) {
+                openCaseStudy(hash, false);
+            }
+            // If there's no hash, or it's a standard anchor link (#work, #about), go home
+            else {
+                // Just pass null as activeId, it hides all of them
+                closeCaseStudy(null, false);
+            }
+        });
+
+        // Handle direct links on initial page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (caseStudies.includes(hash)) {
+                openCaseStudy(hash, false);
+            }
+        });
+    </script>
+</body>
+
+</html>
