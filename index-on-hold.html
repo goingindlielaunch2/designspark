@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We'll be right back.</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration for Apple-like styling -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: [
+                            '-apple-system',
+                            'BlinkMacSystemFont',
+                            '"SF Pro Display"',
+                            '"Segoe UI"',
+                            'Roboto',
+                            'Helvetica',
+                            'Arial',
+                            'sans-serif'
+                        ],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#f5f5f7',
+                            text: '#1d1d1f',
+                            subtext: '#86868b',
+                            svgBase: '#e5e5ea',
+                            svgOutline: '#d2d2d7',
+                            svgDark: '#8e8e93'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth, premium animations */
+
+        /* Fade in the entire page on load */
+        .fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gentle breathing animation for the creature */
+        .breathe {
+            animation: breatheAnim 4s ease-in-out infinite;
+            transform-origin: 100px 155px;
+            /* Base of the creature */
+        }
+
+        @keyframes breatheAnim {
+
+            0%,
+            100% {
+                transform: scale(1) translateY(0);
+            }
+
+            50% {
+                /* Slightly expands horizontally and squishes vertically to simulate a breath */
+                transform: scale(1.02, 0.97) translateY(1px);
+            }
+        }
+
+        /* Floating Zzz animations with staggered delays */
+        .zzz {
+            opacity: 0;
+            transform-origin: center;
+        }
+
+        .zzz-1 {
+            animation: floatZ 4.5s ease-in-out infinite;
+        }
+
+        .zzz-2 {
+            animation: floatZ 4.5s ease-in-out infinite 1.5s;
+        }
+
+        .zzz-3 {
+            animation: floatZ 4.5s ease-in-out infinite 3s;
+        }
+
+        @keyframes floatZ {
+            0% {
+                opacity: 0;
+                transform: translate(0px, 0px) scale(0.6) rotate(-10deg);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translate(8px, -15px) scale(1) rotate(0deg);
+            }
+
+            80% {
+                opacity: 0.6;
+                transform: translate(20px, -45px) scale(1.2) rotate(10deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(25px, -60px) scale(1.4) rotate(15deg);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-apple-bg text-apple-text min-h-screen flex flex-col items-center justify-center p-6 selection:bg-blue-200 selection:text-apple-text antialiased">
+
+    <main class="fade-in-up flex flex-col items-center max-w-2xl w-full text-center">
+
+        <!-- Animated SVG Scene -->
+        <div class="w-64 h-64 md:w-80 md:h-80 mb-8 relative">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full drop-shadow-sm">
+                <defs>
+                    <!-- Soft shadow underneath the creature -->
+                    <radialGradient id="dropShadow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="rgba(0,0,0,0.06)" />
+                        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+                    </radialGradient>
+                </defs>
+
+                <!-- Ground Shadow -->
+                <ellipse cx="100" cy="165" rx="75" ry="12" fill="url(#dropShadow)" />
+
+                <!-- Sleeping Creature (Cat/Fox) -->
+                <g class="breathe">
+                    <!-- Tail wrapped around -->
+                    <path d="M 135 155 C 165 155, 175 125, 145 110 C 130 102, 110 145, 90 148" fill="#e5e5ea"
+                        stroke="#d2d2d7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+                    <!-- Main Body -->
+                    <ellipse cx="100" cy="135" rx="55" ry="35" fill="#f5f5f7" stroke="#e5e5ea" stroke-width="4" />
+                    <ellipse cx="100" cy="135" rx="55" ry="35" fill="#ffffff" /> <!-- Bright inner body -->
+
+                    <!-- Head -->
+                    <circle cx="70" cy="115" r="30" fill="#ffffff" stroke="#e5e5ea" stroke-width="2" />
+
+                    <!-- Left Ear -->
+                    <path d="M 50 95 Q 55 75 65 90" fill="#ffffff" stroke="#d2d2d7" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Right Ear -->
+                    <path d="M 75 88 Q 85 70 92 92" fill="#ffffff" stroke="#d2d2d7" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+
+                    <!-- Inner Ears (Pinkish subtle hue) -->
+                    <path d="M 54 93 Q 57 82 62 90" fill="#fcf0f2" />
+                    <path d="M 78 89 Q 84 78 88 91" fill="#fcf0f2" />
+
+                    <!-- Closed Eyes -->
+                    <path d="M 52 115 Q 58 122 64 115" fill="none" stroke="#8e8e93" stroke-width="2.5"
+                        stroke-linecap="round" />
+                    <path d="M 76 115 Q 82 122 88 115" fill="none" stroke="#8e8e93" stroke-width="2.5"
+                        stroke-linecap="round" />
+
+                    <!-- Cute tiny nose -->
+                    <ellipse cx="70" cy="125" rx="3.5" ry="2.5" fill="#8e8e93" />
+
+                    <!-- Whiskers -->
+                    <path d="M 45 118 L 32 114" fill="none" stroke="#d2d2d7" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <path d="M 45 124 L 32 127" fill="none" stroke="#d2d2d7" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <path d="M 95 118 L 108 114" fill="none" stroke="#d2d2d7" stroke-width="1.5"
+                        stroke-linecap="round" />
+                    <path d="M 95 124 L 108 127" fill="none" stroke="#d2d2d7" stroke-width="1.5"
+                        stroke-linecap="round" />
+                </g>
+
+                <!-- Floating Zzz's -->
+                <g fill="#86868b" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-weight="700">
+                    <text x="85" y="70" font-size="14" class="zzz zzz-1">Z</text>
+                    <text x="100" y="55" font-size="20" class="zzz zzz-2">z</text>
+                    <text x="120" y="35" font-size="28" class="zzz zzz-3">Z</text>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Typography Content -->
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-apple-text">
+            We'll be right back.
+        </h1>
+        <p class="text-lg md:text-xl font-normal text-apple-subtext max-w-lg mx-auto leading-relaxed">
+            We're making some updates to improve your experience. Our services are resting for a moment, but we'll be up
+            and running shortly.
+        </p>
+
+    </main>
+
+</body>
+
+</html>
