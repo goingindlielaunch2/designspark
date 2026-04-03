@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Tower Rewards - Request Information</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* CSS Reset & Variables from Landing Page */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #6b7280;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --corporate: #ffb800;
+            --corporate-hover: #ffc21a;
+            --navy: #1A1A2E;
+
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-serif: 'Outfit', 'Georgia', serif;
+
+            --blue-light: #f0f9ff;
+            --emerald-100: #d1fae5;
+            --emerald-600: #059669;
+            --red-50: #fef2f2;
+            --red-300: #fca5a5;
+            --red-500: #ef4444;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+        }
+
+        /* --- Global Navbar Styles --- */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 2rem;
+            background: #ffffff;
+            border-bottom: 1px solid var(--gray-100);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-left {
+            gap: 3rem;
+        }
+
+        .nav-logo {
+            font-size: 1.35rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 13px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-link:hover {
+            color: #000;
+        }
+
+        /* --- Mobile Nav --- */
+        .mobile-nav-bottom {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid var(--gray-100);
+            padding: 0.75rem 1rem;
+            z-index: 50;
+            justify-content: space-around;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-nav-bottom {
+                display: none;
+            }
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .mobile-nav-item i {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-outline {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid var(--gray-200);
+            border-radius: 9999px;
+            background: #fff;
+            color: #000;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gray-300);
+        }
+
+        /* --- Main Form Section Layout --- */
+        .page-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem 5rem;
+            background-color: var(--gray-50);
+        }
+
+        /* --- Form Component Layout (from updated-form-modern1.html) --- */
+        .main-container {
+            max-width: 64rem;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--gray-100);
+        }
+
+        @media (min-width: 768px) {
+            .main-container {
+                flex-direction: row;
+            }
+        }
+
+        .left-panel {
+            display: none;
+            background-color: var(--blue-light);
+            color: var(--navy);
+            position: relative;
+            overflow: hidden;
+            padding: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .left-panel {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 41.666667%;
+            }
+        }
+
+        .hero-title {
+            font-size: 2.125rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            font-weight: 400;
+            font-style: italic;
+            font-family: var(--font-serif);
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: rgba(26, 26, 46, 0.7);
+            font-weight: 500;
+        }
+
+        .feature-item i {
+            color: var(--navy);
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-top: 0.125rem;
+        }
+
+        .right-panel {
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+
+        @media (min-width: 1024px) {
+            .right-panel {
+                padding: 3rem;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .progress-track-container {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 0 0.5rem;
+        }
+
+        .progress-bg {
+            position: absolute;
+            left: 0;
+            top: 1.125rem;
+            width: 100%;
+            height: 0.25rem;
+            background: var(--gray-100);
+            border-radius: 9999px;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 1.125rem;
+            height: 0.25rem;
+            background: var(--navy);
+            border-radius: 9999px;
+            transform: translateY(-50%);
+            transition: width 0.5s ease;
+            z-index: 0;
+        }
+
+        .step-node {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-indicator {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .step-indicator.active,
+        .step-indicator.completed {
+            background: var(--navy);
+            color: #fff;
+            box-shadow: 0 10px 15px -3px rgba(26, 26, 46, 0.2);
+        }
+
+        .step-indicator.inactive {
+            background: #fff;
+            color: var(--gray-400);
+            border: 2px solid var(--gray-200);
+        }
+
+        .step-label {
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 0.75rem;
+            color: var(--gray-400);
+        }
+
+        .step-label.active {
+            color: var(--navy);
+        }
+
+        /* Floating Inputs */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 20rem;
+        }
+
+        .step-content {
+            display: none;
+            opacity: 0;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .step-content.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .floating-label-group {
+            position: relative;
+            width: 100%;
+        }
+
+        .floating-label-group input,
+        .floating-label-group select,
+        .floating-label-group textarea {
+            width: 100%;
+            padding: 1.25rem 1rem 0.5rem;
+            font-size: 0.95rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 9999px;
+            outline: none;
+            background: #fff;
+            font-weight: 500;
+        }
+
+        .floating-label-group label {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            pointer-events: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .floating-label-group input:focus+label,
+        .floating-label-group input:not(:placeholder-shown)+label,
+        .floating-label-group select:focus+label,
+        .floating-label-group select:not([value=""])+label {
+            top: 0.65rem;
+            font-size: 0.7rem;
+            color: var(--gray-500);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .floating-label-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 1rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em;
+        }
+
+        /* Input Errors */
+        .floating-label-group.has-error input,
+        .floating-label-group.has-error select,
+        .floating-label-group.has-error textarea {
+            border-color: var(--red-500);
+            background: var(--red-50);
+        }
+
+        .floating-label-group.has-error label {
+            color: var(--red-500);
+        }
+
+        .error-message {
+            font-size: 0.75rem;
+            color: var(--red-500);
+            font-weight: 600;
+            margin-top: 0.375rem;
+            margin-left: 1.25rem;
+            display: none;
+            align-items: center;
+            gap: 0.35rem;
+            line-height: 1;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        .error-message i {
+            display: inline-flex;
+            width: 12px;
+            height: 12px;
+        }
+
+        .security-notice {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.6875rem;
+            color: var(--gray-500);
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .security-notice i {
+            width: 0.875rem;
+            height: 0.875rem;
+            color: var(--navy);
+        }
+
+        .intent-pills {
+            display: flex;
+            background: var(--gray-100);
+            padding: 0.375rem;
+            border-radius: 9999px;
+            gap: 0.25rem;
+        }
+
+        .intent-pill {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-500);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .intent-pill.active {
+            background: #fff;
+            color: var(--navy);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-actions {
+            margin-top: auto;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--gray-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-btn {
+            padding: 0.875rem 2rem;
+            background: var(--navy);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 9999px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(26, 26, 46, 0.15);
+        }
+
+        .btn-outline-form {
+            background: #fff;
+            color: var(--gray-600);
+            border: 1.5px solid var(--gray-200);
+            box-shadow: none;
+        }
+
+        /* Success Screen */
+        .success-screen {
+            background: #fff;
+            border-radius: 2rem;
+            padding: 3rem;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            max-width: 32rem;
+            width: 100%;
+        }
+
+        /* Success Screen Video */
+        .video-container {
+            max-width: 100%;
+            margin: 0 auto 2rem;
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 16/9;
+            background: var(--gray-100);
+            cursor: pointer;
+            border: 4px solid white;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .video-container:hover .video-thumbnail {
+            transform: scale(1.05);
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 46, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .video-container:hover .video-overlay {
+            background: rgba(26, 26, 46, 0.25);
+        }
+
+        .play-button {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            color: var(--navy);
+        }
+
+        .video-container:hover .play-button {
+            transform: scale(1.1);
+        }
+
+        .video-badge {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 0.75rem;
+            border-radius: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            z-index: 10;
+        }
+
+        .video-badge .dot {
+            width: 0.4rem;
+            height: 0.4rem;
+            background: var(--red-500);
+            border-radius: 50%;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .agreement-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 2px solid var(--gray-100);
+            background-color: var(--gray-50);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .agreement-box:hover {
+            border-color: var(--gray-200);
+            background-color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .agreement-box.error {
+            border-color: var(--red-300);
+            background-color: var(--red-50);
+        }
+
+        /* Custom Checkbox Styling */
+        .checkbox-wrapper {
+            position: relative;
+            width: 1.5rem;
+            height: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .checkbox-input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkbox-custom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #fff;
+            border: 2px solid var(--gray-300);
+            border-radius: 0.5rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .checkbox-input:checked~.checkbox-custom {
+            background-color: var(--navy);
+            border-color: var(--navy);
+        }
+
+        .checkbox-custom i {
+            width: 1rem;
+            height: 1rem;
+            transform: scale(0);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .checkbox-input:checked~.checkbox-custom i {
+            transform: scale(1);
+        }
+
+        .agreement-content {
+            flex: 1;
+        }
+
+        .agreement-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .agreement-icon {
+            width: 1rem;
+            height: 1rem;
+            color: var(--gray-400);
+        }
+
+        .agreement-desc {
+            font-size: 0.8125rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+            display: block;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: #fff;
+            border-top: 1px solid var(--gray-100);
+            padding: 4rem 2rem;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-100);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="modern-vanilla-2.0.html" class="nav-logo"><span>Treasure Tower Rewards</span></a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Introductory</a>
+                <a href="#" class="nav-link">Opportunities</a>
+                <a href="#" class="nav-link">About</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="#" class="login-link">Login</a>
+            <a href="request-info-modern.html" class="btn-outline">Request Info</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="page-main">
+        <!-- Success Screen (Hidden) -->
+        <div id="success-screen" class="hidden success-screen">
+            <div class="success-icon" style="margin-bottom: 1.5rem; color: var(--emerald-600);">
+                <i data-lucide="check-circle-2" style="width: 3.5rem; height: 3.5rem;"></i>
+            </div>
+            <h2 style="font-size: 1.75rem; font-weight:800; margin-bottom:0.75rem; color: var(--navy);">Success!</h2>
+            <p style="color:var(--gray-600); margin-bottom:2rem; font-size: 1.05rem;" id="success-message">
+                Thanks! We've received your request. In the meantime, watch this quick welcome video.
+            </p>
+
+            <!-- Inline Welcome Video -->
+            <div class="video-container">
+                <div class="video-badge">
+                    <span class="dot"></span>
+                    <span>Welcome Video</span>
+                </div>
+                <img src="images/welcome-thumbnail.png" alt="Intro Video" class="video-thumbnail">
+                <div class="video-overlay">
+                    <div class="play-button">
+                        <i data-lucide="play"
+                            style="width: 1.25rem; height: 1.25rem; fill: currentColor; margin-left: 0.2rem;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="window.location.href='landing-option1.html'" class="form-btn"
+                style="width: 100%; padding: 1rem;">Return to Homepage</button>
+        </div>
+
+        <!-- Multi-Step Form Card -->
+        <div id="main-container" class="main-container">
+            <!-- Left Value Prop -->
+            <div class="left-panel">
+                <div class="content-relative">
+                    <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:2rem;">
+                        <div
+                            style="width:2.5rem; height:2.5rem; background:rgba(255,255,255,0.4); border-radius:0.75rem; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+                            <i data-lucide="star" style="width:1.25rem; height:1.25rem; color:var(--navy);"></i>
+                        </div>
+                        <span style="font-weight:700; font-size:1.25rem; color:var(--navy);">TreasureTower</span>
+                    </div>
+                    <h1 class="hero-title">Unlock Your <br><span>Potential.</span></h1>
+                    <p style="color:rgba(26,26,46,0.8); margin-bottom:1.5rem;">Join successful entrepreneurs operating
+                        their own Treasure Tower business.</p>
+                    <ul class="feature-list">
+                        <li class="feature-item"><i data-lucide="check-circle-2"></i><span>Be your own boss</span></li>
+                        <li class="feature-item"><i data-lucide="check-circle-2"></i><span>Flexible schedule</span></li>
+                        <li class="feature-item"><i data-lucide="check-circle-2"></i><span>Proven model</span></li>
+                    </ul>
+                </div>
+                <div
+                    style="margin-top:2rem; padding:1.25rem; background:rgba(255,255,255,0.3); border-radius:1rem; backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.4);">
+                    <p
+                        style="font-size:0.875rem; font-style:italic; color:rgba(26,26,46,0.8); line-height:1.625; margin-bottom:0.75rem;">
+                        "Treasure Tower gave me the independence I was looking for."
+                    </p>
+                    <div style="display:flex; align-items:center; gap:0.75rem;">
+                        <div
+                            style="width:2rem; height:2rem; border-radius:50%; background:rgba(26,26,46,0.1); display:flex; align-items:center; justify-content:center; font-size:0.75rem; font-weight:700;">
+                            JD</div>
+                        <span style="font-size:0.75rem; font-weight:600;">Jane Doe, Owner</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Form Wizard -->
+            <div class="right-panel">
+                <div class="progress-section">
+                    <div class="progress-track-container">
+                        <div class="progress-bg"></div>
+                        <div id="progress-bar" class="progress-fill" style="width: 0%;"></div>
+                        <div class="step-node">
+                            <div id="step-indicator-1" class="step-indicator active">1</div><span
+                                class="step-label active">Basics</span>
+                        </div>
+                        <div class="step-node">
+                            <div id="step-indicator-2" class="step-indicator inactive">2</div><span
+                                class="step-label">Location</span>
+                        </div>
+                        <div class="step-node">
+                            <div id="step-indicator-3" class="step-indicator inactive">3</div><span
+                                class="step-label">Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="lead-form" class="form-container">
+                    <!-- Step 1 -->
+                    <div id="step-1" class="step-content active">
+                        <h2 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">What are you looking for?
+                        </h2>
+                        <input type="hidden" id="intent" value="business">
+                        <div class="intent-pills">
+                            <button type="button" onclick="setIntent('business')" id="btn-intent-business"
+                                class="intent-pill active"><i data-lucide="briefcase"></i>Business</button>
+                            <button type="button" onclick="setIntent('location')" id="btn-intent-location"
+                                class="intent-pill"><i data-lucide="map-pin"></i>Host Location</button>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:1.5rem;">
+                            <div class="floating-label-group" id="group-firstName">
+                                <input type="text" id="firstName" placeholder=" " oninput="clearError('firstName')"
+                                    required>
+                                <label>First Name</label>
+                                <div class="error-message" id="error-firstName"><i data-lucide="alert-circle"
+                                        style="width:12px;"></i><span>Required</span></div>
+                            </div>
+                            <div class="floating-label-group" id="group-lastName">
+                                <input type="text" id="lastName" placeholder=" " oninput="clearError('lastName')"
+                                    required>
+                                <label>Last Name</label>
+                                <div class="error-message" id="error-lastName"><i data-lucide="alert-circle"
+                                        style="width:12px;"></i><span>Required</span></div>
+                            </div>
+                        </div>
+                        <div class="floating-label-group" id="group-email">
+                            <input type="email" id="email" placeholder=" " oninput="clearError('email')" required>
+                            <label>Email Address</label>
+                            <div class="error-message" id="error-email"><i data-lucide="alert-circle"
+                                    style="width:12px;"></i><span>Invalid email</span></div>
+                        </div>
+                        <div class="floating-label-group" id="group-phone">
+                            <input type="tel" id="phone" placeholder=" " oninput="clearError('phone')" required>
+                            <label>Phone Number</label>
+                            <div class="error-message" id="error-phone"><i data-lucide="alert-circle"
+                                    style="width:12px;"></i><span>Required</span></div>
+                        </div>
+
+                        <div class="security-notice">
+                            <i data-lucide="shield-check"></i>
+                            <span>Your data is encrypted and secure</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="step-2" class="step-content">
+                        <h2 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Where are you located?
+                        </h2>
+                        <div class="floating-label-group" id="group-address">
+                            <input type="text" id="address" placeholder=" " oninput="clearError('address')" required>
+                            <label>Street Address</label>
+                            <div class="error-message" id="error-address"><i data-lucide="alert-circle"
+                                    style="width:12px;"></i><span>Required</span></div>
+                        </div>
+                        <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:1.25rem;">
+                            <div class="floating-label-group" id="group-city">
+                                <input type="text" id="city" placeholder=" " oninput="clearError('city')" required>
+                                <label>City</label>
+                                <div class="error-message" id="error-city"><i data-lucide="alert-circle"
+                                        style="width:12px;"></i><span>Required</span></div>
+                            </div>
+                            <div class="floating-label-group" id="group-state">
+                                <input type="text" id="state" placeholder=" " oninput="clearError('state')" required>
+                                <label>State</label>
+                                <div class="error-message" id="error-state"><i data-lucide="alert-circle"
+                                        style="width:12px;"></i><span>Required</span></div>
+                            </div>
+                            <div class="floating-label-group" id="group-zip">
+                                <input type="text" id="zip" placeholder=" " oninput="clearError('zip')" required>
+                                <label>ZIP</label>
+                                <div class="error-message" id="error-zip"><i data-lucide="alert-circle"
+                                        style="width:12px;"></i><span>Required</span></div>
+                            </div>
+                        </div>
+                        <div class="floating-label-group" id="group-country">
+                            <select id="country" onchange="clearError('country')" required>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                            </select>
+                            <label>Country</label>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="step-3" class="step-content">
+                        <h2 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Final Details</h2>
+                        <div class="floating-label-group" id="group-source">
+                            <select id="source" onchange="clearError('source')" required>
+                                <option value="">Select...</option>
+                                <option value="search">Search Engine</option>
+                                <option value="social">Social Media</option>
+                                <option value="referral">Word of Mouth</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <label>How did you hear about us?</label>
+                            <div class="error-message" id="error-source"><i data-lucide="alert-circle"
+                                    style="width:12px;"></i><span>Please select an option</span></div>
+                        </div>
+                        <label class="agreement-box" id="agreement-container">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="agreement" class="checkbox-input"
+                                    onchange="clearAgreementError()" required>
+                                <div class="checkbox-custom">
+                                    <i data-lucide="check"></i>
+                                </div>
+                            </div>
+                            <div class="agreement-content">
+                                <span class="agreement-title"><i data-lucide="lock"
+                                        class="agreement-icon"></i>Confidentiality Agreement *</span>
+                                <span class="agreement-desc">I agree to keep all business models and proprietary
+                                    Treasure Tower details confidential.</span>
+                                <div class="error-message" id="error-agreement"
+                                    style="margin-left:0; margin-top:0.5rem;">
+                                    <i data-lucide="alert-circle" style="width:12px;"></i>
+                                    <span>Please accept to continue</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="btn-prev" onclick="handlePrev()"
+                            class="form-btn btn-outline-form hidden">Back</button>
+                        <div id="btn-spacer" style="flex:1;"></div>
+                        <button type="button" id="btn-next" onclick="handleNext()" class="form-btn">Continue</button>
+                        <button type="submit" id="btn-submit" class="form-btn hidden">Submit Request</button>
+                    </div>
+
+                    <p
+                        style="margin-top: 1.5rem; font-size: 0.7rem; color: var(--gray-400); line-height: 1.4; font-style: italic;">
+                        * This is not an offering of a franchise. An offering can only be made by a prospectus. All
+                        information provided is kept strictly confidential.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Table Top Nav for Mobile (Fixed bottom) -->
+    <div class="mobile-nav-bottom">
+        <a href="modern-vanilla-2.0.html" class="mobile-nav-item">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="mobile-nav-item">
+            <i data-lucide="rocket"></i>
+            <span>Intro</span>
+        </a>
+        <a href="request-info-modern.html" class="mobile-nav-item" style="color:var(--navy);">
+            <i data-lucide="info"></i>
+            <span>Request</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Treasure Tower. All rights reserved.</p>
+                <div style="display:flex; gap:1.5rem;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        let currentStep = 1;
+        const form = document.getElementById('lead-form');
+        const progressBar = document.getElementById('progress-bar');
+        const indicators = [document.getElementById('step-indicator-1'), document.getElementById('step-indicator-2'), document.getElementById('step-indicator-3')];
+        const labels = document.querySelectorAll('.step-label');
+        const steps = [document.getElementById('step-1'), document.getElementById('step-2'), document.getElementById('step-3')];
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnSubmit = document.getElementById('btn-submit');
+
+        function setIntent(type) {
+            document.getElementById('intent').value = type;
+            document.getElementById('btn-intent-business').classList.toggle('active', type === 'business');
+            document.getElementById('btn-intent-location').classList.toggle('active', type === 'location');
+        }
+
+        // Validation Functions
+        function showError(id, message) {
+            const group = document.getElementById(`group-${id}`);
+            const errorSpan = document.getElementById(`error-${id}`);
+            if (group) group.classList.add('has-error');
+            if (errorSpan) {
+                errorSpan.querySelector('span').innerText = message;
+                errorSpan.classList.add('show');
+            }
+        }
+
+        function clearError(id) {
+            const group = document.getElementById(`group-${id}`);
+            const errorSpan = document.getElementById(`error-${id}`);
+            if (group) group.classList.remove('has-error');
+            if (errorSpan) errorSpan.classList.remove('show');
+        }
+
+        function clearAgreementError() {
+            document.getElementById('agreement-container').classList.remove('error');
+            document.getElementById('error-agreement').classList.remove('show');
+        }
+
+        function validateEmail(email) {
+            return /\S+@\S+\.\S+/.test(email);
+        }
+
+        function validateStep() {
+            let isValid = true;
+            if (currentStep === 1) {
+                if (!document.getElementById('firstName').value.trim()) { showError('firstName', 'First name is required'); isValid = false; }
+                if (!document.getElementById('lastName').value.trim()) { showError('lastName', 'Last name is required'); isValid = false; }
+                const email = document.getElementById('email').value.trim();
+                if (!email || !validateEmail(email)) { showError('email', 'Valid email is required'); isValid = false; }
+                if (!document.getElementById('phone').value.trim()) { showError('phone', 'Phone number is required'); isValid = false; }
+            } else if (currentStep === 2) {
+                if (!document.getElementById('address').value.trim()) { showError('address', 'Address is required'); isValid = false; }
+                if (!document.getElementById('city').value.trim()) { showError('city', 'City is required'); isValid = false; }
+                if (!document.getElementById('state').value.trim()) { showError('state', 'State is required'); isValid = false; }
+                if (!document.getElementById('zip').value.trim()) { showError('zip', 'ZIP Code is required'); isValid = false; }
+            } else if (currentStep === 3) {
+                if (!document.getElementById('source').value) { showError('source', 'Please select an option'); isValid = false; }
+                if (!document.getElementById('agreement').checked) {
+                    document.getElementById('agreement-container').classList.add('error');
+                    document.getElementById('error-agreement').classList.add('show');
+                    isValid = false;
+                }
+            }
+            return isValid;
+        }
+
+        function updateUI() {
+            progressBar.style.width = ((currentStep - 1) / 2 * 100) + '%';
+            steps.forEach((s, i) => s.classList.toggle('active', i + 1 === currentStep));
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i + 1 === currentStep);
+                ind.classList.toggle('completed', i + 1 < currentStep);
+                ind.innerHTML = (i + 1 < currentStep) ? '<i data-lucide="check"></i>' : (i + 1);
+            });
+            labels.forEach((l, i) => l.classList.toggle('active', i + 1 <= currentStep));
+            btnPrev.classList.toggle('hidden', currentStep === 1);
+            btnNext.classList.toggle('hidden', currentStep === 3);
+            btnSubmit.classList.toggle('hidden', currentStep !== 3);
+            lucide.createIcons();
+        }
+
+        function handleNext() {
+            if (validateStep()) {
+                currentStep++;
+                updateUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function handlePrev() { if (currentStep > 1) { currentStep--; updateUI(); } }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateStep()) {
+                document.getElementById('main-container').classList.add('hidden');
+                const firstName = document.getElementById('firstName').value;
+                document.getElementById('success-message').innerText = `Thank you for your interest, ${firstName}. We've received your information and a Treasure Tower representative will contact you shortly.`;
+                document.getElementById('success-screen').classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+
+</html>
