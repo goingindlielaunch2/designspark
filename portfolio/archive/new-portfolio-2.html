@@ -1,0 +1,2692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Mercer — Product Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0d0d0b;
+            --canvas: #f5f2ec;
+            --canvas-2: #eeebe3;
+            --cream: #f9f7f2;
+            --teal: #00897b;
+            --teal-light: #b2dfdb;
+            --teal-dim: #004d40;
+            --amber: #e65100;
+            --text: #1a1a18;
+            --text-2: #5a5a52;
+            --text-3: #9a9a8e;
+            --border: rgba(26, 26, 24, 0.12);
+            --border-strong: rgba(26, 26, 24, 0.25);
+            --serif: 'DM Serif Display', Georgia, serif;
+            --mono: 'DM Mono', 'Courier New', monospace;
+            --sans: 'DM Sans', system-ui, sans-serif;
+            --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--canvas);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            height: 64px;
+            background: rgba(245, 242, 236, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--text-2);
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            background: var(--ink);
+            color: var(--canvas) !important;
+            padding: 8px 18px;
+            border-radius: 2px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--teal) !important;
+            color: white !important;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 50%;
+            height: calc(100% - 80px);
+            background: var(--ink);
+            z-index: 0;
+        }
+
+        .hero-left {
+            position: relative;
+            z-index: 1;
+            padding: 80px 48px 80px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-right {
+            position: relative;
+            z-index: 1;
+            padding: 80px 48px 80px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--ink);
+        }
+
+        .hero-eyebrow {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--teal);
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            max-width: 420px;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--ink);
+            color: var(--canvas);
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 14px 28px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.2s var(--ease);
+        }
+
+        .btn-primary:hover {
+            background: var(--teal);
+        }
+
+        .btn-primary .arrow {
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .btn-ghost {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-2);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border-strong);
+            padding-bottom: 2px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .btn-ghost:hover {
+            color: var(--teal);
+            border-color: var(--teal);
+        }
+
+        /* Hero right — stats panel */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 28px 24px;
+        }
+
+        .hero-stat-num {
+            font-family: var(--serif);
+            font-size: 2.8rem;
+            color: #f5f2ec;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .hero-stat-num span {
+            color: var(--teal);
+        }
+
+        .hero-stat-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(245, 242, 236, 0.45);
+        }
+
+        .hero-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .hero-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal) 0%, #004d40 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: #f5f2ec;
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .hero-profile-text p:first-child {
+            font-weight: 500;
+            color: #f5f2ec;
+            font-size: 0.95rem;
+        }
+
+        .hero-profile-text p:last-child {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: rgba(245, 242, 236, 0.5);
+            letter-spacing: 0.06em;
+            margin-top: 2px;
+        }
+
+        .availability-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #69f0ae;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        /* ── SECTION BASE ── */
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        h2.section-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--text);
+            margin-bottom: 60px;
+        }
+
+        /* ── PROJECTS ── */
+        #work {
+            background: var(--cream);
+        }
+
+        .project-entry {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 32px;
+            background: white;
+            transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+            cursor: pointer;
+        }
+
+        .project-entry:hover {
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .project-entry:nth-child(even) {
+            direction: rtl;
+        }
+
+        .project-entry:nth-child(even)>* {
+            direction: ltr;
+        }
+
+        .project-info {
+            padding: 52px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-tag-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .ptag {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border-radius: 2px;
+            font-weight: 400;
+        }
+
+        .ptag-shipped {
+            background: #e8f5e9;
+            color: #1b5e20;
+            border: 1px solid #c8e6c9;
+        }
+
+        .ptag-concept {
+            background: #e3f2fd;
+            color: #0d47a1;
+            border: 1px solid #bbdefb;
+        }
+
+        .ptag-cat {
+            background: var(--canvas-2);
+            color: var(--text-2);
+            border: 1px solid var(--border);
+        }
+
+        h3.project-name {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 32px;
+            flex: 1;
+        }
+
+        .project-outcomes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+
+        .outcome-cell {
+            background: var(--canvas);
+            padding: 16px 14px;
+        }
+
+        .outcome-num {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            letter-spacing: -0.02em;
+            color: var(--teal);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .outcome-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            line-height: 1.3;
+        }
+
+        .project-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            border-bottom: 1px solid var(--teal-light);
+            padding-bottom: 2px;
+            transition: border-color 0.2s, gap 0.2s;
+            width: fit-content;
+        }
+
+        .project-cta:hover {
+            gap: 14px;
+            border-color: var(--teal);
+        }
+
+        /* Project visual panels */
+        .project-visual {
+            position: relative;
+            overflow: hidden;
+            min-height: 420px;
+        }
+
+        /* Project 1 — FoxTrot Aviation (dark, data-dense) */
+        .viz-foxtrot {
+            background: #0a1628;
+            display: flex;
+            flex-direction: column;
+            padding: 28px;
+            gap: 12px;
+            height: 100%;
+        }
+
+        .vf-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .vf-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vf-prop {
+            width: 18px;
+            height: 18px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vf-prop::before,
+        .vf-prop::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 18px;
+            background: #64748b;
+            border-radius: 99px;
+        }
+
+        .vf-prop::before {
+            transform: rotate(45deg);
+        }
+
+        .vf-prop::after {
+            transform: rotate(-45deg);
+        }
+
+        .vf-prop-core {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background: #94a3b8;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .vf-brand {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+        }
+
+        .vf-navlinks {
+            display: flex;
+            gap: 16px;
+        }
+
+        .vf-navlink {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
+            padding: 4px 12px;
+            border-radius: 2px;
+        }
+
+        .vf-navlink.active {
+            background: rgba(0, 137, 123, 0.25);
+            color: #4db6ac;
+            border: 1px solid rgba(0, 137, 123, 0.3);
+        }
+
+        .vf-navlink.inactive {
+            color: #475569;
+        }
+
+        .vf-section-head {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #475569;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 8px;
+            margin-top: 6px;
+        }
+
+        .vf-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .vf-row {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 2px;
+            overflow: hidden;
+            height: 34px;
+        }
+
+        .vf-status-bar {
+            width: 5px;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .s-critical {
+            background: #93272e;
+        }
+
+        .s-warning {
+            background: #ad9552;
+        }
+
+        .s-ok {
+            background: rgba(0, 137, 123, 0.6);
+        }
+
+        .s-none {
+            background: transparent;
+        }
+
+        .vf-row-content {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 14px;
+        }
+
+        .vf-cell {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: #94a3b8;
+        }
+
+        .vf-cell.plane {
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .vf-badge {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.06em;
+            padding: 2px 7px;
+            border-radius: 2px;
+        }
+
+        .badge-critical {
+            background: rgba(147, 39, 46, 0.3);
+            color: #fca5a5;
+            border: 1px solid rgba(147, 39, 46, 0.4);
+        }
+
+        .badge-warning {
+            background: rgba(173, 149, 82, 0.25);
+            color: #fcd34d;
+            border: 1px solid rgba(173, 149, 82, 0.35);
+        }
+
+        .badge-ok {
+            background: rgba(0, 137, 123, 0.2);
+            color: #4db6ac;
+            border: 1px solid rgba(0, 137, 123, 0.3);
+        }
+
+        .vf-sched-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .vf-sched-col {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 3px;
+            padding: 10px;
+        }
+
+        .vf-sched-date {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .vf-sched-block {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 2px solid;
+            border-radius: 2px;
+            padding: 6px 8px;
+            margin-bottom: 4px;
+        }
+
+        .vf-sched-block:first-of-type {
+            border-color: #4db6ac;
+        }
+
+        .vf-sched-block:nth-of-type(2) {
+            border-color: #475569;
+        }
+
+        .vf-sched-name {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: #94a3b8;
+        }
+
+        /* Project 2 — Checkout Funnel CRO */
+        .viz-cro {
+            background: #fafaf8;
+            display: flex;
+            flex-direction: column;
+            padding: 28px;
+            gap: 14px;
+            height: 100%;
+            border-left: 1px solid var(--border);
+        }
+
+        .vc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .vc-title {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-3);
+        }
+
+        .vc-live-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 2px;
+            padding: 4px 10px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.06em;
+            color: #1b5e20;
+        }
+
+        /* Funnel chart */
+        .vc-funnel {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .vc-funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vc-funnel-label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--text-3);
+            width: 80px;
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .vc-funnel-bar-wrap {
+            flex: 1;
+            position: relative;
+        }
+
+        .vc-bar-bg {
+            height: 28px;
+            background: var(--canvas-2);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vc-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            transition: width 1s var(--ease);
+        }
+
+        .vc-bar-fill.control {
+            background: #b2dfdb;
+        }
+
+        .vc-bar-fill.variant {
+            background: var(--teal);
+        }
+
+        .vc-bar-text {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: white;
+        }
+
+        .vc-funnel-pct {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--text-2);
+            width: 36px;
+            flex-shrink: 0;
+        }
+
+        .vc-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .vc-comp-card {
+            background: var(--canvas);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 14px 16px;
+        }
+
+        .vc-comp-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 6px;
+        }
+
+        .vc-comp-num {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .vc-comp-num.up {
+            color: var(--teal);
+        }
+
+        .vc-comp-num.base {
+            color: var(--text);
+        }
+
+        .vc-comp-sub {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--text-3);
+            margin-top: 4px;
+        }
+
+        .vc-test-info {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 3px;
+            padding: 12px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vc-test-label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: #2e7d32;
+        }
+
+        .vc-confidence {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            color: #1b5e20;
+        }
+
+        /* Project 3 — Design System */
+        .viz-ds {
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            padding: 28px;
+            gap: 14px;
+            height: 100%;
+        }
+
+        .vds-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .vds-brand {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            color: #7c83fd;
+        }
+
+        .vds-version {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+            padding: 3px 9px;
+            border-radius: 2px;
+        }
+
+        .vds-tokens {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        .vds-token {
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .vds-color-swatch {
+            height: 32px;
+        }
+
+        .vds-token-label {
+            font-family: var(--mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.06em;
+            padding: 5px 6px;
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .vds-components {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .vds-comp-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 3px;
+            padding: 10px 14px;
+        }
+
+        .vds-comp-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vds-comp-name {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.7);
+            flex: 1;
+        }
+
+        .vds-comp-count {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+            padding: 2px 8px;
+            border-radius: 2px;
+        }
+
+        .vds-usage {
+            display: flex;
+            gap: 8px;
+        }
+
+        .vds-usage-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .vds-usage-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vds-usage-label {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            color: rgba(255, 255, 255, 0.35);
+            width: 56px;
+            flex-shrink: 0;
+        }
+
+        .vds-usage-track {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .vds-usage-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: linear-gradient(90deg, #7c83fd, #a78bfa);
+        }
+
+        .vds-pct {
+            font-family: var(--mono);
+            font-size: 0.58rem;
+            color: rgba(255, 255, 255, 0.4);
+            width: 28px;
+            text-align: right;
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            background: var(--ink);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .about-left h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--canvas);
+            margin-bottom: 24px;
+        }
+
+        .about-left h2 em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        .about-body {
+            font-size: 0.95rem;
+            color: rgba(245, 242, 236, 0.55);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .about-body strong {
+            color: rgba(245, 242, 236, 0.85);
+            font-weight: 400;
+        }
+
+        .credentials {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .cred-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+        }
+
+        .cred-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+        }
+
+        .cred-text p:first-child {
+            font-size: 0.88rem;
+            color: rgba(245, 242, 236, 0.85);
+            font-weight: 500;
+        }
+
+        .cred-text p:last-child {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            color: rgba(245, 242, 236, 0.35);
+            margin-top: 2px;
+        }
+
+        .contact-block {
+            background: rgba(0, 137, 123, 0.12);
+            border: 1px solid rgba(0, 137, 123, 0.25);
+            border-radius: 3px;
+            padding: 24px;
+        }
+
+        .contact-block p {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(245, 242, 236, 0.5);
+            margin-bottom: 12px;
+        }
+
+        .contact-email {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: var(--canvas);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+            transition: color 0.2s;
+        }
+
+        .contact-email:hover {
+            color: var(--teal);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .contact-link {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--teal);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 137, 123, 0.3);
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--teal);
+        }
+
+        /* About right — skills */
+        .about-right {
+            padding-top: 0;
+        }
+
+        .skills-section {
+            margin-bottom: 36px;
+        }
+
+        .skills-section-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(245, 242, 236, 0.3);
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            padding-bottom: 8px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-name {
+            font-size: 0.88rem;
+            color: rgba(245, 242, 236, 0.7);
+            width: 160px;
+            flex-shrink: 0;
+        }
+
+        .skill-bar {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--teal);
+            border-radius: 99px;
+        }
+
+        .skill-tag {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: rgba(245, 242, 236, 0.3);
+            width: 40px;
+            text-align: right;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #060606;
+            padding: 32px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-left {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            color: rgba(245, 242, 236, 0.2);
+        }
+
+        .footer-right {
+            font-family: var(--serif);
+            font-size: 0.9rem;
+            color: rgba(245, 242, 236, 0.25);
+            font-style: italic;
+        }
+
+        /* ── SCROLL ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 0 24px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero::before {
+                display: none;
+            }
+
+            .hero-right {
+                background: var(--ink);
+            }
+
+            .hero-left,
+            .hero-right {
+                padding: 48px 24px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .project-entry {
+                grid-template-columns: 1fr;
+            }
+
+            .project-entry:nth-child(even) {
+                direction: ltr;
+            }
+
+            .project-visual {
+                min-height: 320px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+        }
+
+        /* ── CASE STUDY MODAL ── */
+        .cs-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 8, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 200;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 48px 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s var(--ease);
+            overflow-y: auto;
+        }
+
+        .cs-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .cs-modal {
+            background: var(--cream);
+            border-radius: 6px;
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            transform: translateY(24px);
+            transition: transform 0.4s var(--ease);
+        }
+
+        .cs-overlay.open .cs-modal {
+            transform: translateY(0);
+        }
+
+        .cs-modal-header {
+            padding: 48px 52px 40px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .cs-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--canvas-2);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--text-2);
+            transition: background 0.2s;
+        }
+
+        .cs-close:hover {
+            background: var(--border);
+        }
+
+        .cs-modal-tag {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 14px;
+        }
+
+        .cs-modal-title {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+
+        .cs-modal-sub {
+            font-size: 0.95rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 580px;
+        }
+
+        .cs-modal-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cs-meta-cell {
+            padding: 20px 52px;
+            border-right: 1px solid var(--border);
+        }
+
+        .cs-meta-cell:first-child {
+            padding-left: 52px;
+        }
+
+        .cs-meta-cell:last-child {
+            border-right: none;
+        }
+
+        .cs-meta-label {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 4px;
+        }
+
+        .cs-meta-value {
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .cs-modal-body {
+            padding: 48px 52px;
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        .cs-section h4 {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .cs-section p {
+            font-size: 0.92rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .cs-tldr {
+            background: var(--ink);
+            color: var(--canvas);
+            border-radius: 4px;
+            padding: 28px 32px;
+        }
+
+        .cs-tldr-label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 14px;
+        }
+
+        .cs-tldr p {
+            font-size: 0.92rem;
+            color: rgba(245, 242, 236, 0.75);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .cs-outcome-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .cs-outcome-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 20px 18px;
+        }
+
+        .cs-outcome-num {
+            font-family: var(--serif);
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+            color: var(--teal);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .cs-outcome-label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            line-height: 1.4;
+        }
+
+        .cs-quote {
+            border-left: 2px solid var(--teal);
+            padding: 16px 20px;
+            background: var(--canvas);
+        }
+
+        .cs-quote p {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .cs-quote cite {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            color: var(--text-3);
+            font-style: normal;
+        }
+
+        .cs-process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .cs-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            background: white;
+        }
+
+        .cs-step:last-child {
+            border-bottom: none;
+        }
+
+        .cs-step-num {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.06em;
+            color: var(--teal);
+            width: 24px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+
+        .cs-step-content h5 {
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        .cs-step-content p {
+            font-size: 0.85rem;
+            color: var(--text-2);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ── HERO ANIMATION ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-left>* {
+            animation: fadeUp 0.7s var(--ease) both;
+        }
+
+        .hero-left .hero-eyebrow {
+            animation-delay: 0.1s;
+        }
+
+        .hero-left h1 {
+            animation-delay: 0.2s;
+        }
+
+        .hero-left .hero-desc {
+            animation-delay: 0.3s;
+        }
+
+        .hero-left .hero-actions {
+            animation-delay: 0.4s;
+        }
+
+        .hero-right>* {
+            animation: fadeUp 0.7s var(--ease) both;
+        }
+
+        .hero-right .hero-stats {
+            animation-delay: 0.35s;
+        }
+
+        .hero-right .hero-profile {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">David Mercer</a>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="mailto:david@example.com" class="nav-cta">Hire Me ↗</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-left">
+            <div class="hero-eyebrow">Product Designer · 8 years</div>
+            <h1>Design that <em>ships</em> and moves numbers.</h1>
+            <p class="hero-desc">I close the gap between user psychology and engineering reality — building B2B SaaS
+                products that reduce friction, increase conversion, and win clients from competitors.</p>
+            <div class="hero-actions">
+                <a href="#work" class="btn-primary">View Case Studies <span class="arrow">→</span></a>
+                <a href="mailto:david@example.com" class="btn-ghost">david@example.com</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num">8<span>+</span></div>
+                    <div class="hero-stat-label">Years shipping product</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">£<span>2.4M</span></div>
+                    <div class="hero-stat-label">Revenue influenced</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">14</div>
+                    <div class="hero-stat-label">Products launched</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">92<span>%</span></div>
+                    <div class="hero-stat-label">A/B test win rate</div>
+                </div>
+            </div>
+            <div class="hero-profile">
+                <div class="hero-avatar">DM</div>
+                <div class="hero-profile-text">
+                    <p>David Mercer</p>
+                    <p><span class="availability-dot"></span>Available for new projects</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- WORK -->
+    <section id="work">
+        <div class="container">
+            <div class="section-label">Selected work</div>
+            <h2 class="section-title reveal">Three projects. Real clients.<br>Measurable outcomes.</h2>
+
+            <!-- Project 1: FoxTrot Aviation -->
+            <div class="project-entry reveal" onclick="openCS('foxtrot')">
+                <div class="project-info">
+                    <div>
+                        <div class="project-tag-row">
+                            <span class="ptag ptag-shipped">✓ Shipped</span>
+                            <span class="ptag ptag-cat">Aviation SaaS</span>
+                            <span class="ptag ptag-cat">Enterprise</span>
+                        </div>
+                        <h3 class="project-name">FoxTrot: How design won a national enterprise client.</h3>
+                        <p class="project-desc">Legacy aviation dispatch software was burying mission-critical data
+                            under layers of generic SaaS UI. I rebuilt the information hierarchy around scannability —
+                            aircraft status readable in under 2 seconds — resulting in the client unseating an
+                            entrenched competitor.</p>
+                    </div>
+                    <div>
+                        <div class="project-outcomes">
+                            <div class="outcome-cell">
+                                <div class="outcome-num">4wk</div>
+                                <div class="outcome-label">Design to shipped frontend</div>
+                            </div>
+                            <div class="outcome-cell">
+                                <div class="outcome-num">1</div>
+                                <div class="outcome-label">National enterprise client won</div>
+                            </div>
+                            <div class="outcome-cell">
+                                <div class="outcome-num">&lt;2s</div>
+                                <div class="outcome-label">Fleet status scan time</div>
+                            </div>
+                        </div>
+                        <a href="#" class="project-cta" onclick="event.stopPropagation(); openCS('foxtrot')">Read case
+                            study →</a>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="viz-foxtrot">
+                        <div class="vf-topbar">
+                            <div class="vf-logo">
+                                <div class="vf-prop">
+                                    <div class="vf-prop-core"></div>
+                                </div>
+                                <span class="vf-brand">FOXTROT OPS</span>
+                            </div>
+                            <div class="vf-navlinks">
+                                <span class="vf-navlink active">Maintenance</span>
+                                <span class="vf-navlink inactive">Scheduling</span>
+                                <span class="vf-navlink inactive">Pilots</span>
+                            </div>
+                        </div>
+                        <div class="vf-section-head">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#475569"
+                                stroke-width="2">
+                                <path
+                                    d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z" />
+                                <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                                <path
+                                    d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z" />
+                            </svg>
+                            Aircraft Maintenance Status
+                        </div>
+                        <div class="vf-rows">
+                            <div class="vf-row">
+                                <div class="vf-status-bar s-critical"></div>
+                                <div class="vf-row-content">
+                                    <span class="vf-cell plane">N4821C · Cessna 172</span>
+                                    <span class="vf-cell">100hr due: <strong
+                                            style="color:#fca5a5;">overdue</strong></span>
+                                    <span class="vf-badge badge-critical">GROUNDED</span>
+                                </div>
+                            </div>
+                            <div class="vf-row">
+                                <div class="vf-status-bar s-warning"></div>
+                                <div class="vf-row-content">
+                                    <span class="vf-cell plane">N7734K · Piper PA-28</span>
+                                    <span class="vf-cell">Annual due in <strong style="color:#fcd34d;">6
+                                            days</strong></span>
+                                    <span class="vf-badge badge-warning">REVIEW</span>
+                                </div>
+                            </div>
+                            <div class="vf-row">
+                                <div class="vf-status-bar s-ok"></div>
+                                <div class="vf-row-content">
+                                    <span class="vf-cell plane">N2209L · Cessna 182</span>
+                                    <span class="vf-cell">All checks current</span>
+                                    <span class="vf-badge badge-ok">AIRWORTHY</span>
+                                </div>
+                            </div>
+                            <div class="vf-row">
+                                <div class="vf-status-bar s-none"></div>
+                                <div class="vf-row-content">
+                                    <span class="vf-cell plane">N8854Q · DA40</span>
+                                    <span class="vf-cell">All checks current</span>
+                                    <span class="vf-badge badge-ok">AIRWORTHY</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vf-section-head" style="margin-top:6px;">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#475569"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.65A2 2 0 012 1.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.66" />
+                            </svg>
+                            This Week — Scheduling
+                        </div>
+                        <div class="vf-sched-grid">
+                            <div class="vf-sched-col">
+                                <div class="vf-sched-date">MON 14 APR</div>
+                                <div class="vf-sched-block">
+                                    <div class="vf-sched-name">Collins · N2209L · 09:00</div>
+                                </div>
+                                <div class="vf-sched-block" style="border-color:#475569;">
+                                    <div class="vf-sched-name">Park · N8854Q · 14:30</div>
+                                </div>
+                            </div>
+                            <div class="vf-sched-col">
+                                <div class="vf-sched-date">TUE 15 APR</div>
+                                <div class="vf-sched-block">
+                                    <div class="vf-sched-name">Torres · N2209L · 10:00</div>
+                                </div>
+                            </div>
+                            <div class="vf-sched-col">
+                                <div class="vf-sched-date">WED 16 APR</div>
+                                <div class="vf-sched-block">
+                                    <div class="vf-sched-name">Ahmad · N8854Q · 08:30</div>
+                                </div>
+                                <div class="vf-sched-block" style="border-color:#475569;">
+                                    <div class="vf-sched-name">Nguyen · N2209L · 13:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Checkout CRO -->
+            <div class="project-entry reveal reveal-delay-1" onclick="openCS('cro')">
+                <div class="project-info">
+                    <div>
+                        <div class="project-tag-row">
+                            <span class="ptag ptag-shipped">✓ Shipped · A/B Tested</span>
+                            <span class="ptag ptag-cat">E-commerce</span>
+                            <span class="ptag ptag-cat">CRO</span>
+                        </div>
+                        <h3 class="project-name">Checkout Funnel: From 2.1% to 3.4% conversion in 6 weeks.</h3>
+                        <p class="project-desc">A D2C supplement brand's checkout was haemorrhaging £340K annually.
+                            Through a systematic friction audit and multi-step redesign — backed by session recording
+                            analysis and a 22,000-session A/B test — we recovered the majority of that revenue.</p>
+                    </div>
+                    <div>
+                        <div class="project-outcomes">
+                            <div class="outcome-cell">
+                                <div class="outcome-num">+62%</div>
+                                <div class="outcome-label">Conversion rate lift</div>
+                            </div>
+                            <div class="outcome-cell">
+                                <div class="outcome-num">£218K</div>
+                                <div class="outcome-label">Annual revenue recovered</div>
+                            </div>
+                            <div class="outcome-cell">
+                                <div class="outcome-num">97%</div>
+                                <div class="outcome-label">Statistical confidence</div>
+                            </div>
+                        </div>
+                        <a href="#" class="project-cta" onclick="event.stopPropagation(); openCS('cro')">Read case study
+                            →</a>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="viz-cro">
+                        <div class="vc-header">
+                            <span class="vc-title">Checkout Funnel — A/B Test Results</span>
+                            <div class="vc-live-badge">
+                                <span
+                                    style="width:6px;height:6px;background:#2e7d32;border-radius:50%;display:inline-block;"></span>
+                                Variant Won
+                            </div>
+                        </div>
+                        <div class="vc-funnel">
+                            <div class="vc-funnel-step">
+                                <div class="vc-funnel-label"
+                                    style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">Cart View
+                                </div>
+                                <div class="vc-funnel-bar-wrap">
+                                    <div style="margin-bottom:3px; display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Control</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill control" style="width:100%;"><span
+                                                    class="vc-bar-text" style="color:#00695c;">100%</span></div>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Variant</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill variant" style="width:100%;"><span
+                                                    class="vc-bar-text">100%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vc-funnel-step">
+                                <div class="vc-funnel-label"
+                                    style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">Address</div>
+                                <div class="vc-funnel-bar-wrap">
+                                    <div style="margin-bottom:3px; display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Control</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill control" style="width:72%;"><span
+                                                    class="vc-bar-text" style="color:#00695c;">72%</span></div>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Variant</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill variant" style="width:89%;"><span
+                                                    class="vc-bar-text">89%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vc-funnel-step">
+                                <div class="vc-funnel-label"
+                                    style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">Payment</div>
+                                <div class="vc-funnel-bar-wrap">
+                                    <div style="margin-bottom:3px; display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Control</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill control" style="width:51%;"><span
+                                                    class="vc-bar-text" style="color:#00695c;">51%</span></div>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Variant</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill variant" style="width:73%;"><span
+                                                    class="vc-bar-text">73%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vc-funnel-step">
+                                <div class="vc-funnel-label"
+                                    style="font-family:var(--mono);font-size:0.6rem;color:var(--text-3);">Purchased
+                                </div>
+                                <div class="vc-funnel-bar-wrap">
+                                    <div style="margin-bottom:3px; display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Control</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill control" style="width:21%;"><span
+                                                    class="vc-bar-text" style="color:#00695c;">21%</span></div>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; gap:4px; align-items:center;">
+                                        <span
+                                            style="font-family:var(--mono);font-size:0.58rem;color:var(--text-3);width:52px;">Variant</span>
+                                        <div class="vc-bar-bg" style="flex:1;">
+                                            <div class="vc-bar-fill variant" style="width:34%;"><span
+                                                    class="vc-bar-text">34%</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vc-comparison">
+                            <div class="vc-comp-card">
+                                <div class="vc-comp-label">Control (original)</div>
+                                <div class="vc-comp-num base">2.1%</div>
+                                <div class="vc-comp-sub">Baseline conversion rate</div>
+                            </div>
+                            <div class="vc-comp-card" style="border-color: #c8e6c9;">
+                                <div class="vc-comp-label">Variant (redesign)</div>
+                                <div class="vc-comp-num up">3.4%</div>
+                                <div class="vc-comp-sub">+62% relative lift</div>
+                            </div>
+                        </div>
+                        <div class="vc-test-info">
+                            <div class="vc-test-label">Sample: 22,847 sessions · Duration: 6 weeks · Confidence:</div>
+                            <div class="vc-confidence">97.3%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Design System -->
+            <div class="project-entry reveal reveal-delay-2" onclick="openCS('ds')">
+                <div class="project-info">
+                    <div>
+                        <div class="project-tag-row">
+                            <span class="ptag ptag-shipped">✓ Shipped · 40+ devs using</span>
+                            <span class="ptag ptag-cat">Design Systems</span>
+                            <span class="ptag ptag-cat">B2B SaaS</span>
+                        </div>
+                        <h3 class="project-name">Meridian DS: A design system that cut dev time by 40%.</h3>
+                        <p class="project-desc">A 120-person fintech had 11 separate products with no shared visual
+                            language. Component duplication was costing engineering 3 days per sprint. I architected and
+                            led a cross-functional design system from zero — tokens, components, documentation — adopted
+                            across all products in 8 months.</p>
+                    </div>
+                    <div>
+                        <div class="project-outcomes">
+                            <div class="outcome-cell">
+                                <div class="outcome-num">40%</div>
+                                <div class="outcome-label">Reduction in UI build time</div>
+                            </div>
+                            <div class="outcome-cell">
+                                <div class="outcome-num">86</div>
+                                <div class="outcome-label">Components shipped</div>
+                            </div>
+                            <div class="outcome-cell">
+                                <div class="outcome-num">100%</div>
+                                <div class="outcome-label">Product adoption rate</div>
+                            </div>
+                        </div>
+                        <a href="#" class="project-cta" onclick="event.stopPropagation(); openCS('ds')">Read case study
+                            →</a>
+                    </div>
+                </div>
+                <div class="project-visual">
+                    <div class="viz-ds">
+                        <div class="vds-header">
+                            <span class="vds-brand">MERIDIAN · Design System</span>
+                            <span class="vds-version">v2.4.1</span>
+                        </div>
+                        <!-- Color tokens -->
+                        <div
+                            style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;">
+                            Design Tokens — Color</div>
+                        <div class="vds-tokens">
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#0d47a1;"></div>
+                                <div class="vds-token-label">primary.900</div>
+                            </div>
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#1976d2;"></div>
+                                <div class="vds-token-label">primary.700</div>
+                            </div>
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#42a5f5;"></div>
+                                <div class="vds-token-label">primary.400</div>
+                            </div>
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#e3f2fd;"></div>
+                                <div class="vds-token-label">primary.50</div>
+                            </div>
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#b00020;"></div>
+                                <div class="vds-token-label">danger.700</div>
+                            </div>
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#00695c;"></div>
+                                <div class="vds-token-label">success.700</div>
+                            </div>
+                            <div class="vds-token">
+                                <div class="vds-color-swatch" style="background:#e65100;"></div>
+                                <div class="vds-token-label">warning.700</div>
+                            </div>
+                        </div>
+                        <!-- Components -->
+                        <div
+                            style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;margin-top:4px;">
+                            Components</div>
+                        <div class="vds-components">
+                            <div class="vds-comp-row">
+                                <div class="vds-comp-icon" style="background:rgba(124,131,253,0.15);">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c83fd"
+                                        stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                                        <path d="M9 9h6M9 15h6" />
+                                    </svg>
+                                </div>
+                                <span class="vds-comp-name">Form inputs &amp; validation</span>
+                                <span class="vds-comp-count">14 variants</span>
+                            </div>
+                            <div class="vds-comp-row">
+                                <div class="vds-comp-icon" style="background:rgba(124,131,253,0.15);">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c83fd"
+                                        stroke-width="2">
+                                        <path d="M3 3h18v4H3zM3 11h18v4H3zM3 19h18v4H3z" />
+                                    </svg>
+                                </div>
+                                <span class="vds-comp-name">Data tables &amp; sorting</span>
+                                <span class="vds-comp-count">8 variants</span>
+                            </div>
+                            <div class="vds-comp-row">
+                                <div class="vds-comp-icon" style="background:rgba(124,131,253,0.15);">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c83fd"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="9" />
+                                        <path d="M12 8v4l3 3" />
+                                    </svg>
+                                </div>
+                                <span class="vds-comp-name">Status &amp; feedback states</span>
+                                <span class="vds-comp-count">22 variants</span>
+                            </div>
+                        </div>
+                        <div
+                            style="font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;margin-top:4px;">
+                            Product adoption</div>
+                        <div class="vds-usage-bar">
+                            <div class="vds-usage-row"><span class="vds-usage-label">Payments</span>
+                                <div class="vds-usage-track">
+                                    <div class="vds-usage-fill" style="width:100%;"></div>
+                                </div><span class="vds-pct">100%</span>
+                            </div>
+                            <div class="vds-usage-row"><span class="vds-usage-label">Lending</span>
+                                <div class="vds-usage-track">
+                                    <div class="vds-usage-fill" style="width:100%;"></div>
+                                </div><span class="vds-pct">100%</span>
+                            </div>
+                            <div class="vds-usage-row"><span class="vds-usage-label">Analytics</span>
+                                <div class="vds-usage-track">
+                                    <div class="vds-usage-fill" style="width:94%;"></div>
+                                </div><span class="vds-pct">94%</span>
+                            </div>
+                            <div class="vds-usage-row"><span class="vds-usage-label">Onboarding</span>
+                                <div class="vds-usage-track">
+                                    <div class="vds-usage-fill" style="width:88%;"></div>
+                                </div><span class="vds-pct">88%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-left reveal">
+                    <div class="section-label" style="color:rgba(245,242,236,0.3);">About</div>
+                    <h2>I design for <em>outcomes</em>,<br>not approval.</h2>
+                    <p class="about-body">I don't design for Dribbble. I design for the user who is tired, under
+                        pressure, and just trying to close the deal or finish the task.<br><br>My work sits at the
+                        intersection of <strong>behavioural psychology</strong>, <strong>data analysis</strong>, and
+                        <strong>engineering feasibility</strong>. I prototype heavily, run real A/B tests, read session
+                        recordings, and write HTML when the situation calls for it.<br><br>Previously at Meridian
+                        Fintech, Foxtrot Aviation Systems, and three early-stage startups.</p>
+                    <div class="credentials">
+                        <div class="cred-row">
+                            <div class="cred-icon" style="background:rgba(0,137,123,0.15);"><svg width="15" height="15"
+                                    viewBox="0 0 24 24" fill="none" stroke="#4db6ac" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg></div>
+                            <div class="cred-text">
+                                <p>8 years shipping B2B SaaS &amp; e-commerce products</p>
+                                <p>Fintech · Aviation · D2C · Developer Tools</p>
+                            </div>
+                        </div>
+                        <div class="cred-row">
+                            <div class="cred-icon" style="background:rgba(0,137,123,0.15);"><svg width="15" height="15"
+                                    viewBox="0 0 24 24" fill="none" stroke="#4db6ac" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6" />
+                                    <polyline points="8 6 2 12 8 18" />
+                                </svg></div>
+                            <div class="cred-text">
+                                <p>Fluent in HTML, CSS, and JS — prototypes that actually run</p>
+                                <p>Figma · Framer · React · Amplitude · Hotjar</p>
+                            </div>
+                        </div>
+                        <div class="cred-row">
+                            <div class="cred-icon" style="background:rgba(0,137,123,0.15);"><svg width="15" height="15"
+                                    viewBox="0 0 24 24" fill="none" stroke="#4db6ac" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+                                </svg></div>
+                            <div class="cred-text">
+                                <p>Led cross-functional design at teams up to 40 engineers</p>
+                                <p>Design Systems · Roadmap Ownership · Stakeholder Alignment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-block">
+                        <p>Ready to work together</p>
+                        <a href="mailto:david@example.com" class="contact-email">david@example.com</a>
+                        <div class="contact-links">
+                            <a href="#" class="contact-link">LinkedIn ↗</a>
+                            <a href="#" class="contact-link">Download CV ↗</a>
+                            <a href="#" class="contact-link">Figma Profile ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right reveal reveal-delay-1">
+                    <div class="skills-section">
+                        <div class="skills-section-label">Core craft</div>
+                        <div class="skill-list">
+                            <div class="skill-row"><span class="skill-name">Product strategy &amp; vision</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:90%;"></div>
+                                </div><span class="skill-tag">Expert</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">UX research &amp; testing</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:88%;"></div>
+                                </div><span class="skill-tag">Expert</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">Interaction design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:95%;"></div>
+                                </div><span class="skill-tag">Expert</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">Design systems</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:85%;"></div>
+                                </div><span class="skill-tag">Expert</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">Conversion optimisation</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:92%;"></div>
+                                </div><span class="skill-tag">Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <div class="skills-section-label">Toolkit</div>
+                        <div class="skill-list">
+                            <div class="skill-row"><span class="skill-name">Figma + Variables</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:97%;"></div>
+                                </div><span class="skill-tag">Expert</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">HTML / CSS / JS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:82%;"></div>
+                                </div><span class="skill-tag">Advanced</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">Amplitude / Mixpanel</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:78%;"></div>
+                                </div><span class="skill-tag">Advanced</span>
+                            </div>
+                            <div class="skill-row"><span class="skill-name">Framer / Rive</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width:72%;"></div>
+                                </div><span class="skill-tag">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-section">
+                        <div class="skills-section-label">Currently exploring</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                            <span
+                                style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;background:rgba(0,137,123,0.15);border:1px solid rgba(0,137,123,0.25);border-radius:2px;color:#4db6ac;letter-spacing:0.06em;">AI-native
+                                UX patterns</span>
+                            <span
+                                style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;background:rgba(0,137,123,0.15);border:1px solid rgba(0,137,123,0.25);border-radius:2px;color:#4db6ac;letter-spacing:0.06em;">Cursor
+                                + v0 workflows</span>
+                            <span
+                                style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;background:rgba(0,137,123,0.15);border:1px solid rgba(0,137,123,0.25);border-radius:2px;color:#4db6ac;letter-spacing:0.06em;">Figma
+                                Variables/Tokens</span>
+                            <span
+                                style="font-family:var(--mono);font-size:0.65rem;padding:5px 12px;background:rgba(0,137,123,0.15);border:1px solid rgba(0,137,123,0.25);border-radius:2px;color:#4db6ac;letter-spacing:0.06em;">Agent-assisted
+                                research</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-left">© 2025 David Mercer · Product Designer · London</div>
+        <div class="footer-right">Design that ships.</div>
+    </footer>
+
+    <!-- CASE STUDY OVERLAYS -->
+    <div class="cs-overlay" id="cs-foxtrot" onclick="closeCS(event,'foxtrot')">
+        <div class="cs-modal">
+            <div class="cs-modal-header">
+                <button class="cs-close" onclick="closeCSBtn('foxtrot')">✕</button>
+                <div class="cs-modal-tag">Aviation SaaS · Shipped Product</div>
+                <h2 class="cs-modal-title">FoxTrot: How design won a national enterprise client.</h2>
+                <p class="cs-modal-sub">Legacy dispatch software was burying mission-critical aircraft data under
+                    generic SaaS UI. I rebuilt the entire information hierarchy around scannability and delivered a
+                    working frontend in 4 weeks.</p>
+            </div>
+            <div class="cs-modal-meta">
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">My role</div>
+                    <div class="cs-meta-value">UI Designer + Frontend Dev</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Timeline</div>
+                    <div class="cs-meta-value">4 weeks</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Tools</div>
+                    <div class="cs-meta-value">Figma · Bootstrap · AngularJS</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Outcome</div>
+                    <div class="cs-meta-value">Enterprise client won</div>
+                </div>
+            </div>
+            <div class="cs-modal-body">
+                <div class="cs-tldr">
+                    <div class="cs-tldr-label">↗ Executive summary</div>
+                    <p><strong style="color:rgba(245,242,236,0.9);">Problem:</strong> Off-the-shelf aviation management
+                        software displayed maintenance status and scheduling data with identical visual weight —
+                        dispatchers couldn't triage at a glance.</p><br>
+                    <p><strong style="color:rgba(245,242,236,0.9);">Outcome:</strong> Colour-coded status borders and a
+                        scannable data table architecture. The client won a major national flight school from an
+                        entrenched competitor. The design was cited in the sales pitch.</p>
+                </div>
+                <div class="cs-section">
+                    <h4>The insight: dispatchers don't browse, they scan</h4>
+                    <p>Competitive analysis revealed every incumbent platform treated maintenance and scheduling data as
+                        equivalent — long tables with uniform row heights and text-only status labels. User interviews
+                        showed dispatchers needed to assess fleet health while their eyes were focused elsewhere. The
+                        solution: thick colour-coded left borders readable at the edge of peripheral vision, with status
+                        badges that escalated in visual weight from "airworthy" to "grounded."</p>
+                </div>
+                <div class="cs-section">
+                    <h4>Process</h4>
+                    <div class="cs-process-steps">
+                        <div class="cs-step">
+                            <div class="cs-step-num">01</div>
+                            <div class="cs-step-content">
+                                <h5>Competitive teardown</h5>
+                                <p>Audited 4 competing platforms against real dispatcher tasks. Documented 23 specific
+                                    friction points around status visibility and scheduling conflicts.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">02</div>
+                            <div class="cs-step-content">
+                                <h5>Information architecture redesign</h5>
+                                <p>Restructured from a "flat list of records" to a "triage hierarchy" — critical items
+                                    surface first, not alphabetically.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">03</div>
+                            <div class="cs-step-content">
+                                <h5>High-fidelity + coded delivery</h5>
+                                <p>Built the frontend directly in Bootstrap + custom CSS. Collaborated daily with the
+                                    AngularJS team for real-time data binding.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">04</div>
+                            <div class="cs-step-content">
+                                <h5>Client pitch integration</h5>
+                                <p>Demoed live in the enterprise sales pitch. The prospect cited the maintenance view
+                                    scannability as the deciding factor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-section">
+                    <h4>Outcomes</h4>
+                    <div class="cs-outcome-grid">
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">4wk</div>
+                            <div class="cs-outcome-label">Concept to shipped frontend</div>
+                        </div>
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">1</div>
+                            <div class="cs-outcome-label">National enterprise client won</div>
+                        </div>
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">&lt;2s</div>
+                            <div class="cs-outcome-label">Fleet status scan time</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-section">
+                    <h4>What I'd do differently</h4>
+                    <div class="cs-quote">
+                        <p>"I relied on Photoshop for initial mockups — today I'd go straight to Figma with a proper
+                            component library. The handoff would have been smoother with a Figma Variables-based token
+                            system."</p><cite>— David Mercer, self-reflection</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-overlay" id="cs-cro" onclick="closeCS(event,'cro')">
+        <div class="cs-modal">
+            <div class="cs-modal-header">
+                <button class="cs-close" onclick="closeCSBtn('cro')">✕</button>
+                <div class="cs-modal-tag">E-commerce · Shipped · A/B Tested</div>
+                <h2 class="cs-modal-title">Checkout Funnel: From 2.1% to 3.4% conversion in 6 weeks.</h2>
+                <p class="cs-modal-sub">A D2C supplement brand's checkout was losing £340K annually. Through friction
+                    auditing and a redesign validated with a 22,000-session A/B test, we recovered £218K in year one.
+                </p>
+            </div>
+            <div class="cs-modal-meta">
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">My role</div>
+                    <div class="cs-meta-value">Lead Product Designer</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Timeline</div>
+                    <div class="cs-meta-value">6 weeks</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Tools</div>
+                    <div class="cs-meta-value">Figma · Hotjar · Optimizely</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Confidence</div>
+                    <div class="cs-meta-value">97.3% statistical</div>
+                </div>
+            </div>
+            <div class="cs-modal-body">
+                <div class="cs-tldr">
+                    <div class="cs-tldr-label">↗ Executive summary</div>
+                    <p><strong style="color:rgba(245,242,236,0.9);">Problem:</strong> Hotjar session recordings showed
+                        rage-clicks at address entry (forced account creation) and 31% abandonment at the card field.
+                    </p><br>
+                    <p><strong style="color:rgba(245,242,236,0.9);">Solution:</strong> Guest checkout as default,
+                        progressive address autocomplete, single-page layout with inline trust signals. Validated at
+                        97.3% confidence over 22,847 sessions.</p>
+                </div>
+                <div class="cs-section">
+                    <h4>The 5 friction points we fixed</h4>
+                    <div class="cs-process-steps">
+                        <div class="cs-step">
+                            <div class="cs-step-num">01</div>
+                            <div class="cs-step-content">
+                                <h5>Forced account creation</h5>
+                                <p>47% of new users abandoned at the account gate. Replaced with guest checkout as
+                                    primary CTA; account creation offered post-purchase with a discount incentive.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">02</div>
+                            <div class="cs-step-content">
+                                <h5>Manual address entry</h5>
+                                <p>Average completion: 68s, 4.2 errors/session. Added Google Places autocomplete —
+                                    dropped to 11s, 0.3 errors.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">03</div>
+                            <div class="cs-step-content">
+                                <h5>3-page sprawl</h5>
+                                <p>Each page transition cost ~8% of users. Collapsed to a single-page accordion with
+                                    persistent order summary.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">04</div>
+                            <div class="cs-step-content">
+                                <h5>Missing trust signals</h5>
+                                <p>Added security badges, return policy reminder, and social proof directly above the
+                                    payment CTA.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">05</div>
+                            <div class="cs-step-content">
+                                <h5>Vague error messages</h5>
+                                <p>"Invalid card" → "Your card number should be 16 digits — you've entered 15."
+                                    Field-specific, actionable.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-section">
+                    <h4>Results</h4>
+                    <div class="cs-outcome-grid">
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">+62%</div>
+                            <div class="cs-outcome-label">Relative conversion lift</div>
+                        </div>
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">£218K</div>
+                            <div class="cs-outcome-label">Annual revenue recovered</div>
+                        </div>
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">97.3%</div>
+                            <div class="cs-outcome-label">Statistical confidence</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-section">
+                    <h4>What I'd do differently</h4>
+                    <div class="cs-quote">
+                        <p>"I should have segmented by device from day one. Mobile and desktop converted at meaningfully
+                            different rates — a mobile-specific variant would likely have pushed the lift higher. Now
+                            queued as the next test."</p><cite>— David Mercer, self-reflection</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cs-overlay" id="cs-ds" onclick="closeCS(event,'ds')">
+        <div class="cs-modal">
+            <div class="cs-modal-header">
+                <button class="cs-close" onclick="closeCSBtn('ds')">✕</button>
+                <div class="cs-modal-tag">Design Systems · Fintech · Shipped</div>
+                <h2 class="cs-modal-title">Meridian DS: A design system that cut dev time by 40%.</h2>
+                <p class="cs-modal-sub">A 120-person fintech had 11 products with no shared visual language. I led the
+                    0→1 design system from token architecture through 100% cross-product adoption in 8 months.</p>
+            </div>
+            <div class="cs-modal-meta">
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">My role</div>
+                    <div class="cs-meta-value">Design Systems Lead</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Timeline</div>
+                    <div class="cs-meta-value">8 months</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Tools</div>
+                    <div class="cs-meta-value">Figma Variables · Storybook · React</div>
+                </div>
+                <div class="cs-meta-cell">
+                    <div class="cs-meta-label">Adoption</div>
+                    <div class="cs-meta-value">11/11 products</div>
+                </div>
+            </div>
+            <div class="cs-modal-body">
+                <div class="cs-tldr">
+                    <div class="cs-tldr-label">↗ Executive summary</div>
+                    <p><strong style="color:rgba(245,242,236,0.9);">Problem:</strong> 3 days per sprint lost to UI
+                        inconsistency. A single button had 23 different implementations. 11 separate Figma files with no
+                        shared components.</p><br>
+                    <p><strong style="color:rgba(245,242,236,0.9);">Outcome:</strong> 86 components, 340 design tokens,
+                        full Storybook documentation, 100% product adoption in 8 months. 40% reduction in UI
+                        implementation time per sprint.</p>
+                </div>
+                <div class="cs-section">
+                    <h4>Key architecture decisions</h4>
+                    <div class="cs-process-steps">
+                        <div class="cs-step">
+                            <div class="cs-step-num">01</div>
+                            <div class="cs-step-content">
+                                <h5>Token-first, not component-first</h5>
+                                <p>3-tier token system (primitive → semantic → component) using Figma Variables. Any
+                                    brand update flows through all 86 components automatically.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">02</div>
+                            <div class="cs-step-content">
+                                <h5>Audit before building</h5>
+                                <p>3 weeks auditing all 11 products before writing a single component. Found 23 button
+                                    variants, reduced to 4. Found 14 modal patterns, reduced to 2.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">03</div>
+                            <div class="cs-step-content">
+                                <h5>Dogfood on the hardest product first</h5>
+                                <p>Piloted with Payments — the most complex. Built credibility with engineering leads
+                                    who were initially sceptical.</p>
+                            </div>
+                        </div>
+                        <div class="cs-step">
+                            <div class="cs-step-num">04</div>
+                            <div class="cs-step-content">
+                                <h5>Office hours drove adoption</h5>
+                                <p>Weekly 30-min open sessions for any designer or engineer. Reduced Slack noise, built
+                                    cross-squad relationships, surfaced real edge cases.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-section">
+                    <h4>Outcomes</h4>
+                    <div class="cs-outcome-grid">
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">40%</div>
+                            <div class="cs-outcome-label">Reduction in UI implementation time</div>
+                        </div>
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">86</div>
+                            <div class="cs-outcome-label">Components with Storybook docs</div>
+                        </div>
+                        <div class="cs-outcome-card">
+                            <div class="cs-outcome-num">100%</div>
+                            <div class="cs-outcome-label">Adoption across all 11 products</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-section">
+                    <h4>What I'd do differently</h4>
+                    <div class="cs-quote">
+                        <p>"I underestimated the politics of naming. I'd run a naming workshop in week one now, before
+                            touching Figma. Bad names embed themselves and create adoption resistance later."</p><cite>—
+                            David Mercer, self-reflection</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function openCS(id) {
+            document.getElementById('cs-' + id).classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCSBtn(id) {
+            document.getElementById('cs-' + id).classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function closeCS(e, id) {
+            if (e.target === document.getElementById('cs-' + id)) closeCSBtn(id);
+        }
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.cs-overlay.open').forEach(el => {
+                    el.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

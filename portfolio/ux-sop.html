@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augmented UX Design & Documentation SOP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --dark: #0f172a;
+            --bg: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .sop-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        .phase-card {
+            border-left: 4px solid var(--primary);
+            margin-bottom: 3rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .phase-number {
+            position: absolute;
+            left: -1.25rem;
+            top: 0;
+            background: var(--primary);
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+
+        .philosophy-box {
+            background: #eff6ff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .ai-tag {
+            background: #ede9fe;
+            color: #7c3aed;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .human-tag {
+            background: #ecfdf5;
+            color: #059669;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .deliverable-box {
+            background: #f1f5f9;
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        code {
+            font-family: 'JetBrains+Mono', monospace;
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .sop-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sop-container">
+        <!-- Header Section -->
+        <header class="mb-10">
+            <h1 class="text-4xl font-extrabold tracking-tight mb-2 text-slate-900">Standard Operating Procedure</h1>
+            <p class="text-xl text-blue-600 font-semibold mb-6">Augmented UX Design & Documentation</p>
+
+            <div class="philosophy-box">
+                <p class="text-sm font-semibold uppercase text-blue-800 mb-1">Core Philosophy</p>
+                <p class="text-lg italic">"AI amplifies volume and speed; human judgment ensures empathy, ethics, and
+                    alignment."</p>
+                <p class="mt-2 text-sm font-bold text-amber-700">Golden Rule: Never ship on synthetic data alone. Always
+                    validate with real users.</p>
+            </div>
+        </header>
+
+        <!-- Meta Data Section -->
+        <section class="mb-12">
+            <h2 class="text-xs uppercase font-bold tracking-widest text-slate-500 mb-4">Document Control & Portfolio
+                Meta-Data</h2>
+            <div class="meta-grid">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase">Project Name</p>
+                    <p class="font-medium text-slate-700">[Project Name]</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase">My Role & Scope</p>
+                    <p class="font-medium text-slate-700">Lead UX/UI Designer</p>
+                </div>
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase">Timeline & Constraints</p>
+                    <p class="font-medium text-slate-700">e.g., 4 weeks, limited API access</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Phase 1 -->
+        <div class="phase-card">
+            <div class="phase-number">1</div>
+            <h3 class="text-2xl font-bold mb-1">Empathize</h3>
+            <p class="text-slate-500 italic mb-4">Objective: Uncover user needs and friction points using high-speed AI
+                data mining, followed by human validation.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold text-sm mb-2">Action Steps:</p>
+                    <ul class="list-none space-y-2 text-slate-700">
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>Mine public
+                                discussions, subreddits, or forums to cluster emotional themes.</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Validate AI
+                                themes with real user interviews.</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Run bias
+                                checks to ensure no demographic or experiential skew.</span></li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-box">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-2">Required Deliverables</p>
+                    <ul class="list-disc list-inside text-sm space-y-1">
+                        <li><strong>AI Affinity Map vs. Human Synthesis:</strong> Raw AI clusters side-by-side with
+                            refined insights.</li>
+                        <li><strong>The Business Context:</strong> Summary of project necessity (e.g., "Mobile drop-offs
+                            cost $5k/mo").</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase-card" style="border-left-color: #3b82f6;">
+            <div class="phase-number" style="background: #3b82f6;">2</div>
+            <h3 class="text-2xl font-bold mb-1">Define</h3>
+            <p class="text-slate-500 italic mb-4">Objective: Define exact problems to solve and create rigorous,
+                testable user models.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold text-sm mb-2">Action Steps:</p>
+                    <ul class="list-none space-y-2 text-slate-700">
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>Generate 3
+                                OCEAN-calibrated personas for multi-turn testing.</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Condense
+                                research into a single, portfolio-ready executive summary.</span></li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-box">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-2">Required Deliverables</p>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li><strong>Problem Statement (Portfolio Hook):</strong> <code>[Target User]</code> needs a way
+                            to <code>[Action]</code> because <code>[Insight]</code>, but currently faces
+                            <code>[Obstacle]</code>.</li>
+                        <li><strong>Success Metrics (The "Before"):</strong> Establishing baseline metrics (e.g., "4 min
+                            task time").</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase-card" style="border-left-color: #8b5cf6;">
+            <div class="phase-number" style="background: #8b5cf6;">3</div>
+            <h3 class="text-2xl font-bold mb-1">Ideate</h3>
+            <p class="text-slate-500 italic mb-4">Objective: Rapidly generate, evaluate, and narrow solutions using UX
+                principles.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold text-sm mb-2">Action Steps:</p>
+                    <ul class="list-none space-y-2 text-slate-700">
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>Divergence: Generate
+                                30+ wild ideas and extreme edge cases.</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Convergence:
+                                Narrow to viable options based on technical feasibility.</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Heuristic
+                                Audits: Run ideas against NN/g 10 Usability Heuristics.</span></li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-box">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-2">Required Deliverables</p>
+                    <ul class="list-disc list-inside text-sm space-y-2">
+                        <li><strong>Design Decisions & Trade-offs:</strong> Documentation of what was discarded and why.
+                        </li>
+                        <li><strong>Heuristic Evaluation Report:</strong> Breakdown of violations mapped to NN/g
+                            heuristics.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="phase-card" style="border-left-color: #ec4899;">
+            <div class="phase-number" style="background: #ec4899;">4</div>
+            <h3 class="text-2xl font-bold mb-1">Prototype</h3>
+            <p class="text-slate-500 italic mb-4">Objective: Build testable solutions and pressure-test designs against
+                simulated stakeholders.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold text-sm mb-2">Action Steps:</p>
+                    <ul class="list-none space-y-2 text-slate-700">
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>Variant Generation:
+                                Rapidly generate 4-5 UI variants for selection.</span></li>
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>Stakeholder
+                                Simulation: Dry-run pushback (e.g., "Act as a skeptical Tech Lead").</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Develop
+                                Prototype: Build the interactive high-fidelity flow.</span></li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-box">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-2">The Portfolio Proof Format</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+                        <div class="p-2 border rounded border-slate-300 text-xs"><strong>Prompt:</strong> What you asked
+                            the AI.</div>
+                        <div class="p-2 border rounded border-slate-300 text-xs"><strong>AI Output:</strong> The raw
+                            draft or variant.</div>
+                        <div class="p-2 border rounded border-slate-300 text-xs"><strong>Human Decision:</strong> Logic
+                            for modification/rejection.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 5 -->
+        <div class="phase-card" style="border-left-color: #10b981;">
+            <div class="phase-number" style="background: #10b981;">5</div>
+            <h3 class="text-2xl font-bold mb-1">Test</h3>
+            <p class="text-slate-500 italic mb-4">Objective: Cycle through simulated testing, age the design, and
+                validate with real humans.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold text-sm mb-2">Action Steps:</p>
+                    <ul class="list-none space-y-2 text-slate-700">
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>Synthetic Testing:
+                                Catch surface-level issues via AI personas.</span></li>
+                        <li class="flex items-start"><span class="ai-tag mr-2 mt-1">AI</span> <span>"Age" the Design:
+                                Prompt AI to simulate 3 weeks of daily usage.</span></li>
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Real-User
+                                Gate: Mandatory live usability tests to confirm accuracy.</span></li>
+                    </ul>
+                </div>
+
+                <div class="deliverable-box">
+                    <p class="text-xs font-bold uppercase text-slate-500 mb-2">Required Deliverables</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <strong>Before & After Visuals:</strong>
+                            <p class="text-xs text-slate-600">High-contrast comparisons annotated with problems solved.
+                            </p>
+                        </div>
+                        <div>
+                            <strong>Impact Metrics (The "After"):</strong>
+                            <p class="text-xs text-slate-600">Hard metrics (conversion %) and Soft metrics (confidence
+                                scores).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 6 -->
+        <div class="phase-card" style="border-left-color: #f59e0b; border-left-style: dashed;">
+            <div class="phase-number" style="background: #f59e0b;">6</div>
+            <h3 class="text-2xl font-bold mb-1">Retrospective</h3>
+            <p class="text-slate-500 italic mb-4">Objective: Demonstrate self-awareness, growth, and senior-level
+                product ownership.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold text-sm mb-2">Action Steps:</p>
+                    <ul class="list-none space-y-2 text-slate-700">
+                        <li class="flex items-start"><span class="human-tag mr-2 mt-1">Human</span> <span>Review
+                                lifecycle for bottlenecks and personal growth areas.</span></li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-3 bg-amber-50 border border-amber-100 rounded">
+                        <p class="text-xs font-bold text-amber-800 uppercase mb-1">What I Learned</p>
+                        <p class="text-xs">Technical skills or AI workflow refinements.</p>
+                    </div>
+                    <div class="p-3 bg-amber-50 border border-amber-100 rounded">
+                        <p class="text-xs font-bold text-amber-800 uppercase mb-1">Do Differently</p>
+                        <p class="text-xs">Acknowledging missteps (e.g., earlier accessibility audits).</p>
+                    </div>
+                    <div class="p-3 bg-amber-50 border border-amber-100 rounded">
+                        <p class="text-xs font-bold text-amber-800 uppercase mb-1">Future Iterations</p>
+                        <p class="text-xs">Roadmap for the next version or expansion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-12 pt-8 border-t border-slate-100 text-center text-slate-400 text-xs">
+            &copy; 2024 Augmented UX Design Framework • Confidential SOP
+        </footer>
+    </div>
+
+</body>
+
+</html>

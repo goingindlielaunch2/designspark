@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Rewards Business Opportunity</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-up-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-up-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-up-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        .hero-float {
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 166, 43, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 30px 10px rgba(255, 166, 43, 0.15);
+            }
+        }
+
+        .step-line {
+            background: linear-gradient(to bottom, var(--accent) 0%, var(--accent-light) 100%);
+        }
+
+        .icon-bounce:hover i {
+            animation: iconBounce 0.5s ease;
+        }
+
+        @keyframes iconBounce {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: sparkle 4s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            max-height: 400px;
+        }
+    </style>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full overflow-auto" style="background: #FFFBF5;">
+    <div id="app-wrapper" class="w-full" style="min-height: 100%;"><!-- Header -->
+        <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+            style="background: rgba(255,251,245,0.95); backdrop-filter: blur(10px);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16 md:h-20">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center"
+                            style="background: linear-gradient(135deg, #FFA62B, #FF6B35);"><i data-lucide="star"
+                                style="width:22px;height:22px;color:#fff;"></i>
+                        </div><span class="text-xl font-bold"
+                            style="font-family:'Nunito',sans-serif; color:#2D3436;">Reward<span
+                                style="color:#FFA62B;">Stars</span></span>
+                    </div>
+                    <nav class="hidden md:flex items-center gap-8"><a href="#home" class="nav-link text-sm font-medium"
+                            style="color:#2D3436;">Home</a> <a href="#about" class="nav-link text-sm font-medium"
+                            style="color:#636E72;">About</a> <a href="#opportunity" class="nav-link text-sm font-medium"
+                            style="color:#636E72;">Opportunity</a> <a href="#faq" class="nav-link text-sm font-medium"
+                            style="color:#636E72;">FAQs</a> <a href="#testimonials" class="nav-link text-sm font-medium"
+                            style="color:#636E72;">Testimonials</a> <a href="#contact"
+                            class="nav-link text-sm font-medium" style="color:#636E72;">Contact</a> <button id="nav-cta"
+                            class="px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all duration-300 hover:scale-105"
+                            style="background: linear-gradient(135deg, #FFA62B, #FF6B35);">Request Info</button>
+                    </nav><button id="mobile-toggle" class="md:hidden p-2 rounded-lg" style="color:#2D3436;"> <i
+                            data-lucide="menu" style="width:24px;height:24px;"></i> </button>
+                </div>
+                <div id="mobile-menu" class="mobile-menu md:hidden">
+                    <div class="pb-4 flex flex-col gap-3"><a href="#home" class="text-sm font-medium py-2"
+                            style="color:#2D3436;">Home</a> <a href="#about" class="text-sm font-medium py-2"
+                            style="color:#636E72;">About</a> <a href="#opportunity" class="text-sm font-medium py-2"
+                            style="color:#636E72;">Opportunity</a> <a href="#faq" class="text-sm font-medium py-2"
+                            style="color:#636E72;">FAQs</a> <a href="#testimonials" class="text-sm font-medium py-2"
+                            style="color:#636E72;">Testimonials</a> <a href="#contact" class="text-sm font-medium py-2"
+                            style="color:#636E72;">Contact</a> <button
+                            class="px-5 py-2.5 rounded-full text-sm font-bold text-white w-full"
+                            style="background: linear-gradient(135deg, #FFA62B, #FF6B35);">Request Info</button>
+                    </div>
+                </div>
+            </div>
+        </header><!-- Hero Section -->
+        <section id="home" class="pt-24 md:pt-32 pb-16 md:pb-24 relative overflow-hidden">
+            <div class="sparkle" style="top:15%;left:10%;background:#FFA62B;animation-delay:0s;"></div>
+            <div class="sparkle"
+                style="top:25%;right:15%;background:#FF6B35;animation-delay:1.5s;width:8px;height:8px;"></div>
+            <div class="sparkle" style="bottom:30%;left:20%;background:#FFA62B;animation-delay:3s;"></div>
+            <div class="sparkle" style="top:40%;right:30%;background:#00B894;animation-delay:2s;width:5px;height:5px;">
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <div class="flex-1 text-center lg:text-left">
+                        <div class="fade-up"><span
+                                class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-6"
+                                style="background:#FFF3E0;color:#FF6B35;">🌟 Rewarding Opportunity</span>
+                        </div>
+                        <h1 id="hero-headline"
+                            class="fade-up fade-up-delay-1 text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6"
+                            style="font-family:'Nunito',sans-serif;color:#2D3436;">Be Your Own Boss While Making Kids
+                            Smile</h1>
+                        <p id="hero-subheadline" class="fade-up fade-up-delay-2 text-lg md:text-xl leading-relaxed mb-4"
+                            style="color:#636E72;max-width:540px;">A turnkey rewards system placed in dental offices,
+                            schools, and clinics that delights children and creates recurring income for you.</p>
+                        <p class="fade-up fade-up-delay-2 text-base font-semibold mb-8" style="color:#00B894;">✓ Low
+                            startup cost &nbsp; ✓ No franchise fees &nbsp; ✓ Meaningful community impact</p>
+                        <div
+                            class="fade-up fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button
+                                class="px-8 py-4 rounded-full text-base font-bold text-white transition-all duration-300 hover:scale-105 pulse-glow"
+                                style="background: linear-gradient(135deg, #FFA62B, #FF6B35);"> Get Started <span
+                                    class="ml-1">→</span> </button> <button
+                                class="px-8 py-4 rounded-full text-base font-bold transition-all duration-300 hover:scale-105"
+                                style="color:#FF6B35;border:2px solid #FF6B35;background:transparent;"> Request Info
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex justify-center fade-up fade-up-delay-3">
+                        <div class="hero-float relative">
+                            <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-3xl relative overflow-hidden"
+                                style="background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 50%, #FFCC80 100%);">
+                                <div class="absolute inset-0 flex flex-col items-center justify-center p-8">
+                                    <div class="w-24 h-24 rounded-2xl flex items-center justify-center mb-4"
+                                        style="background:linear-gradient(135deg,#FFA62B,#FF6B35);"><i
+                                            data-lucide="gift" style="width:48px;height:48px;color:#fff;"></i>
+                                    </div>
+                                    <div class="flex gap-2 mb-4">
+                                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                                            style="background:#00B894;">
+                                            <i data-lucide="smile" style="width:20px;height:20px;color:#fff;"></i>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                                            style="background:#FFA62B;">
+                                            <i data-lucide="trophy" style="width:20px;height:20px;color:#fff;"></i>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                                            style="background:#6C5CE7;">
+                                            <i data-lucide="star" style="width:20px;height:20px;color:#fff;"></i>
+                                        </div>
+                                    </div>
+                                    <p class="text-center font-bold text-sm"
+                                        style="color:#2D3436;font-family:'Nunito',sans-serif;">Kids love rewards.<br>
+                                        You'll love the results.</p>
+                                    <div class="mt-4 flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-xl" style="background:#E8F5E9;"></div>
+                                        <div class="w-12 h-12 rounded-xl" style="background:#E3F2FD;"></div>
+                                        <div class="w-12 h-12 rounded-xl" style="background:#FFF3E0;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute -top-3 -right-3 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"
+                                style="background:#00B894;"><i data-lucide="trending-up"
+                                    style="width:24px;height:24px;color:#fff;"></i>
+                            </div>
+                            <div class="absolute -bottom-3 -left-3 w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg"
+                                style="background:#6C5CE7;"><i data-lucide="heart"
+                                    style="width:24px;height:24px;color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Feature highlights -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 md:mt-24">
+                    <div class="fade-up fade-up-delay-1 flex items-center gap-4 p-6 rounded-2xl card-hover"
+                        style="background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.05);">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                            style="background:#FFF3E0;"><i data-lucide="piggy-bank"
+                                style="width:28px;height:28px;color:#FFA62B;"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base" style="color:#2D3436;font-family:'Nunito',sans-serif;">Low
+                                Investment</h3>
+                            <p class="text-sm mt-1" style="color:#636E72;">Start for a fraction of traditional franchise
+                                costs</p>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-2 flex items-center gap-4 p-6 rounded-2xl card-hover"
+                        style="background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.05);">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                            style="background:#E8F5E9;"><i data-lucide="clock"
+                                style="width:28px;height:28px;color:#00B894;"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base" style="color:#2D3436;font-family:'Nunito',sans-serif;">
+                                Flexible Schedule</h3>
+                            <p class="text-sm mt-1" style="color:#636E72;">Work on your own terms, full-time or
+                                part-time</p>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-3 flex items-center gap-4 p-6 rounded-2xl card-hover"
+                        style="background:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.05);">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
+                            style="background:#EDE7F6;"><i data-lucide="heart-handshake"
+                                style="width:28px;height:28px;color:#6C5CE7;"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base" style="color:#2D3436;font-family:'Nunito',sans-serif;">
+                                Positive Impact</h3>
+                            <p class="text-sm mt-1" style="color:#636E72;">Bring joy to children in your community</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Opportunity Section -->
+        <section id="opportunity" class="py-16 md:py-24" style="background:#fff;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14"><span
+                        class="fade-up inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
+                        style="background:#FFF3E0;color:#FF6B35;">The Opportunity</span>
+                    <h2 id="opportunity-title"
+                        class="fade-up fade-up-delay-1 text-3xl sm:text-4xl lg:text-5xl font-black"
+                        style="font-family:'Nunito',sans-serif;color:#2D3436;">A Business That Rewards Everyone</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <div class="fade-up fade-up-delay-1 text-center p-6 rounded-2xl card-hover icon-bounce"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                            style="background:linear-gradient(135deg,#FFA62B,#FF6B35);"><i data-lucide="wallet"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">Low
+                            Startup Cost</h3>
+                        <p class="text-xs" style="color:#636E72;">Affordable entry with no hidden fees</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-2 text-center p-6 rounded-2xl card-hover icon-bounce"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                            style="background:linear-gradient(135deg,#00B894,#00CEC9);"><i data-lucide="calendar"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">
+                            Flexible Schedule</h3>
+                        <p class="text-xs" style="color:#636E72;">Set your own hours and pace</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-3 text-center p-6 rounded-2xl card-hover icon-bounce"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                            style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);"><i data-lucide="package"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">Simple
+                            Turnkey Model</h3>
+                        <p class="text-xs" style="color:#636E72;">Everything you need to start</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-4 text-center p-6 rounded-2xl card-hover icon-bounce"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                            style="background:linear-gradient(135deg,#FD79A8,#E84393);"><i data-lucide="map-pin"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">
+                            Kid-Focused Locations</h3>
+                        <p class="text-xs" style="color:#636E72;">Dental offices, schools &amp; clinics</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-4 text-center p-6 rounded-2xl card-hover icon-bounce"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                            style="background:linear-gradient(135deg,#FDCB6E,#F39C12);"><i data-lucide="coins"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">Earn
+                            Passive Income</h3>
+                        <p class="text-xs" style="color:#636E72;">Revenue that works while you don't</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- How It Works -->
+        <section id="about" class="py-16 md:py-24" style="background:#FFFBF5;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14"><span
+                        class="fade-up inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
+                        style="background:#E8F5E9;color:#00B894;">How It Works</span>
+                    <h2 id="how-it-works-title"
+                        class="fade-up fade-up-delay-1 text-3xl sm:text-4xl lg:text-5xl font-black"
+                        style="font-family:'Nunito',sans-serif;color:#2D3436;">Earn Recurring Income in a Simple,
+                        Meaningful Way</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative"><!-- Connector line (desktop) -->
+                    <div class="hidden md:block absolute top-24 left-[20%] right-[20%] h-0.5"
+                        style="background:linear-gradient(to right,#FFA62B,#00B894,#6C5CE7);opacity:0.3;"></div>
+                    <div class="fade-up fade-up-delay-1 text-center relative">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
+                            style="background:linear-gradient(135deg,#FFA62B,#FF6B35);box-shadow:0 8px 30px rgba(255,166,43,0.3);">
+                            <i data-lucide="building" style="width:36px;height:36px;color:#fff;"></i>
+                        </div><span class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
+                            style="background:#FFF3E0;color:#FF6B35;">Step 1</span>
+                        <h3 class="font-bold text-lg mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">Place
+                            Reward Towers</h3>
+                        <p class="text-sm" style="color:#636E72;">Install kid-friendly reward units in dental offices,
+                            schools, and partner locations.</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-2 text-center relative">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
+                            style="background:linear-gradient(135deg,#00B894,#00CEC9);box-shadow:0 8px 30px rgba(0,184,148,0.3);">
+                            <i data-lucide="gift" style="width:36px;height:36px;color:#fff;"></i>
+                        </div><span class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
+                            style="background:#E8F5E9;color:#00B894;">Step 2</span>
+                        <h3 class="font-bold text-lg mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">Stock
+                            with Fun Prizes</h3>
+                        <p class="text-sm" style="color:#636E72;">Keep machines filled with small toys and rewards kids
+                            love.</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-3 text-center relative">
+                        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10"
+                            style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);box-shadow:0 8px 30px rgba(108,92,231,0.3);">
+                            <i data-lucide="trending-up" style="width:36px;height:36px;color:#fff;"></i>
+                        </div><span class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
+                            style="background:#EDE7F6;color:#6C5CE7;">Step 3</span>
+                        <h3 class="font-bold text-lg mb-2" style="color:#2D3436;font-family:'Nunito',sans-serif;">Earn
+                            &amp; Grow</h3>
+                        <p class="text-sm" style="color:#636E72;">Generate income while expanding to more locations in
+                            your area.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Testimonials -->
+        <section id="testimonials" class="py-16 md:py-24" style="background:#fff;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14"><span
+                        class="fade-up inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
+                        style="background:#EDE7F6;color:#6C5CE7;">Testimonials</span>
+                    <h2 class="fade-up fade-up-delay-1 text-3xl sm:text-4xl lg:text-5xl font-black"
+                        style="font-family:'Nunito',sans-serif;color:#2D3436;">Why People Love This Opportunity</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="fade-up fade-up-delay-1 p-8 rounded-2xl card-hover relative"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="flex gap-1 mb-4"><i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i>
+                        </div>
+                        <p class="text-base italic mb-6" style="color:#2D3436;line-height:1.7;">"I love that I'm earning
+                            income while bringing joy to kids. It feels less like work and more like a mission."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white"
+                                style="background:linear-gradient(135deg,#FFA62B,#FF6B35);">
+                                SM
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm" style="color:#2D3436;">Sarah M.</p>
+                                <p class="text-xs" style="color:#636E72;">Partner since 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-2 p-8 rounded-2xl card-hover relative"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="flex gap-1 mb-4"><i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i>
+                        </div>
+                        <p class="text-base italic mb-6" style="color:#2D3436;line-height:1.7;">"Simple, flexible, and
+                            truly rewarding. I manage my route on my own schedule and the income keeps growing."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white"
+                                style="background:linear-gradient(135deg,#00B894,#00CEC9);">
+                                JR
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm" style="color:#2D3436;">James R.</p>
+                                <p class="text-xs" style="color:#636E72;">Partner since 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-3 p-8 rounded-2xl card-hover relative"
+                        style="background:#FFFBF5;border:1px solid #FFF3E0;">
+                        <div class="flex gap-1 mb-4"><i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i> <i data-lucide="star"
+                                style="width:18px;height:18px;color:#FFA62B;fill:#FFA62B;"></i>
+                        </div>
+                        <p class="text-base italic mb-6" style="color:#2D3436;line-height:1.7;">"A business I feel proud
+                            to run. Parents and dentists thank me all the time — that never gets old."</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white"
+                                style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);">
+                                LP
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm" style="color:#2D3436;">Linda P.</p>
+                                <p class="text-xs" style="color:#636E72;">Partner since 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Benefits Section -->
+        <section class="py-16 md:py-24" style="background:linear-gradient(135deg, #2D3436 0%, #3D4F51 100%);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14"><span
+                        class="fade-up inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
+                        style="background:rgba(255,166,43,0.15);color:#FFA62B;">Benefits</span>
+                    <h2 class="fade-up fade-up-delay-1 text-3xl sm:text-4xl lg:text-5xl font-black text-white"
+                        style="font-family:'Nunito',sans-serif;">Why Partner With Us?</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="fade-up fade-up-delay-1 p-8 rounded-2xl text-center card-hover"
+                        style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+                            style="background:linear-gradient(135deg,#FFA62B,#FF6B35);"><i data-lucide="shield-check"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2" style="font-family:'Nunito',sans-serif;">Proven
+                            Model</h3>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.6);">A tested system that delivers consistent
+                            results across markets.</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-2 p-8 rounded-2xl text-center card-hover"
+                        style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+                            style="background:linear-gradient(135deg,#00B894,#00CEC9);"><i data-lucide="graduation-cap"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2" style="font-family:'Nunito',sans-serif;">Full
+                            Training</h3>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.6);">Comprehensive onboarding so you're
+                            confident from day one.</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-3 p-8 rounded-2xl text-center card-hover"
+                        style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+                            style="background:linear-gradient(135deg,#6C5CE7,#A29BFE);"><i data-lucide="headphones"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2" style="font-family:'Nunito',sans-serif;">Ongoing
+                            Support</h3>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.6);">Our team is always here to help you
+                            succeed and scale.</p>
+                    </div>
+                    <div class="fade-up fade-up-delay-4 p-8 rounded-2xl text-center card-hover"
+                        style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);">
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5"
+                            style="background:linear-gradient(135deg,#FD79A8,#E84393);"><i data-lucide="map"
+                                style="width:30px;height:30px;color:#fff;"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white mb-2" style="font-family:'Nunito',sans-serif;">Exclusive
+                            Territories</h3>
+                        <p class="text-sm" style="color:rgba(255,255,255,0.6);">Secure your area with protected,
+                            exclusive territory rights.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- FAQ Section -->
+        <section id="faq" class="py-16 md:py-24" style="background:#FFFBF5;">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-14"><span
+                        class="fade-up inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4"
+                        style="background:#FFF3E0;color:#FF6B35;">FAQ</span>
+                    <h2 class="fade-up fade-up-delay-1 text-3xl sm:text-4xl lg:text-5xl font-black"
+                        style="font-family:'Nunito',sans-serif;color:#2D3436;">Frequently Asked Questions</h2>
+                </div>
+                <div class="space-y-4" id="faq-container">
+                    <div class="fade-up faq-item rounded-2xl overflow-hidden"
+                        style="background:#fff;border:1px solid #FFF3E0;"><button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left"
+                            onclick="toggleFaq(this)"> <span class="font-bold text-base pr-4"
+                                style="color:#2D3436;font-family:'Nunito',sans-serif;">How much does it cost to get
+                                started?</span> <i data-lucide="chevron-down"
+                                class="flex-shrink-0 transition-transform duration-300"
+                                style="width:20px;height:20px;color:#FFA62B;"></i> </button>
+                        <div class="faq-answer px-6">
+                            <p class="pb-6 text-sm leading-relaxed" style="color:#636E72;">Our startup costs are
+                                significantly lower than traditional franchises. We offer flexible investment packages
+                                starting from a few thousand dollars, with no ongoing franchise fees. Contact us for a
+                                detailed breakdown tailored to your goals.</p>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-1 faq-item rounded-2xl overflow-hidden"
+                        style="background:#fff;border:1px solid #FFF3E0;"><button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left"
+                            onclick="toggleFaq(this)"> <span class="font-bold text-base pr-4"
+                                style="color:#2D3436;font-family:'Nunito',sans-serif;">How much can I earn?</span> <i
+                                data-lucide="chevron-down" class="flex-shrink-0 transition-transform duration-300"
+                                style="width:20px;height:20px;color:#FFA62B;"></i> </button>
+                        <div class="faq-answer px-6">
+                            <p class="pb-6 text-sm leading-relaxed" style="color:#636E72;">Earnings vary based on the
+                                number of locations and local demand. Many partners generate meaningful recurring income
+                                within their first few months. We'll share real numbers during your info session.</p>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-2 faq-item rounded-2xl overflow-hidden"
+                        style="background:#fff;border:1px solid #FFF3E0;"><button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left"
+                            onclick="toggleFaq(this)"> <span class="font-bold text-base pr-4"
+                                style="color:#2D3436;font-family:'Nunito',sans-serif;">Where can I place the reward
+                                towers?</span> <i data-lucide="chevron-down"
+                                class="flex-shrink-0 transition-transform duration-300"
+                                style="width:20px;height:20px;color:#FFA62B;"></i> </button>
+                        <div class="faq-answer px-6">
+                            <p class="pb-6 text-sm leading-relaxed" style="color:#636E72;">Reward towers work great in
+                                dental offices, pediatric clinics, schools, daycares, family restaurants, and any
+                                kid-friendly location. We help you identify and secure the best placements in your
+                                territory.</p>
+                        </div>
+                    </div>
+                    <div class="fade-up fade-up-delay-3 faq-item rounded-2xl overflow-hidden"
+                        style="background:#fff;border:1px solid #FFF3E0;"><button
+                            class="faq-toggle w-full flex items-center justify-between p-6 text-left"
+                            onclick="toggleFaq(this)"> <span class="font-bold text-base pr-4"
+                                style="color:#2D3436;font-family:'Nunito',sans-serif;">Do I need experience?</span> <i
+                                data-lucide="chevron-down" class="flex-shrink-0 transition-transform duration-300"
+                                style="width:20px;height:20px;color:#FFA62B;"></i> </button>
+                        <div class="faq-answer px-6">
+                            <p class="pb-6 text-sm leading-relaxed" style="color:#636E72;">No experience needed! Our
+                                turnkey model and comprehensive training program give you everything you need to launch
+                                and grow. We guide you every step of the way.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- Final CTA -->
+        <section id="contact" class="py-16 md:py-24 relative overflow-hidden"
+            style="background:linear-gradient(135deg, #FFA62B 0%, #FF6B35 100%);">
+            <div class="sparkle" style="top:20%;left:10%;background:#fff;animation-delay:0.5s;width:8px;height:8px;">
+            </div>
+            <div class="sparkle" style="top:30%;right:15%;background:#fff;animation-delay:2s;width:6px;height:6px;">
+            </div>
+            <div class="sparkle" style="bottom:25%;left:25%;background:#fff;animation-delay:3.5s;"></div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="fade-up"><i data-lucide="sparkles"
+                        style="width:48px;height:48px;color:rgba(255,255,255,0.8);" class="mx-auto mb-6"></i>
+                </div>
+                <h2 id="cta-headline"
+                    class="fade-up fade-up-delay-1 text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6"
+                    style="font-family:'Nunito',sans-serif;">Start a Business That Brings Smiles — and Income</h2>
+                <p id="cta-subtext" class="fade-up fade-up-delay-2 text-lg mb-10"
+                    style="color:rgba(255,255,255,0.9);max-width:600px;margin-left:auto;margin-right:auto;">Join a
+                    growing network of partners who earn meaningful income while making a positive impact in their
+                    communities.</p>
+                <div class="fade-up fade-up-delay-3"><button
+                        class="px-10 py-5 rounded-full text-lg font-bold transition-all duration-300 hover:scale-105"
+                        style="background:#fff;color:#FF6B35;box-shadow:0 8px 30px rgba(0,0,0,0.15);"> Get Started Today
+                        <span class="ml-1">→</span> </button>
+                </div>
+            </div>
+        </section><!-- Footer -->
+        <footer style="background:#2D3436;color:rgba(255,255,255,0.6);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+                                style="background:linear-gradient(135deg,#FFA62B,#FF6B35);"><i data-lucide="star"
+                                    style="width:16px;height:16px;color:#fff;"></i>
+                            </div><span class="text-lg font-bold text-white"
+                                style="font-family:'Nunito',sans-serif;">RewardStars</span>
+                        </div>
+                        <p class="text-sm leading-relaxed">Making kids smile and creating opportunities, one reward
+                            tower at a time.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm mb-4" style="font-family:'Nunito',sans-serif;">Quick
+                            Links</h4>
+                        <div class="flex flex-col gap-2"><a href="#home"
+                                class="text-sm hover:text-white transition-colors">Home</a> <a href="#about"
+                                class="text-sm hover:text-white transition-colors">About</a> <a href="#opportunity"
+                                class="text-sm hover:text-white transition-colors">Opportunity</a> <a href="#faq"
+                                class="text-sm hover:text-white transition-colors">FAQs</a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm mb-4" style="font-family:'Nunito',sans-serif;">Resources
+                        </h4>
+                        <div class="flex flex-col gap-2"><a href="#testimonials"
+                                class="text-sm hover:text-white transition-colors">Testimonials</a> <a href="#contact"
+                                class="text-sm hover:text-white transition-colors">Contact Us</a> <span
+                                class="text-sm">Privacy Policy</span> <span class="text-sm">Terms of Service</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm mb-4" style="font-family:'Nunito',sans-serif;">Connect
+                        </h4>
+                        <div class="flex gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+                                style="background:rgba(255,255,255,0.08);"><i data-lucide="facebook"
+                                    style="width:18px;height:18px;color:rgba(255,255,255,0.6);"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+                                style="background:rgba(255,255,255,0.08);"><i data-lucide="instagram"
+                                    style="width:18px;height:18px;color:rgba(255,255,255,0.6);"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+                                style="background:rgba(255,255,255,0.08);"><i data-lucide="linkedin"
+                                    style="width:18px;height:18px;color:rgba(255,255,255,0.6);"></i>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+                                style="background:rgba(255,255,255,0.08);"><i data-lucide="twitter"
+                                    style="width:18px;height:18px;color:rgba(255,255,255,0.6);"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-8 text-center text-xs" style="border-top:1px solid rgba(255,255,255,0.08);">
+                    <p>© 2025 RewardStars. All rights reserved. Making kids smile, one reward at a time.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        const defaultConfig = {
+            background_color: '#FFFBF5',
+            surface_color: '#FFFFFF',
+            text_color: '#2D3436',
+            primary_action_color: '#FFA62B',
+            secondary_action_color: '#00B894',
+            font_family: 'Nunito',
+            font_size: 16,
+            hero_headline: 'Be Your Own Boss While Making Kids Smile',
+            hero_subheadline: 'A turnkey rewards system placed in dental offices, schools, and clinics that delights children and creates recurring income for you.',
+            opportunity_title: 'A Business That Rewards Everyone',
+            how_it_works_title: 'Earn Recurring Income in a Simple, Meaningful Way',
+            cta_headline: 'Start a Business That Brings Smiles — and Income',
+            cta_subtext: 'Join a growing network of partners who earn meaningful income while making a positive impact in their communities.'
+        };
+
+        async function onConfigChange(config) {
+            const bg = config.background_color || defaultConfig.background_color;
+            const surface = config.surface_color || defaultConfig.surface_color;
+            const text = config.text_color || defaultConfig.text_color;
+            const primary = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondary = config.secondary_action_color || defaultConfig.secondary_action_color;
+            const font = config.font_family || defaultConfig.font_family;
+            const baseSize = config.font_size || defaultConfig.font_size;
+
+            document.body.style.background = bg;
+            document.getElementById('app-wrapper').style.background = bg;
+
+            // Text updates
+            const h = document.getElementById('hero-headline');
+            if (h) h.textContent = config.hero_headline || defaultConfig.hero_headline;
+            const hs = document.getElementById('hero-subheadline');
+            if (hs) hs.textContent = config.hero_subheadline || defaultConfig.hero_subheadline;
+            const ot = document.getElementById('opportunity-title');
+            if (ot) ot.textContent = config.opportunity_title || defaultConfig.opportunity_title;
+            const ht = document.getElementById('how-it-works-title');
+            if (ht) ht.textContent = config.how_it_works_title || defaultConfig.how_it_works_title;
+            const ch = document.getElementById('cta-headline');
+            if (ch) ch.textContent = config.cta_headline || defaultConfig.cta_headline;
+            const cs = document.getElementById('cta-subtext');
+            if (cs) cs.textContent = config.cta_subtext || defaultConfig.cta_subtext;
+
+            // Font
+            const fontStack = `${font}, DM Sans, sans-serif`;
+            document.querySelectorAll('h1,h2,h3,h4,.font-bold,.font-black').forEach(el => {
+                el.style.fontFamily = fontStack;
+            });
+
+            // Font size scaling
+            document.querySelectorAll('h1').forEach(el => el.style.fontSize = `${baseSize * 3}px`);
+            document.querySelectorAll('h2').forEach(el => el.style.fontSize = `${baseSize * 2.2}px`);
+            document.querySelectorAll('h3').forEach(el => el.style.fontSize = `${baseSize * 1.1}px`);
+            document.querySelectorAll('p').forEach(el => {
+                if (!el.closest('footer') && !el.classList.contains('text-xs')) {
+                    el.style.fontSize = `${baseSize}px`;
+                }
+            });
+
+            // Colors - background
+            document.querySelectorAll(`[style*="background:#FFFBF5"], [style*="background: #FFFBF5"]`).forEach(el => {
+                el.style.background = bg;
+            });
+
+            // Surface cards
+            document.querySelectorAll('.card-hover, .faq-item').forEach(el => {
+                if (el.style.background === '#fff' || el.style.background === 'rgb(255, 255, 255)' || el.style.backgroundColor === 'rgb(255, 255, 255)') {
+                    el.style.background = surface;
+                }
+            });
+
+            // Text color
+            document.querySelectorAll(`[style*="color:#2D3436"]`).forEach(el => {
+                if (!el.closest('[style*="background:linear-gradient(135deg, #2D3436"]') && !el.closest('footer')) {
+                    el.style.color = text;
+                }
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+                    { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+                    { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+                    { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+                    { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+                ],
+                borderables: [],
+                fontEditable: {
+                    get: () => config.font_family || defaultConfig.font_family,
+                    set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+                },
+                fontSizeable: {
+                    get: () => config.font_size || defaultConfig.font_size,
+                    set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+                }
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+                ['hero_subheadline', config.hero_subheadline || defaultConfig.hero_subheadline],
+                ['opportunity_title', config.opportunity_title || defaultConfig.opportunity_title],
+                ['how_it_works_title', config.how_it_works_title || defaultConfig.how_it_works_title],
+                ['cta_headline', config.cta_headline || defaultConfig.cta_headline],
+                ['cta_subtext', config.cta_subtext || defaultConfig.cta_subtext]
+            ]);
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // FAQ toggle
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('[data-lucide]');
+            const isOpen = answer.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-toggle [data-lucide]').forEach(i => i.style.transform = 'rotate(0deg)');
+
+            if (!isOpen) {
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Mobile menu
+        document.getElementById('mobile-toggle').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('open');
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Header shadow on scroll
+        const header = document.getElementById('site-header');
+        document.getElementById('app-wrapper').addEventListener('scroll', function () {
+            if (this.scrollTop > 10) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobile-menu').classList.remove('open');
+                }
+            });
+        });
+
+        // Nav link hover underline color
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.style.setProperty('--underline-color', '#FFA62B');
+        });
+        const style = document.createElement('style');
+        style.textContent = '.nav-link::after { background-color: #FFA62B; }';
+        document.head.appendChild(style);
+
+        lucide.createIcons();
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9f0c020971589520',t:'MTc3NjkzODI4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX/UI Documentation Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            /* Fun / Brutalist Palette based on designspark */
+            --bg-color: #f4ece3;
+            --surface-color: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            
+            --brand: #14b8a6;
+            --violet: #8b5cf6;
+            --rose: #f43f5e;
+            --amber: #f59e0b;
+            --blue: #3b82f6;
+            
+            --border-dark: #0f172a;
+            
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --shadow-brutal: 4px 4px 0px 0px var(--border-dark);
+            --shadow-brutal-hover: 8px 8px 0px 0px var(--border-dark);
+            --shadow-brutal-active: 0px 0px 0px 0px var(--border-dark);
+            --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 120px;
+        }
+
+        /* Navigation Bar */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--surface-color);
+            padding: 12px 24px;
+            border-bottom: 3px solid var(--border-dark);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 0 rgba(15, 23, 42, 0.05);
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .project-name-display {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--border-dark);
+        }
+
+        .nav-btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            background: transparent;
+            color: var(--border-dark);
+            font-weight: 700;
+            box-shadow: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--border-dark);
+            background: var(--bg-color);
+            transform: translateY(-2px);
+            box-shadow: 2px 2px 0 0 var(--border-dark);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--border-dark);
+            text-shadow: 3px 3px 0px var(--brand);
+        }
+
+        .card {
+            background: var(--surface-color);
+            border: 3px solid var(--border-dark);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-brutal);
+            transition: var(--transition);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 3px dashed var(--border-dark);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--border-dark);
+            background: var(--brand);
+            color: white;
+            box-shadow: 2px 2px 0px 0px var(--border-dark);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 800;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: var(--border-dark);
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            border: 3px solid var(--border-dark);
+            border-radius: 10px;
+            background: #fdfdfd;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            background: white;
+            border-color: var(--violet);
+            box-shadow: 4px 4px 0px 0px var(--violet);
+        }
+
+        /* Repeatable Blocks */
+        .repeatable-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+        }
+
+        .repeatable-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .repeatable-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .repeatable-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .repeatable-item textarea {
+            min-height: 60px;
+            padding: 10px 14px;
+        }
+
+        .remove-btn {
+            background: var(--rose);
+            color: white;
+            border: 2px solid var(--border-dark);
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: 8px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .add-btn {
+            background: var(--brand);
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 2px solid var(--border-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 0 var(--border-dark);
+        }
+
+        .add-btn:hover { transform: translateY(-2px); box-shadow: 3px 3px 0 0 var(--border-dark); }
+
+        /* Heuristics Styles */
+        .heuristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .heuristic-card {
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+            padding: 15px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .heuristic-card:hover {
+            box-shadow: 4px 4px 0 0 var(--blue);
+            transform: rotate(-1deg);
+        }
+
+        .heuristic-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .heuristic-num {
+            background: var(--border-dark);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .heuristic-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .heuristic-check input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--brand);
+        }
+
+        /* Heuristics Guide Styles */
+        .heuristics-guide {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .h-guide-item {
+            background: white;
+            padding: 16px;
+            border: 2px solid var(--border-dark);
+            border-radius: 12px;
+        }
+
+        .h-guide-item h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--blue);
+        }
+
+        .h-guide-item p {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .heuristics-guide {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tabs/Sections Colors */
+        .phase-discover { border-color: var(--blue); }
+        .phase-define { border-color: var(--amber); }
+        .phase-develop { border-color: var(--brand); }
+        .phase-deliver { border-color: var(--violet); }
+
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--border-dark);
+            padding: 16px 32px;
+            border-radius: 99px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 100;
+            border: 4px solid white;
+        }
+
+        .fab-text { color: white; font-weight: 700; font-size: 0.9rem; }
+        .status-dot { width: 10px; height: 10px; background: var(--brand); border-radius: 50%; display: inline-block; box-shadow: 0 0 10px var(--brand); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(20, 184, 166, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); } }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: var(--surface-color); border: 4px solid var(--border-dark); border-radius: 16px; width: 90%; max-width: 600px; box-shadow: 8px 8px 0 0 var(--border-dark); max-height: 80vh; display: flex; flex-direction: column; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 3px dashed var(--border-dark); }
+        .project-list { padding: 24px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; }
+        .project-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 2px solid var(--border-dark); border-radius: 12px; background: var(--bg-color); cursor: pointer; transition: all 0.2s; }
+        .project-item:hover { background: white; transform: translateY(-2px); box-shadow: 4px 4px 0 0 var(--border-dark); }
+
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button id="nav-load-project" class="nav-btn"><i data-lucide="folder-open"></i> Projects</button>
+            <span class="project-name-display" id="nav-project-name">Untitled Project</span>
+        </div>
+        <div class="nav-right">
+            <button id="nav-new-project" class="nav-btn"><i data-lucide="plus"></i> New Project</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>DocuVibe ✨</h1>
+            <p style="font-weight: 700; color: var(--text-muted);">Real-time UX/UI documentation that actually feels fun.</p>
+        </header>
+
+        <form id="docs-form">
+            <!-- 1. Project Header -->
+            <div class="card" style="border-color: var(--violet);">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--violet);"><i data-lucide="folder-kanban"></i></div>
+                    <h2>1. Project Header</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+                    <div class="form-group"><label>Project Name</label><input type="text" id="project-name" placeholder="e.g. DesignSpark Editor"></div>
+                    <div class="form-group"><label>Date Started</label><input type="date" id="date-started"></div>
+                </div>
+                <div class="form-group"><label>Your Role</label><input type="text" id="user-role" placeholder="e.g. Lead Product Designer"></div>
+                <div class="form-group"><label>Goal / Problem Statement</label><textarea id="problem-statement" placeholder="What are we trying to solve?"></textarea></div>
+                <div class="form-group"><label>Success Metrics</label><textarea id="success-metrics" placeholder="How will we know we won?"></textarea></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group"><label>Tools Used</label><input type="text" id="tools-used"></div>
+                    <div class="form-group"><label>Target Users</label><input type="text" id="target-users"></div>
+                </div>
+            </div>
+
+            <!-- 2. Session Log -->
+            <div class="card" style="border-color: var(--rose);">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--rose);"><i data-lucide="clock"></i></div>
+                    <h2>2. Session Logs</h2>
+                </div>
+                <div id="session-logs-container"></div>
+                <div style="text-align: center;"><button type="button" class="add-btn" id="add-session-btn" style="padding: 12px 24px;">+ Add Work Session</button></div>
+            </div>
+
+            <!-- 3. Discover Phase -->
+            <div class="card phase-discover">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--blue);"><i data-lucide="search"></i></div>
+                    <h2>3. Discover Phase</h2>
+                </div>
+                
+                <div class="repeatable-section" data-key="discover_methods">
+                    <div class="repeatable-header"><label>Research Methods Used</label></div>
+                    <div class="repeatable-list"></div>
+                    <button type="button" class="add-btn">+ Add Method</button>
+                </div>
+
+                <div class="repeatable-section" data-key="discover_insights">
+                    <div class="repeatable-header"><label>Raw Insights (Quotes, Themes, Highlights)</label></div>
+                    <div class="repeatable-list"></div>
+                    <button type="button" class="add-btn">+ Add Insight</button>
+                </div>
+
+                <div class="repeatable-section" data-key="discover_learnings">
+                    <div class="repeatable-header"><label>Key Learnings & Design Decisions</label></div>
+                    <div class="repeatable-list"></div>
+                    <button type="button" class="add-btn">+ Add Learning/Decision</button>
+                </div>
+            </div>
+
+            <!-- 4. Define Phase -->
+            <div class="card phase-define">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--amber);"><i data-lucide="crosshair"></i></div>
+                    <h2>4. Define Phase</h2>
+                </div>
+                <div class="form-group"><label>Final Problem Statement</label><textarea id="define-problem"></textarea></div>
+                <div class="form-group"><label>Personas (Quick Summary)</label><textarea id="define-personas"></textarea></div>
+                <div class="form-group"><label>Prioritized Features (MoSCoW)</label><textarea id="define-features"></textarea></div>
+            </div>
+
+            <!-- 5. Develop Phase -->
+            <div class="card phase-develop">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--brand);"><i data-lucide="pen-tool"></i></div>
+                    <h2>5. Develop Phase</h2>
+                </div>
+                <div class="form-group"><label>Ideation & Wireframe Evolution</label><textarea id="develop-ideation" placeholder="Crazy 8s, sketches, iteration notes..."></textarea></div>
+                
+                <div class="repeatable-section" data-key="develop_learnings">
+                    <div class="repeatable-header"><label>Key Learnings & Pivot Decisions</label></div>
+                    <div class="repeatable-list"></div>
+                    <button type="button" class="add-btn">+ Add Learning/Decision</button>
+                </div>
+            </div>
+
+            <!-- 6. Deliver Phase (Testing & Heuristics) -->
+            <div class="card phase-deliver">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--violet);"><i data-lucide="rocket"></i></div>
+                    <h2>6. Deliver Phase</h2>
+                </div>
+                
+                <div class="form-group"><label>Testing Summary (Users, Tasks, Success Rate)</label><textarea id="deliver-testing"></textarea></div>
+
+                <!-- Heuristic Evaluation Section -->
+                <div class="repeatable-section">
+                    <div class="repeatable-header"><label>Heuristic Evaluation Audit (Jakob Nielsen's 10)</label></div>
+                    <p style="font-size: 0.8rem; margin-bottom: 15px; color: var(--text-muted);">Check off heuristics that were validated during testing or audit.</p>
+                    <div class="heuristics-grid">
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">1</span> Visibility of system status</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="1"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">2</span> Match between system & real world</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="2"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">3</span> User control and freedom</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="3"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">4</span> Consistency and standards</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="4"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">5</span> Error prevention</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="5"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">6</span> Recognition rather than recall</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="6"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">7</span> Flexibility and efficiency of use</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="7"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">8</span> Aesthetic and minimalist design</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="8"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">9</span> Error recovery (Recognize/Diagnose)</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="9"> Pass / Validated</label></div>
+                        <div class="heuristic-card"><div class="heuristic-header"><span class="heuristic-num">10</span> Help and documentation</div><label class="heuristic-check"><input type="checkbox" class="h-check" data-h="10"> Pass / Validated</label></div>
+                    </div>
+                </div>
+
+                <div class="repeatable-section" data-key="deliver_learnings">
+                    <div class="repeatable-header"><label>Final Key Learnings & Handoff Decisions</label></div>
+                    <div class="repeatable-list"></div>
+                    <button type="button" class="add-btn">+ Add Learning/Decision</button>
+                </div>
+
+                <div class="form-group"><label>Final Prototype / Handoff Links</label><textarea id="deliver-links"></textarea></div>
+            </div>
+
+            <!-- 7. Reflection -->
+            <div class="card reflection" style="border-color: var(--amber);">
+                <div class="card-header">
+                    <div class="icon-box" style="background: var(--rose);"><i data-lucide="lightbulb"></i></div>
+                    <h2>7. Reflection</h2>
+                </div>
+                <div class="grid-2">
+                    <div class="form-group"><label>What worked well?</label><textarea id="reflect-worked"></textarea></div>
+                    <div class="form-group"><label>What would I change?</label><textarea id="reflect-change"></textarea></div>
+                </div>
+                <div class="form-group"><label>Biggest Challenge & Pivot</label><textarea id="reflect-challenge"></textarea></div>
+            </div>
+        </form>
+
+        <!-- UX Reference Guide: 10 Usability Heuristics -->
+        <div class="card" style="border-color: var(--blue); margin-top: 60px; background: #e0f2fe;">
+            <div class="card-header">
+                <div class="icon-box" style="background: var(--blue);"><i data-lucide="book-open"></i></div>
+                <h2>UX Reference: 10 Usability Heuristics</h2>
+            </div>
+            <p style="margin-bottom: 24px; font-weight: 600; color: var(--text-main);">Jakob Nielsen's 10 general principles for interaction design. Use these as a mental model during design and a checklist during audits.</p>
+            
+            <div class="heuristics-guide">
+                <div class="h-guide-item">
+                    <h3>1. Visibility of system status</h3>
+                    <p>The design should always keep users informed about what is going on, through appropriate feedback within a reasonable amount of time.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>2. Match between system and the real world</h3>
+                    <p>The design should speak the users' language. Use words, phrases, and concepts familiar to the user, rather than internal jargon. Follow real-world conventions.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>3. User control and freedom</h3>
+                    <p>Users often perform actions by mistake. They need a clearly marked "emergency exit" to leave the unwanted action without having to go through an extended process.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>4. Consistency and standards</h3>
+                    <p>Users should not have to wonder whether different words, situations, or actions mean the same thing. Follow platform and industry conventions.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>5. Error prevention</h3>
+                    <p>Good error messages are important, but the best designs carefully prevent problems from occurring in the first place. Eliminate error-prone conditions or check for them.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>6. Recognition rather than recall</h3>
+                    <p>Minimize the user's memory load by making elements, actions, and options visible. The user should not have to remember information from one part of the interface to another.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>7. Flexibility and efficiency of use</h3>
+                    <p>Shortcuts — hidden from novice users — may speed up the interaction for the expert user. Allow users to tailor frequent actions.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>8. Aesthetic and minimalist design</h3>
+                    <p>Interfaces should not contain information that is irrelevant or rarely needed. Every extra unit of information competes with the relevant units.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>9. Help users recognize, diagnose, and recover from errors</h3>
+                    <p>Error messages should be expressed in plain language (no error codes), precisely indicate the problem, and constructively suggest a solution.</p>
+                </div>
+                <div class="h-guide-item">
+                    <h3>10. Help and documentation</h3>
+                    <p>It’s best if the system doesn’t need any additional explanation. However, it may be necessary to provide documentation to help users complete their tasks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Bar -->
+    <div class="fab">
+        <div class="fab-text"><span class="status-dot"></span> Autosaving</div>
+        <button type="button" id="export-json-btn" class="nav-btn" style="background:white; border: 2px solid white; color: black;">Export JSON</button>
+        <button type="button" id="delete-project-btn" class="nav-btn" style="background:var(--rose); border: 2px solid var(--rose); color: white;">Delete</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="projects-modal">
+        <div class="modal-content">
+            <div class="modal-header"><h2>Your Projects</h2><button class="close-btn" id="close-modal-btn"><i data-lucide="x"></i></button></div>
+            <div class="project-list" id="project-list-container"></div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const LIST_KEY = 'ux_docs_project_list';
+        const CURRENT_KEY = 'ux_docs_current_project';
+        let projectsList = [];
+        let currentProjectId = null;
+        let docData = { header: {}, sessions: [], repeatable: {}, heuristics: [] };
+
+        function init() {
+            projectsList = JSON.parse(localStorage.getItem(LIST_KEY)) || [];
+            currentProjectId = localStorage.getItem(CURRENT_KEY);
+            if (!currentProjectId && projectsList.length > 0) currentProjectId = projectsList[0].id;
+            else if (projectsList.length === 0) createNewProject(false);
+            switchProject(currentProjectId);
+            setupEventListeners();
+        }
+
+        function setupEventListeners() {
+            document.getElementById('docs-form').addEventListener('input', debounceSave);
+            document.getElementById('add-session-btn').addEventListener('click', () => { addSessionLog(); renderSessions(); saveData(); });
+            document.getElementById('nav-new-project').addEventListener('click', () => createNewProject(true));
+            document.getElementById('nav-load-project').addEventListener('click', openProjectModal);
+            document.getElementById('close-modal-btn').addEventListener('click', () => document.getElementById('projects-modal').classList.remove('active'));
+            document.getElementById('export-json-btn').addEventListener('click', exportToJSON);
+            document.getElementById('delete-project-btn').addEventListener('click', () => deleteProject(currentProjectId));
+
+            // Setup Repeatable Add Buttons
+            document.querySelectorAll('.repeatable-section .add-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.closest('.repeatable-section').dataset.key;
+                    if (!key) return;
+                    if (!docData.repeatable[key]) docData.repeatable[key] = [];
+                    docData.repeatable[key].push('');
+                    renderRepeatable(key);
+                    saveData();
+                });
+            });
+        }
+
+        function createNewProject(render = true) {
+            if (currentProjectId) saveData();
+            const newId = 'proj_' + Date.now();
+            projectsList.unshift({ id: newId, name: 'Untitled Project', updated: Date.now() });
+            localStorage.setItem(LIST_KEY, JSON.stringify(projectsList));
+            currentProjectId = newId;
+            localStorage.setItem(CURRENT_KEY, newId);
+            docData = { header: {}, sessions: [], repeatable: {}, heuristics: [] };
+            localStorage.setItem('ux_docs_data_' + newId, JSON.stringify(docData));
+            if (render) switchProject(newId);
+        }
+
+        function switchProject(id) {
+            currentProjectId = id;
+            localStorage.setItem(CURRENT_KEY, id);
+            const data = localStorage.getItem('ux_docs_data_' + id);
+            docData = data ? JSON.parse(data) : { header: {}, sessions: [], repeatable: {}, heuristics: [] };
+            if (!docData.repeatable) docData.repeatable = {};
+            if (!docData.heuristics) docData.heuristics = [];
+            
+            populateForm();
+            renderSessions();
+            renderAllRepeatables();
+            renderHeuristics();
+            updateNavDisplay();
+        }
+
+        function saveData() {
+            if (!currentProjectId) return;
+            // Header
+            ['project-name', 'date-started', 'user-role', 'problem-statement', 'success-metrics', 'tools-used', 'target-users', 'define-problem', 'define-personas', 'define-features', 'develop-ideation', 'deliver-testing', 'deliver-links', 'reflect-worked', 'reflect-change', 'reflect-challenge'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) docData.header[id] = el.value;
+            });
+
+            // Sessions
+            docData.sessions = Array.from(document.querySelectorAll('.session-entry')).map(entry => ({
+                id: entry.dataset.id,
+                date: entry.querySelector('.sess-date').value,
+                focus: entry.querySelector('.sess-focus').value,
+                did: entry.querySelector('.sess-did').value,
+                insights: entry.querySelector('.sess-insights').value,
+                decisions: entry.querySelector('.sess-decisions').value,
+                visuals: entry.querySelector('.sess-visuals').value,
+                questions: entry.querySelector('.sess-questions').value,
+                time: entry.querySelector('.sess-time').value,
+            }));
+
+            // Repeatables
+            document.querySelectorAll('.repeatable-section').forEach(sec => {
+                const key = sec.dataset.key;
+                if (!key) return;
+                docData.repeatable[key] = Array.from(sec.querySelectorAll('textarea')).map(ta => ta.value);
+            });
+
+            // Heuristics
+            docData.heuristics = Array.from(document.querySelectorAll('.h-check:checked')).map(cb => cb.dataset.h);
+
+            // Save
+            localStorage.setItem('ux_docs_data_' + currentProjectId, JSON.stringify(docData));
+            const proj = projectsList.find(p => p.id === currentProjectId);
+            if (proj) { proj.name = docData.header['project-name'] || 'Untitled Project'; proj.updated = Date.now(); }
+            localStorage.setItem(LIST_KEY, JSON.stringify(projectsList));
+            updateNavDisplay();
+            const dot = document.querySelector('.status-dot');
+            dot.style.background = '#34d399';
+            setTimeout(() => dot.style.background = 'var(--brand)', 500);
+        }
+
+        function populateForm() {
+            for (const [id, val] of Object.entries(docData.header)) {
+                const el = document.getElementById(id);
+                if (el) el.value = val;
+            }
+        }
+
+        function renderAllRepeatables() {
+            document.querySelectorAll('.repeatable-section').forEach(sec => {
+                const key = sec.dataset.key;
+                if (key) renderRepeatable(key);
+            });
+        }
+
+        function renderRepeatable(key) {
+            const sec = document.querySelector(`.repeatable-section[data-key="${key}"]`);
+            if (!sec) return;
+            const list = sec.querySelector('.repeatable-list');
+            list.innerHTML = '';
+            const items = docData.repeatable[key] || [];
+            if (items.length === 0) items.push(''); 
+            
+            items.forEach((val, i) => {
+                const div = document.createElement('div');
+                div.className = 'repeatable-item';
+                div.innerHTML = `<textarea placeholder="Enter item..." oninput="docData.repeatable['${key}'][${i}] = this.value">${val}</textarea>
+                                 <button type="button" class="remove-btn" onclick="removeRepeatable('${key}', ${i})"><i data-lucide="trash-2" style="width:14px;"></i></button>`;
+                list.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        function removeRepeatable(key, index) {
+            docData.repeatable[key].splice(index, 1);
+            renderRepeatable(key);
+            saveData();
+        }
+
+        function renderHeuristics() {
+            document.querySelectorAll('.h-check').forEach(cb => {
+                cb.checked = docData.heuristics.includes(cb.dataset.h);
+            });
+        }
+
+        function renderSessions() {
+            const container = document.getElementById('session-logs-container');
+            container.innerHTML = '';
+            if (docData.sessions.length === 0) docData.sessions.push({id: 's1', date: '', focus: '', did: '', insights: '', decisions: '', visuals: '', questions: '', time: ''});
+            docData.sessions.forEach((s, i) => {
+                const div = document.createElement('div');
+                div.className = 'repeatable-section';
+                div.classList.add('session-entry');
+                div.dataset.id = s.id;
+                div.innerHTML = `
+                    <div class="repeatable-header"><strong>Session #${i+1}</strong> <button type="button" class="remove-btn" onclick="removeSession('${s.id}')"><i data-lucide="x"></i></button></div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Date</label><input type="date" class="sess-date" value="${s.date}"></div>
+                        <div class="form-group"><label>Focus</label><input type="text" class="sess-focus" value="${s.focus}"></div>
+                    </div>
+                    <div class="form-group"><label>What I Did</label><textarea class="sess-did">${s.did}</textarea></div>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                        <div class="form-group"><label>Insights</label><textarea class="sess-insights">${s.insights}</textarea></div>
+                        <div class="form-group"><label>Decisions</label><textarea class="sess-decisions">${s.decisions}</textarea></div>
+                    </div>
+                    <div class="form-group"><label>Visuals / Questions / Time</label><textarea class="sess-visuals">${s.visuals}</textarea><input type="hidden" class="sess-questions" value=""><input type="hidden" class="sess-time" value=""></div>
+                `;
+                container.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        function removeSession(id) { docData.sessions = docData.sessions.filter(s => s.id !== id); renderSessions(); saveData(); }
+        function addSessionLog() { docData.sessions.push({id: 'sess_'+Date.now(), date: '', focus: '', did: '', insights: '', decisions: '', visuals: '', questions: '', time: ''}); }
+        function updateNavDisplay() { const proj = projectsList.find(p => p.id === currentProjectId); document.getElementById('nav-project-name').textContent = proj ? proj.name : 'Untitled Project'; }
+        function openProjectModal() { renderProjectList(); document.getElementById('projects-modal').classList.add('active'); }
+        function renderProjectList() {
+            const list = document.getElementById('project-list-container');
+            list.innerHTML = projectsList.length === 0 ? '<p>No projects yet.</p>' : '';
+            projectsList.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'project-item';
+                div.innerHTML = `<div><strong>${p.name}</strong><br><small>${new Date(p.updated).toLocaleDateString()}</small></div>`;
+                div.onclick = () => { switchProject(p.id); document.getElementById('projects-modal').classList.remove('active'); };
+                list.appendChild(div);
+            });
+        }
+        function deleteProject(id) { if(confirm("Delete this project?")) { projectsList = projectsList.filter(p => p.id !== id); localStorage.removeItem('ux_docs_data_'+id); if(projectsList.length===0) createNewProject(true); else switchProject(projectsList[0].id); localStorage.setItem(LIST_KEY, JSON.stringify(projectsList)); renderProjectList(); } }
+        function exportToJSON() { const blob = new Blob([JSON.stringify(docData, null, 2)], {type: 'application/json'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = (docData.header['project-name'] || 'ux-project') + '.json'; a.click(); }
+        let saveTimeout; function debounceSave() { clearTimeout(saveTimeout); saveTimeout = setTimeout(saveData, 500); }
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
