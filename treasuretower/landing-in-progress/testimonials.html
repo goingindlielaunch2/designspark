@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Success Stories - Treasure Tower</title>
+    <meta name="description"
+        content="Read full stories from Treasure Tower business owners and how they built successful reward businesses in their communities.">
+
+    <!-- Google Fonts: Figtree -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary-blue: #022B6F;
+            --accent-yellow: #FEC538;
+            --btn-yellow-gradient: linear-gradient(135deg, #FFD773 0%, #FEC538 100%);
+            --cta-green: #679934;
+            --purple: #4F46E5;
+            --text-dark: #1A1A1A;
+            --text-light: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --transition: all 0.3s ease;
+            --container-width: 1100px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--primary-blue);
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header (Same as main page) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            background: rgba(0, 38, 84, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img { height: 50px; width: auto; }
+
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.125rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--accent-yellow); }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            background: var(--btn-yellow-gradient);
+            color: var(--primary-blue);
+        }
+
+        /* Hero */
+        .page-hero {
+            padding: 180px 0 100px;
+            background: radial-gradient(circle at top right, #00458C 0%, #002654 70%);
+            text-align: center;
+            color: white;
+        }
+
+        .page-hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Story Sections */
+        .story-section {
+            padding: 100px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .story-section:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        .story-grid {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-section:nth-child(even) .story-grid {
+            flex-direction: row-reverse;
+        }
+
+        .story-image {
+            flex: 0 0 280px;
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-image::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent-yellow);
+            border-radius: 30px;
+            z-index: -1;
+        }
+
+        .story-section:nth-child(even) .story-image::after {
+            left: 15px;
+        }
+
+        .story-content {
+            flex: 1;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 80px;
+            color: var(--accent-yellow);
+            opacity: 0.3;
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            font-family: serif;
+        }
+
+        .pull-quote {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-story {
+            font-size: 1.125rem;
+            color: #4B5563;
+            margin-bottom: 30px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-details h4 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .author-details p {
+            color: #6B7280;
+            font-weight: 500;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .final-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 20px; }
+
+        /* Footer */
+        footer {
+            background: #001A3D;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        footer p { opacity: 0.7; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .story-grid, .story-section:nth-child(even) .story-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .story-section:nth-child(even) .story-content {
+                order: 2;
+            }
+            .page-hero h1 { font-size: 2.5rem; }
+            .pull-quote { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="treasure-landing2.html" class="logo">
+                    <img src="images/logo-white.svg" alt="Treasure Tower Logo">
+                </a>
+                <div class="nav-links">
+                    <a href="treasure-landing2.html">Home</a>
+                    <a href="treasure-landing2.html#concept">Concept</a>
+                    <a href="treasure-landing2.html#benefits">Benefits</a>
+                    <a href="treasure-landing2.html#faqs">FAQs</a>
+                    <a href="treasure-landing2.html#contact" class="btn">Request Info</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Partner Success Stories</h1>
+                <p>Hear from the people who have built their own businesses and brought smiles to their communities with Treasure Tower.</p>
+            </div>
+        </section>
+
+        <!-- Hollie S. -->
+        <section class="story-section">
+            <div class="container">
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="images/person1-hollie.webp" alt="Hollie S.">
+                    </div>
+                    <div class="story-content">
+                        <div class="quote-icon">“</div>
+                        <h2 class="pull-quote">“The perfect part-time job for a full-time mom.”</h2>
+                        <div class="main-story">
+                            <p>As a mother of six active boys, life has always been busy. Treasure Tower allowed me to own a business that fits into my schedule, rather than controlling it. It has been flexible, enjoyable, and financially rewarding.</p>
+                            <br>
+                            <p>I involved my boys in the business, so it gave them an opportunity to learn how to work and budget money, along with having their own money to purchase items that normally they would be asking me to buy for them. With real estate being our primary source of income, the recurring revenue from Treasure Tower has been especially valuable during the unpredictable swings of the real estate market. It's a business I truly love.</p>
+                        </div>
+                        <div class="author-info">
+                            <div class="author-details">
+                                <h4>Hollie S.</h4>
+                                <p>Utah</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cecilia M. -->
+        <section class="story-section">
+            <div class="container">
+                <div class="story-grid">
+                    <div class="story-content">
+                        <div class="quote-icon">“</div>
+                        <h2 class="pull-quote">“I didn’t just bring it into my offices—I built a business around it.”</h2>
+                        <div class="main-story">
+                            <p>After more than 30 years in dentistry and overseeing multiple practices, I don’t implement things lightly. But this was different. I didn’t just bring it into my offices—I built a business around it. Today, I’ve grown to over 80 towers across New Jersey and New York.</p>
+                            <br>
+                            <p>Its impact is universal. Whether in pediatric dental offices, schools, or pediatricians’ offices, it creates excitement, builds confidence, and leaves a lasting impression. Offices that offer Treasure Tower instantly differentiate themselves by creating an experience children remember. Being part of that experience—and bringing joy to children through my business—is truly rewarding. For me, that’s what building a business with purpose looks like.</p>
+                        </div>
+                        <div class="author-info">
+                            <div class="author-details">
+                                <h4>Cecilia M.</h4>
+                                <p>New Jersey</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-image">
+                        <img src="images/person2-cecilia.webp" alt="Cecilia M.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Andy A. -->
+        <section class="story-section">
+            <div class="container">
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="images/person3-andrew.webp" alt="Andy A.">
+                    </div>
+                    <div class="story-content">
+                        <div class="quote-icon">“</div>
+                        <h2 class="pull-quote">“I explored several business paths, but this is the one that I genuinely enjoy and believe in.”</h2>
+                        <div class="main-story">
+                            <p>I’ve explored multiple business paths over time, always looking for something that felt both practical and enjoyable. While working full time in a dental office, I came across this opportunity when someone was selling their setup. Seeing it operate in a real environment gave me a clear understanding of its value and simplicity.</p>
+                            <br>
+                            <p>What stood out to me was how naturally it fit into the space—no disruption to staff, but a noticeable improvement in the patient experience. I decided to step into it, not just as another venture, but as something I could build around. The structure made sense, the demand was already there, and it aligned with how I like to operate—simple, consistent, and scalable. Over time, I’ve come to genuinely enjoy it. It’s one of the few opportunities I’ve worked on that feels both sustainable and rewarding. It’s straightforward, it works, and it’s something I can confidently stand behind.</p>
+                        </div>
+                        <div class="author-info">
+                            <div class="author-details">
+                                <h4>Andy A.</h4>
+                                <p>California</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta">
+            <div class="container">
+                <h2>Ready to Start Your Own Story?</h2>
+                <a href="treasure-landing2.html#contact" class="btn" style="padding: 18px 40px; font-size: 1.25rem;">Request Information Pack</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Treasure Tower. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+
+</html>
