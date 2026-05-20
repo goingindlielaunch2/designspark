@@ -326,7 +326,7 @@ body {
 
 .ds-hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(3.2rem, 8vw, 6rem);
+    font-size: clamp(2.72rem, 6.8vw, 5.1rem);
     font-weight: 900;
     line-height: 1.05;
     letter-spacing: -0.04em;
@@ -1886,6 +1886,24 @@ body {
     box-shadow: 0 0 15px rgba(255, 45, 85, 0.15);
 }
 
+.ds-form-group input.ds-input-valid, .ds-form-group textarea.ds-input-valid {
+    border-color: #30d158;
+    box-shadow: 0 0 10px rgba(48, 209, 88, 0.15);
+}
+
+.ds-form-group input.ds-input-invalid, .ds-form-group textarea.ds-input-invalid {
+    border-color: #ff453a;
+    box-shadow: 0 0 10px rgba(255, 69, 58, 0.15);
+}
+
+.ds-input-warning {
+    font-size: 0.75rem;
+    color: #ff453a;
+    margin-top: 0.35rem;
+    display: none;
+    font-weight: 500;
+}
+
 /* Budget Selector */
 .ds-budget-selector {
     display: flex;
@@ -1943,6 +1961,13 @@ body {
     color: #fff;
     border-color: transparent;
     transform: scale(1.02);
+}
+
+.ds-tag-btn:focus-visible, .ds-budget-btn:focus-visible {
+    outline: none;
+    border-color: var(--spark-pink);
+    box-shadow: 0 0 15px rgba(255, 45, 85, 0.4);
+    transform: scale(1.03);
 }
 
 /* Submit Section with Status Effects */
