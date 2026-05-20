@@ -223,6 +223,7 @@
                 <!-- Project 1: AuraInvoice -->
                 <div class="ds-portfolio-card ds-reveal">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag next">Coming Next</div>
                         <div class="ds-portfolio-preview-aurainvoice">
                             <div class="ds-aura-badge">Value Draft Sent! 🎉</div>
                             <div class="ds-aura-line w-full"></div>
@@ -249,6 +250,7 @@
                 <!-- Project 2: Brain Dump -->
                 <div class="ds-portfolio-card ds-reveal ds-delay-1">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-braindump">
                             <div class="ds-brain-header">
                                 <span>Calm Focus</span>
@@ -280,6 +282,7 @@
                 <!-- Project 3: AccessGuard -->
                 <div class="ds-portfolio-card ds-reveal ds-delay-2">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-accessguard">
                             <div class="ds-ag-check checked">Alt-Text Enforced</div>
                             <div class="ds-ag-check warning">Heading Hierarchy</div>
@@ -298,13 +301,32 @@
                         <h3 class="ds-portfolio-title">AccessGuard</h3>
                         <p class="ds-portfolio-desc">Enforcing WCAG 2.1 AA web compliance at the source using Gutenberg
                             editor integrations with progressive friction, typing states, and a publish hard-stop
-                            mechanism.</p>
+                    </div>
+                </div>
+
+                <!-- Lock Stack Card (Grid Item) -->
+                <div class="ds-portfolio-card ds-lock-stack-card ds-reveal" id="ds-lock-card">
+                    <div class="ds-lock-stack-layer l1"></div>
+                    <div class="ds-lock-stack-layer l2"></div>
+                    <div class="ds-lock-stack-layer l3"></div>
+                    <div class="ds-lock-card-content">
+                        <div class="ds-lock-icon-wrapper">
+                            <span class="ds-lock-icon">🔒</span>
+                        </div>
+                        <h3 class="ds-lock-title">Project Queue</h3>
+                        <p class="ds-lock-desc">Enter the pipeline access key to unlock the dynamic project queue.</p>
+                        <div class="ds-password-form">
+                            <input type="password" id="ds-studio-password" placeholder="Access Key..." onkeydown="handlePasswordKey(event)">
+                            <button class="ds-password-btn" onclick="attemptUnlock()">Unlock</button>
+                        </div>
+                        <span class="ds-password-error" id="ds-password-error">Incorrect credentials.</span>
                     </div>
                 </div>
 
                 <!-- Project 4: Vectorize -->
-                <div class="ds-portfolio-card ds-reveal">
+                <div class="ds-portfolio-card ds-reveal ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-vectorize">
                             <div class="ds-vector-line"></div>
                             <div class="ds-vector-node path1"></div>
@@ -328,8 +350,9 @@
                 </div>
 
                 <!-- Project 5: NetPulse -->
-                <div class="ds-portfolio-card ds-reveal ds-delay-1">
+                <div class="ds-portfolio-card ds-reveal ds-delay-1 ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-netpulse">
                             <div class="ds-np-row">
                                 <span class="ds-np-label">Active Connections</span>
@@ -359,8 +382,9 @@
                 </div>
 
                 <!-- Project 6: VibeBuilder -->
-                <div class="ds-portfolio-card ds-reveal">
+                <div class="ds-portfolio-card ds-reveal ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-vibebuilder">
                             <div class="ds-vb-header">
                                 <span class="ds-vb-dot"></span>
@@ -392,8 +416,9 @@
                 </div>
 
                 <!-- Project 7: Aura Cognitive Assistant -->
-                <div class="ds-portfolio-card ds-reveal ds-delay-1">
+                <div class="ds-portfolio-card ds-reveal ds-delay-1 ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-auracognitive">
                             <div class="ds-ac-orb"></div>
                             <div class="ds-ac-node" style="top: 30%; left: 70%;"></div>
@@ -418,8 +443,9 @@
                 </div>
 
                 <!-- Project 8: VistaRisk -->
-                <div class="ds-portfolio-card ds-reveal ds-delay-2">
+                <div class="ds-portfolio-card ds-reveal ds-delay-2 ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-vistarisk">
                             <div class="ds-vr-alert">CRITICAL THREAT</div>
                             <div class="ds-vr-grid">
@@ -445,8 +471,9 @@
                 </div>
 
                 <!-- Project 9: Groovy Colors AI -->
-                <div class="ds-portfolio-card ds-reveal">
+                <div class="ds-portfolio-card ds-reveal ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-groovycolors">
                             <div class="ds-gc-circle c1"></div>
                             <div class="ds-gc-circle c2"></div>
@@ -470,8 +497,9 @@
                 </div>
 
                 <!-- Project 10: CX Dashboard -->
-                <div class="ds-portfolio-card ds-reveal ds-delay-1">
+                <div class="ds-portfolio-card ds-reveal ds-delay-1 ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-cxdashboard">
                             <div class="ds-cx-bar">
                                 <span class="ds-cx-dot status"></span>
@@ -506,8 +534,9 @@
                 </div>
 
                 <!-- Project 11: Mood Light -->
-                <div class="ds-portfolio-card ds-reveal ds-delay-2">
+                <div class="ds-portfolio-card ds-reveal ds-delay-2 ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-moodlight">
                             <div class="ds-ml-glow"></div>
                             <div class="ds-ml-bulb b1"></div>
@@ -531,8 +560,9 @@
                 </div>
 
                 <!-- Project 12: JobScout -->
-                <div class="ds-portfolio-card ds-reveal">
+                <div class="ds-portfolio-card ds-reveal ds-locked-item">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-jobscout">
                             <div class="ds-js-card">
                                 <div class="ds-js-title">Lead Product Designer Opportunity</div>
@@ -556,8 +586,9 @@
                 </div>
 
                 <!-- Project 13: AI UI Kit -->
-                <a href="/ai-ui-kit/" class="ds-portfolio-card ds-reveal" style="text-decoration: none; color: inherit;">
+                <a href="/ai-ui-kit/" class="ds-portfolio-card ds-reveal ds-locked-item" style="text-decoration: none; color: inherit;">
                     <div class="ds-portfolio-visual">
+                        <div class="ds-coming-tag soon">Coming Soon</div>
                         <div class="ds-portfolio-preview-aiuikit">
                             <div class="ds-ai-ui-header">
                                 <span class="ds-ai-ui-icon">🤖</span>
@@ -591,7 +622,7 @@
                         <p class="ds-portfolio-desc">A premium library of interactive human-in-the-loop components for AI agents, featuring transparent reasoning chains, handoff cards, decision trees, and co-pilot patterns.</p>
                     </div>
                 </a>
-            </div>
+            </div> <!-- End of ds-portfolio-grid -->
         </section>
 
         <!-- Our Process -->
@@ -772,7 +803,11 @@
 
     <!-- Interactive Logic Scripts -->
     <script>
-        // Intersection Observer for Reveal Scroll Animations
+        // ==========================================
+        // Performance Optimized & Leak-Free Scripts
+        // ==========================================
+
+        // 1. Intersection Observer for Reveal Scroll Animations
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -792,46 +827,61 @@
             observer.observe(el);
         });
 
-        // Floating spark particles generation
+        // 2. Floating spark particles generation & viewport optimization
         const particlesContainer = document.getElementById('ds-particles');
-        const particleCount = 30; // Reduced from 75 to 30 to dramatically lower CPU/GPU layout passes
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('ds-particle');
-
-            // Varied sizes and bright gradient shades
-            const size = Math.random() * 2.5 + 1; // 1px to 3.5px
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-
-            // Randomly assign spark pink, orange, or violet gradient style colors
+        if (particlesContainer) {
+            const particleCount = 30; // Optimized size to prevent GPU drawing overhead
             const colors = ['#ff2d55', '#ff9500', '#af52de', '#5ac8fa'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.background = randomColor;
+            
+            // Fragment compilation for single DOM insertion (avoids layout-invalidating loops)
+            const fragment = document.createDocumentFragment();
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('ds-particle');
 
-            // Single, lightweight shadow only for larger sparks to preserve performance
-            if (size > 2) {
-                particle.style.boxShadow = `0 0 6px ${randomColor}`;
+                const size = Math.random() * 2.5 + 1; // 1px to 3.5px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = randomColor;
+
+                if (size > 2) {
+                    particle.style.boxShadow = `0 0 6px ${randomColor}`;
+                }
+
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.animationDuration = `${Math.random() * 5 + 6}s`;
+
+                fragment.appendChild(particle);
             }
+            particlesContainer.appendChild(fragment);
 
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animationDelay = `${Math.random() * 10}s`;
-            particle.style.animationDuration = `${Math.random() * 5 + 6}s`; // 6s to 11s
-
-            particlesContainer.appendChild(particle);
+            // CPU Optimization: Stop floating animations when hero is scrolled out of viewport
+            const particleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    particlesContainer.style.display = entry.isIntersecting ? 'block' : 'none';
+                });
+            }, { root: null, threshold: 0 });
+            particleObserver.observe(particlesContainer);
         }
 
-        // Workspace Interactive Toggles
+        // 3. Workspace Interactive Toggles (Cached DOM reference lookup)
         const sidebarItems = document.querySelectorAll('.ds-sidebar-item');
         const workspaceCanvas = document.getElementById('ds-workspace-canvas');
+        let activeSidebarItem = document.querySelector('.ds-sidebar-item.active');
 
         sidebarItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Deactivate previous active item
-                document.querySelector('.ds-sidebar-item.active').classList.remove('active');
-                // Activate clicked tab
+                if (activeSidebarItem === item) return;
+                
+                if (activeSidebarItem) {
+                    activeSidebarItem.classList.remove('active');
+                }
                 item.classList.add('active');
+                activeSidebarItem = item;
 
                 const tab = item.getAttribute('data-workspace-tab');
                 updateWorkspaceCanvas(tab);
@@ -839,7 +889,7 @@
         });
 
         function updateWorkspaceCanvas(tab) {
-            workspaceCanvas.innerHTML = ''; // Clear canvas
+            workspaceCanvas.innerHTML = ''; // Garbage collects children
 
             if (tab === 'dashboard') {
                 workspaceCanvas.innerHTML = `
@@ -886,11 +936,9 @@
         // ==========================================
         // Static Hosting Form Configuration
         // ==========================================
-        // Configured to submit securely to Web3Forms in the background on GitHub Pages.
         const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
         const WEB3FORMS_ACCESS_KEY = '8dfd49cd-1e5d-4c89-b8c4-aa8825c07e5f';
 
-        // Contact Form Interactive Variables
         let selectedBudget = '';
         const selectedTags = [];
 
@@ -925,11 +973,9 @@
         }
 
         function selectBudget(button, value) {
-            // Remove selection from all sibling buttons
             document.querySelectorAll('#ds-budget-container .ds-budget-btn').forEach(btn => {
                 btn.classList.remove('selected');
             });
-            // Select clicked button
             button.classList.add('selected');
             selectedBudget = value;
         }
@@ -940,16 +986,13 @@
             const submitBtn = document.getElementById('ds-submit-btn');
             const submitText = document.getElementById('ds-btn-submit-text');
 
-            // Show custom loading animation on the button
             submitBtn.style.pointerEvents = 'none';
             submitText.innerHTML = '<span class="ds-button-loader">Igniting...</span>';
 
-            // Collect Form Details
             const name = document.getElementById('client-name').value;
             const email = document.getElementById('client-email').value;
             const brief = document.getElementById('project-brief').value;
             
-            // Format Tags, replacing 'Other' with specify input if set
             let tagsList = [...selectedTags];
             const otherIdx = tagsList.indexOf('Other');
             if (otherIdx > -1) {
@@ -959,7 +1002,6 @@
             const tags = tagsList.length > 0 ? tagsList.join(', ') : 'Not Specified';
             const budget = selectedBudget || 'Not Specified';
 
-            // 1. Prefill Local Mailto Fallback Structure (Out-of-the-box support)
             const recipient = 'hello.withdesignspark@gmail.com';
             const subject = `DesignSpark Project Inquiry from ${name}`;
             const bodyText = `Hello DesignSpark Team,\n\n` +
@@ -973,12 +1015,10 @@
 
             const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
 
-            // Get success screen element references
             const successTitle = document.getElementById('ds-success-title');
             const successDesc = document.getElementById('ds-success-desc');
             const successBtn = document.getElementById('ds-success-mailto-btn');
 
-            // 2. If AJAX Static Form Endpoint is Configured, submit in the background!
             if (FORM_ENDPOINT && FORM_ENDPOINT.trim() !== '') {
                 fetch(FORM_ENDPOINT, {
                     method: 'POST',
@@ -997,61 +1037,49 @@
                     })
                 })
                     .then(response => {
-                        // Reset submit button state
                         submitBtn.style.pointerEvents = 'auto';
                         submitText.innerText = 'Ignite Spark';
 
                         if (response.ok) {
-                            // Dynamic update for successful pure background JS submit
                             successTitle.innerText = "Inquiry Sent!";
                             successDesc.innerText = `Thank you, ${name}! Your inquiry has been securely sent in the background. Our branding & UI design specialists will follow up at ${email} within 24 hours.`;
 
-                            // Transform button to simple dismiss action
                             successBtn.innerHTML = "✓ Inquiry Received";
                             successBtn.setAttribute('href', '#');
                             successBtn.onclick = (e) => {
                                 e.preventDefault();
                                 document.getElementById('ds-form-success').classList.remove('active');
                                 document.getElementById('ds-project-form').reset();
-                                // Clear selected styles
                                 document.querySelectorAll('.ds-tag-btn, .ds-budget-btn').forEach(btn => btn.classList.remove('selected'));
                                 selectedTags.length = 0;
                                 selectedBudget = '';
                             };
                         } else {
-                            // Handle server-side errors, fallback gracefully to Mailto client
                             throw new Error('Server submission error');
                         }
 
-                        // Activate gorgeous custom success screen overlay
                         document.getElementById('ds-form-success').classList.add('active');
                     })
                     .catch(error => {
                         console.warn('AJAX submission failed. Falling back to client-side mailto:', error);
 
-                        // Reset submit button state
                         submitBtn.style.pointerEvents = 'auto';
                         submitText.innerText = 'Ignite Spark';
 
-                        // Update descriptions for mailto fallback
                         successTitle.innerText = "Spark Ignited!";
                         successDesc.innerText = `We had a slight network issue submitting in the background. No worries—we have pre-packaged your details. Click below to launch your email client!`;
 
                         successBtn.innerHTML = "✉️ Send Email Now";
                         successBtn.setAttribute('href', mailtoUrl);
-                        successBtn.onclick = null; // Remove standard dismiss click handler
+                        successBtn.onclick = null;
 
-                        // Activate gorgeous custom success screen overlay
                         document.getElementById('ds-form-success').classList.add('active');
                     });
             } else {
-                // 3. Graceful Out-of-the-Box Fallback: Use local mailto redirection directly
                 setTimeout(() => {
-                    // Reset submit button state
                     submitBtn.style.pointerEvents = 'auto';
                     submitText.innerText = 'Ignite Spark';
 
-                    // Standard Mailto client link parameters
                     successTitle.innerText = "Spark Ignited!";
                     successDesc.innerText = `Thank you for reaching out, ${name}! We have formatted your details. Click below to launch your email client and send your project inquiry directly.`;
 
@@ -1059,33 +1087,26 @@
                     successBtn.setAttribute('href', mailtoUrl);
                     successBtn.onclick = null;
 
-                    // Activate gorgeous custom success screen overlay
                     document.getElementById('ds-form-success').classList.add('active');
                 }, 1200);
             }
         }
 
-        // ==========================================
-        // Real-Time Usability & Accessibility Scripts
-        // ==========================================
         function resetSparkForm(event) {
             if (event) event.preventDefault();
             const form = document.getElementById('ds-project-form');
             if (form) form.reset();
             
-            // Clear custom buttons selected state
             document.querySelectorAll('.ds-tag-btn, .ds-budget-btn').forEach(btn => btn.classList.remove('selected'));
             selectedTags.length = 0;
             selectedBudget = '';
             
-            // Remove validation visual states
             document.querySelectorAll('.ds-form-group input, .ds-form-group textarea').forEach(input => {
                 input.classList.remove('ds-input-valid', 'ds-input-invalid');
             });
             const warning = document.getElementById('email-warning');
             if (warning) warning.style.display = 'none';
 
-            // Hide dynamic other group
             const otherGroup = document.getElementById('ds-other-input-group');
             if (otherGroup) {
                 otherGroup.style.display = 'none';
@@ -1093,6 +1114,9 @@
             }
         }
 
+        // ==========================================
+        // Consolidated Dom Load Listeners
+        // ==========================================
         document.addEventListener('DOMContentLoaded', () => {
             const emailInput = document.getElementById('client-email');
             const nameInput = document.getElementById('client-name');
@@ -1100,7 +1124,6 @@
             const otherInput = document.getElementById('other-scope');
             const emailWarning = document.getElementById('email-warning');
 
-            // Email validation regex (standard RFC 5322)
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
             function validateEmail() {
@@ -1128,7 +1151,6 @@
                 emailInput.addEventListener('blur', validateEmail);
             }
 
-            // Simple valid indicators on normal text fields
             const textFields = [nameInput, briefInput, otherInput];
             textFields.forEach(field => {
                 if (field) {
@@ -1142,7 +1164,70 @@
                     });
                 }
             });
+
+            // Auto-unlock pipeline if previously unlocked in this session
+            if (sessionStorage.getItem('ds_showroom_unlocked') === 'true') {
+                const lockCard = document.getElementById('ds-lock-card');
+                if (lockCard) lockCard.style.display = 'none';
+                
+                const lockedItems = document.querySelectorAll('.ds-locked-item');
+                lockedItems.forEach(item => {
+                    item.classList.remove('ds-locked-item');
+                    item.classList.add('ds-active'); // Ensure immediate render without transition delay
+                });
+            }
         });
+
+        // ==========================================
+        // Password Protected Showroom Scripts
+        // ==========================================
+        function attemptUnlock() {
+            const passwordInput = document.getElementById('ds-studio-password');
+            const passwordError = document.getElementById('ds-password-error');
+            const lockCard = document.getElementById('ds-lock-card');
+            
+            if (!passwordInput) return;
+            
+            const attempt = passwordInput.value.trim().toLowerCase();
+            // Obfuscated character shift verification (shifts charcodes by +5)
+            const hash = Array.from(attempt).map(c => String.fromCharCode(c.charCodeAt(0) + 5)).join('');
+            if (hash === 'xufwpdhwjfyn{jdnsknsnyjdmnlmddkinijqy~dxyztitd757;') {
+                if (passwordError) passwordError.style.display = 'none';
+                
+                sessionStorage.setItem('ds_showroom_unlocked', 'true');
+                
+                if (lockCard) {
+                    lockCard.classList.add('ds-unlocked');
+                    setTimeout(() => {
+                        lockCard.style.display = 'none';
+                        
+                        // Optimized transition-delay cascade using CSS transform composition
+                        const lockedItems = document.querySelectorAll('.ds-locked-item');
+                        lockedItems.forEach((item, index) => {
+                            item.style.transitionDelay = `${index * 0.08}s`;
+                            item.classList.remove('ds-locked-item');
+                            // Triggers layout hardware acceleration transition
+                            item.classList.add('ds-active');
+                        });
+                    }, 600);
+                }
+            } else {
+                if (passwordError) passwordError.style.display = 'block';
+                if (lockCard) {
+                    lockCard.classList.remove('shake-animation');
+                    void lockCard.offsetWidth; // Triggers browser reflow to reset animation
+                    lockCard.classList.add('shake-animation');
+                }
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        function handlePasswordKey(event) {
+            if (event.key === 'Enter') {
+                attemptUnlock();
+            }
+        }
     </script>
 
     <!-- Custom Fade Animation Keyframes inside document style for tabs -->
