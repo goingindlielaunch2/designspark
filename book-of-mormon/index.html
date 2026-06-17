@@ -807,22 +807,39 @@
         .map-wrapper {
             position: relative;
             width: 100%;
-            height: 420px;
-            background: radial-gradient(ellipse at center, rgba(20, 25, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 70%);
+            height: 350px;
+            background: rgba(5, 5, 8, 0.6);
             border: 1px solid var(--border-faint);
             border-radius: 8px;
             margin: 0 0 3rem 0;
             overflow: hidden;
-            box-shadow: inset 0 0 40px rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
         }
 
-        .map-wrapper--corridor { height: 460px; }
+        .map-wrapper--with-legend {
+            height: auto;
+            flex-direction: column;
+            overflow: visible;
+        }
+
+        .map-wrapper--with-legend .map-svg {
+            height: 300px;
+        }
+
+        .map-wrapper--with-legend .trail-legend {
+            width: 100%;
+            padding: 0.75rem 1rem 1rem;
+            margin-top: 0;
+        }
 
         .map-svg {
             width: 100%;
             height: 100%;
             display: block;
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
         .map-path {
@@ -837,15 +854,8 @@
         .map-label {
             fill: var(--text-main);
             font-family: 'Cinzel', serif;
-            font-size: 13px;
+            font-size: 14px;
             text-shadow: 0 2px 8px rgba(0,0,0,1);
-        }
-
-        .map-compass {
-            fill: rgba(207, 168, 97, 0.35);
-            font-family: 'Cinzel', serif;
-            font-size: 10px;
-            letter-spacing: 0.12em;
         }
 
         .reveal {
@@ -1138,63 +1148,6 @@
 
         .skip-link:focus { top: 1rem; }
 
-        .how-to-read {
-            max-width: 780px;
-            margin: 2.5rem auto 0;
-            padding: 2rem 2.5rem;
-            background: rgba(207, 168, 97, 0.06);
-            border: 1px solid rgba(207, 168, 97, 0.25);
-            border-radius: 6px;
-            text-align: left;
-        }
-
-        .how-to-read h3 {
-            font-size: 1rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-
-        .how-to-read p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
-        }
-
-        .how-to-read p:last-child { margin-bottom: 0; }
-
-        .resource-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .resource-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.55rem 1.1rem;
-            font-family: 'Cinzel', serif;
-            font-size: 0.72rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            border: 1px solid rgba(207, 168, 97, 0.35);
-            border-radius: 4px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .resource-link:hover {
-            background: rgba(207, 168, 97, 0.12);
-            border-color: var(--accent-gold);
-            color: #fff;
-        }
-
         .nav-toggle {
             display: none;
             background: none;
@@ -1212,27 +1165,9 @@
         }
 
         .map-coast {
-            fill: rgba(90, 158, 143, 0.08);
-            stroke: rgba(90, 158, 143, 0.25);
-            stroke-width: 1.5;
-        }
-
-        .map-water {
-            fill: rgba(30, 50, 70, 0.35);
-        }
-
-        .map-water-label {
-            fill: rgba(140, 160, 180, 0.35);
-            font-family: 'Cinzel', serif;
-            font-size: 11px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-        }
-
-        .map-region {
-            fill: rgba(207, 168, 97, 0.04);
-            stroke: rgba(207, 168, 97, 0.12);
-            stroke-width: 1;
+            fill: none;
+            stroke: rgba(207, 168, 97, 0.15);
+            stroke-width: 2;
         }
 
         .visual-timeline {
@@ -1467,18 +1402,6 @@
                     A factual compilation of archaeological, linguistic, and historical data aligning with the 600 BC – 400 AD timeframe.
                 </p>
 
-                <div class="how-to-read reveal delay-2">
-                    <h3>How to Read This Site</h3>
-                    <p>This synthesis proposes a <strong style="color:var(--accent-gold);font-weight:600;">Mesoamerican core</strong> for population density, writing, and architecture; a <strong style="color:var(--accent-gold);font-weight:600;">North American corridor</strong> (Hopewell trade networks) for continental exchange and final collapse; and an <strong style="color:var(--accent-gold);font-weight:600;">Arabian trail</strong> (Nahom, Bountiful) for Old World geography — connected by documented trade routes and Uto-Aztecan linguistic spread.</p>
-                    <p>Readers who prefer a Heartland-only model will find strong North American ceremonial and crop parallels here, though urban-scale millions are assigned to the Mesoamerican core. See <a href="#evidentiary-context" style="color:var(--accent-teal-light);">Evidentiary Context</a> for disputed items and open questions.</p>
-                    <div class="resource-links">
-                        <a href="additional.html" class="resource-link"><i class="fas fa-scroll"></i> Deep Dive</a>
-                        <a href="Ancient America &amp; Book of Mormon: Fact Synthesis.pdf" class="resource-link" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
-                        <a href="Ancient America &amp; Book of Mormon: Fact Synthesis.jpg" class="resource-link" target="_blank"><i class="fas fa-image"></i> Infographic</a>
-                        <a href="book-of-mormon.html" class="resource-link"><i class="fas fa-chart-bar"></i> Chart View</a>
-                    </div>
-                </div>
-
                 <div class="hero-cta reveal delay-3">
                     <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng" target="_blank" class="book-link btn-primary" title="Read the Book of Mormon Free Online">
                         <div class="book-cover">
@@ -1643,33 +1566,21 @@
                         Before the New World, the forensic trail begins in 600 BC along the ancient Frankincense route of the Arabian Peninsula.
                     </p>
 
-                    <div class="map-wrapper reveal delay-2">
-                        <!-- Arabian Peninsula — zoomed to Lehi's trail corridor -->
-                        <svg class="map-svg" viewBox="40 0 340 430" preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="arabLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(207,168,97,0.08)"/><stop offset="100%" stop-color="rgba(90,158,143,0.04)"/></linearGradient>
-                            </defs>
-                            <rect class="map-water" x="40" y="0" width="95" height="430"/>
-                            <text class="map-water-label" x="72" y="215" transform="rotate(-90 72 215)">Red Sea</text>
-                            <!-- Southern Arabia landmass (zoomed) -->
-                            <path class="map-coast" fill="url(#arabLand)" d="M 135 10 L 135 70 Q 132 130 138 185 Q 145 245 155 295 Q 168 340 195 370 Q 230 395 285 405 Q 340 398 365 360 Q 378 310 370 250 Q 355 190 330 140 Q 300 90 260 55 Q 210 20 165 12 Z"/>
-                            <text class="map-water-label" x="255" y="260" font-size="11">Empty Quarter</text>
-                            <rect class="map-water" x="155" y="385" width="225" height="45" opacity="0.5"/>
-                            <text class="map-water-label" x="230" y="415" font-size="10">Arabian Sea</text>
-                            <!-- Incense trail: south along Red Sea, turn east at Nahom -->
-                            <path class="map-path" d="M 118 42 Q 128 95 138 145 Q 148 195 158 245 Q 168 285 178 310" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
-                            <path class="map-path" d="M 178 310 Q 225 330 285 355" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
-                            <path d="M 178 310 L 225 310" fill="none" stroke="var(--accent-sage-light)" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
-                            <text x="188" y="302" class="map-label" style="fill:var(--accent-sage-light);font-size:10px;">nearly eastward</text>
-                            <circle cx="118" cy="42" r="7" fill="var(--accent-gold)"/>
-                            <text x="128" y="38" class="map-label">Jerusalem</text>
-                            <circle cx="138" cy="145" r="6" fill="var(--accent-teal-light)"/>
-                            <text x="148" y="140" class="map-label" style="fill:var(--accent-teal-light);">Shazer</text>
-                            <circle cx="178" cy="310" r="8" fill="#fff"/>
-                            <text x="188" y="328" class="map-label" style="fill:#fff;font-weight:bold;">Nahom (NHM)</text>
-                            <circle cx="285" cy="355" r="7" fill="var(--accent-gold)"/>
-                            <text x="248" y="378" class="map-label">Bountiful (Oman)</text>
-                            <text class="map-compass" x="350" y="22">N</text>
+                    <div class="map-wrapper map-wrapper--with-legend reveal delay-2">
+                        <!-- Arabian Peninsula — Nahom-centered, abstract strokes -->
+                        <svg class="map-svg" viewBox="100 40 600 360" preserveAspectRatio="xMidYMid meet">
+                            <path class="map-coast" d="M 100 80 Q 130 200 150 380"/>
+                            <path class="map-coast" d="M 200 60 Q 340 140 480 220 Q 620 300 700 360"/>
+                            <path class="map-path" d="M 155 95 Q 195 155 280 220 Q 340 255 400 270" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <path class="map-path" d="M 400 270 Q 520 285 640 310" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <circle cx="155" cy="95" r="5" fill="var(--accent-gold)"/>
+                            <text x="168" y="100" class="map-label">Jerusalem</text>
+                            <circle cx="280" cy="220" r="5" fill="var(--accent-teal-light)"/>
+                            <text x="293" y="225" class="map-label" style="fill:var(--accent-teal-light);">Shazer</text>
+                            <circle cx="400" cy="270" r="7" fill="#fff"/>
+                            <text x="415" y="275" class="map-label" style="fill:#fff;font-weight:bold;">Nahom (NHM)</text>
+                            <circle cx="640" cy="310" r="5" fill="var(--accent-gold)"/>
+                            <text x="520" y="330" class="map-label">Bountiful (Oman)</text>
                         </svg>
                         <div class="trail-legend reveal delay-2">
                             <span><span class="dot gold"></span> Confirmed inscription</span>
@@ -1728,34 +1639,16 @@
                     </p>
 
                     <div class="map-wrapper reveal delay-2">
-                        <!-- Eastern US — zoomed to Hopewell corridor -->
-                        <svg class="map-svg" viewBox="60 20 400 340" preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="naLand" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="rgba(138,171,110,0.06)"/><stop offset="100%" stop-color="rgba(207,168,97,0.04)"/></linearGradient>
-                            </defs>
-                            <!-- Eastern landmass -->
-                            <path class="map-region" fill="url(#naLand)" d="M 100 340 L 110 280 Q 130 220 170 170 Q 210 120 270 95 Q 330 75 390 90 L 420 130 Q 440 180 430 230 Q 410 290 370 330 Q 320 355 250 350 Q 180 345 130 340 Z"/>
-                            <!-- Great Lakes (zoomed detail) -->
-                            <path fill="rgba(90,158,143,0.15)" stroke="rgba(90,158,143,0.4)" stroke-width="1.5" d="M 300 95 Q 340 80 380 95 Q 400 115 385 140 Q 360 155 330 145 Q 305 130 300 95 Z"/>
-                            <path fill="rgba(90,158,143,0.12)" stroke="rgba(90,158,143,0.35)" stroke-width="1.5" d="M 385 115 Q 410 108 425 125 Q 420 145 400 150 Q 385 140 385 115 Z"/>
-                            <text class="map-water-label" x="318" y="118" font-size="11">Great Lakes</text>
-                            <!-- Ohio River valley -->
-                            <path d="M 200 280 Q 260 240 310 200 Q 340 175 360 155" fill="none" stroke="rgba(90,158,143,0.25)" stroke-width="2" stroke-dasharray="5 4"/>
-                            <!-- Mississippi River -->
-                            <path d="M 195 340 Q 200 280 215 220 Q 230 160 260 120" fill="none" stroke="rgba(90,158,143,0.45)" stroke-width="4"/>
-                            <text class="map-water-label" x="168" y="250" font-size="11">Mississippi</text>
-                            <!-- Hopewell trade routes -->
-                            <path class="map-path" d="M 150 310 Q 210 260 270 210 Q 310 175 360 140" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
-                            <path class="map-path" d="M 270 210 Q 330 175 395 115" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
-                            <circle cx="270" cy="210" r="8" fill="var(--accent-gold)"/>
-                            <text x="228" y="232" class="map-label">Hopewell Core (Ohio)</text>
-                            <circle cx="150" cy="310" r="6" fill="var(--accent-sage-light)"/>
-                            <text x="95" y="318" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Gulf Trade</text>
-                            <circle cx="395" cy="115" r="9" fill="#fff"/>
-                            <text x="355" y="100" class="map-label" style="fill:#fff;font-weight:bold;">Cumorah (NY)</text>
-                            <circle cx="215" cy="255" r="6" fill="var(--accent-teal-light)"/>
-                            <text x="225" y="272" class="map-label" style="fill:var(--accent-teal-light);font-size:11px;">Zelph (Illinois)</text>
-                            <text class="map-compass" x="420" y="38">N</text>
+                        <svg class="map-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet">
+                            <path class="map-coast" d="M 300 50 Q 350 100 450 80 Q 550 50 600 100 M 450 80 Q 400 200 350 300 M 400 200 Q 500 250 650 300"/>
+                            <path class="map-path" d="M 350 300 Q 450 200 400 100" fill="none" stroke="var(--accent-gold)" stroke-width="2"/>
+                            <path class="map-path" d="M 400 100 Q 500 120 550 80" fill="none" stroke="var(--accent-gold)" stroke-width="2"/>
+                            <circle cx="400" cy="100" r="5" fill="var(--accent-gold)"/>
+                            <text x="415" y="105" class="map-label">Hopewell Core (Ohio)</text>
+                            <circle cx="350" cy="300" r="5" fill="var(--accent-sage-light)"/>
+                            <text x="200" y="295" class="map-label" style="fill:var(--accent-sage-light);">Gulf Trade</text>
+                            <circle cx="550" cy="80" r="6" fill="#fff"/>
+                            <text x="565" y="85" class="map-label" style="fill:#fff;font-weight:bold;">Cumorah (NY)</text>
                         </svg>
                     </div>
 
@@ -1826,32 +1719,16 @@
                     </p>
 
                     <div class="map-wrapper reveal delay-2">
-                        <!-- Mesoamerica — zoomed to isthmus & Maya highlands -->
-                        <svg class="map-svg" viewBox="30 40 390 420" preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="mesoLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(207,168,97,0.07)"/><stop offset="100%" stop-color="rgba(90,158,143,0.05)"/></linearGradient>
-                            </defs>
-                            <rect class="map-water" x="30" y="40" width="390" height="85"/>
-                            <text class="map-water-label" x="175" y="88" font-size="11">Gulf of Mexico</text>
-                            <rect class="map-water" x="360" y="130" width="60" height="330" opacity="0.6"/>
-                            <text class="map-water-label" x="378" y="280" transform="rotate(90 378 280)" font-size="10">Caribbean</text>
-                            <!-- Mexico tapering to isthmus -->
-                            <path class="map-coast" fill="url(#mesoLand)" d="M 55 125 L 370 125 Q 375 165 350 200 Q 310 230 250 245 Q 190 255 150 280 Q 110 310 95 360 Q 85 400 110 430 Q 150 450 200 445 Q 260 430 290 390 Q 320 340 310 290 Q 300 240 280 210 Q 320 180 360 155 Q 375 140 370 125 Z"/>
-                            <!-- Yucatán peninsula -->
-                            <path class="map-coast" d="M 280 210 Q 320 225 350 260 Q 365 300 345 330 Q 315 345 290 320 Q 275 280 280 210 Z"/>
-                            <!-- Isthmus pinch — Tehuantepec -->
-                            <ellipse cx="215" cy="248" rx="95" ry="18" fill="none" stroke="var(--accent-sage-light)" stroke-width="2" stroke-dasharray="6 4" opacity="0.75"/>
-                            <text x="155" y="238" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Narrow Neck (~120 mi)</text>
-                            <!-- River Sidon -->
-                            <path class="map-path" d="M 230 420 Q 235 360 240 310 Q 248 260 255 210 Q 262 170 268 145" fill="none" stroke="rgba(90,158,143,0.65)" stroke-width="3.5"/>
-                            <text x="268" y="340" class="map-label" style="fill:var(--accent-teal-light);font-size:11px;">River Sidon</text>
-                            <circle cx="268" cy="145" r="7" fill="var(--accent-gold)"/>
-                            <text x="200" y="138" class="map-label">Teotihuacan</text>
-                            <circle cx="215" cy="248" r="7" fill="var(--accent-sage-light)"/>
-                            <text x="118" y="268" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Isthmus of Tehuantepec</text>
-                            <circle cx="175" cy="400" r="7" fill="var(--accent-gold)"/>
-                            <text x="115" y="418" class="map-label">Maya Core (Tikal/Becan)</text>
-                            <text class="map-compass" x="390" y="58">N</text>
+                        <svg class="map-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid meet">
+                            <path class="map-coast" d="M 0 50 Q 200 100 300 250 Q 500 280 800 200 M 0 150 Q 150 200 250 300 M 500 0 Q 450 150 600 250 Q 700 300 800 300"/>
+                            <path fill="none" stroke="var(--accent-sage-light)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5" d="M 380 160 Q 450 175 520 190"/>
+                            <path class="map-path" d="M 250 180 Q 350 220 450 180 L 550 200 M 350 220 L 380 280" fill="none" stroke="var(--accent-gold)" stroke-width="2"/>
+                            <circle cx="250" cy="180" r="5" fill="var(--accent-gold)"/>
+                            <text x="260" y="175" class="map-label">Teotihuacan</text>
+                            <circle cx="450" cy="180" r="5" fill="var(--accent-sage-light)"/>
+                            <text x="460" y="175" class="map-label" style="fill:var(--accent-sage-light);">Isthmus (Narrow Neck)</text>
+                            <circle cx="550" cy="200" r="5" fill="var(--accent-gold)"/>
+                            <text x="560" y="195" class="map-label">Maya Core (Tikal/Becan)</text>
                         </svg>
                     </div>
 
@@ -1913,27 +1790,16 @@
                         A migration synthesis proposing a Mesoamerican demographic and architectural core, connected via documented continental trade routes to a final societal collapse in the North American Great Lakes region.
                     </p>
 
-                    <div class="map-wrapper map-wrapper--corridor reveal delay-2">
-                        <!-- Migration corridor — zoomed Mesoamerica to NY -->
-                        <svg class="map-svg" viewBox="100 0 280 480" preserveAspectRatio="xMidYMid slice">
-                            <defs>
-                                <linearGradient id="corridorLand" x1="0.5" y1="1" x2="0.5" y2="0"><stop offset="0%" stop-color="rgba(207,168,97,0.08)"/><stop offset="50%" stop-color="rgba(138,171,110,0.05)"/><stop offset="100%" stop-color="rgba(90,158,143,0.04)"/></linearGradient>
-                            </defs>
-                            <rect fill="rgba(30,50,70,0.25)" x="100" y="0" width="280" height="480"/>
-                            <!-- Corridor landmass: Mesoamerica (bottom) → Great Lakes/NY (top) -->
-                            <path class="map-coast" fill="url(#corridorLand)" d="M 240 38 Q 290 32 330 55 Q 355 85 345 125 Q 330 165 305 195 Q 275 225 255 255 Q 240 285 235 315 Q 228 350 220 385 Q 205 420 185 440 Q 165 458 145 450 Q 125 430 130 395 Q 140 355 160 320 Q 180 285 195 250 Q 210 210 220 175 Q 228 135 235 95 Q 238 65 240 38 Z"/>
-                            <!-- Mississippi/Ohio corridor hint -->
-                            <path d="M 220 420 Q 235 340 250 260 Q 265 190 285 120 Q 300 80 320 55" fill="none" stroke="rgba(90,158,143,0.3)" stroke-width="3" stroke-dasharray="6 5"/>
-                            <!-- Migration path -->
-                            <path class="map-path" d="M 210 445 Q 225 380 240 320 Q 255 260 270 200 Q 288 140 310 90 Q 330 60 355 48" fill="none" stroke="var(--accent-gold)" stroke-width="4"/>
-                            <circle cx="210" cy="445" r="9" fill="var(--accent-gold)"/>
-                            <text x="155" y="455" class="map-label" style="font-size:11px;">Mesoamerican Core</text>
-                            <circle cx="255" cy="280" r="7" fill="var(--accent-sage-light)"/>
-                            <text x="195" y="295" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Hopewell Corridor</text>
-                            <circle cx="355" cy="48" r="10" fill="#fff"/>
-                            <text x="285" y="42" class="map-label" style="fill:#fff;font-weight:bold;">Cumorah (NY)</text>
-                            <text class="map-water-label" x="115" y="470" font-size="9" opacity="0.6">Gulf</text>
-                            <text class="map-compass" x="355" y="18">N</text>
+                    <div class="map-wrapper reveal delay-2">
+                        <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                            <path class="map-coast" d="M 100 400 Q 200 300 300 350 Q 400 250 600 100 M 300 350 Q 400 400 500 350"/>
+                            <path class="map-path" d="M 250 350 Q 300 250 450 150 Q 500 120 550 80" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <circle cx="250" cy="350" r="5" fill="var(--accent-gold)"/>
+                            <text x="265" y="360" class="map-label">Mesoamerican Core</text>
+                            <circle cx="450" cy="150" r="5" fill="var(--accent-sage-light)"/>
+                            <text x="465" y="155" class="map-label" style="fill:var(--accent-sage-light);">Hopewell Corridor</text>
+                            <circle cx="550" cy="80" r="6" fill="#fff"/>
+                            <text x="565" y="85" class="map-label" style="fill:#fff;font-weight:bold;">Cumorah (NY)</text>
                         </svg>
                     </div>
 
