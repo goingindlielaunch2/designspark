@@ -16,6 +16,9 @@
             --text-muted: #8c8c94;
             --accent-gold: #cfa861;
             --accent-gold-glow: rgba(207, 168, 97, 0.15);
+            --accent-connections: #c4865a;
+            --accent-connections-light: #e8c49a;
+            --accent-connections-glow: rgba(196, 134, 90, 0.25);
             --border-faint: rgba(207, 168, 97, 0.2);
         }
 
@@ -132,6 +135,32 @@
 
         .nav-item.share-link a {
             color: var(--accent-gold);
+        }
+
+        .nav-item.connections-link a {
+            color: var(--accent-connections-light);
+            background: rgba(196, 134, 90, 0.14);
+            border: 1px solid rgba(196, 134, 90, 0.45);
+            border-radius: 4px;
+            padding: 0.4rem 0.85rem;
+            box-shadow: 0 0 12px rgba(196, 134, 90, 0.12);
+        }
+
+        .nav-item.connections-link a:hover {
+            color: #fff5eb;
+            background: rgba(196, 134, 90, 0.28);
+            border-color: var(--accent-connections-light);
+            text-shadow: 0 0 10px var(--accent-connections-glow);
+            box-shadow: 0 0 18px rgba(196, 134, 90, 0.3);
+        }
+
+        .connections-nav-icon {
+            font-size: 0.8rem;
+            color: var(--accent-connections);
+        }
+
+        .nav-item.connections-link a:hover .connections-nav-icon {
+            color: var(--accent-connections-light);
         }
 
         /* Cinematic Backgrounds & Parallax */
@@ -253,15 +282,54 @@
         }
 
         .book-link.btn-primary {
-            background: rgba(207, 168, 97, 0.08);
-            border: 1px solid var(--accent-gold);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(207, 168, 97, 0.05);
+            background: linear-gradient(135deg, rgba(207, 168, 97, 0.2) 0%, rgba(15, 15, 18, 0.65) 60%);
+            border: 2px solid rgba(207, 168, 97, 0.7);
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55),
+                        0 0 24px rgba(207, 168, 97, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+            animation: goldPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(207, 168, 97, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+            50% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 36px rgba(207, 168, 97, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+        }
+
+        .book-link.btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 30%, rgba(207, 168, 97, 0.12) 50%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform 0.7s ease;
+            pointer-events: none;
+        }
+
+        .book-link.btn-primary:hover::before {
+            transform: translateX(120%);
         }
 
         .book-link.btn-primary:hover {
-            background: rgba(207, 168, 97, 0.18);
+            background: linear-gradient(135deg, rgba(207, 168, 97, 0.32) 0%, rgba(25, 25, 30, 0.85) 60%);
             border-color: #ffffff;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(207, 168, 97, 0.35);
+            transform: translateY(-5px) scale(1.02);
+            animation: none;
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), 0 0 40px rgba(207, 168, 97, 0.4);
+        }
+
+        .book-link.btn-primary .cta-main {
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .book-link.btn-primary .cta-sub {
+            color: var(--accent-gold);
         }
 
         .book-link.btn-secondary {
@@ -276,6 +344,95 @@
             border-color: rgba(207, 168, 97, 0.4);
             opacity: 1;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(207, 168, 97, 0.1);
+        }
+
+        .book-link.btn-connections {
+            background: linear-gradient(135deg, rgba(196, 134, 90, 0.18) 0%, rgba(15, 15, 18, 0.65) 60%);
+            border: 2px solid rgba(196, 134, 90, 0.65);
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55),
+                        0 0 24px rgba(196, 134, 90, 0.18),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            position: relative;
+            overflow: hidden;
+            animation: connectionsPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes connectionsPulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(196, 134, 90, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+            50% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 36px rgba(196, 134, 90, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+        }
+
+        .book-link.btn-connections::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 30%, rgba(232, 196, 154, 0.1) 50%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform 0.7s ease;
+            pointer-events: none;
+        }
+
+        .book-link.btn-connections:hover::before {
+            transform: translateX(120%);
+        }
+
+        .book-link.btn-connections:hover {
+            background: linear-gradient(135deg, rgba(196, 134, 90, 0.32) 0%, rgba(25, 25, 30, 0.85) 60%);
+            border-color: var(--accent-connections-light);
+            transform: translateY(-5px) scale(1.02);
+            animation: none;
+            box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), 0 0 40px rgba(196, 134, 90, 0.35);
+        }
+
+        .book-link.btn-connections .cta-main {
+            color: #fff5eb;
+            font-size: 1.2rem;
+        }
+
+        .book-link.btn-connections .cta-sub {
+            color: var(--accent-connections-light);
+        }
+
+        .book-link.btn-connections .connections-cover {
+            background: #1c1510;
+            border-color: rgba(196, 134, 90, 0.75);
+            box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.9), 3px 3px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .book-link.btn-connections .connections-cover i {
+            color: var(--accent-connections-light);
+            font-size: 1.25rem;
+            z-index: 3;
+        }
+
+        .cta-arrow {
+            margin-left: auto;
+            padding-left: 1.25rem;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .book-link.btn-primary .cta-arrow {
+            color: var(--accent-gold);
+        }
+
+        .book-link.btn-connections .cta-arrow {
+            color: var(--accent-connections);
+        }
+
+        .book-link.btn-primary:hover .cta-arrow {
+            transform: translateX(6px);
+            color: #ffffff;
+        }
+
+        .book-link.btn-connections:hover .cta-arrow {
+            transform: translateX(6px);
+            color: var(--accent-connections-light);
         }
 
         .book-cover {
@@ -760,8 +917,11 @@
             <li class="nav-item">
                 <a href="#synthesis" title="Synthesis">Synthesis</a>
             </li>
-            <li class="nav-item">
-                <a href="additional.html" title="Ancient Connections">Connections</a>
+            <li class="nav-item connections-link">
+                <a href="additional.html" title="Ancient Connections">
+                    <i class="fas fa-scroll connections-nav-icon"></i>
+                    Connections
+                </a>
             </li>
             <li class="nav-item share-link">
                 <a href="#" id="share-action" title="Share this page">
@@ -791,6 +951,7 @@
                             <span class="cta-main">Read it Free</span>
                             <span class="cta-sub">Another Testament of Jesus Christ</span>
                         </div>
+                        <i class="fas fa-arrow-right cta-arrow" aria-hidden="true"></i>
                     </a>
                 </div>
 
@@ -917,14 +1078,15 @@
                     
                     <!-- Connections Button -->
                     <div class="reveal" style="display: flex; justify-content: center; margin-bottom: 3rem;">
-                        <a href="additional.html" class="book-link btn-secondary" title="Explore Ancient American Connections" style="max-width: 480px; width: 100%;">
-                            <div class="book-cover" style="background: #1c1510; border-color: rgba(176, 141, 74, 0.7); box-shadow: inset -4px 0 8px rgba(0,0,0,0.9), 3px 3px 6px rgba(0,0,0,0.6);">
-                                <i class="fas fa-scroll" style="color: var(--accent-gold); font-size: 1.2rem; z-index: 3;"></i>
+                        <a href="additional.html" class="book-link btn-connections" title="Explore Ancient American Connections">
+                            <div class="book-cover connections-cover">
+                                <i class="fas fa-scroll"></i>
                             </div>
                             <div class="cta-text">
                                 <span class="cta-main">Ancient Connections</span>
                                 <span class="cta-sub">Linguistic & Archaeological Fact Synthesis</span>
                             </div>
+                            <i class="fas fa-arrow-right cta-arrow" aria-hidden="true"></i>
                         </a>
                     </div>
 
@@ -1194,14 +1356,15 @@
                     </div>
                     
                     <div class="reveal" style="margin-top: 4.5rem; display: flex; justify-content: center;">
-                        <a href="additional.html" class="book-link" title="Explore Ancient American Connections" style="border-color: rgba(207, 168, 97, 0.45); max-width: 580px; width: 100%;">
-                            <div class="book-cover" style="background: #1c1510; border-color: rgba(176, 141, 74, 0.7); box-shadow: inset -4px 0 8px rgba(0,0,0,0.9), 3px 3px 6px rgba(0,0,0,0.6);">
-                                <i class="fas fa-scroll" style="color: var(--accent-gold); font-size: 1.25rem; z-index: 3;"></i>
+                        <a href="additional.html" class="book-link btn-connections" title="Explore Ancient American Connections" style="max-width: 580px;">
+                            <div class="book-cover connections-cover">
+                                <i class="fas fa-scroll"></i>
                             </div>
                             <div class="cta-text">
                                 <span class="cta-main">Explore Ancient Connections</span>
                                 <span class="cta-sub">Linguistic, Archaeological & Oral History Synthesis</span>
                             </div>
+                            <i class="fas fa-arrow-right cta-arrow" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
