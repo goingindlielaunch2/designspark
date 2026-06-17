@@ -1,0 +1,99 @@
+/* Shared CTA buttons — used on index.html and additional.html */
+.book-link {
+    display: flex;
+    align-items: center;
+    background: rgba(15, 15, 18, 0.5);
+    border: 1px solid rgba(207, 168, 97, 0.2);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #dcdcdc;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.book-link.btn-primary {
+    background: linear-gradient(135deg, rgba(207, 168, 97, 0.2) 0%, rgba(15, 15, 18, 0.65) 60%);
+    border: 2px solid rgba(207, 168, 97, 0.7);
+    padding: 1.25rem 1.75rem;
+    cursor: pointer;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(207, 168, 97, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.book-link.btn-primary:hover {
+    background: linear-gradient(135deg, rgba(207, 168, 97, 0.32) 0%, rgba(25, 25, 30, 0.85) 60%);
+    border-color: #ffffff;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.65), 0 0 40px rgba(207, 168, 97, 0.4);
+}
+
+.book-cover {
+    background: #0a0c10;
+    border: 1px solid rgba(207, 168, 97, 0.6);
+    width: 42px;
+    height: 60px;
+    border-radius: 2px 5px 5px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.25rem;
+    position: relative;
+    box-shadow: inset -4px 0 8px rgba(0,0,0,0.8), 3px 3px 6px rgba(0,0,0,0.5);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.book-title-mini {
+    font-family: 'Cinzel', serif;
+    color: #cfa861;
+    font-size: 0.35rem;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0 6px;
+    z-index: 3;
+}
+
+.cta-text { display: flex; flex-direction: column; text-align: left; }
+.cta-main {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.1rem;
+}
+.cta-sub { font-size: 0.85rem; color: #cfa861; font-style: italic; }
+
+.cta-arrow {
+    margin-left: auto;
+    padding-left: 1.25rem;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+    color: #cfa861;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.book-link.btn-primary:hover .cta-arrow {
+    transform: translateX(6px);
+    color: #ffffff;
+}
+
+.scripture-ref {
+    color: #cfa861;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(207, 168, 97, 0.5);
+    font-style: italic;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
+
+.scripture-ref:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}

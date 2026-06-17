@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracing the Ancient Journey: Book of Mormon Geography</title>
+    <meta name="description" content="A forensic synthesis of archaeological, linguistic, and historical evidence aligning with Book of Mormon geography — from Arabian Nahom to Mesoamerican cores and North American Hopewell corridors.">
+    <meta property="og:title" content="Tracing the Ancient Journey: Book of Mormon Geography">
+    <meta property="og:description" content="Archaeological, linguistic, and historical data aligned with the 600 BC – 400 AD timeframe. Explore the combined synthesis.">
+    <meta property="og:image" content="book-of-mormon.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23070708'/%3E%3Crect x='8' y='5' width='14' height='22' rx='1' fill='%231a1510' stroke='%23cfa861' stroke-width='1'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="shared.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -799,23 +807,22 @@
         .map-wrapper {
             position: relative;
             width: 100%;
-            height: 350px;
-            background: rgba(5, 5, 8, 0.6);
+            height: 420px;
+            background: radial-gradient(ellipse at center, rgba(20, 25, 30, 0.9) 0%, rgba(5, 5, 8, 0.95) 70%);
             border: 1px solid var(--border-faint);
             border-radius: 8px;
             margin: 0 0 3rem 0;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.85);
         }
+
+        .map-wrapper--corridor { height: 460px; }
 
         .map-svg {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            opacity: 0.9;
+            display: block;
+            opacity: 0.95;
         }
 
         .map-path {
@@ -830,8 +837,15 @@
         .map-label {
             fill: var(--text-main);
             font-family: 'Cinzel', serif;
-            font-size: 14px;
+            font-size: 13px;
             text-shadow: 0 2px 8px rgba(0,0,0,1);
+        }
+
+        .map-compass {
+            fill: rgba(207, 168, 97, 0.35);
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 0.12em;
         }
 
         .reveal {
@@ -1094,6 +1108,227 @@
         .trail-legend .dot.teal { background: var(--accent-teal-light); }
         .trail-legend .dot.white { background: #fff; box-shadow: 0 0 6px rgba(255,255,255,0.5); }
 
+        .scripture-ref {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(207, 168, 97, 0.5);
+            font-style: italic;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+
+        .scripture-ref:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 1rem;
+            z-index: 2000;
+            padding: 0.6rem 1.2rem;
+            background: var(--accent-gold);
+            color: #070708;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus { top: 1rem; }
+
+        .how-to-read {
+            max-width: 780px;
+            margin: 2.5rem auto 0;
+            padding: 2rem 2.5rem;
+            background: rgba(207, 168, 97, 0.06);
+            border: 1px solid rgba(207, 168, 97, 0.25);
+            border-radius: 6px;
+            text-align: left;
+        }
+
+        .how-to-read h3 {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .how-to-read p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .how-to-read p:last-child { margin-bottom: 0; }
+
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            border: 1px solid rgba(207, 168, 97, 0.35);
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .resource-link:hover {
+            background: rgba(207, 168, 97, 0.12);
+            border-color: var(--accent-gold);
+            color: #fff;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--border-faint);
+            color: var(--accent-gold);
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1015;
+        }
+
+        .map-coast {
+            fill: rgba(90, 158, 143, 0.08);
+            stroke: rgba(90, 158, 143, 0.25);
+            stroke-width: 1.5;
+        }
+
+        .map-water {
+            fill: rgba(30, 50, 70, 0.35);
+        }
+
+        .map-water-label {
+            fill: rgba(140, 160, 180, 0.35);
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .map-region {
+            fill: rgba(207, 168, 97, 0.04);
+            stroke: rgba(207, 168, 97, 0.12);
+            stroke-width: 1;
+        }
+
+        .visual-timeline {
+            position: relative;
+            margin: 3rem 0 1rem;
+            padding: 3rem 0 2rem;
+        }
+
+        .timeline-track {
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-teal), var(--accent-gold), var(--accent-connections), var(--accent-sage));
+            border-radius: 2px;
+            position: relative;
+            opacity: 0.6;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90px;
+        }
+
+        .timeline-marker .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 2px solid #070708;
+            margin: 0 auto 0.6rem;
+            box-shadow: 0 0 10px var(--accent-gold-glow);
+        }
+
+        .timeline-marker .year {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-marker .event {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+        }
+
+        .synthesis-cards { display: none; }
+
+        .synthesis-card {
+            background: rgba(18, 18, 22, 0.65);
+            border: 1px solid var(--border-faint);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .synthesis-card h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-transform: none;
+        }
+
+        .synthesis-card dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.4rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .synthesis-card dt {
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .synthesis-card dd {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .parallax-section {
+                background-attachment: scroll !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .map-path { animation: none; }
+            .reveal { transition: opacity 0.5s ease; transform: none; }
+        }
+
         /* Footer & Disclaimer */
         .site-footer {
             background-color: #030304;
@@ -1115,9 +1350,32 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .site-nav { padding: 0.75rem 1rem; }
-            .nav-list { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
-            .nav-item a { font-size: 0.7rem; }
+            .site-nav { padding: 0.75rem 1rem; justify-content: center; }
+            .nav-toggle { display: block; }
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(7, 7, 8, 0.97);
+                backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-faint);
+                padding: 0.5rem 0 1rem;
+                max-height: 70vh;
+                overflow-y: auto;
+            }
+            .nav-list.open { display: flex; }
+            .nav-item { width: 100%; }
+            .nav-item a {
+                font-size: 0.75rem;
+                padding: 0.75rem 1.5rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .nav-item.connections-link a { margin: 0.25rem 1rem; width: auto; }
             
             .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
             .evidence-icon-grid { grid-template-columns: 1fr 1fr; }
@@ -1125,6 +1383,10 @@
             .hero-title { font-size: 3rem; }
             .glass-panel { padding: 2.5rem 1.5rem; }
             .footnotes-list { column-count: 1; }
+            .table-container { display: none; }
+            .synthesis-cards { display: block; }
+            .timeline-marker { width: 70px; }
+            .timeline-marker .event { font-size: 0.6rem; }
 
             .nav-book-btn {
                 left: 1rem;
@@ -1139,14 +1401,19 @@
 </head>
 <body>
 
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <!-- Fixed Navigation -->
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main navigation">
+        <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
         <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng" target="_blank" class="nav-book-btn" title="Read the Book of Mormon Free Online">
             <div class="book-cover">
                 <span class="book-title-mini">THE<br>BOOK OF<br>MORMON</span>
             </div>
         </a>
-        <ul class="nav-list">
+        <ul class="nav-list" id="nav-menu">
             <li class="nav-item">
                 <a href="#visitation" title="Imprint">Imprint</a>
             </li>
@@ -1171,6 +1438,9 @@
             <li class="nav-item">
                 <a href="#synthesis" title="Synthesis">Synthesis</a>
             </li>
+            <li class="nav-item">
+                <a href="#evidentiary-context" title="Context">Context</a>
+            </li>
             <li class="nav-item connections-link">
                 <a href="additional.html" title="Ancient Connections">
                     <i class="fas fa-scroll connections-nav-icon"></i>
@@ -1186,7 +1456,7 @@
         </ul>
     </nav>
 
-    <div class="parallax-wrapper">
+    <div class="parallax-wrapper" id="main-content">
         
         <!-- HERO SECTION -->
         <section class="parallax-section" id="hero">
@@ -1196,6 +1466,19 @@
                 <p class="section-intro reveal delay-2" style="color: #e0e0e0; margin-bottom: 0;">
                     A factual compilation of archaeological, linguistic, and historical data aligning with the 600 BC – 400 AD timeframe.
                 </p>
+
+                <div class="how-to-read reveal delay-2">
+                    <h3>How to Read This Site</h3>
+                    <p>This synthesis proposes a <strong style="color:var(--accent-gold);font-weight:600;">Mesoamerican core</strong> for population density, writing, and architecture; a <strong style="color:var(--accent-gold);font-weight:600;">North American corridor</strong> (Hopewell trade networks) for continental exchange and final collapse; and an <strong style="color:var(--accent-gold);font-weight:600;">Arabian trail</strong> (Nahom, Bountiful) for Old World geography — connected by documented trade routes and Uto-Aztecan linguistic spread.</p>
+                    <p>Readers who prefer a Heartland-only model will find strong North American ceremonial and crop parallels here, though urban-scale millions are assigned to the Mesoamerican core. See <a href="#evidentiary-context" style="color:var(--accent-teal-light);">Evidentiary Context</a> for disputed items and open questions.</p>
+                    <div class="resource-links">
+                        <a href="additional.html" class="resource-link"><i class="fas fa-scroll"></i> Deep Dive</a>
+                        <a href="Ancient America &amp; Book of Mormon: Fact Synthesis.pdf" class="resource-link" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                        <a href="Ancient America &amp; Book of Mormon: Fact Synthesis.jpg" class="resource-link" target="_blank"><i class="fas fa-image"></i> Infographic</a>
+                        <a href="book-of-mormon.html" class="resource-link"><i class="fas fa-chart-bar"></i> Chart View</a>
+                    </div>
+                </div>
+
                 <div class="hero-cta reveal delay-3">
                     <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng" target="_blank" class="book-link btn-primary" title="Read the Book of Mormon Free Online">
                         <div class="book-cover">
@@ -1252,7 +1535,7 @@
                         <div class="info-block reveal delay-2">
                             <h3>Geological Forensics (34 AD)</h3>
                             <ul class="info-list">
-                                <li><strong>The 3-Day Volcanic Darkness:</strong> The text describes a massive 1st-century cataclysm involving tectonic upheaval, cities buried/drowned, and a "thick vapor of darkness" that prevented fires from lighting for three days. Forensically, this is an exact, scientifically accurate description of a massive volcanic eruption and dense tephra (ash) cloud, which asphyxiates open flames and causes localized absolute darkness.<sup><a href="#fn29">[29]</a></sup></li>
+                                <li><strong>The 3-Day Volcanic Darkness:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/8?lang=eng" target="_blank" class="scripture-ref">3 Nephi 8–10</a> describes a massive 1st-century cataclysm involving tectonic upheaval, cities buried/drowned, and a "thick vapor of darkness" that prevented fires from lighting for three days. Forensically, this is an exact, scientifically accurate description of a massive volcanic eruption and dense tephra (ash) cloud, which asphyxiates open flames and causes localized absolute darkness.<sup><a href="#fn29">[29]</a></sup></li>
                                 <li><strong>Named Eruption Candidates:</strong> Geologist Benjamin Kowallis correlated the account with highland Mesoamerican volcanism, identifying ash-fall and tephra layers in Guatemala and southern Mexico dating to the early 1st century AD. Independent ice-core sulfate spikes in Greenland ice likewise record major volcanic forcing events in the 1st century, providing a datable global signature for a cataclysm of this magnitude.<sup><a href="#fn33">[33]</a></sup></li>
                                 <li><strong>The Tectonic Zone:</strong> Mesoamerica sits directly on the "Ring of Fire," a highly volatile subduction zone capable of producing the exact simultaneous earthquake/volcanic events described in the text.</li>
                             </ul>
@@ -1260,7 +1543,7 @@
                         <div class="info-block reveal delay-3">
                             <h3>Cultural Anthropological Shift</h3>
                             <ul class="info-list">
-                                <li><strong>The "Pax Hopewelliana":</strong> Immediately following the 1st century AD, the North American archaeological record shows a sudden, unprecedented shift. The construction of defensive fortifications ceases entirely, and a massive, unified era of peaceful trade erupts across the continent, perfectly mirroring the text's 200-year "Golden Age" following the visitation.<sup><a href="#fn30">[30]</a></sup></li>
+                                <li><strong>The "Pax Hopewelliana":</strong> Immediately following the 1st century AD, the North American archaeological record shows a sudden, unprecedented shift. The construction of defensive fortifications ceases entirely, and a massive, unified era of peaceful trade erupts across the continent, perfectly mirroring the 200-year "Golden Age" following Christ's visitation described in <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/4-ne/1?lang=eng&id=p13-p18#p13" target="_blank" class="scripture-ref">4 Nephi 1:13–18</a>.<sup><a href="#fn30">[30]</a></sup></li>
                                 <li><strong>Mesoamerican Golden Age:</strong> Similarly, the Classic Maya and Teotihuacan cultures experience massive, stabilized growth and cultural unification beginning in the 1st and 2nd centuries AD.</li>
                             </ul>
                         </div>
@@ -1297,7 +1580,7 @@
                             <div class="forensic-card-icon"><i class="fas fa-sitemap"></i></div>
                             <span class="evidence-badge teal">Inverted Parallelism</span>
                             <h3>Chiasmus & Ancient Poetics</h3>
-                            <p>Alma 36 forms a perfect chiastic arc (A-B-C-C-B-A), an inverted Hebrew literary device used in the Psalms and Isaiah. John Welch discovered this pattern in 1967 while serving as a missionary — years after the text was dictated without notes or revisions.<sup><a href="#fn35">[35]</a></sup></p>
+                            <p><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?lang=eng" target="_blank" class="scripture-ref">Alma 36</a> forms a perfect chiastic arc (A-B-C-C-B-A), an inverted Hebrew literary device used in the Psalms and Isaiah. John Welch discovered this pattern in 1967 while serving as a missionary — years after the text was dictated without notes or revisions.<sup><a href="#fn35">[35]</a></sup></p>
                         </div>
                     </div>
 
@@ -1312,7 +1595,39 @@
                             <div class="forensic-card-icon"><i class="fas fa-crown"></i></div>
                             <span class="evidence-badge gold">Covenant Ritual</span>
                             <h3>King Benjamin's Sermon</h3>
-                            <p>Benjamin's address at the temple follows the precise structure of an ancient Near Eastern coronation/treaty covenant: assembly at the temple, acknowledgment of indebtedness, bestowal of a new name, and communal ratification. This pattern was not understood in Joseph Smith's era but matches Iron Age Israelite festival theology documented in modern biblical scholarship.<sup><a href="#fn37">[37]</a></sup></p>
+                            <p>Benjamin's address at the temple (<a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/2?lang=eng" target="_blank" class="scripture-ref">Mosiah 2–5</a>) follows the precise structure of an ancient Near Eastern coronation/treaty covenant: assembly at the temple, acknowledgment of indebtedness, bestowal of a new name, and communal ratification. This pattern was not understood in Joseph Smith's era but matches Iron Age Israelite festival theology documented in modern biblical scholarship.<sup><a href="#fn37">[37]</a></sup></p>
+                        </div>
+                    </div>
+
+                    <div class="accent-strip reveal"></div>
+
+                    <div class="grid-2 reveal">
+                        <div class="forensic-card teal">
+                            <div class="forensic-card-icon"><i class="fas fa-pen-nib"></i></div>
+                            <span class="evidence-badge teal">Translation</span>
+                            <h3>Dictation Without Manuscript</h3>
+                            <p>Joseph Smith dictated the entire text in approximately 65 working days from April–June 1829, without notes, outlines, or revisions — producing over 500 pages of complex narrative, genealogy, and geography. Eyewitnesses including Emma Smith and Oliver Cowdery testified he could not have composed it himself.<sup><a href="#fn51">[51]</a></sup></p>
+                        </div>
+                        <div class="forensic-card teal">
+                            <div class="forensic-card-icon"><i class="fas fa-users"></i></div>
+                            <span class="evidence-badge teal">Witnesses</span>
+                            <h3>The Eleven Witnesses</h3>
+                            <p>Eleven men signed formal testimonies — three witnesses saw the plates by divine manifestation; eight handled and hefted them physically. None ever retracted their statements despite social pressure, financial incentive to recant, and in several cases, later estrangement from the Church.<sup><a href="#fn52">[52]</a></sup></p>
+                        </div>
+                    </div>
+
+                    <div class="grid-2 reveal delay-1">
+                        <div class="forensic-card gold">
+                            <div class="forensic-card-icon"><i class="fas fa-ship"></i></div>
+                            <span class="evidence-badge gold">Old World</span>
+                            <h3>The Mulekite Voyage</h3>
+                            <p><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/omni/1?lang=eng&id=p15-p16#p15" target="_blank" class="scripture-ref">Omni 1:15–16</a> records a second Old World party fleeing Jerusalem by sea and arriving in the Americas — a parallel transoceanic migration independent of Lehi's desert trail, matching the text's own account of multiple founding populations.</p>
+                        </div>
+                        <div class="forensic-card gold">
+                            <div class="forensic-card-icon"><i class="fas fa-mask"></i></div>
+                            <span class="evidence-badge gold">Political Collapse</span>
+                            <h3>Gadianton Bands</h3>
+                            <p><a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/6?lang=eng&id=p16-p30#p16" target="_blank" class="scripture-ref">Helaman 6:16–30</a> describes secret combinations infiltrating government, operating by oath and covert assassination — a pattern of organized subversion that archaeologists and historians recognize in the political collapses of multiple ancient American civilizations.</p>
                         </div>
                     </div>
                 </div>
@@ -1329,26 +1644,32 @@
                     </p>
 
                     <div class="map-wrapper reveal delay-2">
-                        <!-- Arabian Peninsula Journey Map -->
-                        <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                            <!-- Abstract Coastlines: Red Sea & Arabian Sea -->
-                            <path d="M 50 0 Q 150 200 200 400 M 300 0 Q 300 200 450 350 Q 650 380 800 350" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
-                            
-                            <!-- Journey Path (Jerusalem -> Shazer -> Nahom -> Bountiful) -->
-                            <path class="map-path" d="M 200 50 Q 250 150 350 280 L 550 320" fill="none" stroke="var(--accent-gold)" stroke-width="3" />
-                            
-                            <!-- Location Markers -->
-                            <circle cx="200" cy="50" r="5" fill="var(--accent-gold)"/>
-                            <text x="215" y="55" class="map-label">Jerusalem</text>
-
-                            <circle cx="250" cy="150" r="5" fill="var(--accent-teal-light)"/>
-                            <text x="265" y="155" class="map-label" style="fill:var(--accent-teal-light);">Shazer</text>
-                            
-                            <circle cx="350" cy="280" r="6" fill="#fff"/>
-                            <text x="365" y="285" class="map-label" style="fill:#fff; font-weight:bold;">Nahom (NHM)</text>
-
-                            <circle cx="550" cy="320" r="5" fill="var(--accent-gold)"/>
-                            <text x="565" y="325" class="map-label">Bountiful (Oman)</text>
+                        <!-- Arabian Peninsula — zoomed to Lehi's trail corridor -->
+                        <svg class="map-svg" viewBox="40 0 340 430" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <linearGradient id="arabLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(207,168,97,0.08)"/><stop offset="100%" stop-color="rgba(90,158,143,0.04)"/></linearGradient>
+                            </defs>
+                            <rect class="map-water" x="40" y="0" width="95" height="430"/>
+                            <text class="map-water-label" x="72" y="215" transform="rotate(-90 72 215)">Red Sea</text>
+                            <!-- Southern Arabia landmass (zoomed) -->
+                            <path class="map-coast" fill="url(#arabLand)" d="M 135 10 L 135 70 Q 132 130 138 185 Q 145 245 155 295 Q 168 340 195 370 Q 230 395 285 405 Q 340 398 365 360 Q 378 310 370 250 Q 355 190 330 140 Q 300 90 260 55 Q 210 20 165 12 Z"/>
+                            <text class="map-water-label" x="255" y="260" font-size="11">Empty Quarter</text>
+                            <rect class="map-water" x="155" y="385" width="225" height="45" opacity="0.5"/>
+                            <text class="map-water-label" x="230" y="415" font-size="10">Arabian Sea</text>
+                            <!-- Incense trail: south along Red Sea, turn east at Nahom -->
+                            <path class="map-path" d="M 118 42 Q 128 95 138 145 Q 148 195 158 245 Q 168 285 178 310" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <path class="map-path" d="M 178 310 Q 225 330 285 355" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <path d="M 178 310 L 225 310" fill="none" stroke="var(--accent-sage-light)" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+                            <text x="188" y="302" class="map-label" style="fill:var(--accent-sage-light);font-size:10px;">nearly eastward</text>
+                            <circle cx="118" cy="42" r="7" fill="var(--accent-gold)"/>
+                            <text x="128" y="38" class="map-label">Jerusalem</text>
+                            <circle cx="138" cy="145" r="6" fill="var(--accent-teal-light)"/>
+                            <text x="148" y="140" class="map-label" style="fill:var(--accent-teal-light);">Shazer</text>
+                            <circle cx="178" cy="310" r="8" fill="#fff"/>
+                            <text x="188" y="328" class="map-label" style="fill:#fff;font-weight:bold;">Nahom (NHM)</text>
+                            <circle cx="285" cy="355" r="7" fill="var(--accent-gold)"/>
+                            <text x="248" y="378" class="map-label">Bountiful (Oman)</text>
+                            <text class="map-compass" x="350" y="22">N</text>
                         </svg>
                         <div class="trail-legend reveal delay-2">
                             <span><span class="dot gold"></span> Confirmed inscription</span>
@@ -1361,20 +1682,20 @@
                         <div class="info-block reveal delay-3">
                             <h3>Shazer: The Hunting Camp</h3>
                             <ul class="info-list">
-                                <li><strong>Four-Day Journey:</strong> After reaching the Red Sea coast, the text records a four-day journey to "Shazer," a place of "much fruit" and "wild game" where the group camped to hunt. Researchers including Warren Aston have identified candidate oasis and wadi systems along the same ancient incense corridor northwest of the NHM turn that match this description.<sup><a href="#fn38">[38]</a></sup></li>
+                                <li><strong>Four-Day Journey:</strong> After reaching the Red Sea coast, <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16?lang=eng&id=p13-p14#p13" target="_blank" class="scripture-ref">1 Nephi 16:13–14</a> records a four-day journey to "Shazer," a place of "much fruit" and "wild game" where the group camped to hunt. Researchers including Warren Aston have identified candidate oasis and wadi systems along the same ancient incense corridor northwest of the NHM turn that match this description.<sup><a href="#fn38">[38]</a></sup></li>
                             </ul>
                         </div>
                         <div class="info-block reveal delay-3">
                             <h3>The Discovery of Nahom</h3>
                             <ul class="info-list">
                                 <li><strong>The NHM Altars:</strong> In 1999, archaeologists excavating a temple in Marib, Yemen, unearthed altars inscribed with the tribal name "NHM" (Nihm). These date precisely to the 7th and 6th centuries BC.<sup><a href="#fn27">[27]</a></sup></li>
-                                <li><strong>The Directional Turn:</strong> The Book of Mormon explicitly states that at Nahom, the group turned to travel "nearly eastward." The NHM tribal region sits exactly where the ancient Frankincense trail turns strictly east to avoid the Empty Quarter desert.</li>
+                                <li><strong>The Directional Turn:</strong> At Nahom, where Ishmael was buried (<a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16?lang=eng&id=p34#p34" target="_blank" class="scripture-ref">1 Nephi 16:34</a>), the group turned to travel "nearly eastward" (<a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17?lang=eng&id=p1#p1" target="_blank" class="scripture-ref">1 Nephi 17:1</a>). The NHM tribal region sits exactly where the ancient Frankincense trail turns strictly east to avoid the Empty Quarter desert.</li>
                             </ul>
                         </div>
                         <div class="info-block reveal delay-3">
                             <h3>The Coastal Anomaly</h3>
                             <ul class="info-list">
-                                <li><strong>Bountiful (Wadi Sayq):</strong> Traveling east from Nahom leads to the Dhofar region of Oman. The text describes a coastal area featuring fruit, wild honey, fresh water, and ore for tools. Modern geographic surveys identify Khor Kharfot (Wadi Sayq) as the only location on the entire Arabian coast meeting all criteria.<sup><a href="#fn28">[28]</a></sup></li>
+                                <li><strong>Bountiful (Wadi Sayq):</strong> Traveling east from Nahom leads to the Dhofar region of Oman. <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17?lang=eng&id=p4-p5#p4" target="_blank" class="scripture-ref">1 Nephi 17:4–5</a> describes a coastal area featuring fruit, wild honey, fresh water, and ore for tools. Modern geographic surveys identify Khor Kharfot (Wadi Sayq) as the only location on the entire Arabian coast meeting all criteria.<sup><a href="#fn28">[28]</a></sup></li>
                             </ul>
                         </div>
                     </div>
@@ -1407,22 +1728,34 @@
                     </p>
 
                     <div class="map-wrapper reveal delay-2">
-                        <svg class="map-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
-                            <!-- Great Lakes & Rivers Abstract -->
-                            <path d="M 300 50 Q 350 100 450 80 Q 550 50 600 100 M 450 80 Q 400 200 350 300 M 400 200 Q 500 250 650 300" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
-                            
-                            <!-- Hopewell Expansion Path -->
-                            <path class="map-path" d="M 350 300 Q 450 200 400 100" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
-                            <path class="map-path" d="M 400 100 Q 500 120 550 80" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
-                            
-                            <circle cx="400" cy="100" r="5" fill="var(--accent-gold)"/>
-                            <text x="415" y="105" class="map-label">Hopewell Core (Ohio)</text>
-
-                            <circle cx="350" cy="300" r="5" fill="var(--accent-gold)"/>
-                            <text x="200" y="295" class="map-label">Gulf Trade Routes</text>
-
-                            <circle cx="550" cy="80" r="5" fill="var(--accent-gold)"/>
-                            <text x="565" y="85" class="map-label">Cumorah (New York)</text>
+                        <!-- Eastern US — zoomed to Hopewell corridor -->
+                        <svg class="map-svg" viewBox="60 20 400 340" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <linearGradient id="naLand" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0%" stop-color="rgba(138,171,110,0.06)"/><stop offset="100%" stop-color="rgba(207,168,97,0.04)"/></linearGradient>
+                            </defs>
+                            <!-- Eastern landmass -->
+                            <path class="map-region" fill="url(#naLand)" d="M 100 340 L 110 280 Q 130 220 170 170 Q 210 120 270 95 Q 330 75 390 90 L 420 130 Q 440 180 430 230 Q 410 290 370 330 Q 320 355 250 350 Q 180 345 130 340 Z"/>
+                            <!-- Great Lakes (zoomed detail) -->
+                            <path fill="rgba(90,158,143,0.15)" stroke="rgba(90,158,143,0.4)" stroke-width="1.5" d="M 300 95 Q 340 80 380 95 Q 400 115 385 140 Q 360 155 330 145 Q 305 130 300 95 Z"/>
+                            <path fill="rgba(90,158,143,0.12)" stroke="rgba(90,158,143,0.35)" stroke-width="1.5" d="M 385 115 Q 410 108 425 125 Q 420 145 400 150 Q 385 140 385 115 Z"/>
+                            <text class="map-water-label" x="318" y="118" font-size="11">Great Lakes</text>
+                            <!-- Ohio River valley -->
+                            <path d="M 200 280 Q 260 240 310 200 Q 340 175 360 155" fill="none" stroke="rgba(90,158,143,0.25)" stroke-width="2" stroke-dasharray="5 4"/>
+                            <!-- Mississippi River -->
+                            <path d="M 195 340 Q 200 280 215 220 Q 230 160 260 120" fill="none" stroke="rgba(90,158,143,0.45)" stroke-width="4"/>
+                            <text class="map-water-label" x="168" y="250" font-size="11">Mississippi</text>
+                            <!-- Hopewell trade routes -->
+                            <path class="map-path" d="M 150 310 Q 210 260 270 210 Q 310 175 360 140" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <path class="map-path" d="M 270 210 Q 330 175 395 115" fill="none" stroke="var(--accent-gold)" stroke-width="3"/>
+                            <circle cx="270" cy="210" r="8" fill="var(--accent-gold)"/>
+                            <text x="228" y="232" class="map-label">Hopewell Core (Ohio)</text>
+                            <circle cx="150" cy="310" r="6" fill="var(--accent-sage-light)"/>
+                            <text x="95" y="318" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Gulf Trade</text>
+                            <circle cx="395" cy="115" r="9" fill="#fff"/>
+                            <text x="355" y="100" class="map-label" style="fill:#fff;font-weight:bold;">Cumorah (NY)</text>
+                            <circle cx="215" cy="255" r="6" fill="var(--accent-teal-light)"/>
+                            <text x="225" y="272" class="map-label" style="fill:var(--accent-teal-light);font-size:11px;">Zelph (Illinois)</text>
+                            <text class="map-compass" x="420" y="38">N</text>
                         </svg>
                     </div>
 
@@ -1461,7 +1794,7 @@
                         <div class="evidence-tile">
                             <div class="evidence-tile-icon"><i class="fas fa-seedling"></i></div>
                             <h4>Little Barley</h4>
-                            <p><em>Hordeum pusillum</em> cultivated in the Midwest 100 BC–400 AD, matching Mosiah 9 crop references.<sup><a href="#fn39">[39]</a></sup></p>
+                            <p><em>Hordeum pusillum</em> cultivated in the Midwest 100 BC–400 AD, matching <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/9?lang=eng&id=p9#p9" target="_blank" class="scripture-ref">Mosiah 9:9</a>.<sup><a href="#fn39">[39]</a></sup></p>
                         </div>
                         <div class="evidence-tile">
                             <div class="evidence-tile-icon"><i class="fas fa-gem"></i></div>
@@ -1471,7 +1804,7 @@
                         <div class="evidence-tile">
                             <div class="evidence-tile-icon"><i class="fas fa-road"></i></div>
                             <h4>Ancient Highways</h4>
-                            <p>Straight, elevated road systems mirror the "many highways" built in 3 Nephi 6:8.<sup><a href="#fn41">[41]</a></sup></p>
+                            <p>Straight, elevated road systems mirror the "many highways" built in <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/6?lang=eng&id=p8#p8" target="_blank" class="scripture-ref">3 Nephi 6:8</a>.<sup><a href="#fn41">[41]</a></sup></p>
                         </div>
                         <div class="evidence-tile">
                             <div class="evidence-tile-icon"><i class="fas fa-archway"></i></div>
@@ -1493,21 +1826,32 @@
                     </p>
 
                     <div class="map-wrapper reveal delay-2">
-                        <svg class="map-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
-                            <!-- Mesoamerica Coastline -->
-                            <path d="M 0 50 Q 200 100 300 250 Q 500 280 800 200 M 0 150 Q 150 200 250 300 M 500 0 Q 450 150 600 250 Q 700 300 800 300" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
-                            
-                            <!-- Trade/Migration Routes -->
-                            <path class="map-path" d="M 250 180 Q 350 220 450 180 L 550 200 M 350 220 L 380 280" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
-                            
-                            <circle cx="250" cy="180" r="5" fill="var(--accent-gold)"/>
-                            <text x="260" y="175" class="map-label">Teotihuacan</text>
-
-                            <circle cx="450" cy="180" r="5" fill="var(--accent-gold)"/>
-                            <text x="460" y="175" class="map-label">Isthmus (Narrow Neck)</text>
-                            
-                            <circle cx="550" cy="200" r="5" fill="var(--accent-gold)"/>
-                            <text x="560" y="195" class="map-label">Maya Core (Tikal/Becan)</text>
+                        <!-- Mesoamerica — zoomed to isthmus & Maya highlands -->
+                        <svg class="map-svg" viewBox="30 40 390 420" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <linearGradient id="mesoLand" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(207,168,97,0.07)"/><stop offset="100%" stop-color="rgba(90,158,143,0.05)"/></linearGradient>
+                            </defs>
+                            <rect class="map-water" x="30" y="40" width="390" height="85"/>
+                            <text class="map-water-label" x="175" y="88" font-size="11">Gulf of Mexico</text>
+                            <rect class="map-water" x="360" y="130" width="60" height="330" opacity="0.6"/>
+                            <text class="map-water-label" x="378" y="280" transform="rotate(90 378 280)" font-size="10">Caribbean</text>
+                            <!-- Mexico tapering to isthmus -->
+                            <path class="map-coast" fill="url(#mesoLand)" d="M 55 125 L 370 125 Q 375 165 350 200 Q 310 230 250 245 Q 190 255 150 280 Q 110 310 95 360 Q 85 400 110 430 Q 150 450 200 445 Q 260 430 290 390 Q 320 340 310 290 Q 300 240 280 210 Q 320 180 360 155 Q 375 140 370 125 Z"/>
+                            <!-- Yucatán peninsula -->
+                            <path class="map-coast" d="M 280 210 Q 320 225 350 260 Q 365 300 345 330 Q 315 345 290 320 Q 275 280 280 210 Z"/>
+                            <!-- Isthmus pinch — Tehuantepec -->
+                            <ellipse cx="215" cy="248" rx="95" ry="18" fill="none" stroke="var(--accent-sage-light)" stroke-width="2" stroke-dasharray="6 4" opacity="0.75"/>
+                            <text x="155" y="238" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Narrow Neck (~120 mi)</text>
+                            <!-- River Sidon -->
+                            <path class="map-path" d="M 230 420 Q 235 360 240 310 Q 248 260 255 210 Q 262 170 268 145" fill="none" stroke="rgba(90,158,143,0.65)" stroke-width="3.5"/>
+                            <text x="268" y="340" class="map-label" style="fill:var(--accent-teal-light);font-size:11px;">River Sidon</text>
+                            <circle cx="268" cy="145" r="7" fill="var(--accent-gold)"/>
+                            <text x="200" y="138" class="map-label">Teotihuacan</text>
+                            <circle cx="215" cy="248" r="7" fill="var(--accent-sage-light)"/>
+                            <text x="118" y="268" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Isthmus of Tehuantepec</text>
+                            <circle cx="175" cy="400" r="7" fill="var(--accent-gold)"/>
+                            <text x="115" y="418" class="map-label">Maya Core (Tikal/Becan)</text>
+                            <text class="map-compass" x="390" y="58">N</text>
                         </svg>
                     </div>
 
@@ -1517,8 +1861,8 @@
                             <ul class="info-list">
                                 <li><strong>Population Density:</strong> Mesoamerican models (such as agricultural carrying capacity and radiocarbon aggregation) confirm the existence of millions of inhabitants residing in dense, localized urban centers between 600 BC and 400 AD.<sup><a href="#fn9">[9]</a></sup></li>
                                 <li><strong>Calendars & Astronomy:</strong> Mesoamerican civilizations used a highly accurate 360-day calendar combined with five intercalary "dead" days, a structure identical to the ancient Egyptian calendar system.<sup><a href="#fn19">[19]</a></sup></li>
-                                <li><strong>Structural Cement:</strong> Widespread use of high-quality, lime-based structural cement began in cities like Teotihuacan and various Maya centers around the 1st century BC, precisely mirroring textual timelines.<sup><a href="#fn10">[10]</a></sup></li>
-                                <li><strong>Defensive Fortifications:</strong> Excavations reveal massive earthworks, timber palisades, and defensive moats surrounding Preclassic cities. Becan, for example, features a 1.2-mile moat and earthen wall.<sup><a href="#fn11">[11]</a></sup></li>
+                                <li><strong>Structural Cement:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/3?lang=eng&id=p7-p11#p7" target="_blank" class="scripture-ref">Helaman 3:7–11</a> describes cement buildings spreading across the "land northward" in the 1st century BC. Archaeology confirms widespread lime-based structural cement in Teotihuacan and Maya centers from the same era.<sup><a href="#fn10">[10]</a></sup></li>
+                                <li><strong>Defensive Fortifications:</strong> Captain Moroni's hilltop cities, ditches, and timber walls (<a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/49?lang=eng" target="_blank" class="scripture-ref">Alma 49–50</a>) match excavated Preclassic earthworks, palisades, and moats — Becan features a 1.2-mile defensive perimeter.<sup><a href="#fn11">[11]</a></sup></li>
                                 <li><strong>Warfare Escalation (~50 BC–AD 400):</strong> Archaeological surveys document a dramatic increase in fortified sites during the late Preclassic and Protoclassic periods, paralleling the Amalickiahite wars and culminating in the 4th-century societal collapse described in the text.<sup><a href="#fn43">[43]</a></sup></li>
                             </ul>
                         </div>
@@ -1538,7 +1882,7 @@
                             <div class="forensic-card-icon"><i class="fas fa-arrows-left-right"></i></div>
                             <span class="evidence-badge sage">Geographic Model</span>
                             <h3>The Narrow Neck of Land</h3>
-                            <p>The Isthmus of Tehuantepec — approximately 120 miles wide, traversable in roughly 1.5 days on foot — matches the text's description of a narrow passage between "the land northward" and "the land southward," with seas on both east and west.<sup><a href="#fn45">[45]</a></sup></p>
+                            <p>The Isthmus of Tehuantepec — approximately 120 miles wide, traversable in roughly 1.5 days on foot — matches <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/4?lang=eng&id=p7#p7" target="_blank" class="scripture-ref">Helaman 4:7</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/22?lang=eng&id=p32#p32" target="_blank" class="scripture-ref">Alma 22:32</a>, describing a narrow passage between "the land northward" and "the land southward," with seas on both east and west.<sup><a href="#fn45">[45]</a></sup></p>
                         </div>
                         <div class="forensic-card sage reveal delay-1">
                             <div class="forensic-card-icon"><i class="fas fa-water"></i></div>
@@ -1551,7 +1895,7 @@
                     <div class="info-block reveal">
                         <h3>Oral Histories</h3>
                         <ul class="info-list">
-                            <li><strong>Ixtlilxochitl's Transcriptions:</strong> Fernando de Alva Cortés Ixtlilxochitl (ca. 1600 AD), translating ancient Toltec codices, recorded a timeline of an ancient society destroyed in a civil war. He explicitly documented that over 3.2 million people were killed in the final battles.<sup><a href="#fn15">[15]</a></sup></li>
+                                <li><strong>Ixtlilxochitl's Transcriptions:</strong> Fernando de Alva Cortés Ixtlilxochitl (ca. 1600 AD), translating ancient Toltec codices, recorded a timeline of an ancient society destroyed in a civil war — paralleling the scale of destruction in <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/6?lang=eng&id=p10-p15#p10" target="_blank" class="scripture-ref">Mormon 6:10–15</a>. He explicitly documented that over 3.2 million people were killed in the final battles.<sup><a href="#fn15">[15]</a></sup></li>
                             <li><strong>The Popol Vuh & The Cakchiquels:</strong> The sacred narrative of the Quiché Maya (Popol Vuh) details ancient ancestors multiplying into "numberless" multitudes. The Annals of the Cakchiquels (ca. 1571 AD) corroborates this, stating warriors were so numerous they could not be counted before dividing due to language confusion and war.<sup><a href="#fn16">[16]</a></sup></li>
                             <li><strong>Title of the Lords of Totonicapán:</strong> This 1554 indigenous Quiché Maya document explicitly states in its opening pages that their ancestors came from the other side of the sea and were descendants of the tribes of Israel.<sup><a href="#fn20">[20]</a></sup></li>
                         </ul>
@@ -1569,22 +1913,27 @@
                         A migration synthesis proposing a Mesoamerican demographic and architectural core, connected via documented continental trade routes to a final societal collapse in the North American Great Lakes region.
                     </p>
 
-                    <div class="map-wrapper reveal delay-2">
-                        <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-                            <!-- America Continent Flow -->
-                            <path d="M 100 400 Q 200 300 300 350 Q 400 250 600 100 M 300 350 Q 400 400 500 350" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
-                            
-                            <!-- Migration Line (Mesoamerica to NY) -->
-                            <path class="map-path" d="M 250 350 Q 300 250 450 150 Q 500 120 550 80" fill="none" stroke="var(--accent-gold)" stroke-width="3" />
-                            
-                            <circle cx="250" cy="350" r="5" fill="var(--accent-gold)"/>
-                            <text x="265" y="360" class="map-label">Mesoamerican Core</text>
-
-                            <circle cx="450" cy="150" r="5" fill="var(--accent-gold)"/>
-                            <text x="465" y="155" class="map-label">Mississippi/Hopewell Corridor</text>
-
-                            <circle cx="550" cy="80" r="6" fill="#fff"/>
-                            <text x="565" y="85" class="map-label" style="fill:#fff; font-weight:bold;">Cumorah (Final Collapse)</text>
+                    <div class="map-wrapper map-wrapper--corridor reveal delay-2">
+                        <!-- Migration corridor — zoomed Mesoamerica to NY -->
+                        <svg class="map-svg" viewBox="100 0 280 480" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <linearGradient id="corridorLand" x1="0.5" y1="1" x2="0.5" y2="0"><stop offset="0%" stop-color="rgba(207,168,97,0.08)"/><stop offset="50%" stop-color="rgba(138,171,110,0.05)"/><stop offset="100%" stop-color="rgba(90,158,143,0.04)"/></linearGradient>
+                            </defs>
+                            <rect fill="rgba(30,50,70,0.25)" x="100" y="0" width="280" height="480"/>
+                            <!-- Corridor landmass: Mesoamerica (bottom) → Great Lakes/NY (top) -->
+                            <path class="map-coast" fill="url(#corridorLand)" d="M 240 38 Q 290 32 330 55 Q 355 85 345 125 Q 330 165 305 195 Q 275 225 255 255 Q 240 285 235 315 Q 228 350 220 385 Q 205 420 185 440 Q 165 458 145 450 Q 125 430 130 395 Q 140 355 160 320 Q 180 285 195 250 Q 210 210 220 175 Q 228 135 235 95 Q 238 65 240 38 Z"/>
+                            <!-- Mississippi/Ohio corridor hint -->
+                            <path d="M 220 420 Q 235 340 250 260 Q 265 190 285 120 Q 300 80 320 55" fill="none" stroke="rgba(90,158,143,0.3)" stroke-width="3" stroke-dasharray="6 5"/>
+                            <!-- Migration path -->
+                            <path class="map-path" d="M 210 445 Q 225 380 240 320 Q 255 260 270 200 Q 288 140 310 90 Q 330 60 355 48" fill="none" stroke="var(--accent-gold)" stroke-width="4"/>
+                            <circle cx="210" cy="445" r="9" fill="var(--accent-gold)"/>
+                            <text x="155" y="455" class="map-label" style="font-size:11px;">Mesoamerican Core</text>
+                            <circle cx="255" cy="280" r="7" fill="var(--accent-sage-light)"/>
+                            <text x="195" y="295" class="map-label" style="fill:var(--accent-sage-light);font-size:11px;">Hopewell Corridor</text>
+                            <circle cx="355" cy="48" r="10" fill="#fff"/>
+                            <text x="285" y="42" class="map-label" style="fill:#fff;font-weight:bold;">Cumorah (NY)</text>
+                            <text class="map-water-label" x="115" y="470" font-size="9" opacity="0.6">Gulf</text>
+                            <text class="map-compass" x="355" y="18">N</text>
                         </svg>
                     </div>
 
@@ -1601,7 +1950,7 @@
                     <div class="info-block reveal">
                         <h3>Synchronized Timeline Collapse</h3>
                         <ul class="info-list">
-                            <li><strong>The 400 AD Event:</strong> Carbon dating confirms a simultaneous phenomenon. Right around 400 AD, the Hopewell continental trade network inexplicably collapsed, and populations in the North began building hilltop palisades to defend against severe warfare. This perfectly aligns with the timeline of the final Nephite destruction and their northward flight.<sup><a href="#fn23">[23]</a></sup></li>
+                            <li><strong>The 400 AD Event:</strong> Carbon dating confirms a simultaneous phenomenon. Right around 400 AD, the Hopewell continental trade network inexplicably collapsed, and populations in the North began building hilltop palisades to defend against severe warfare — aligning with the final Nephite destruction and northward flight described in <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/6?lang=eng" target="_blank" class="scripture-ref">Mormon 6</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/4-ne/1?lang=eng&id=p40-p46#p40" target="_blank" class="scripture-ref">4 Nephi 1:40–46</a>.<sup><a href="#fn23">[23]</a></sup></li>
                             <li><strong>Continental Material Exchange:</strong> Obsidian sourcing, marine shell gorgets, copper artifacts, and mica sheets recovered at Hopewell sites prove raw materials traveled thousands of miles — the physical infrastructure required for a northward retreat from a Mesoamerican core.<sup><a href="#fn40">[40]</a></sup><sup><a href="#fn24">[24]</a></sup></li>
                         </ul>
                     </div>
@@ -1641,6 +1990,41 @@
                         Deductive modeling using radiocarbon aggregation, genetic bottleneck analysis, and carbon-dated archaeological timelines to construct a factual picture of ancient American populations.
                     </p>
 
+                    <div class="visual-timeline reveal delay-2">
+                        <div class="timeline-track">
+                            <div class="timeline-marker" style="left: 5%;">
+                                <div class="dot" style="background:var(--accent-teal);"></div>
+                                <span class="year">2500 BC</span>
+                                <span class="event">Olmec &amp; Adena rise</span>
+                            </div>
+                            <div class="timeline-marker" style="left: 22%;">
+                                <div class="dot"></div>
+                                <span class="year">600 BC</span>
+                                <span class="event">Lehi departs; Nephites begin</span>
+                            </div>
+                            <div class="timeline-marker" style="left: 38%;">
+                                <div class="dot" style="background:var(--accent-sage-light);"></div>
+                                <span class="year">400 BC</span>
+                                <span class="event">Jaredite collapse; Olmec/Adena end</span>
+                            </div>
+                            <div class="timeline-marker" style="left: 55%;">
+                                <div class="dot" style="background:#fff;box-shadow:0 0 12px rgba(255,255,255,0.3);"></div>
+                                <span class="year">34 AD</span>
+                                <span class="event">Christ's visitation; cataclysm</span>
+                            </div>
+                            <div class="timeline-marker" style="left: 72%;">
+                                <div class="dot" style="background:var(--accent-connections);"></div>
+                                <span class="year">400 AD</span>
+                                <span class="event">Hopewell collapse; Cumorah</span>
+                            </div>
+                            <div class="timeline-marker" style="left: 92%;">
+                                <div class="dot" style="background:var(--accent-sage);"></div>
+                                <span class="year">1150 AD</span>
+                                <span class="event">NA population peak</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="grid-2">
                         <div class="info-block reveal delay-2">
                             <h3>Population Modeling</h3>
@@ -1652,7 +2036,7 @@
                         <div class="info-block reveal delay-3">
                             <h3>The Archaeological Timeline</h3>
                             <ul class="info-list">
-                                <li><strong>2500 BC – 400 BC:</strong> The Olmec (Mesoamerica) and Adena (North America) emerge as the first massive civilization builders, possessing complex systems before suddenly collapsing around 400 BC (paralleling the Jaredites).</li>
+                                <li><strong>2500 BC – 400 BC:</strong> The Olmec (Mesoamerica) and Adena (North America) emerge as the first massive civilization builders, possessing complex systems before suddenly collapsing around 400 BC (paralleling the Jaredite annihilation in <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/15?lang=eng" target="_blank" class="scripture-ref">Ether 15</a>).</li>
                                 <li><strong>600 BC – 300 AD:</strong> The Maya populations explode into the millions using structural cement, while the Hopewell culture builds a unified, peaceful trade network spanning the continent (paralleling the Nephite Golden Age).</li>
                                 <li><strong>300 AD – 400 AD:</strong> Carbon dating shows the Hopewell trade network inexplicably ceases right around 400 AD, fracturing into severe, continent-wide warfare (paralleling the Cumorah collapse).<sup><a href="#fn23">[23]</a></sup></li>
                             </ul>
@@ -1767,6 +2151,58 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="synthesis-cards" aria-label="Data synthesis mobile view">
+                        <div class="synthesis-card">
+                            <h4>Population in the Millions</h4>
+                            <dl>
+                                <dt>North America</dt><dd>Does Not Match (Hopewell network; no urban-scale density)</dd>
+                                <dt>Mesoamerica</dt><dd>Matches (Massive urban centers)</dd>
+                                <dt>Synthesis</dt><dd>Matches (Mesoamerican Core)</dd>
+                            </dl>
+                        </div>
+                        <div class="synthesis-card">
+                            <h4>Old World Trail (Nahom / Bountiful)</h4>
+                            <dl>
+                                <dt>North America</dt><dd>N/A (Arabian)</dd>
+                                <dt>Mesoamerica</dt><dd>N/A (Arabian)</dd>
+                                <dt>Synthesis</dt><dd>Matches (Inscribed NHM)</dd>
+                            </dl>
+                        </div>
+                        <div class="synthesis-card">
+                            <h4>Hebraisms &amp; Chiasmus</h4>
+                            <dl>
+                                <dt>North America</dt><dd>N/A (Textual)</dd>
+                                <dt>Mesoamerica</dt><dd>N/A (Textual)</dd>
+                                <dt>Synthesis</dt><dd>Matches (Internal forensics)</dd>
+                            </dl>
+                        </div>
+                        <div class="synthesis-card">
+                            <h4>Continental Trade Network</h4>
+                            <dl>
+                                <dt>North America</dt><dd>Matches (Hopewell Sphere)</dd>
+                                <dt>Mesoamerica</dt><dd>Matches (Obsidian routes)</dd>
+                                <dt>Synthesis</dt><dd>Matches (Corridor)</dd>
+                            </dl>
+                        </div>
+                        <div class="synthesis-card">
+                            <h4>Defensive Earthworks</h4>
+                            <dl>
+                                <dt>North America</dt><dd>Matches (Hopewell culture)</dd>
+                                <dt>Mesoamerica</dt><dd>Matches (Maya defensive moats)</dd>
+                                <dt>Synthesis</dt><dd>Matches Both</dd>
+                            </dl>
+                        </div>
+                        <div class="synthesis-card">
+                            <h4>Narrow Neck Geography</h4>
+                            <dl>
+                                <dt>North America</dt><dd>Partial (Great Lakes isthmus)</dd>
+                                <dt>Mesoamerica</dt><dd>Matches (Tehuantepec)</dd>
+                                <dt>Synthesis</dt><dd>Matches (Mesoamerican model)</dd>
+                            </dl>
+                        </div>
+                        <p style="text-align:center;font-size:0.85rem;color:var(--text-muted);font-style:italic;">Full comparison table available on desktop view.</p>
+                    </div>
                     
                     <div class="reveal" style="margin-top: 4.5rem; display: flex; justify-content: center;">
                         <a href="additional.html" class="book-link btn-connections" title="Explore Ancient American Connections" style="max-width: 580px;">
@@ -1878,6 +2314,8 @@
                     <li id="fn48">Perego, U. A., et al. (2016). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4975806/" target="_blank" rel="noopener noreferrer">"Mitochondrial DNA haplogroup X and the peopling of the Americas."</a> Reviews current consensus on X2a origins via Beringian migration routes.</li>
                     <li id="fn49">Sorenson, J. L. (1992). <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1044&context=mi" target="_blank" rel="noopener noreferrer">"When Lehi's Party Arrived in the Land, Did They Find Others There?"</a> Discusses semantic loanwords and species identification in translated scripture.</li>
                     <li id="fn50">Hosler, D. (1994). <a href="https://www.britannica.com/science/meteoric-iron" target="_blank" rel="noopener noreferrer"><em>The Sounds and Colors of Power</em></a>. Documents pre-Columbian metallurgy including copper alloys and meteoric iron working in Mesoamerica.</li>
+                    <li id="fn51">Eyewitness accounts of the translation process are collected in <a href="https://www.josephsmithpapers.org/topic/scribes-and-translation" target="_blank" rel="noopener noreferrer">Joseph Smith Papers: Scribes and Translation</a>. Emma Smith testified Joseph dictated without notes or reference materials.</li>
+                    <li id="fn52">The <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/witnesses?lang=eng" target="_blank" rel="noopener noreferrer">Testimony of the Three and Eight Witnesses</a> was published in every edition of the Book of Mormon since 1830.</li>
                 </ol>
             </div>
         </section>
@@ -1971,6 +2409,24 @@
             const shareBtn = document.getElementById('share-action');
             const shareText = document.getElementById('share-text');
             
+            // Mobile nav toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    const isOpen = navMenu.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                });
+                navMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
             if(shareBtn) {
                 shareBtn.addEventListener('click', async (e) => {
                     e.preventDefault();
