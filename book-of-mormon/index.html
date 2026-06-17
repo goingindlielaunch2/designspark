@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracing the Ancient Journey: Book of Mormon Geography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #070708;
+            --bg-panel: rgba(15, 15, 18, 0.85);
+            --text-main: #dcdcdc;
+            --text-muted: #8c8c94;
+            --accent-gold: #cfa861;
+            --accent-gold-glow: rgba(207, 168, 97, 0.15);
+            --border-faint: rgba(207, 168, 97, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+            scroll-padding-top: 70px; /* Offset for fixed navigation */
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-color: var(--bg-base);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation Bar */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(7, 7, 8, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-faint);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-item a:hover {
+            color: var(--accent-gold);
+            text-shadow: 0 0 8px var(--accent-gold-glow);
+        }
+
+        .nav-item.active a {
+            color: var(--accent-gold);
+            text-shadow: 0 0 8px var(--accent-gold-glow);
+            font-weight: bold;
+        }
+
+        .nav-item.active a::after {
+            content: ' ♦';
+            color: var(--accent-gold);
+            font-size: 0.6rem;
+            margin-left: 2px;
+        }
+
+        .nav-book-btn {
+            position: absolute;
+            left: 3rem;
+            top: 5px;
+            z-index: 1010;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: top left;
+        }
+
+        .nav-book-btn:hover {
+            transform: translateY(2px) scale(1.08);
+            filter: drop-shadow(0 0 15px rgba(207, 168, 97, 0.4));
+        }
+
+        .share-icon {
+            width: 14px;
+            height: 14px;
+            margin-right: 4px;
+            vertical-align: text-bottom;
+        }
+
+        .nav-item.share-link a {
+            color: var(--accent-gold);
+        }
+
+        /* Cinematic Backgrounds & Parallax */
+        .parallax-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .parallax-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        /* Atmospheric Overlays */
+        .parallax-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(7,7,8,1) 0%, rgba(7,7,8,0.4) 20%, rgba(7,7,8,0.4) 80%, rgba(7,7,8,1) 100%);
+            z-index: 1;
+        }
+
+        .parallax-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            box-shadow: inset 0 0 200px rgba(0,0,0,0.9);
+            z-index: 2;
+        }
+
+        #hero {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" stop-color="%231a1a24"/><stop offset="100%" stop-color="%23050508"/></radialGradient></defs><rect width="1000" height="1000" fill="url(%23g)"/><circle cx="500" cy="500" r="300" fill="none" stroke="%23cfa861" stroke-width="1" stroke-dasharray="10 20" opacity="0.3"/><path d="M500 100 L500 900 M100 500 L900 500" stroke="%23cfa861" stroke-width="0.5" opacity="0.2"/></svg>');
+            background-size: cover;
+        }
+
+        #north-america {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%230b1215"/><stop offset="100%" stop-color="%23050708"/></linearGradient></defs><rect width="1000" height="1000" fill="url(%23g2)"/><path d="M0 800 Q 250 700 500 850 T 1000 750 L 1000 1000 L 0 1000 Z" fill="%23030405" opacity="0.8"/><path d="M0 700 Q 300 800 600 650 T 1000 700 L 1000 1000 L 0 1000 Z" fill="%23020202" opacity="0.6"/></svg>');
+        }
+
+        #mesoamerica {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000"><defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%23101812"/><stop offset="100%" stop-color="%23050706"/></linearGradient></defs><rect width="1000" height="1000" fill="url(%23g3)"/><path d="M400 800 L450 700 L550 700 L600 800 Z" fill="%23040605" opacity="0.9"/><path d="M300 1000 L400 800 L600 800 L700 1000 Z" fill="%23020302" opacity="0.8"/></svg>');
+        }
+
+        /* Content Containers */
+        .content-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .glass-panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-faint);
+            padding: 4rem;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Hero Specifics */
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        /* Hero Call to Action */
+        .hero-cta {
+            margin-top: 2.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-link {
+            display: flex;
+            align-items: center;
+            background: rgba(15, 15, 18, 0.5);
+            border: 1px solid var(--border-faint);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .book-link:hover {
+            background: rgba(25, 25, 30, 0.8);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(207, 168, 97, 0.15);
+        }
+
+        .book-link.btn-primary {
+            background: rgba(207, 168, 97, 0.08);
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(207, 168, 97, 0.05);
+        }
+
+        .book-link.btn-primary:hover {
+            background: rgba(207, 168, 97, 0.18);
+            border-color: #ffffff;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(207, 168, 97, 0.35);
+        }
+
+        .book-link.btn-secondary {
+            background: rgba(15, 15, 18, 0.4);
+            border: 1px solid var(--border-faint);
+            opacity: 0.8;
+            box-shadow: none;
+        }
+
+        .book-link.btn-secondary:hover {
+            background: rgba(25, 25, 30, 0.7);
+            border-color: rgba(207, 168, 97, 0.4);
+            opacity: 1;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(207, 168, 97, 0.1);
+        }
+
+        .book-cover {
+            background: #0a0c10;
+            border: 1px solid rgba(207, 168, 97, 0.6);
+            width: 42px;
+            height: 60px;
+            border-radius: 2px 5px 5px 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1.25rem;
+            position: relative;
+            box-shadow: inset -4px 0 8px rgba(0,0,0,0.8), 3px 3px 6px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 0;
+            bottom: 0;
+            width: 1.5px;
+            background: rgba(255,255,255,0.15);
+            z-index: 2;
+        }
+        
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            top: 5px; bottom: 5px; left: 5px; right: 5px;
+            border: 1px solid rgba(207, 168, 97, 0.2);
+            border-radius: 1px 3px 3px 1px;
+            z-index: 1;
+        }
+
+        .book-title-mini {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 0.35rem;
+            text-align: center;
+            line-height: 1.2;
+            padding: 0 6px;
+            z-index: 3;
+        }
+
+        .cta-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .cta-main {
+            font-family: 'Cinzel', serif;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.1rem;
+        }
+
+        .cta-sub {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        /* Hero Quotes */
+        .hero-quotes {
+            margin-top: 3.5rem;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr;
+            gap: 3rem;
+            border-top: 1px solid rgba(207, 168, 97, 0.2);
+            padding-top: 2.5rem;
+        }
+
+        .scripture-quote {
+            font-size: 0.9rem;
+            color: #b4b4bd;
+            font-style: italic;
+            line-height: 1.8;
+            text-align: left;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            border-left: 1px solid rgba(207, 168, 97, 0.3);
+            padding-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .scripture-quote cite {
+            display: block;
+            margin-top: 1.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-style: normal;
+            letter-spacing: 0.1em;
+        }
+
+        .scripture-quote cite a,
+        cite a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .scripture-quote cite a:hover,
+        cite a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+        }
+
+        /* Typography & Layout within Panels */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        #hero {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><defs><radialGradient id="g" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" stop-color="%231a1a24"/><stop offset="100%" stop-color="%23050508"/></radialGradient></defs><rect width="1000" height="1000" fill="url(%23g)"/><circle cx="500" cy="500" r="300" fill="none" stroke="%23cfa861" stroke-width="1" stroke-dasharray="10 20" opacity="0.3"/><path d="M500 100 L500 900 M100 500 L900 500" stroke="%23cfa861" stroke-width="0.5" opacity="0.2"/></svg>');
+            background-size: cover;
+            padding-bottom: 12rem;
+        }
+
+        #north-america {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="%230b1215"/><stop offset="100%" stop-color="%23050708"/></linearGradient></defs><rect width="1000" height="1000" fill="url(%23g2)"/><path d="M0 800 Q 250 700 500 850 T 1000 750 L 1000 1000 L 0 1000 Z" fill="%23030405" opacity="0.8"/><path d="M0 700 Q 300 800 600 650 T 1000 700 L 1000 1000 L 0 1000 Z" fill="%23020202" opacity="0.6"/></svg>');
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-style: italic;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-block h3 {
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--border-faint);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .info-list li::before {
+            content: '♦';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+
+        .info-list strong {
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        sup a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.75rem;
+            padding: 0 3px;
+            transition: text-shadow 0.3s ease;
+        }
+
+        sup a:hover {
+            text-shadow: 0 0 8px var(--accent-gold);
+        }
+
+        /* Table Design */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Lora', serif;
+        }
+
+        th, td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-faint);
+        }
+
+        th {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(207, 168, 97, 0.05);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        td {
+            color: var(--text-main);
+        }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Footnotes */
+        .footnotes-section {
+            background-color: #030304;
+            padding: 6rem 2rem;
+            border-top: 1px solid #1a1a24;
+        }
+
+        .footnotes-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footnotes-container h3 {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .footnotes-list {
+            padding-left: 0;
+            list-style-type: none;
+            counter-reset: fn-counter;
+            column-count: 2;
+            column-gap: 3rem;
+        }
+
+        .footnotes-list li {
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding-left: 2rem;
+            break-inside: avoid;
+        }
+
+        .footnotes-list li::before {
+            counter-increment: fn-counter;
+            content: "[" counter(fn-counter) "]";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+        }
+
+        .footnotes-list li:target {
+            color: var(--text-main);
+            animation: highlightFn 2s ease-out;
+        }
+
+        .footnotes-list li a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--border-faint);
+            transition: all 0.3s ease;
+        }
+
+        .footnotes-list li a:hover {
+            color: #ffffff;
+            border-bottom-color: var(--accent-gold);
+            text-shadow: 0 0 8px var(--accent-gold-glow);
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
+        }
+
+        @keyframes highlightFn {
+            0% { background-color: var(--accent-gold-glow); }
+            100% { background-color: transparent; }
+        }
+
+        /* Map Styles & Path Animation */
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background: rgba(5, 5, 8, 0.6);
+            border: 1px solid var(--border-faint);
+            border-radius: 8px;
+            margin: 0 0 3rem 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .map-svg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .map-path {
+            stroke-dasharray: 12;
+            animation: dashMove 1.5s linear infinite reverse;
+        }
+
+        @keyframes dashMove {
+            to { stroke-dashoffset: 24; }
+        }
+
+        .map-label {
+            fill: var(--text-main);
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            text-shadow: 0 2px 8px rgba(0,0,0,1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                        transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+        .delay-3 { transition-delay: 0.6s; }
+
+        /* Footer & Disclaimer */
+        .site-footer {
+            background-color: #030304;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid #1a1a24;
+            position: relative;
+            z-index: 20;
+        }
+
+        .disclaimer-text {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 0.75rem;
+            color: rgba(140, 140, 148, 0.6);
+            line-height: 1.7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .site-nav { padding: 0.75rem 1rem; }
+            .nav-list { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+            .nav-item a { font-size: 0.7rem; }
+            
+            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-quotes { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-title { font-size: 3rem; }
+            .glass-panel { padding: 2.5rem 1.5rem; }
+            .footnotes-list { column-count: 1; }
+
+            .nav-book-btn {
+                left: 1rem;
+                top: 8px;
+                transform: scale(0.75);
+            }
+            .nav-book-btn:hover {
+                transform: translateY(1px) scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Navigation -->
+    <nav class="site-nav">
+        <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng" target="_blank" class="nav-book-btn" title="Read the Book of Mormon Free Online">
+            <div class="book-cover">
+                <span class="book-title-mini">THE<br>BOOK OF<br>MORMON</span>
+            </div>
+        </a>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#visitation" title="Imprint">Imprint</a>
+            </li>
+            <li class="nav-item">
+                <a href="#preamble" title="Prologue">Prologue</a>
+            </li>
+            <li class="nav-item">
+                <a href="#north-america" title="Heartland">Heartland</a>
+            </li>
+            <li class="nav-item">
+                <a href="#mesoamerica" title="Mesoamerica">Mesoamerica</a>
+            </li>
+            <li class="nav-item">
+                <a href="#combined-synthesis" title="Combined">Combined</a>
+            </li>
+            <li class="nav-item">
+                <a href="#timeline" title="Timeline">Timeline</a>
+            </li>
+            <li class="nav-item">
+                <a href="#synthesis" title="Synthesis">Synthesis</a>
+            </li>
+            <li class="nav-item">
+                <a href="additional.html" title="Ancient Connections">Connections</a>
+            </li>
+            <li class="nav-item share-link">
+                <a href="#" id="share-action" title="Share this page">
+                    <svg class="share-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                    <span id="share-text">Share</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="parallax-wrapper">
+        
+        <!-- HERO SECTION -->
+        <section class="parallax-section" id="hero">
+            <div class="content-container hero-content">
+                <span class="hero-subtitle reveal">The Book of Mormon<br><span style="font-size: 0.85rem; letter-spacing: 0.15em; opacity: 0.9;">Another Testament of Jesus Christ</span></span>
+                <h1 class="hero-title reveal delay-1">Tracing the<br>Ancient Journey</h1>
+                <p class="section-intro reveal delay-2" style="color: #e0e0e0; margin-bottom: 0;">
+                    A factual compilation of archaeological, linguistic, and historical data aligning with the 600 BC – 400 AD timeframe.
+                </p>
+                <div class="hero-cta reveal delay-3">
+                    <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm?lang=eng" target="_blank" class="book-link btn-primary" title="Read the Book of Mormon Free Online">
+                        <div class="book-cover">
+                            <span class="book-title-mini">THE<br>BOOK OF<br>MORMON</span>
+                        </div>
+                        <div class="cta-text">
+                            <span class="cta-main">Read it Free</span>
+                            <span class="cta-sub">Another Testament of Jesus Christ</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hero-quotes reveal delay-3">
+                    <blockquote class="scripture-quote">
+                        "Behold, I would exhort you that when ye shall read these things, if it be wisdom in God that ye should read them, that ye would remember how merciful the Lord hath been unto the children of men, from the creation of Adam even down until the time that ye shall receive these things, and ponder it in your hearts.<br><br>
+                        And when ye shall receive these things, I would exhort you that ye would ask God, the Eternal Father, in the name of Christ, if these things are not true; and if ye shall ask with a sincere heart, with real intent, having faith in Christ, he will manifest the truth of it unto you, by the power of the Holy Ghost.<br><br>
+                        And by the power of the Holy Ghost ye may know the truth of all things."
+                        <cite>— <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?lang=eng&id=p3-p5#p3" target="_blank">Moroni 10:3–5</a></cite>
+                    </blockquote>
+                    <blockquote class="scripture-quote">
+                        "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him."
+                        <cite>— <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/james/1?lang=eng&id=p5#p5" target="_blank">James 1:5</a></cite>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Discover</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- THE MESSIANIC IMPRINT SECTION -->
+        <section class="parallax-section" id="visitation" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'1000\'><defs><radialGradient id=\'g_visit\' cx=\'50%\' cy=\'30%\' r=\'70%\'><stop offset=\'0%\' stop-color=\'%231a1610\'/><stop offset=\'100%\' stop-color=\'%23050508\'/></radialGradient></defs><rect width=\'1000\' height=\'1000\' fill=\'url(%23g_visit)\'/><circle cx=\'500\' cy=\'300\' r=\'150\' fill=\'none\' stroke=\'%23cfa861\' stroke-width=\'0.5\' opacity=\'0.3\'/><circle cx=\'500\' cy=\'300\' r=\'300\' fill=\'none\' stroke=\'%23cfa861\' stroke-width=\'0.2\' stroke-dasharray=\'10 30\' opacity=\'0.2\'/><path d=\'M500 0 L500 600 M200 300 L800 300\' stroke=\'%23cfa861\' stroke-width=\'0.2\' opacity=\'0.3\'/></svg>');">
+            <div class="content-container">
+                
+                <!-- Scripture Quote (3 Nephi 11:10-11) -->
+                <div class="reveal" style="text-align: center; max-width: 850px; margin: 0 auto 4.5rem auto; padding: 0 1.5rem;">
+                    <blockquote style="font-family: 'Lora', serif; font-style: italic; font-size: 1.25rem; color: #ffffff; line-height: 1.8; text-shadow: 0 2px 10px rgba(0,0,0,0.85); border: none; padding: 0;">
+                        "Behold, I am Jesus Christ, whom the prophets testified shall come into the world. And behold, I am the light and the life of the world; and I have drunk out of that bitter cup which the Father hath given me, and have glorified the Father in taking upon me the sins of the world, in the which I have suffered the will of the Father in all things from the&nbsp;beginning."
+                    </blockquote>
+                    <cite style="display: block; margin-top: 1.25rem; font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--accent-gold); font-style: normal; letter-spacing: 0.15em; font-weight: 600;">
+                        — <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?lang=eng&id=p10-p11#p10" target="_blank">3 Nephi 11:10–11</a>
+                    </cite>
+                </div>
+
+                <div class="glass-panel">
+                    <h2 class="section-title reveal">The Messianic Imprint: Jesus Christ in the Americas</h2>
+                    <p class="section-intro reveal delay-1">
+                        A forensic examination of the 1st-century AD geological cataclysms and the subsequent, inexplicable era of continent-wide peace, correlated with indigenous oral histories of a descending deity.
+                    </p>
+
+                    <div class="grid-2">
+                        <div class="info-block reveal delay-2">
+                            <h3>Geological Forensics (34 AD)</h3>
+                            <ul class="info-list">
+                                <li><strong>The 3-Day Volcanic Darkness:</strong> The text describes a massive 1st-century cataclysm involving tectonic upheaval, cities buried/drowned, and a "thick vapor of darkness" that prevented fires from lighting for three days. Forensically, this is an exact, scientifically accurate description of a massive volcanic eruption and dense tephra (ash) cloud, which asphyxiates open flames and causes localized absolute darkness.<sup><a href="#fn29">[29]</a></sup></li>
+                                <li><strong>The Tectonic Zone:</strong> Mesoamerica sits directly on the "Ring of Fire," a highly volatile subduction zone capable of producing the exact simultaneous earthquake/volcanic events described in the text.</li>
+                            </ul>
+                        </div>
+                        <div class="info-block reveal delay-3">
+                            <h3>Cultural Anthropological Shift</h3>
+                            <ul class="info-list">
+                                <li><strong>The "Pax Hopewelliana":</strong> Immediately following the 1st century AD, the North American archaeological record shows a sudden, unprecedented shift. The construction of defensive fortifications ceases entirely, and a massive, unified era of peaceful trade erupts across the continent, perfectly mirroring the text's 200-year "Golden Age" following the visitation.<sup><a href="#fn30">[30]</a></sup></li>
+                                <li><strong>Mesoamerican Golden Age:</strong> Similarly, the Classic Maya and Teotihuacan cultures experience massive, stabilized growth and cultural unification beginning in the 1st and 2nd centuries AD.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-block reveal">
+                        <h3>Oral Histories of a Divine Teacher</h3>
+                        <ul class="info-list">
+                            <li><strong>Quetzalcoatl / Kukulcan:</strong> Spanish chroniclers (such as Bernardino de Sahagún) recorded pervasive Mesoamerican oral traditions of a bearded, fair-skinned deity who descended from the sky. This figure explicitly opposed human sacrifice, established laws of peace, taught advanced agricultural and civil principles, and promised to one day return.<sup><a href="#fn31">[31]</a></sup></li>
+                            <li><strong>The Healing Peacemaker:</strong> North American and Polynesian oral traditions share strikingly similar ancestral memories of a divine, peaceful healer who visited their ancestors, united warring factions, and established a higher moral law before departing.<sup><a href="#fn32">[32]</a></sup></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREAMBLE SECTION -->
+        <section class="parallax-section" id="preamble" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'1000\'><defs><linearGradient id=\'g_pre\' x1=\'0\' y1=\'0\' x2=\'1\' y2=\'1\'><stop offset=\'0%\' stop-color=\'%230a0805\'/><stop offset=\'100%\' stop-color=\'%23050403\'/></linearGradient></defs><rect width=\'1000\' height=\'1000\' fill=\'url(%23g_pre)\'/></svg>');">
+            <div class="content-container">
+                <div class="glass-panel">
+                    <h2 class="section-title reveal">Prologue: Lehi's Trail & Nahom</h2>
+                    <p class="section-intro reveal delay-1">
+                        Before the New World, the forensic trail begins in 600 BC along the ancient Frankincense route of the Arabian Peninsula.
+                    </p>
+
+                    <div class="map-wrapper reveal delay-2">
+                        <!-- Arabian Peninsula Journey Map -->
+                        <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+                            <!-- Abstract Coastlines: Red Sea & Arabian Sea -->
+                            <path d="M 50 0 Q 150 200 200 400 M 300 0 Q 300 200 450 350 Q 650 380 800 350" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
+                            
+                            <!-- Journey Path (Jerusalem -> Nahom -> Bountiful) -->
+                            <path class="map-path" d="M 200 50 Q 250 150 350 280 L 550 320" fill="none" stroke="var(--accent-gold)" stroke-width="3" />
+                            
+                            <!-- Location Markers -->
+                            <circle cx="200" cy="50" r="5" fill="var(--accent-gold)"/>
+                            <text x="215" y="55" class="map-label">Jerusalem</text>
+                            
+                            <circle cx="350" cy="280" r="6" fill="#fff"/>
+                            <text x="365" y="285" class="map-label" style="fill:#fff; font-weight:bold;">Nahom (NHM)</text>
+
+                            <circle cx="550" cy="320" r="5" fill="var(--accent-gold)"/>
+                            <text x="565" y="325" class="map-label">Bountiful (Oman)</text>
+                        </svg>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="info-block reveal delay-3">
+                            <h3>The Discovery of Nahom</h3>
+                            <ul class="info-list">
+                                <li><strong>The NHM Altars:</strong> In 1999, archaeologists excavating a temple in Marib, Yemen, unearthed altars inscribed with the tribal name "NHM" (Nihm). These date precisely to the 7th and 6th centuries BC.<sup><a href="#fn27">[27]</a></sup></li>
+                                <li><strong>The Directional Turn:</strong> The Book of Mormon explicitly states that at Nahom, the group turned to travel "nearly eastward." The NHM tribal region sits exactly where the ancient Frankincense trail turns strictly east to avoid the Empty Quarter desert.</li>
+                            </ul>
+                        </div>
+                        <div class="info-block reveal delay-3">
+                            <h3>The Coastal Anomaly</h3>
+                            <ul class="info-list">
+                                <li><strong>Bountiful (Wadi Sayq):</strong> Traveling east from Nahom leads to the Dhofar region of Oman. The text describes a coastal area featuring fruit, wild honey, fresh water, and ore for tools. Modern geographic surveys identify Khor Kharfot (Wadi Sayq) as the only location on the entire Arabian coast meeting all criteria.<sup><a href="#fn28">[28]</a></sup></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NORTH AMERICA SECTION -->
+        <section class="parallax-section" id="north-america">
+            <div class="content-container">
+                <div class="glass-panel">
+                    
+                    <!-- Connections Button -->
+                    <div class="reveal" style="display: flex; justify-content: center; margin-bottom: 3rem;">
+                        <a href="additional.html" class="book-link btn-secondary" title="Explore Ancient American Connections" style="max-width: 480px; width: 100%;">
+                            <div class="book-cover" style="background: #1c1510; border-color: rgba(176, 141, 74, 0.7); box-shadow: inset -4px 0 8px rgba(0,0,0,0.9), 3px 3px 6px rgba(0,0,0,0.6);">
+                                <i class="fas fa-scroll" style="color: var(--accent-gold); font-size: 1.2rem; z-index: 3;"></i>
+                            </div>
+                            <div class="cta-text">
+                                <span class="cta-main">Ancient Connections</span>
+                                <span class="cta-sub">Linguistic & Archaeological Fact Synthesis</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <h2 class="section-title reveal">North American Parallels</h2>
+                    <p class="section-intro reveal delay-1">
+                        The North American correlations provide the strongest matches regarding 18th-century documented ceremonies, linguistic epigraphy matching foundational translation artifacts, and Native American oral histories.
+                    </p>
+
+                    <div class="map-wrapper reveal delay-2">
+                        <svg class="map-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
+                            <!-- Great Lakes & Rivers Abstract -->
+                            <path d="M 300 50 Q 350 100 450 80 Q 550 50 600 100 M 450 80 Q 400 200 350 300 M 400 200 Q 500 250 650 300" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
+                            
+                            <!-- Hopewell Expansion Path -->
+                            <path class="map-path" d="M 350 300 Q 450 200 400 100" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
+                            <path class="map-path" d="M 400 100 Q 500 120 550 80" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
+                            
+                            <circle cx="400" cy="100" r="5" fill="var(--accent-gold)"/>
+                            <text x="415" y="105" class="map-label">Hopewell Core (Ohio)</text>
+
+                            <circle cx="350" cy="300" r="5" fill="var(--accent-gold)"/>
+                            <text x="200" y="295" class="map-label">Gulf Trade Routes</text>
+
+                            <circle cx="550" cy="80" r="5" fill="var(--accent-gold)"/>
+                            <text x="565" y="85" class="map-label">Cumorah (New York)</text>
+                        </svg>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="info-block reveal delay-2">
+                            <h3>Written Language & Epigraphy</h3>
+                            <ul class="info-list">
+                                <li><strong>Mi'kmaq Hieroglyphs:</strong> The Algonquian-speaking Mi'kmaq possessed a pre-Columbian writing system utilizing thousands of characters. Comparative epigraphy maps hundreds of these characters directly to Egyptian Hieratic script.<sup><a href="#fn1">[1]</a></sup></li>
+                                <li><strong>The "Caracters" Match:</strong> Dozens of characters transcribed by Joseph Smith from the gold plates in 1828 (the Anthon Transcript) are visually identical, stroke-for-stroke, to the Mi'kmaq hieroglyphic directory.<sup><a href="#fn2">[2]</a></sup></li>
+                                <li><strong>Inscribed Artifacts:</strong> The Bat Creek Stone (inscribed with Judean Paleo-Hebrew) was excavated from a sealed Hopewell-era mound during an official 1889 Smithsonian survey. The Newark Holy Stones (Block Hebrew) were similarly unearthed in 1860 in Ohio.<sup><a href="#fn3">[3]</a></sup></li>
+                            </ul>
+                        </div>
+                        <div class="info-block reveal delay-3">
+                            <h3>Spoken Language & Ceremonies</h3>
+                            <ul class="info-list">
+                                <li><strong>Sacred Chants & Vocabulary:</strong> In 1775, James Adair documented Southeastern tribes utilizing chants of <em>Yo-He-Wah</em> (paralleling the Tetragrammaton) and <em>Hal-le-lu-wah</em> during ceremonies where an Ark was carried. He also noted the use of the word <em>Shilu</em> to denote a sacred, peaceful figure, directly paralleling the Hebrew <em>Shiloh</em>.<sup><a href="#fn4">[4]</a></sup></li>
+                                <li><strong>Grammatical Structure:</strong> Like ancient Hebrew, many Algonquian languages utilize pronominal affixes—attaching specific prefixes and suffixes directly to verb roots to indicate action, mirroring Semitic syntax.<sup><a href="#fn5">[5]</a></sup></li>
+                                <li><strong>Mosaic Law Parallels:</strong> Early ethnographic records documented these tribes maintaining strict laws of purity, designated Cities of Refuge, and a Green Corn Festival structurally identical to the Hebrew Feast of Tabernacles (Sukkot).<sup><a href="#fn6">[6]</a></sup></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-block reveal">
+                        <h3>Oral Histories & Genetics</h3>
+                        <ul class="info-list">
+                            <li><strong>The Talligewi War:</strong> Lenape oral traditions recount a massive, continent-wide war against an ancient, heavily populated civilization (the Talligewi) who possessed "many large towns" along the rivers.<sup><a href="#fn7">[7]</a></sup></li>
+                            <li><strong>Iroquois Traditions of Earthworks:</strong> Early 19th-century accounts (recorded by DeWitt Clinton) detail Iroquois traditions stating the thousands of ancient earthworks were built by highly civilized, numerous ancestors to defend against a continent-wide civil war ending in annihilation.<sup><a href="#fn17">[17]</a></sup></li>
+                            <li><strong>Early Pioneer Journals:</strong> During the 1834 Zion's Camp march, Joseph Smith recorded finding a mound in Illinois, identifying the remains as "Zelph," a warrior under a prophet named Onandagus, and described wandering over the "plains of the Nephites."<sup><a href="#fn18">[18]</a></sup></li>
+                            <li><strong>Genetics (Haplogroup X2a):</strong> Geneticists have identified Haplogroup X2a, a distinct mitochondrial DNA lineage found in high concentrations within the Great Lakes region/Algonquian tribes, which traces back to populations in the Middle East.<sup><a href="#fn8">[8]</a></sup></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MESOAMERICA SECTION -->
+        <section class="parallax-section" id="mesoamerica">
+            <div class="content-container">
+                <div class="glass-panel">
+                    <h2 class="section-title reveal">Mesoamerican Parallels</h2>
+                    <p class="section-intro reveal delay-1">
+                        The Mesoamerican correlations feature the strongest matches regarding the physical scale, population density, advanced architectural requirements of the text, and mathematically predictable linguistic creolization.
+                    </p>
+
+                    <div class="map-wrapper reveal delay-2">
+                        <svg class="map-svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
+                            <!-- Mesoamerica Coastline -->
+                            <path d="M 0 50 Q 200 100 300 250 Q 500 280 800 200 M 0 150 Q 150 200 250 300 M 500 0 Q 450 150 600 250 Q 700 300 800 300" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
+                            
+                            <!-- Trade/Migration Routes -->
+                            <path class="map-path" d="M 250 180 Q 350 220 450 180 L 550 200 M 350 220 L 380 280" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
+                            
+                            <circle cx="250" cy="180" r="5" fill="var(--accent-gold)"/>
+                            <text x="260" y="175" class="map-label">Teotihuacan</text>
+
+                            <circle cx="450" cy="180" r="5" fill="var(--accent-gold)"/>
+                            <text x="460" y="175" class="map-label">Isthmus (Narrow Neck)</text>
+                            
+                            <circle cx="550" cy="200" r="5" fill="var(--accent-gold)"/>
+                            <text x="560" y="195" class="map-label">Maya Core (Tikal/Becan)</text>
+                        </svg>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="info-block reveal delay-2">
+                            <h3>Archaeology & Scale</h3>
+                            <ul class="info-list">
+                                <li><strong>Population Density:</strong> Mesoamerican models (such as agricultural carrying capacity and radiocarbon aggregation) confirm the existence of millions of inhabitants residing in dense, localized urban centers between 600 BC and 400 AD.<sup><a href="#fn9">[9]</a></sup></li>
+                                <li><strong>Calendars & Astronomy:</strong> Mesoamerican civilizations used a highly accurate 360-day calendar combined with five intercalary "dead" days, a structure identical to the ancient Egyptian calendar system.<sup><a href="#fn19">[19]</a></sup></li>
+                                <li><strong>Structural Cement:</strong> Widespread use of high-quality, lime-based structural cement began in cities like Teotihuacan and various Maya centers around the 1st century BC, precisely mirroring textual timelines.<sup><a href="#fn10">[10]</a></sup></li>
+                                <li><strong>Defensive Fortifications:</strong> Excavations reveal massive earthworks, timber palisades, and defensive moats surrounding Preclassic cities. Becan, for example, features a 1.2-mile moat and earthen wall.<sup><a href="#fn11">[11]</a></sup></li>
+                            </ul>
+                        </div>
+                        <div class="info-block reveal delay-3">
+                            <h3>Linguistics & Epigraphy</h3>
+                            <ul class="info-list">
+                                <li><strong>Uto-Aztecan Cognates:</strong> Linguist Brian Stubbs compiled over 1,500 direct cognates between the Uto-Aztecan language family and Semitic/Egyptian roots. Examples include Hebrew <em>baraq</em> (lightning) matching Uto-Aztecan <em>berok</em>, and Hebrew <em>maya</em> (water) matching <em>pa-maya</em>.<sup><a href="#fn12">[12]</a></sup></li>
+                                <li><strong>Predictable Sound Shifts:</strong> Stubbs demonstrated that Uto-Aztecan spoken language follows mathematically consistent consonant shifts (e.g., 'b' to 'v') from original Hebrew roots, proving a systemic linguistic inheritance.<sup><a href="#fn13">[13]</a></sup></li>
+                                <li><strong>Phonetic Script:</strong> The Maya possessed a fully developed, phonetic hieroglyphic writing system capable of complex historical, genealogical, and religious record-keeping.<sup><a href="#fn14">[14]</a></sup></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-block reveal">
+                        <h3>Oral Histories</h3>
+                        <ul class="info-list">
+                            <li><strong>Ixtlilxochitl's Transcriptions:</strong> Fernando de Alva Cortés Ixtlilxochitl (ca. 1600 AD), translating ancient Toltec codices, recorded a timeline of an ancient society destroyed in a civil war. He explicitly documented that over 3.2 million people were killed in the final battles.<sup><a href="#fn15">[15]</a></sup></li>
+                            <li><strong>The Popol Vuh & The Cakchiquels:</strong> The sacred narrative of the Quiché Maya (Popol Vuh) details ancient ancestors multiplying into "numberless" multitudes. The Annals of the Cakchiquels (ca. 1571 AD) corroborates this, stating warriors were so numerous they could not be counted before dividing due to language confusion and war.<sup><a href="#fn16">[16]</a></sup></li>
+                            <li><strong>Title of the Lords of Totonicapán:</strong> This 1554 indigenous Quiché Maya document explicitly states in its opening pages that their ancestors came from the other side of the sea and were descendants of the tribes of Israel.<sup><a href="#fn20">[20]</a></sup></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMBINED SYNTHESIS SECTION -->
+        <section class="parallax-section" id="combined-synthesis" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'1000\'><defs><linearGradient id=\'g5\' x1=\'0\' y1=\'0\' x2=\'1\' y2=\'1\'><stop offset=\'0%\' stop-color=\'%2307070a\'/><stop offset=\'100%\' stop-color=\'%23111116\'/></linearGradient></defs><rect width=\'1000\' height=\'1000\' fill=\'url(%23g5)\'/><path d=\'M200 800 Q 500 200 800 800\' fill=\'none\' stroke=\'%23cfa861\' stroke-width=\'1\' stroke-dasharray=\'4 12\' opacity=\'0.25\'/><path d=\'M300 900 Q 500 400 700 900\' fill=\'none\' stroke=\'%23cfa861\' stroke-width=\'0.5\' stroke-dasharray=\'2 8\' opacity=\'0.15\'/><circle cx=\'200\' cy=\'800\' r=\'4\' fill=\'%23cfa861\' opacity=\'0.4\'/><circle cx=\'800\' cy=\'800\' r=\'4\' fill=\'%23cfa861\' opacity=\'0.4\'/><circle cx=\'500\' cy=\'200\' r=\'4\' fill=\'%23cfa861\' opacity=\'0.4\'/></svg>');">
+            <div class="content-container">
+                <div class="glass-panel">
+                    <h2 class="section-title reveal">The Combined Synthesis</h2>
+                    <p class="section-intro reveal delay-1">
+                        A migration synthesis proposing a Mesoamerican demographic and architectural core, connected via documented continental trade routes to a final societal collapse in the North American Great Lakes region.
+                    </p>
+
+                    <div class="map-wrapper reveal delay-2">
+                        <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+                            <!-- America Continent Flow -->
+                            <path d="M 100 400 Q 200 300 300 350 Q 400 250 600 100 M 300 350 Q 400 400 500 350" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
+                            
+                            <!-- Migration Line (Mesoamerica to NY) -->
+                            <path class="map-path" d="M 250 350 Q 300 250 450 150 Q 500 120 550 80" fill="none" stroke="var(--accent-gold)" stroke-width="3" />
+                            
+                            <circle cx="250" cy="350" r="5" fill="var(--accent-gold)"/>
+                            <text x="265" y="360" class="map-label">Mesoamerican Core</text>
+
+                            <circle cx="450" cy="150" r="5" fill="var(--accent-gold)"/>
+                            <text x="465" y="155" class="map-label">Mississippi/Hopewell Corridor</text>
+
+                            <circle cx="550" cy="80" r="6" fill="#fff"/>
+                            <text x="565" y="85" class="map-label" style="fill:#fff; font-weight:bold;">Cumorah (Final Collapse)</text>
+                        </svg>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="info-block reveal delay-3">
+                            <h3>The Two-Cumorah Resolution</h3>
+                            <ul class="info-list">
+                                <li><strong>The Mesoamerican Core:</strong> Solves the forensic constraints of the text's "Golden Age." It accounts for the multi-million population density, advanced phonetic writing, and the specific 1st-century BCE implementation of structural cement.</li>
+                                <li><strong>The North American Collapse:</strong> Solves the physical artifact constraints. The source plates were undeniably recovered in New York, and the Iroquois/Lenape oral histories specifically place an apocalyptic, continent-wide war of annihilation exactly in the Great Lakes region.<sup><a href="#fn26">[26]</a></sup></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-block reveal">
+                        <h3>Synchronized Timeline Collapse</h3>
+                        <ul class="info-list">
+                            <li><strong>The 400 AD Event:</strong> Carbon dating confirms a simultaneous phenomenon. Right around 400 AD, the Hopewell continental trade network inexplicably collapsed, and populations in the North began building hilltop palisades to defend against severe warfare. This perfectly aligns with the timeline of the final Nephite destruction and their northward flight.<sup><a href="#fn23">[23]</a></sup></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORENSIC TIMELINE & DEMOGRAPHICS -->
+        <section class="parallax-section" id="timeline" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'1000\'><defs><radialGradient id=\'g4\' cx=\'50%\' cy=\'50%\' r=\'50%\'><stop offset=\'0%\' stop-color=\'%2314100c\'/><stop offset=\'100%\' stop-color=\'%23050508\'/></radialGradient></defs><rect width=\'1000\' height=\'1000\' fill=\'url(%23g4)\'/><circle cx=\'500\' cy=\'500\' r=\'400\' fill=\'none\' stroke=\'%23cfa861\' stroke-width=\'0.5\' opacity=\'0.1\'/><line x1=\'100\' y1=\'500\' x2=\'900\' y2=\'500\' stroke=\'%23cfa861\' stroke-dasharray=\'5 15\' opacity=\'0.3\'/></svg>');">
+            <div class="content-container">
+                <div class="glass-panel">
+                    <h2 class="section-title reveal">Timeline & Demographics</h2>
+                    <p class="section-intro reveal delay-1">
+                        Deductive modeling using radiocarbon aggregation, genetic bottleneck analysis, and carbon-dated archaeological timelines to construct a factual picture of ancient American populations.
+                    </p>
+
+                    <div class="grid-2">
+                        <div class="info-block reveal delay-2">
+                            <h3>Population Modeling</h3>
+                            <ul class="info-list">
+                                <li><strong>Radiocarbon Aggregation:</strong> Analysis of ancient fire pits and settlements proves North America saw massive population peaks around 1150 AD, followed by major declines due to droughts and warfare, supporting "high count" population models.<sup><a href="#fn21">[21]</a></sup></li>
+                                <li><strong>Genetic Bottlenecks:</strong> DNA studies of ancient skeletal remains confirm severe population contractions and massive expansions, corroborating native oral histories of plagues and civilizational collapses.<sup><a href="#fn22">[22]</a></sup></li>
+                            </ul>
+                        </div>
+                        <div class="info-block reveal delay-3">
+                            <h3>The Archaeological Timeline</h3>
+                            <ul class="info-list">
+                                <li><strong>2500 BC – 400 BC:</strong> The Olmec (Mesoamerica) and Adena (North America) emerge as the first massive civilization builders, possessing complex systems before suddenly collapsing around 400 BC (paralleling the Jaredites).</li>
+                                <li><strong>600 BC – 300 AD:</strong> The Maya populations explode into the millions using structural cement, while the Hopewell culture builds a unified, peaceful trade network spanning the continent (paralleling the Nephite Golden Age).</li>
+                                <li><strong>300 AD – 400 AD:</strong> Carbon dating shows the Hopewell trade network inexplicably ceases right around 400 AD, fracturing into severe, continent-wide warfare (paralleling the Cumorah collapse).<sup><a href="#fn23">[23]</a></sup></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA COMPARISON SECTION -->
+        <section class="parallax-section" id="synthesis" style="background-image: none; background-color: #070708; min-height: auto; padding: 8rem 2rem;">
+            <div class="content-container">
+                <div class="glass-panel" style="border: none; background: transparent; box-shadow: none; padding: 0;">
+                    <h2 class="section-title">Data Synthesis</h2>
+                    <p class="section-intro">A direct cross-examination of physical and linguistic evidence spanning 600 BC to 400 AD.</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Forensic Requirement</th>
+                                    <th>North American Parallels</th>
+                                    <th>Mesoamerican Parallels</th>
+                                    <th>Combined Synthesis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Complex Written Language</strong></td>
+                                    <td>Matches (Mi'kmaq Hieroglyphs)</td>
+                                    <td>Matches (Maya Script)</td>
+                                    <td>Matches Both</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hebrew / Semitic Linguistics</strong></td>
+                                    <td>Matches (Affixes, Sacred Chants)</td>
+                                    <td>Matches (1,500+ Cognates)</td>
+                                    <td>Matches Both (Migratory spread)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Population in the Millions</strong></td>
+                                    <td>Does Not Match (Dispersed tribes)</td>
+                                    <td>Matches (Massive urban centers)</td>
+                                    <td>Matches (Mesoamerican Core)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Use of Structural Cement</strong></td>
+                                    <td>Does Not Match (Earth/Timber)</td>
+                                    <td>Matches (1st Century BCE)</td>
+                                    <td>Matches (Mesoamerican Core)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Defensive Earthworks</strong></td>
+                                    <td>Matches (Hopewell culture)</td>
+                                    <td>Matches (Maya defensive moats)</td>
+                                    <td>Matches Both</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tradition of Ancient Annihilation</strong></td>
+                                    <td>Matches (Talligewi Oral History)</td>
+                                    <td>Matches (Ixtlilxochitl Codices)</td>
+                                    <td>Matches (Northward retreat to NY)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>1st Century Era of Peace</strong></td>
+                                    <td>Matches (Pax Hopewelliana)</td>
+                                    <td>Matches (Classic Era Expansion)</td>
+                                    <td>Matches Both</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Descending Deity Tradition</strong></td>
+                                    <td>Matches (Great Peacemaker myths)</td>
+                                    <td>Matches (Quetzalcoatl / Kukulcan)</td>
+                                    <td>Matches Both</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="reveal" style="margin-top: 4.5rem; display: flex; justify-content: center;">
+                        <a href="additional.html" class="book-link" title="Explore Ancient American Connections" style="border-color: rgba(207, 168, 97, 0.45); max-width: 580px; width: 100%;">
+                            <div class="book-cover" style="background: #1c1510; border-color: rgba(176, 141, 74, 0.7); box-shadow: inset -4px 0 8px rgba(0,0,0,0.9), 3px 3px 6px rgba(0,0,0,0.6);">
+                                <i class="fas fa-scroll" style="color: var(--accent-gold); font-size: 1.25rem; z-index: 3;"></i>
+                            </div>
+                            <div class="cta-text">
+                                <span class="cta-main">Explore Ancient Connections</span>
+                                <span class="cta-sub">Linguistic, Archaeological & Oral History Synthesis</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTNOTES SECTION -->
+        <section class="footnotes-section" id="footnotes">
+            <div class="footnotes-container">
+                <h3>Sources & Archival Notes</h3>
+                <ol class="footnotes-list">
+                    <li id="fn1">Comparative analyses of Mi'kmaq hieroglyphs and Egyptian Hieratic have been extensively documented by epigraphers, noting structural and semantic parallels. (See: <a href="https://en.wikipedia.org/wiki/Mi%27kmaw_hieroglyphic_writing" target="_blank" rel="noopener noreferrer">Mi'kmaw hieroglyphic writing</a>)</li>
+                    <li id="fn2">The <a href="https://en.wikipedia.org/wiki/Anthon_Transcript" target="_blank" rel="noopener noreferrer">Anthon Transcript (1828)</a>, also known as the "Caracters" document, contains the only surviving transcription of the characters found on the source plates.</li>
+                    <li id="fn3">The <a href="https://en.wikipedia.org/wiki/Bat_Creek_inscription" target="_blank" rel="noopener noreferrer">Bat Creek Stone</a> was excavated in 1889 by John W. Emmert of the Smithsonian Institution. Semitic scholar Cyrus Gordon later identified the inscription as Judean Paleo-Hebrew.</li>
+                    <li id="fn4">Adair, James. <a href="https://archive.org/details/historyofamerica00adair" target="_blank" rel="noopener noreferrer"><em>The History of the American Indians</em> (1775)</a>. Adair spent 40 years living among Southeastern tribes and documented 23 specific arguments tying their culture to Israelite origins.</li>
+                    <li id="fn5"><a href="https://en.wikipedia.org/wiki/Algonquian_languages#Grammar" target="_blank" rel="noopener noreferrer">Pronominal affixes</a> are a recognized grammatical feature in both Semitic language families and the Algonquian language family of North America.</li>
+                    <li id="fn6">Adair (1775) documented the <a href="https://en.wikipedia.org/wiki/Green_Corn_Ceremony" target="_blank" rel="noopener noreferrer">Green Corn Festival</a> and observed its structural timing and ceremonial practices mirrored the Hebrew Sukkot.</li>
+                    <li id="fn7">Oral histories of the Lenape (Delaware) regarding the Talligewi were recorded by early European missionaries and historians, notably <a href="https://archive.org/details/historymannerscu00heck" target="_blank" rel="noopener noreferrer">John Heckewelder</a> in the early 19th century.</li>
+                    <li id="fn8">Brown, M.D., et al. (1998). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1377656/" target="_blank" rel="noopener noreferrer">"mtDNA haplogroup X: An ancient link between Europe/Western Asia and North America?"</a> <em>American Journal of Human Genetics</em>.</li>
+                    <li id="fn9">Modern demographic models using carrying capacity and radiocarbon aggregation place <a href="https://en.wikipedia.org/wiki/Maya_civilization#Population" target="_blank" rel="noopener noreferrer">Preclassic and Classic Maya populations</a> well into the multi-millions.</li>
+                    <li id="fn10">The widespread implementation of lime-based structural cement in Mesoamerica (e.g., <a href="https://en.wikipedia.org/wiki/Teotihuacan#Architecture" target="_blank" rel="noopener noreferrer">Teotihuacan</a>) is archaeologically dated to the 1st century BC, aligning with the chronological markers in Helaman 3:7.</li>
+                    <li id="fn11">Webster, David L. (1976). <a href="https://en.wikipedia.org/wiki/Becan" target="_blank" rel="noopener noreferrer">"Defensive Earthworks at Becan, Campeche, Mexico."</a> <em>Middle American Research Institute</em>.</li>
+                    <li id="fn12">Stubbs, Brian D. <a href="https://interpreterfoundation.org/books/exploring-the-explanatory-power-of-semitic-and-egyptian-in-uto-aztecan/" target="_blank" rel="noopener noreferrer"><em>Exploring the Explanatory Power of Semitic and Egyptian in Uto-Aztecan</em></a> (2015).</li>
+                    <li id="fn13">Stubbs' analysis utilizes the <a href="https://en.wikipedia.org/wiki/Comparative_method" target="_blank" rel="noopener noreferrer">comparative method of historical linguistics</a> to prove consistent phonological shifts, ruling out random coincidental borrowing.</li>
+                    <li id="fn14">The <a href="https://en.wikipedia.org/wiki/Maya_script" target="_blank" rel="noopener noreferrer">Maya script</a> is the only fully developed, pre-Columbian writing system in the Americas known to represent a spoken language phonetically.</li>
+                    <li id="fn15">Works of <a href="https://en.wikipedia.org/wiki/Fernando_de_Alva_Cort%C3%A9s_Ixtlilxochitl" target="_blank" rel="noopener noreferrer">Fernando de Alva Cortés Ixtlilxochitl</a> (ca. 1600 AD). His translated histories of the Toltec explicitly detail civilizational collapse and millions of battle casualties.</li>
+                    <li id="fn16"><a href="https://en.wikipedia.org/wiki/Popol_Vuh" target="_blank" rel="noopener noreferrer"><em>Popol Vuh</em></a>, the sacred book of the Quiché Maya, translated into Spanish in the 16th century, detailing creation and migration narratives.</li>
+                    <li id="fn17">Discourse delivered by <a href="https://archive.org/details/discourseconfirm00clin" target="_blank" rel="noopener noreferrer">DeWitt Clinton (1811)</a> to the New-York Historical Society, documenting Iroquois traditions of numerous ancient inhabitants and their defensive earthworks.</li>
+                    <li id="fn18">Joseph Smith's journal entries from the 1834 Zion's Camp expedition, detailing the discovery of the <a href="https://www.josephsmithpapers.org/paper-summary/history-1838-1856-volume-a-1-23-december-1805-30-august-1834/483" target="_blank" rel="noopener noreferrer">"Zelph" mound</a> in Illinois.</li>
+                    <li id="fn19">Mesoamerican calendars heavily utilized a 360-day base system plus 5 intercalary (dead/unlucky) days (<a href="https://en.wikipedia.org/wiki/Haab%CA%BC" target="_blank" rel="noopener noreferrer">the Haab'</a>), reflecting an identical structural paradigm to the ancient Egyptian solar calendar.</li>
+                    <li id="fn20">The <a href="https://en.wikipedia.org/wiki/T%C3%ADtulo_de_Totonicap%C3%A1n" target="_blank" rel="noopener noreferrer"><em>Title of the Lords of Totonicapán</em></a> (1554), an indigenous record claiming Middle Eastern origins and descent from Israel for the Quiché Maya.</li>
+                    <li id="fn21">Modern demographic modeling utilizing <a href="https://en.wikipedia.org/wiki/Carrying_capacity" target="_blank" rel="noopener noreferrer">agricultural carrying capacity</a> and radiocarbon aggregation to estimate historical population ceilings.</li>
+                    <li id="fn22"><a href="https://en.wikipedia.org/wiki/Population_history_of_Indigenous_peoples_of_the_Americas#Genetic_history" target="_blank" rel="noopener noreferrer">Genetic bottleneck analyses (mtDNA)</a> of ancient indigenous remains tracking historical population collapses.</li>
+                    <li id="fn23">Radiocarbon dating of the <a href="https://en.wikipedia.org/wiki/Hopewell_tradition" target="_blank" rel="noopener noreferrer">Hopewell Interaction Sphere</a> demonstrates a sudden cessation of earthwork construction and continental trade networks centering precisely around 400 AD.</li>
+                    <li id="fn24">The <a href="https://en.wikipedia.org/wiki/Hopewell_tradition#Hopewell_Interaction_Sphere" target="_blank" rel="noopener noreferrer">Hopewell Interaction Sphere</a> is a widely documented archaeological phenomenon spanning 200 BC to 400 AD, proving indigenous Americans engaged in continental-scale travel and commerce.</li>
+                    <li id="fn25">Geographical linguistic mapping of the <a href="https://en.wikipedia.org/wiki/Uto-Aztecan_languages" target="_blank" rel="noopener noreferrer">Uto-Aztecan language family</a> demonstrates a continuous cultural and spoken-language corridor stretching from Central America to the Northern United States.</li>
+                    <li id="fn26">The <a href="https://en.wikipedia.org/wiki/Cumorah#Two_Cumorahs_theory" target="_blank" rel="noopener noreferrer">"Two-Cumorah" theory</a> suggests the hill Cumorah in New York was the site of the final battles and plate deposition (matching local oral histories), while the core civilization resided further south (matching demographics and architecture).</li>
+                    <li id="fn27">Aston, Warren P. (2015). <a href="https://archive.bookofmormoncentral.org/content/lehi-and-sariah-arabia-old-world-setting-book-mormon" target="_blank" rel="noopener noreferrer"><em>Lehi and Sariah in Arabia: The Old World Setting of the Book of Mormon</em></a>. Details the discovery of the NHM altars at the Bar'an temple in Marib.</li>
+                    <li id="fn28"><a href="https://en.wikipedia.org/wiki/Bountiful_(Book_of_Mormon)#Khor_Kharfot" target="_blank" rel="noopener noreferrer">Khor Kharfot (Wadi Sayq)</a> in Oman is recognized by researchers as the only coastal location in Arabia that provides abundant fresh water, a natural harbor, fruit, wild honey, and workable ore, matching the "Bountiful" text precisely.</li>
+                    <li id="fn29">Volcanology studies confirm that heavy <a href="https://en.wikipedia.org/wiki/Tephra" target="_blank" rel="noopener noreferrer">ash falls (tephra)</a> displace oxygen and smother open flames. This provides a scientific forensic match for the textual description of a "vapor of darkness" so thick that torches and fires could not be ignited.</li>
+                    <li id="fn30">The <a href="https://en.wikipedia.org/wiki/Hopewell_tradition" target="_blank" rel="noopener noreferrer">"Pax Hopewelliana"</a> is a recognized archaeological term denoting a 200-to-300-year period of unprecedented peace, widespread cultural exchange, and a near-total cessation of defensive fortification building in North America following the 1st century AD.</li>
+                    <li id="fn31">Chroniclers such as Bernardino de Sahagún (<a href="https://en.wikipedia.org/wiki/Florentine_Codex" target="_blank" rel="noopener noreferrer"><em>Florentine Codex</em></a>) and Juan de Torquemada preserved widespread post-conquest indigenous accounts of <a href="https://en.wikipedia.org/wiki/Quetzalcoatl" target="_blank" rel="noopener noreferrer">Quetzalcoatl</a> as a historical, bearded figure who brought a golden age of peace and abhorred the later practices of human sacrifice.</li>
+                    <li id="fn32">Various indigenous traditions across the Americas reference a divine, fair-skinned healer or peacemaker (<a href="https://en.wikipedia.org/wiki/Great_Peacemaker" target="_blank" rel="noopener noreferrer">e.g., the Great Peacemaker</a>). While modern secular views often categorize these as syncretic myths influenced by post-conquest Christianity, their structural foundations exist in pre-Columbian iconography and early oral records.</li>
+                </ol>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="disclaimer-text">
+            <strong>Disclaimer:</strong> This website and its contents are provided strictly for informational, educational, and research purposes. This site is an independent project and is neither affiliated with, sponsored by, endorsed by, nor produced by The Church of Jesus Christ of Latter-day Saints or any of its corporate affiliates. The views, syntheses, and opinions expressed herein are the result of independent historical and forensic analysis and do not necessarily reflect the official policies, doctrines, or positions of The Church of Jesus Christ of Latter-day Saints. "The Book of Mormon" is a trademark of Intellectual Reserve, Inc.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Intersection Observer for Scroll Animations
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.05,
+                rootMargin: "0px 0px -10px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: unobserve after revealing if you want it to happen only once
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+
+            // ScrollSpy Intersection Observer for Active Nav Highlight
+            const spySections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            const scrollSpyOptions = {
+                root: null,
+                rootMargin: "-40% 0px -55% 0px",
+                threshold: 0
+            };
+
+            const scrollSpyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navItems.forEach(item => {
+                            const link = item.querySelector('a');
+                            if (link) {
+                                const href = link.getAttribute('href');
+                                if (href === `#${id}`) {
+                                    item.classList.add('active');
+                                } else {
+                                    item.classList.remove('active');
+                                }
+                            }
+                        });
+                    }
+                });
+            }, scrollSpyOptions);
+
+            spySections.forEach(section => {
+                scrollSpyObserver.observe(section);
+            });
+
+            // Smooth scrolling for footnote links
+            document.querySelectorAll('sup a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo({
+                            top: offsetTop - 100, // Offset for breathing room
+                            behavior: 'smooth'
+                        });
+                        
+                        // Temporarily highlight the target via CSS pseudo-class by setting hash
+                        history.pushState(null, null, '#' + targetId);
+                    }
+                });
+            });
+
+            // Share Button Logic
+            const shareBtn = document.getElementById('share-action');
+            const shareText = document.getElementById('share-text');
+            
+            if(shareBtn) {
+                shareBtn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: 'Tracing the Ancient Journey',
+                                text: 'Explore the factual compilation of Book of Mormon geography.',
+                                url: window.location.href
+                            });
+                        } catch (err) {
+                            console.error('Error sharing:', err);
+                        }
+                    } else {
+                        // Fallback to copy link
+                        const textArea = document.createElement("textarea");
+                        textArea.value = window.location.href;
+                        // Avoid scrolling to bottom
+                        textArea.style.top = "0";
+                        textArea.style.left = "0";
+                        textArea.style.position = "fixed";
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            const originalText = shareText.innerText;
+                            shareText.innerText = "Copied!";
+                            setTimeout(() => {
+                                shareText.innerText = originalText;
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Copy failed', err);
+                        }
+                        document.body.removeChild(textArea);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

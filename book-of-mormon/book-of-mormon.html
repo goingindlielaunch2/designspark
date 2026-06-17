@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidences of the Book of Mormon: Another Testament of Jesus Christ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Color Palette based on the infographic */
+            --bg-color: #fcfbf7;
+            /* Parchment off-white */
+            --text-color: #333;
+            --header-bg: #3e3e3e;
+            --header-text: #fff;
+
+            /* Section Colors */
+            --linguistic-light: #e3f2fd;
+            --linguistic-border: #2196f3;
+            --linguistic-dark: #0d47a1;
+
+            --archaeo-light: #fff3e0;
+            --archaeo-border: #ff9800;
+            --archaeo-dark: #e65100;
+
+            --genetic-light: #e8f5e9;
+            --genetic-border: #4caf50;
+            --genetic-dark: #1b5e20;
+
+            --cultural-light: #f3e5f5;
+            --cultural-border: #9c27b0;
+            --cultural-dark: #4a148c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* Main Grid Layout */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            /* Mobile default */
+        }
+
+        /* Desktop Layout: 2x2 Grid */
+        @media (min-width: 900px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+            }
+
+            /* Center Hub styling for desktop visualization */
+            .hub-graphic {
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-bottom: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hub-icon {
+                font-size: 3rem;
+                color: #555;
+                background: #fff;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                border: 4px solid #d4af37;
+                /* Gold border */
+            }
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            margin-left: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Specific Theme Colors */
+        .linguistic {
+            background-color: var(--linguistic-light);
+            border-top: 5px solid var(--linguistic-border);
+        }
+
+        .linguistic .card-header {
+            border-color: var(--linguistic-border);
+            color: var(--linguistic-dark);
+        }
+
+        .linguistic .point-icon {
+            color: var(--linguistic-dark);
+        }
+
+        .archaeo {
+            background-color: var(--archaeo-light);
+            border-top: 5px solid var(--archaeo-border);
+        }
+
+        .archaeo .card-header {
+            border-color: var(--archaeo-border);
+            color: var(--archaeo-dark);
+        }
+
+        .archaeo .point-icon {
+            color: var(--archaeo-dark);
+        }
+
+        .genetic {
+            background-color: var(--genetic-light);
+            border-top: 5px solid var(--genetic-border);
+        }
+
+        .genetic .card-header {
+            border-color: var(--genetic-border);
+            color: var(--genetic-dark);
+        }
+
+        .genetic .point-icon {
+            color: var(--genetic-dark);
+        }
+
+        .cultural {
+            background-color: var(--cultural-light);
+            border-top: 5px solid var(--cultural-border);
+        }
+
+        .cultural .card-header {
+            border-color: var(--cultural-border);
+            color: var(--cultural-dark);
+        }
+
+        .cultural .point-icon {
+            color: var(--cultural-dark);
+        }
+
+        /* List Items */
+        .evidence-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .evidence-item {
+            display: flex;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .point-icon {
+            min-width: 30px;
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        .content h3 {
+            margin: 0 0 0.2rem 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .sup-ref {
+            font-size: 0.7em;
+            vertical-align: super;
+            color: #777;
+            text-decoration: none;
+            margin-left: 2px;
+        }
+
+        /* Footnotes */
+        .footnotes {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .footnotes h3 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        .footnotes ol {
+            padding-left: 1.5rem;
+        }
+
+        .footnotes li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Text */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .card-header h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Evidences of the Book of Mormon</h1>
+        <div class="subtitle">Another Testament of Jesus Christ — Converging Evidence</div>
+    </header>
+
+    <div class="container">
+
+        <!-- Central Hub Concept (Visual only) -->
+        <div class="hub-graphic">
+            <div class="hub-icon">
+                <i class="fa-solid fa-scroll"></i>
+            </div>
+            <div style="margin-top: 10px; font-weight: bold; color: #555;">Multidisciplinary Support</div>
+        </div>
+
+        <!-- 1. Linguistic Evidence -->
+        <div class="card linguistic">
+            <div class="card-header">
+                <i class="fa-solid fa-language card-icon"></i>
+                <h2>Linguistic Evidence</h2>
+            </div>
+            <ul class="evidence-list">
+                <li class="evidence-item">
+                    <i class="fa-solid fa-book-open point-icon"></i>
+                    <div class="content">
+                        <h3>Chiasmus (Alma 36)</h3>
+                        <p>Complex ancient Hebrew poetry form (A-B-C-C-B-A). The entire chapter of Alma 36 reverses
+                            itself, centering on Jesus Christ.<a href="#fn1" class="sup-ref">1</a></p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-pen-nib point-icon"></i>
+                    <div class="content">
+                        <h3>Hebraisms</h3>
+                        <p>Cognate Accusative ("Dreamed a dream") and "If/And" conditionals common in Hebrew but awkward
+                            in English, found in the original manuscript.</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-signature point-icon"></i>
+                    <div class="content">
+                        <h3>Ancient Names</h3>
+                        <p>"Alma" (confirmed as a male Hebrew name in Bar Kokhba letters, 130 AD) and "Jershon" (Root
+                            YRSH "to inherit").<a href="#fn2" class="sup-ref">2</a></p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-comments point-icon"></i>
+                    <div class="content">
+                        <h3>Uto-Aztecan & Semitic Parallels</h3>
+                        <p>Linguist Brian Stubbs documents over 1,500 consistent sound shifts between Uto-Aztecan
+                            languages and Semitic/Egyptian.<a href="#fn3" class="sup-ref">3</a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 2. Archaeological Evidence -->
+        <div class="card archaeo">
+            <div class="card-header">
+                <i class="fa-solid fa-earth-americas card-icon"></i>
+                <h2>Archaeological Evidence</h2>
+            </div>
+            <ul class="evidence-list">
+                <li class="evidence-item">
+                    <i class="fa-solid fa-location-dot point-icon"></i>
+                    <div class="content">
+                        <h3>Nahom (Old World)</h3>
+                        <p>Altars found in Yemen inscribed with the tribal name "NHM," dating to Lehi's time (600-700
+                            BC), in the precise location described.<a href="#fn4" class="sup-ref">4</a></p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-tree point-icon"></i>
+                    <div class="content">
+                        <h3>Bountiful (Wadi Sayq)</h3>
+                        <p>Khor Kharfot in Oman matches all 12 criteria (fresh water, timber, ore, harbor) in a region
+                            thought to be barren by 19th-century critics.</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-dungeon point-icon"></i>
+                    <div class="content">
+                        <h3>Hopewell Fortifications</h3>
+                        <p>Alma 50 describes earth banks + ditches + timber pickets. This matches the exact construction
+                            of Hopewell defensive works in the US Midwest.</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-stone-tablet point-icon"></i>
+                    <div class="content">
+                        <h3>Bat Creek Stone</h3>
+                        <p>Smithsonian find (1889) in Tennessee. Identified by Dr. Cyrus Gordon as Paleo-Hebrew ("For
+                            Judea"), dating to the Nephite period.<a href="#fn5" class="sup-ref">5</a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 3. Genetic Evidence -->
+        <div class="card genetic">
+            <div class="card-header">
+                <i class="fa-solid fa-dna card-icon"></i>
+                <h2>Genetic Evidence</h2>
+            </div>
+            <ul class="evidence-list">
+                <li class="evidence-item">
+                    <i class="fa-solid fa-user-group point-icon"></i>
+                    <div class="content">
+                        <h3>West Eurasian Ancestry</h3>
+                        <p>2013 <i>Nature</i> study (Mal'ta Boy) confirms 14-38% of Native American ancestry derives
+                            from ancient Western Eurasian populations.<a href="#fn6" class="sup-ref">6</a></p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-circle-nodes point-icon"></i>
+                    <div class="content">
+                        <h3>Haplogroup X2a</h3>
+                        <p>A mitochondrial DNA lineage found in the Near East (Druze) and Native Americans (Great
+                            Lakes/Hopewell region), distinct from primary Asian migrations.</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-arrows-split-up-and-left point-icon"></i>
+                    <div class="content">
+                        <h3>Population Drift</h3>
+                        <p>Genetic bottlenecking and drift would naturally dilute markers of a small founder group
+                            (Lehi's family) within a larger existing population.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 4. Cultural & Historical -->
+        <div class="card cultural">
+            <div class="card-header">
+                <i class="fa-solid fa-feather card-icon"></i>
+                <h2>Cultural & Historical</h2>
+            </div>
+            <ul class="evidence-list">
+                <li class="evidence-item">
+                    <i class="fa-solid fa-person-rays point-icon"></i>
+                    <div class="content">
+                        <h3>Oral Histories</h3>
+                        <p>Widespread Native American traditions of a "Great White God" or "Pale Prophet" who healed the
+                            sick and taught peace (parallels 3 Nephi).</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-cloud-bolt point-icon"></i>
+                    <div class="content">
+                        <h3>Destruction Legends</h3>
+                        <p>Tribal accounts of cataclysmic thunder and days of darkness, aligning with the destruction
+                            described at Christ's death.</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-sailboat point-icon"></i>
+                    <div class="content">
+                        <h3>Transoceanic Migration</h3>
+                        <p>Legends (e.g., Hopi) of ancestors crossing a "great water" or ocean to arrive, contradicting
+                            the exclusive land-bridge theory.</p>
+                    </div>
+                </li>
+                <li class="evidence-item">
+                    <i class="fa-solid fa-clock-rotate-left point-icon"></i>
+                    <div class="content">
+                        <h3>Translation Timeline</h3>
+                        <p>Text dictated in approx. 65-75 working days by an uneducated farmer with no notes. Distinct
+                            stylometry for different authors.<a href="#fn7" class="sup-ref">7</a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footnotes">
+        <h3>Footnotes & References</h3>
+        <ol>
+            <li id="fn1">Welch, John W. "Chiasmus in the Book of Mormon." <i>BYU Studies</i>, 1969.</li>
+            <li id="fn2">Yadin, Yigael. <i>Bar-Kokhba: The Rediscovery of the Legendary Hero of the Second Jewish
+                    Revolt</i>. Random House, 1971.</li>
+            <li id="fn3">Stubbs, Brian D. <i>Exploring the Explanatory Power of Semitic and Egyptian in Uto-Aztecan</i>.
+                Grover Publications, 2015.</li>
+            <li id="fn4">Aston, Warren P. "The Origins of the Name 'Nahom'." <i>Journal of Book of Mormon Studies</i>,
+                2012.</li>
+            <li id="fn5">Gordon, Cyrus H. "The Bat Creek Inscription." <i>Epigraphic Society Occasional Papers</i>,
+                1972.</li>
+            <li id="fn6">Raghavan, M. et al. "Upper Palaeolithic Siberian genome reveals dual ancestry of Native
+                Americans." <i>Nature</i>, 2014.</li>
+            <li id="fn7">Skousen, Royal. "The Original Manuscript of the Book of Mormon." <i>The Critical Text of the
+                    Book of Mormon Project</i>.</li>
+        </ol>
+    </div>
+
+</body>
+
+</html>

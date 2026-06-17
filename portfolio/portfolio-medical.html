@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Darling - UX/UI Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+
+            --indigo-100: #e0e7ff;
+            --indigo-500: #6366f1;
+
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-500: #10b981;
+
+            --teal-100: #ccfbf1;
+            --teal-200: #99f6e4;
+            --teal-600: #0d9488;
+
+            --purple-50: #faf5ff;
+            --purple-500: #a855f7;
+            --purple-600: #9333ea;
+
+            --pink-100: #fce7f3;
+
+            --font-sans: 'Inter', sans-serif;
+            --max-w: 1152px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--slate-50);
+            color: var(--slate-900);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, var(--blue-600), var(--indigo-500));
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--slate-200);
+            z-index: 50;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 5rem;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.025em;
+            color: var(--slate-800);
+        }
+
+        .nav-logo span {
+            color: var(--blue-600);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--slate-600);
+        }
+
+        .nav-links button {
+            transition: color 0.2s;
+        }
+
+        .nav-links button:hover {
+            color: var(--blue-600);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background-color: var(--blue-600);
+            color: white;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--blue-700);
+        }
+
+        .btn-dark {
+            background-color: var(--slate-900);
+            color: white;
+            border-radius: 0.75rem;
+            padding: 1rem 2rem;
+            gap: 0.5rem;
+        }
+
+        .btn-dark:hover {
+            background-color: var(--slate-800);
+        }
+
+        .btn-outline {
+            background-color: white;
+            color: var(--slate-700);
+            border: 2px solid var(--slate-200);
+            border-radius: 0.75rem;
+            padding: 1rem 2rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--slate-50);
+            border-color: var(--slate-300);
+        }
+
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--blue-100);
+            color: var(--blue-700);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--slate-600);
+            margin-bottom: 2.5rem;
+            max-width: 42rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .skills {
+            padding: 4rem 0;
+            background-color: white;
+            border-top: 1px solid var(--slate-200);
+            border-bottom: 1px solid var(--slate-200);
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .skill-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--slate-50);
+            border: 1px solid var(--slate-100);
+            border-radius: 1rem;
+        }
+
+        .skill-card svg {
+            margin-bottom: 1rem;
+            width: 32px;
+            height: 32px;
+        }
+
+        .skill-card h3 {
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+        }
+
+        .work {
+            padding: 6rem 0;
+        }
+
+        .work-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            letter-spacing: -0.025em;
+        }
+
+        .project-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        @media (min-width: 768px) {
+            .project-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-row:nth-child(even) .project-graphics {
+                order: 2;
+            }
+
+            .project-row:nth-child(even) .project-content {
+                order: 1;
+            }
+        }
+
+        .project-graphics {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--slate-200);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .project-graphics:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .pg-bg-blue {
+            background: linear-gradient(to bottom right, var(--blue-50), var(--indigo-100));
+        }
+
+        .pg-bg-purple {
+            background: linear-gradient(to bottom right, var(--purple-50), var(--pink-100));
+        }
+
+        .pg-bg-emerald {
+            background: linear-gradient(to bottom right, var(--emerald-50), var(--teal-100));
+        }
+
+        .project-content-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .label-blue {
+            color: var(--blue-600);
+        }
+
+        .label-purple {
+            color: var(--purple-600);
+        }
+
+        .label-emerald {
+            color: var(--emerald-600);
+        }
+
+        .project-content h3 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            font-size: 1.125rem;
+            color: var(--slate-600);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features li {
+            display: flex;
+            align-items: center;
+            color: var(--slate-700);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-features li svg {
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .mock-window {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--slate-200);
+        }
+
+        .mock-header {
+            height: 2.5rem;
+            border-bottom: 1px solid var(--slate-100);
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 0.5rem;
+            background: var(--slate-50);
+        }
+
+        .mock-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+        }
+
+        .dot-r {
+            background: #f87171;
+        }
+
+        .dot-y {
+            background: #facc15;
+        }
+
+        .dot-g {
+            background: #4ade80;
+        }
+
+        .mock-body-flex {
+            display: flex;
+            flex: 1;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .mock-sidebar {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mock-line {
+            height: 1rem;
+            background: var(--slate-100);
+            border-radius: 0.25rem;
+            width: 100%;
+        }
+
+        .mock-line-title {
+            height: 1.5rem;
+            background: var(--slate-200);
+            width: 75%;
+        }
+
+        .mock-line-short {
+            width: 80%;
+        }
+
+        .mock-content-area {
+            flex: 1;
+            background: var(--slate-50);
+            border-radius: 0.5rem;
+            border: 1px solid var(--slate-100);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mock-table-row {
+            height: 2.5rem;
+            background: white;
+            border: 1px solid var(--slate-100);
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+
+        .mock-pill {
+            height: 1rem;
+            width: 3rem;
+            background: var(--emerald-100);
+            border-radius: 9999px;
+        }
+
+        .about {
+            background-color: var(--slate-900);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .about h2 {
+                font-size: 3rem;
+            }
+        }
+
+        .about p {
+            font-size: 1.25rem;
+            color: var(--slate-300);
+            line-height: 1.6;
+            max-width: 48rem;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .about-tag {
+            background-color: var(--slate-800);
+            border: 1px solid var(--slate-700);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--slate-300);
+            gap: 0.5rem;
+        }
+
+        .contact {
+            padding: 6rem 0;
+            background-color: white;
+            text-align: center;
+        }
+
+        .contact-icon-wrap {
+            width: 4rem;
+            height: 4rem;
+            background-color: var(--blue-100);
+            color: var(--blue-600);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--slate-900);
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact p {
+            font-size: 1.25rem;
+            color: var(--slate-600);
+            margin-bottom: 2rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--slate-600);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contact-links a:hover {
+            color: var(--blue-600);
+        }
+
+        footer {
+            background-color: var(--slate-50);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--slate-200);
+            color: var(--slate-500);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="nav-logo">
+                David <span>Darling</span>
+            </div>
+            <div class="nav-links">
+                <button onclick="scrollToSection('work')">Work</button>
+                <button onclick="scrollToSection('skills')">Skills</button>
+                <button onclick="scrollToSection('about')">About</button>
+            </div>
+            <button onclick="scrollToSection('contact')" class="btn btn-primary">Let's Talk</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero container">
+            <div style="max-width: 48rem;">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <span>Enterprise Health Tech Specialist</span>
+                </div>
+                <h1 class="hero-title">
+                    Designing clear paths through <span class="text-gradient">complex healthcare workflows.</span>
+                </h1>
+                <p class="hero-desc">
+                    I'm a UX/UI Designer with 4 years of experience specializing in enterprise health platforms,
+                    scalable design systems, and building accessible solutions that rebuild trust in healthcare.
+                </p>
+                <div class="hero-actions">
+                    <button onclick="scrollToSection('work')" class="btn btn-dark">
+                        <span>View Case Studies</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                    <button onclick="scrollToSection('contact')" class="btn btn-outline">
+                        Contact Me
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <p class="section-label">Core Competencies Aligning with Your Needs</p>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <svg style="color: var(--blue-500);" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                        <h3>Design Systems</h3>
+                        <p>Building scalable, WCAG-compliant components in Figma.</p>
+                    </div>
+                    <div class="skill-card">
+                        <svg style="color: var(--indigo-500);" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                        <h3>Enterprise UX</h3>
+                        <p>Simplifying dense claims and PBM data workflows.</p>
+                    </div>
+                    <div class="skill-card">
+                        <svg style="color: var(--emerald-500);" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        <h3>Dev Handoff</h3>
+                        <p>Solid grasp of HTML/CSS for seamless engineering collaboration.</p>
+                    </div>
+                    <div class="skill-card">
+                        <svg style="color: var(--purple-500);" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <h3>Usability Testing</h3>
+                        <p>Iterating based on real user feedback and research.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="work container">
+            <h2 class="work-title">Selected Work</h2>
+
+            <!-- Project 1 -->
+            <div class="project-row">
+                <div class="project-graphics pg-bg-blue">
+                    <div class="mock-window">
+                        <div class="mock-header">
+                            <div class="mock-dot dot-r"></div>
+                            <div class="mock-dot dot-y"></div>
+                            <div class="mock-dot dot-g"></div>
+                        </div>
+                        <div class="mock-body-flex">
+                            <div class="mock-sidebar">
+                                <div class="mock-line mock-line-title"></div>
+                                <div class="mock-line"></div>
+                                <div class="mock-line"></div>
+                                <div class="mock-line mock-line-short"></div>
+                            </div>
+                            <div class="mock-content-area">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <div class="mock-line" style="width: 33%;"></div>
+                                    <div class="mock-line"
+                                        style="width: 20%; background: var(--blue-100); height: 2rem;"></div>
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                    <div class="mock-table-row">
+                                        <div class="mock-line" style="width: 25%;"></div>
+                                        <div class="mock-line" style="width: 25%;"></div>
+                                        <div class="mock-pill"></div>
+                                    </div>
+                                    <div class="mock-table-row">
+                                        <div class="mock-line" style="width: 25%;"></div>
+                                        <div class="mock-line" style="width: 25%;"></div>
+                                        <div class="mock-pill"></div>
+                                    </div>
+                                    <div class="mock-table-row">
+                                        <div class="mock-line" style="width: 25%;"></div>
+                                        <div class="mock-line" style="width: 25%;"></div>
+                                        <div class="mock-pill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-content-label label-blue">Enterprise Application</div>
+                    <h3>OmniClaim Administration Platform</h3>
+                    <p>Consolidated disparate claim administration workflows into a single, scalable, and secure
+                        platform. Conducted extensive usability testing with adjusters to simplify complex data entry,
+                        reducing task completion time by 30%.</p>
+                    <ul class="project-features">
+                        <li>
+                            <svg width="20" height="20" style="color: var(--blue-500);" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Wireframing & High-Fidelity Prototyping
+                        </li>
+                        <li>
+                            <svg width="20" height="20" style="color: var(--blue-500);" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Usability Testing & Iteration
+                        </li>
+                        <li>
+                            <svg width="20" height="20" style="color: var(--blue-500);" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Cross-functional collaboration with PMs and Engineers
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-row">
+                <div class="project-content">
+                    <div class="project-content-label label-purple">Design Infrastructure</div>
+                    <h3>Aegis Healthcare Design System</h3>
+                    <p>Established and scaled a centralized design system in Figma to ensure visual consistency and
+                        accessibility (WCAG 2.1 AA) across three separate enterprise health products.</p>
+                    <ul class="project-features">
+                        <li>
+                            <svg width="20" height="20" style="color: var(--purple-500);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Component Library Creation in Figma
+                        </li>
+                        <li>
+                            <svg width="20" height="20" style="color: var(--purple-500);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Strict adherence to Accessibility Standards
+                        </li>
+                        <li>
+                            <svg width="20" height="20" style="color: var(--purple-500);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Bridged design-to-development handoff
+                        </li>
+                    </ul>
+                </div>
+                <div class="project-graphics pg-bg-purple">
+                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; gap: 1rem; height: 40%;">
+                            <div
+                                style="flex: 1; background: white; border-radius: 0.75rem; border: 1px solid var(--slate-200); padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.75rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                                <div
+                                    style="width: 100%; height: 2.5rem; background: var(--blue-600); border-radius: 0.5rem;">
+                                </div>
+                                <div
+                                    style="width: 100%; height: 2.5rem; border: 2px solid var(--blue-600); border-radius: 0.5rem;">
+                                </div>
+                            </div>
+                            <div
+                                style="flex: 2; background: white; border-radius: 0.75rem; border: 1px solid var(--slate-200); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                                <div class="mock-line" style="width: 50%;"></div>
+                                <div
+                                    style="height: 2.5rem; border: 1px solid #fca5a5; background: #fef2f2; border-radius: 0.375rem;">
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="flex: 1; background: white; border-radius: 0.75rem; border: 1px solid var(--slate-200); padding: 1.5rem; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                                <div
+                                    style="width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--slate-800);">
+                                </div>
+                                <div
+                                    style="width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--slate-600);">
+                                </div>
+                                <div
+                                    style="width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--blue-600);">
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div
+                                    style="height: 4rem; background: var(--slate-50); border: 1px solid var(--slate-100); border-radius: 0.5rem;">
+                                </div>
+                                <div
+                                    style="height: 4rem; background: var(--slate-50); border: 1px solid var(--slate-100); border-radius: 0.5rem;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-row">
+                <div class="project-graphics pg-bg-emerald">
+                    <div class="mock-window" style="padding: 1.25rem; gap: 1rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; padding-bottom: 1rem; border-bottom: 1px solid var(--slate-100);">
+                            <div class="mock-line" style="width: 25%;"></div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <div
+                                    style="width: 2rem; height: 2rem; background: var(--slate-100); border-radius: 50%;">
+                                </div>
+                                <div
+                                    style="width: 6rem; height: 2rem; background: var(--teal-100); border-radius: 9999px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                            <div
+                                style="background: var(--slate-50); border: 1px solid var(--slate-100); border-radius: 0.5rem; padding: 1rem; height: 6rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="mock-line" style="height: 0.75rem; width: 50%;"></div>
+                                <div class="mock-line" style="height: 1.5rem; width: 75%; background: var(--teal-600);">
+                                </div>
+                            </div>
+                            <div
+                                style="background: var(--slate-50); border: 1px solid var(--slate-100); border-radius: 0.5rem; padding: 1rem; height: 6rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="mock-line" style="height: 0.75rem; width: 50%;"></div>
+                                <div class="mock-line"
+                                    style="height: 1.5rem; width: 66%; background: var(--slate-700);"></div>
+                            </div>
+                            <div
+                                style="background: var(--slate-50); border: 1px solid var(--slate-100); border-radius: 0.5rem; padding: 1rem; height: 6rem; display: flex; flex-direction: column; justify-content: space-between;">
+                                <div class="mock-line" style="height: 0.75rem; width: 50%;"></div>
+                                <div class="mock-line"
+                                    style="height: 1.5rem; width: 50%; background: var(--slate-700);"></div>
+                            </div>
+                        </div>
+                        <div
+                            style="flex: 1; background: var(--slate-50); border: 1px solid var(--slate-100); border-radius: 0.5rem; padding: 1rem; display: flex; align-items: flex-end; gap: 0.5rem;">
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 40%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 70%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 45%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 90%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 65%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 30%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                            <div
+                                style="flex: 1; background: var(--teal-200); height: 80%; border-radius: 0.125rem 0.125rem 0 0;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <div class="project-content-label label-emerald">Responsive Web App</div>
+                    <h3>BenefitIQ Employer Dashboard</h3>
+                    <p>Designed a responsive web portal allowing self-insured employers to manage pharmacy benefits and
+                        track utilization metrics. Focused heavily on data visualization and mobile-responsive layouts.
+                    </p>
+                    <ul class="project-features">
+                        <li>
+                            <svg width="20" height="20" style="color: var(--emerald-500);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Responsive Interface Design
+                        </li>
+                        <li>
+                            <svg width="20" height="20" style="color: var(--emerald-500);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Complex Data Visualization
+                        </li>
+                        <li>
+                            <svg width="20" height="20" style="color: var(--emerald-500);" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            Active participation in design critiques
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Why I'm a great fit for your team</h2>
+                <p>
+                    I've spent the last 4 years in UX/Product Design refining my craft to tackle complex enterprise
+                    problems. I don't just push pixels; I thrive on understanding the dense workflows of claims and
+                    benefits management. I believe in the mission to rebuild trust in healthcare infrastructure by
+                    delivering user-centered, impeccably executed, and highly accessible designs.
+                </p>
+                <div class="about-tags">
+                    <span class="about-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"></path>
+                            <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"></path>
+                            <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"></path>
+                            <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"></path>
+                            <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"></path>
+                        </svg>
+                        Figma Pro
+                    </span>
+                    <span class="about-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Responsive Design
+                    </span>
+                    <span class="about-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        Accessibility (WCAG)
+                    </span>
+                    <span class="about-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        HTML/CSS Handoff
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact container">
+            <div class="contact-icon-wrap">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <h2>Let's build the infrastructure we need for the care we deserve.</h2>
+            <p>
+                I'm currently looking for my next challenge and this UX/UI Designer role aligns perfectly with my
+                background and passions.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:hello@daviddarling.com">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    hello@daviddarling.com
+                </a>
+                <a href="#">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p id="copyright-text"></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll implementation
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                // Offset for fixed header
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Set dynamic copyright year
+        document.getElementById('copyright-text').innerText =
+            `© ${new Date().getFullYear()} David Darling. Created specifically for this UX/UI Designer application.`;
+    </script>
+</body>
+
+</html>

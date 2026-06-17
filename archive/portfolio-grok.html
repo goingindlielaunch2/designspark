@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alex Chen – Senior UX Designer. Dark-mode portfolio showcasing 3 high-impact case studies with clear problem framing, ownership, decisions, metrics, and reflection. Built to impress hiring managers in under 2 minutes.">
+    <title>Alex Chen | Senior UX Designer</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --text: #f0f0f0;
+            --accent: #00d4ff;
+            --accent-dark: #00a8cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            color: #ddd;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: #000;
+        }
+
+        section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.25rem;
+            color: #ddd;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 212 255 / 0.15);
+            border-color: var(--accent);
+        }
+
+        .project-card .card-image {
+            height: 220px;
+            background: linear-gradient(135deg, #1a1a1a, #222);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: 1.1rem;
+            color: #666;
+            overflow: hidden;
+        }
+
+        .project-card .card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0, 212, 255, 0.15));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .card-image::after {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 1.75rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content .meta {
+            color: var(--accent);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .card-content p {
+            color: #ccc;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--surface);
+            max-width: 960px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            position: relative;
+            box-shadow: 0 30px 60px -15px rgb(0 212 255 / 0.3);
+        }
+
+        .modal-header {
+            padding: 2rem 2.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 2.2rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #888;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 2rem 2.5rem;
+        }
+
+        .modal-section {
+            margin-bottom: 3rem;
+        }
+
+        .modal-section h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mockup {
+            background: #1a1a1a;
+            border: 12px solid #222;
+            border-radius: 40px;
+            padding: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mockup-screen {
+            background: #111;
+            border-radius: 20px;
+            height: 380px;
+            padding: 20px;
+            position: relative;
+            color: #eee;
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 3px solid #333;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-box {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .result-box .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        footer {
+            background: #050505;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.2rem; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .about-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">AC</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Alex Chen</h1>
+            <div class="subtitle">Senior UX Designer • Product Thinker</div>
+            <p>I design experiences that ship fast, scale well, and deliver measurable business impact. 6+ years turning ambiguous problems into intuitive interfaces hiring managers notice in &lt;2 minutes.</p>
+            
+            <div class="cta-buttons">
+                <a href="#work" class="btn btn-primary">See the 3 case studies</a>
+                <a href="#" onclick="downloadResume()" class="btn btn-secondary">Download résumé (PDF)</a>
+            </div>
+
+            <p style="margin-top: 3rem; font-size: 1rem; color: #666;">
+                Built as a single-file vanilla HTML/CSS/JS portfolio • Fully dark mode • Scannable in 90 seconds
+            </p>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About me</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I'm a Senior UX Designer who speaks fluent product language. I don't just make interfaces pretty — I own the full problem space, run research, defend trade-offs with data, and ship work that moves metrics.</p>
+                <p>Hiring managers tell me they love how clearly I show <strong>ownership, process decisions, and measurable impact</strong> in my case studies. This portfolio was built exactly to the standards they asked for in recent X threads.</p>
+                
+                <p style="margin-top: 2rem; font-size: 1.1rem;">
+                    Currently open to senior/full-time roles in fintech, SaaS, or consumer products.
+                </p>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 1.5rem; color: #aaa;">Core skills &amp; tools</h3>
+                <div class="skills">
+                    <div class="skill-card">Figma</div>
+                    <div class="skill-card">User Research</div>
+                    <div class="skill-card">Usability Testing</div>
+                    <div class="skill-card">Interaction Design</div>
+                    <div class="skill-card">Prototyping</div>
+                    <div class="skill-card">Design Systems</div>
+                    <div class="skill-card">A/B Testing</div>
+                    <div class="skill-card">Stakeholder Alignment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK / CASE STUDIES -->
+    <section id="work">
+        <div class="section-header">
+            <h2>Featured Case Studies</h2>
+            <p style="color:#aaa; font-size:1.1rem;">3 projects that show exactly what hiring managers look for: clear problem framing, my specific ownership, decisions &amp; trade-offs, metrics, and reflection.</p>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="close-modal" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamically filled by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER / CONTACT -->
+    <section id="contact">
+        <footer>
+            <h2 style="margin-bottom: 1rem;">Let's build something great together</h2>
+            <p style="color:#aaa; max-width: 420px; margin: 0 auto 2rem;">Available for full-time roles or contract work. Based in San Francisco • Open to remote.</p>
+            
+            <div style="margin: 2rem 0;">
+                <a href="mailto:you@email.com" style="color:var(--accent); font-size:1.3rem; margin:0 1rem;">you@email.com</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color:var(--accent); font-size:1.3rem; margin:0 1rem;">LinkedIn</a>
+                <a href="https://twitter.com/yourhandle" target="_blank" style="color:var(--accent); font-size:1.3rem; margin:0 1rem;">𝕏</a>
+            </div>
+            
+            <p style="font-size:0.9rem; color:#555;">© 2026 Alex Chen • This entire portfolio is vanilla HTML, CSS &amp; JavaScript — fast, scannable, and dark by design.</p>
+        </footer>
+    </section>
+
+    <script>
+        // Project data – fully structured to match hiring manager expectations
+        const projects = [
+            {
+                id: 1,
+                title: "FinFlow — Mobile Banking Redesign",
+                meta: "Fintech • 2025 • Shipped",
+                teaser: "Reduced transfer abandonment from 45% → 12% by owning end-to-end UX and ruthless simplification.",
+                content: `
+                    <div class="modal-section">
+                        <h3>The Challenge</h3>
+                        <p>Users were abandoning money transfers at 45% — the highest drop-off in the entire app. Legacy flows had 7+ screens, confusing error states, and no clear progress. Stakeholders demanded compliance but also speed.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>My Role &amp; Ownership</h3>
+                        <p>Led UX end-to-end. Owned discovery, research, wireframing, high-fidelity design, prototyping, and post-launch iteration. Partnered with PM, compliance, and 4 engineers. Facilitated 6 cross-functional workshops.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Process &amp; Key Decisions</h3>
+                        <p>Conducted 15 user interviews + affinity mapping → 3 rapid prototypes. Tested with 28 participants. Trade-off: Biometric-first flow (faster) vs. fallback PIN for accessibility &amp; compliance. I pushed for progressive disclosure instead of everything at once.</p>
+                        <div class="mockup">
+                            <div class="mockup-screen">
+                                <strong>Before:</strong> 7 cluttered screens<br><br>
+                                <strong>After:</strong> 3-screen 1-tap transfer with smart suggestions
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Solution</h3>
+                        <p>Streamlined transfer flow with contextual smart defaults, real-time validation, and beautiful success animations. Added one-handed-friendly controls for mobile-first users.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Results &amp; Impact</h3>
+                        <div class="results-grid">
+                            <div class="result-box">
+                                <div class="number">+38%</div>
+                                <p>Transfer completion rate</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">-52%</div>
+                                <p>Support tickets for transfers</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">4.8/5</div>
+                                <p>Post-launch NPS</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">1.2M</div>
+                                <p>Users impacted in first month</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Reflection — What I’d do differently</h3>
+                        <p>I’d integrate AI-powered predictive transfers earlier. The success validated the approach, but we could have moved even faster with a stronger design system foundation from day one.</p>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "ShopSwift — Checkout Flow Optimization",
+                meta: "E-commerce • 2024 • Shipped",
+                teaser: "Cut cart abandonment from 68% to 31% through ruthless simplification and data-driven iteration.",
+                content: `
+                    <div class="modal-section">
+                        <h3>The Challenge</h3>
+                        <p>Mobile checkout abandonment was killing revenue. Payment step alone lost 42% of users due to friction, unclear security cues, and forced account creation.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>My Role &amp; Ownership</h3>
+                        <p>Senior UX lead. Owned the entire checkout redesign while mentoring two junior designers. Ran all research, testing, and stakeholder presentations. Shipped in 9 weeks.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Process &amp; Key Decisions</h3>
+                        <p>Analyzed heatmaps + session recordings → built 4 variants. A/B tested guest checkout vs. forced login. Trade-off: Strong security signals without adding extra steps. Chose smart defaults over more form fields.</p>
+                        <div class="mockup">
+                            <div class="mockup-screen">
+                                Before: 6-step checkout with 14 form fields<br><br>
+                                After: 3-step flow with Apple/Google Pay + guest option
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Solution</h3>
+                        <p>One-page progressive checkout with contextual upsells, saved payment methods, and trust badges that actually convert. Real-time price breakdown and error recovery.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Results &amp; Impact</h3>
+                        <div class="results-grid">
+                            <div class="result-box">
+                                <div class="number">-37%</div>
+                                <p>Cart abandonment</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">+41%</div>
+                                <p>Conversion rate</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">$2.4M</div>
+                                <p>Additional revenue in Q4</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">+2.1pt</div>
+                                <p>Average order value</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Reflection — What I’d do differently</h3>
+                        <p>Would have run more international user testing earlier — cultural differences in checkout trust were bigger than expected. Still, the metrics speak for themselves.</p>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "CollabForge — Enterprise Dashboard Redesign",
+                meta: "SaaS • 2025 • Shipped",
+                teaser: "Made complex project management actually usable — task completion time dropped 65%.",
+                content: `
+                    <div class="modal-section">
+                        <h3>The Challenge</h3>
+                        <p>Enterprise teams spent 40% of their time just navigating a cluttered, overwhelming dashboard. Adoption was low and churn was rising.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>My Role &amp; Ownership</h3>
+                        <p>UX lead for v2. Owned research synthesis, information architecture, and final UI. Collaborated with product, engineering, and 12 customer advisory board members.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Process &amp; Key Decisions</h3>
+                        <p>14 customer interviews + journey mapping → redesigned IA from 9 tabs to smart contextual views. Trade-off: Rich data vs. simplicity — I fought for progressive disclosure and customizable widgets.</p>
+                        <div class="mockup">
+                            <div class="mockup-screen">
+                                Before: Dense grid of 47 widgets<br><br>
+                                After: Intelligent, glanceable dashboard with AI insights
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Solution</h3>
+                        <p>Modern, responsive dashboard with drag-and-drop widgets, AI-suggested priorities, and real-time collaboration indicators. Reduced cognitive load dramatically.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Results &amp; Impact</h3>
+                        <div class="results-grid">
+                            <div class="result-box">
+                                <div class="number">-65%</div>
+                                <p>Time to complete core tasks</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">+120%</div>
+                                <p>Monthly active users</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">91%</div>
+                                <p>Customer satisfaction (CSAT)</p>
+                            </div>
+                            <div class="result-box">
+                                <div class="number">4.9/5</div>
+                                <p>Internal stakeholder score</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Reflection — What I’d do differently</h3>
+                        <p>I’d push harder for component-level motion design from the start — the final animations made a huge difference in perceived speed. Learned a ton about enterprise constraints.</p>
+                    </div>
+                `
+            }
+        ]
+
+        // Render project cards
+        function renderProjects() {
+            const container = document.getElementById('projectsGrid')
+            container.innerHTML = ''
+
+            projects.forEach(project => {
+                const cardHTML = `
+                    <div class="project-card" onclick="openProject(${project.id})">
+                        <div class="card-image">
+                            <div style="text-align:center; padding:2rem;">
+                                <span style="font-size:3rem; opacity:0.3;">📱</span><br>
+                                <strong>${project.title.split('—')[0]}</strong>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>${project.title}</h3>
+                            <div class="meta">${project.meta}</div>
+                            <p>${project.teaser}</p>
+                            <div style="margin-top:1.5rem; color:var(--accent); font-weight:600; font-size:0.95rem;">
+                                View full case study →
+                            </div>
+                        </div>
+                    </div>
+                `
+                container.innerHTML += cardHTML
+            })
+        }
+
+        // Open modal with project
+        let currentProject = null
+
+        function openProject(id) {
+            currentProject = projects.find(p => p.id === id)
+            if (!currentProject) return
+
+            document.getElementById('modalTitle').textContent = currentProject.title
+            document.getElementById('modalBody').innerHTML = currentProject.content
+            document.getElementById('projectModal').style.display = 'flex'
+            document.body.style.overflow = 'hidden'
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none'
+            document.body.style.overflow = 'visible'
+        }
+
+        // Fake resume download
+        function downloadResume() {
+            const link = document.createElement('a')
+            link.href = '#' // In real use, replace with actual PDF URL
+            link.download = 'Alex_Chen_UX_Resume.pdf'
+            link.click()
+            alert("✅ In a real portfolio you'd link to your actual PDF here. This is a placeholder!")
+        }
+
+        // Mobile menu (simple toggle — you can expand)
+        document.getElementById('mobileBtn').addEventListener('click', () => {
+            alert("Mobile menu would expand here in a full production site.\n\nNav links: About, Work, Contact")
+            // You could add a real dropdown if desired
+        })
+
+        // Close modal when clicking outside content
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal()
+        })
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const modal = document.getElementById('projectModal')
+                if (modal.style.display === 'flex') closeModal()
+            }
+        })
+
+        // Initialize
+        window.onload = function() {
+            renderProjects()
+            console.log('%c✅ Dark-mode UX portfolio ready! Built exactly to hiring manager standards from the X insights.', 'color:#00d4ff; font-size:13px')
+        }
+    </script>
+</body>
+</html>
