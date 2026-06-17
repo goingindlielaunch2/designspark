@@ -88,7 +88,7 @@
 
         .nav-list {
             display: flex;
-            gap: 2.5rem;
+            gap: 1.5rem;
             list-style: none;
             align-items: center;
             margin: 0;
@@ -175,6 +175,107 @@
 
         .nav-item.connections-link a:hover .connections-nav-icon {
             color: var(--accent-connections-light);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: -0.75rem;
+            right: -0.75rem;
+            height: 0.75rem;
+        }
+
+        .nav-dropdown-trigger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dropdown-trigger:hover,
+        .nav-dropdown.active .nav-dropdown-trigger,
+        .nav-dropdown.open .nav-dropdown-trigger {
+            color: var(--accent-gold);
+            text-shadow: 0 0 8px var(--accent-gold-glow);
+        }
+
+        .nav-dropdown.active .nav-dropdown-trigger {
+            font-weight: bold;
+        }
+
+        .nav-dropdown.active .nav-dropdown-trigger::after {
+            content: ' ♦';
+            color: var(--accent-gold);
+            font-size: 0.6rem;
+            margin-left: 2px;
+        }
+
+        .nav-chevron {
+            font-size: 0.5rem;
+            opacity: 0.7;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-dropdown.open .nav-chevron {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 168px;
+            list-style: none;
+            margin: 0;
+            padding: 0.75rem 0 0.4rem;
+            background: rgba(10, 10, 12, 0.98);
+            border: 1px solid var(--border-faint);
+            border-radius: 6px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+            z-index: 1020;
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.55rem 1.15rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-dropdown-menu a:hover,
+        .nav-dropdown-menu li.active a {
+            color: var(--accent-gold);
+            background: rgba(207, 168, 97, 0.08);
+        }
+
+        @media (min-width: 901px) {
+            .nav-dropdown:hover .nav-dropdown-menu,
+            .nav-dropdown.open .nav-dropdown-menu,
+            .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+            .nav-item.share-link #share-text { display: none; }
+            .nav-item.share-link .share-icon { margin-right: 0; }
         }
 
         /* Cinematic Backgrounds & Parallax */
@@ -1311,6 +1412,30 @@
                 justify-content: center;
             }
             .nav-item.connections-link a { margin: 0.25rem 1rem; width: auto; }
+
+            .nav-dropdown { width: 100%; }
+            .nav-dropdown::after { display: none; }
+            .nav-dropdown-trigger {
+                width: 100%;
+                justify-content: center;
+                padding: 0.75rem 1.5rem;
+            }
+            .nav-dropdown-menu {
+                position: static;
+                transform: none;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.25);
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 0;
+            }
+            .nav-dropdown.open .nav-dropdown-menu { display: block; }
+            .nav-dropdown-menu a {
+                text-align: center;
+                padding: 0.65rem 1.5rem;
+                font-size: 0.72rem;
+            }
             
             .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
             .evidence-icon-grid { grid-template-columns: 1fr 1fr; }
@@ -1350,31 +1475,29 @@
         </a>
         <ul class="nav-list" id="nav-menu">
             <li class="nav-item">
-                <a href="#visitation" title="Imprint">Imprint</a>
+                <a href="#visitation" title="The Messianic Imprint">Imprint</a>
             </li>
-            <li class="nav-item">
-                <a href="#textual-forensics" title="Textual Forensics">Textual</a>
+            <li class="nav-item nav-dropdown">
+                <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                    Regions <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                </button>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="#preamble" title="Prologue: Lehi's Trail">Prologue</a></li>
+                    <li><a href="#north-america" title="North American Parallels">Heartland</a></li>
+                    <li><a href="#mesoamerica" title="Mesoamerican Parallels">Mesoamerica</a></li>
+                    <li><a href="#combined-synthesis" title="Combined Synthesis">Combined</a></li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a href="#preamble" title="Prologue">Prologue</a>
-            </li>
-            <li class="nav-item">
-                <a href="#north-america" title="Heartland">Heartland</a>
-            </li>
-            <li class="nav-item">
-                <a href="#mesoamerica" title="Mesoamerica">Mesoamerica</a>
-            </li>
-            <li class="nav-item">
-                <a href="#combined-synthesis" title="Combined">Combined</a>
-            </li>
-            <li class="nav-item">
-                <a href="#timeline" title="Timeline">Timeline</a>
-            </li>
-            <li class="nav-item">
-                <a href="#synthesis" title="Synthesis">Synthesis</a>
-            </li>
-            <li class="nav-item">
-                <a href="#evidentiary-context" title="Context">Context</a>
+            <li class="nav-item nav-dropdown">
+                <button type="button" class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+                    Analysis <i class="fas fa-chevron-down nav-chevron" aria-hidden="true"></i>
+                </button>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="#textual-forensics" title="Textual Forensics">Textual</a></li>
+                    <li><a href="#timeline" title="Timeline">Timeline</a></li>
+                    <li><a href="#synthesis" title="Fact Synthesis">Synthesis</a></li>
+                    <li><a href="#evidentiary-context" title="Evidentiary Context">Context</a></li>
+                </ul>
             </li>
             <li class="nav-item connections-link">
                 <a href="additional.html" title="Ancient Connections">
@@ -2221,7 +2344,9 @@
 
             // ScrollSpy Intersection Observer for Active Nav Highlight
             const spySections = document.querySelectorAll('section[id]');
-            const navItems = document.querySelectorAll('.nav-item');
+            const navItems = document.querySelectorAll('.nav-item:not(.nav-dropdown)');
+            const navDropdowns = document.querySelectorAll('.nav-dropdown');
+            const navDropdownLinks = document.querySelectorAll('.nav-dropdown-menu a');
 
             const scrollSpyOptions = {
                 root: null,
@@ -2237,11 +2362,16 @@
                             const link = item.querySelector('a');
                             if (link) {
                                 const href = link.getAttribute('href');
-                                if (href === `#${id}`) {
-                                    item.classList.add('active');
-                                } else {
-                                    item.classList.remove('active');
-                                }
+                                item.classList.toggle('active', href === `#${id}`);
+                            }
+                        });
+                        navDropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+                        navDropdownLinks.forEach(link => {
+                            const li = link.parentElement;
+                            const isMatch = link.getAttribute('href') === `#${id}`;
+                            li.classList.toggle('active', isMatch);
+                            if (isMatch) {
+                                link.closest('.nav-dropdown').classList.add('active');
                             }
                         });
                     }
@@ -2250,6 +2380,33 @@
 
             spySections.forEach(section => {
                 scrollSpyObserver.observe(section);
+            });
+
+            // Dropdown toggles
+            const closeAllDropdowns = () => {
+                navDropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                    const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+                    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                });
+            };
+
+            document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = trigger.closest('.nav-dropdown');
+                    const willOpen = !dropdown.classList.contains('open');
+                    closeAllDropdowns();
+                    if (willOpen) {
+                        dropdown.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            document.addEventListener('click', closeAllDropdowns);
+            document.querySelectorAll('.nav-dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', (e) => e.stopPropagation());
             });
 
             // Smooth scrolling for footnote links
@@ -2290,6 +2447,11 @@
                         navMenu.classList.remove('open');
                         navToggle.setAttribute('aria-expanded', 'false');
                         navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        navDropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('open');
+                            const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+                            if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                        });
                     });
                 });
             }
