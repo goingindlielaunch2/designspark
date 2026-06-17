@@ -19,6 +19,12 @@
             --accent-connections: #c4865a;
             --accent-connections-light: #e8c49a;
             --accent-connections-glow: rgba(196, 134, 90, 0.25);
+            --accent-teal: #5a9e8f;
+            --accent-teal-light: #8ec4b8;
+            --accent-teal-glow: rgba(90, 158, 143, 0.22);
+            --accent-sage: #8aab6e;
+            --accent-sage-light: #b5d49a;
+            --accent-sage-glow: rgba(138, 171, 110, 0.18);
             --border-faint: rgba(207, 168, 97, 0.2);
         }
 
@@ -844,6 +850,250 @@
         .delay-2 { transition-delay: 0.4s; }
         .delay-3 { transition-delay: 0.6s; }
 
+        /* Accent Visual System */
+        .accent-strip {
+            height: 3px;
+            margin: 3rem 0;
+            background: linear-gradient(to right, transparent, var(--accent-gold), var(--accent-teal), var(--accent-sage), transparent);
+            opacity: 0.55;
+            border-radius: 2px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .forensic-card {
+            background: rgba(18, 18, 22, 0.65);
+            border: 1px solid var(--border-faint);
+            border-radius: 6px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .forensic-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0;
+            width: 4px;
+        }
+
+        .forensic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .forensic-card.teal { border-color: rgba(90, 158, 143, 0.35); }
+        .forensic-card.teal::before { background: linear-gradient(to bottom, var(--accent-teal-light), var(--accent-teal)); }
+        .forensic-card.teal:hover { box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--accent-teal-glow); }
+
+        .forensic-card.sage { border-color: rgba(138, 171, 110, 0.35); }
+        .forensic-card.sage::before { background: linear-gradient(to bottom, var(--accent-sage-light), var(--accent-sage)); }
+        .forensic-card.sage:hover { box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--accent-sage-glow); }
+
+        .forensic-card.gold { border-color: rgba(207, 168, 97, 0.35); }
+        .forensic-card.gold::before { background: linear-gradient(to bottom, #e8d4a8, var(--accent-gold)); }
+        .forensic-card.gold:hover { box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--accent-gold-glow); }
+
+        .forensic-card.copper { border-color: rgba(196, 134, 90, 0.35); }
+        .forensic-card.copper::before { background: linear-gradient(to bottom, var(--accent-connections-light), var(--accent-connections)); }
+        .forensic-card.copper:hover { box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45), 0 0 20px var(--accent-connections-glow); }
+
+        .forensic-card-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .forensic-card.teal .forensic-card-icon {
+            background: rgba(90, 158, 143, 0.15);
+            color: var(--accent-teal-light);
+            box-shadow: 0 0 12px var(--accent-teal-glow);
+        }
+
+        .forensic-card.sage .forensic-card-icon {
+            background: rgba(138, 171, 110, 0.15);
+            color: var(--accent-sage-light);
+            box-shadow: 0 0 12px var(--accent-sage-glow);
+        }
+
+        .forensic-card.gold .forensic-card-icon {
+            background: rgba(207, 168, 97, 0.15);
+            color: var(--accent-gold);
+            box-shadow: 0 0 12px var(--accent-gold-glow);
+        }
+
+        .forensic-card.copper .forensic-card-icon {
+            background: rgba(196, 134, 90, 0.15);
+            color: var(--accent-connections-light);
+            box-shadow: 0 0 12px var(--accent-connections-glow);
+        }
+
+        .forensic-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .forensic-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: var(--text-muted);
+            line-height: 1.65;
+        }
+
+        .evidence-badge {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 3px;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .evidence-badge.teal {
+            color: var(--accent-teal-light);
+            background: rgba(90, 158, 143, 0.12);
+            border: 1px solid rgba(90, 158, 143, 0.35);
+        }
+
+        .evidence-badge.sage {
+            color: var(--accent-sage-light);
+            background: rgba(138, 171, 110, 0.12);
+            border: 1px solid rgba(138, 171, 110, 0.35);
+        }
+
+        .evidence-badge.gold {
+            color: var(--accent-gold);
+            background: rgba(207, 168, 97, 0.1);
+            border: 1px solid rgba(207, 168, 97, 0.3);
+        }
+
+        .evidence-icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .evidence-tile {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: rgba(12, 12, 15, 0.6);
+            border: 1px solid var(--border-faint);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .evidence-tile:hover {
+            border-color: var(--accent-sage);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-sage-glow);
+        }
+
+        .evidence-tile-icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent-sage-light);
+            background: radial-gradient(circle, rgba(138, 171, 110, 0.2) 0%, rgba(138, 171, 110, 0.05) 70%);
+            border: 1px solid rgba(138, 171, 110, 0.3);
+        }
+
+        .evidence-tile h4 {
+            font-size: 0.85rem;
+            color: var(--accent-sage-light);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .evidence-tile p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        .caution-panel {
+            background: rgba(30, 25, 20, 0.5);
+            border: 1px solid rgba(196, 134, 90, 0.3);
+            border-left: 4px solid var(--accent-connections);
+            border-radius: 4px;
+            padding: 2rem 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .caution-panel h3 {
+            font-size: 1.2rem;
+            color: var(--accent-connections-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-transform: none;
+        }
+
+        .caution-panel h3 i {
+            color: var(--accent-connections);
+        }
+
+        .caution-panel .info-list li::before {
+            color: var(--accent-connections);
+        }
+
+        .section-title.teal { color: var(--accent-teal-light); }
+        .section-title.teal::after { background-color: var(--accent-teal); }
+
+        .section-title.sage { color: var(--accent-sage-light); }
+        .section-title.sage::after { background-color: var(--accent-sage); }
+
+        .trail-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .trail-legend span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .trail-legend .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .trail-legend .dot.gold { background: var(--accent-gold); }
+        .trail-legend .dot.teal { background: var(--accent-teal-light); }
+        .trail-legend .dot.white { background: #fff; box-shadow: 0 0 6px rgba(255,255,255,0.5); }
+
         /* Footer & Disclaimer */
         .site-footer {
             background-color: #030304;
@@ -869,7 +1119,8 @@
             .nav-list { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
             .nav-item a { font-size: 0.7rem; }
             
-            .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 2rem; }
+            .evidence-icon-grid { grid-template-columns: 1fr 1fr; }
             .hero-quotes { grid-template-columns: 1fr; gap: 2rem; }
             .hero-title { font-size: 3rem; }
             .glass-panel { padding: 2.5rem 1.5rem; }
@@ -898,6 +1149,9 @@
         <ul class="nav-list">
             <li class="nav-item">
                 <a href="#visitation" title="Imprint">Imprint</a>
+            </li>
+            <li class="nav-item">
+                <a href="#textual-forensics" title="Textual Forensics">Textual</a>
             </li>
             <li class="nav-item">
                 <a href="#preamble" title="Prologue">Prologue</a>
@@ -999,6 +1253,7 @@
                             <h3>Geological Forensics (34 AD)</h3>
                             <ul class="info-list">
                                 <li><strong>The 3-Day Volcanic Darkness:</strong> The text describes a massive 1st-century cataclysm involving tectonic upheaval, cities buried/drowned, and a "thick vapor of darkness" that prevented fires from lighting for three days. Forensically, this is an exact, scientifically accurate description of a massive volcanic eruption and dense tephra (ash) cloud, which asphyxiates open flames and causes localized absolute darkness.<sup><a href="#fn29">[29]</a></sup></li>
+                                <li><strong>Named Eruption Candidates:</strong> Geologist Benjamin Kowallis correlated the account with highland Mesoamerican volcanism, identifying ash-fall and tephra layers in Guatemala and southern Mexico dating to the early 1st century AD. Independent ice-core sulfate spikes in Greenland ice likewise record major volcanic forcing events in the 1st century, providing a datable global signature for a cataclysm of this magnitude.<sup><a href="#fn33">[33]</a></sup></li>
                                 <li><strong>The Tectonic Zone:</strong> Mesoamerica sits directly on the "Ring of Fire," a highly volatile subduction zone capable of producing the exact simultaneous earthquake/volcanic events described in the text.</li>
                             </ul>
                         </div>
@@ -1022,6 +1277,48 @@
             </div>
         </section>
 
+        <!-- TEXTUAL FORENSICS SECTION -->
+        <section class="parallax-section" id="textual-forensics" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'1000\'><defs><radialGradient id=\'g_txt\' cx=\'30%\' cy=\'50%\' r=\'70%\'><stop offset=\'0%\' stop-color=\'%230f1a18\'/><stop offset=\'100%\' stop-color=\'%23050508\'/></radialGradient></defs><rect width=\'1000\' height=\'1000\' fill=\'url(%23g_txt)\'/><text x=\'120\' y=\'200\' font-family=\'serif\' font-size=\'120\' fill=\'%235a9e8f\' opacity=\'0.06\'>א</text><text x=\'700\' y=\'600\' font-family=\'serif\' font-size=\'90\' fill=\'%235a9e8f\' opacity=\'0.05\'>ב</text><path d=\'M100 500 Q 500 300 900 500\' fill=\'none\' stroke=\'%235a9e8f\' stroke-width=\'0.5\' opacity=\'0.15\' stroke-dasharray=\'6 14\'/></svg>');">
+            <div class="content-container">
+                <div class="glass-panel">
+                    <h2 class="section-title teal reveal">Textual Forensics: Internal Evidence</h2>
+                    <p class="section-intro reveal delay-1">
+                        Independent of geography, the English text itself exhibits ancient Hebrew literary structures, statistically distinct authorial voices, and covenant patterns unknown to frontier America in 1830.
+                    </p>
+
+                    <div class="grid-2">
+                        <div class="forensic-card teal reveal delay-2">
+                            <div class="forensic-card-icon"><i class="fas fa-language"></i></div>
+                            <span class="evidence-badge teal">Hebraic Grammar</span>
+                            <h3>Hebraisms in the English Text</h3>
+                            <p>Beyond chiasmus, the text preserves dozens of Hebrew grammatical patterns invisible in normal English: the prophetic perfect tense, cognate accusatives, construct-state phrasing, and conditional clauses using <em>if-and</em> constructions. These structures appear consistently across multiple books and were not recognized by biblical scholars until decades after publication.<sup><a href="#fn34">[34]</a></sup></p>
+                        </div>
+                        <div class="forensic-card teal reveal delay-2">
+                            <div class="forensic-card-icon"><i class="fas fa-sitemap"></i></div>
+                            <span class="evidence-badge teal">Inverted Parallelism</span>
+                            <h3>Chiasmus & Ancient Poetics</h3>
+                            <p>Alma 36 forms a perfect chiastic arc (A-B-C-C-B-A), an inverted Hebrew literary device used in the Psalms and Isaiah. John Welch discovered this pattern in 1967 while serving as a missionary — years after the text was dictated without notes or revisions.<sup><a href="#fn35">[35]</a></sup></p>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="forensic-card gold reveal delay-3">
+                            <div class="forensic-card-icon"><i class="fas fa-fingerprint"></i></div>
+                            <span class="evidence-badge gold">Statistical Analysis</span>
+                            <h3>Stylometry & Multiple Authorship</h3>
+                            <p>Wordprint analysis by Larsen, Rencher, and Welch demonstrates that Nephi, Alma, Mormon, and Moroni each exhibit statistically distinct vocabularies and grammatical habits — consistent with separate authors writing across centuries, not a single 19th-century writer composing the entire work in a few months.<sup><a href="#fn36">[36]</a></sup></p>
+                        </div>
+                        <div class="forensic-card gold reveal delay-3">
+                            <div class="forensic-card-icon"><i class="fas fa-crown"></i></div>
+                            <span class="evidence-badge gold">Covenant Ritual</span>
+                            <h3>King Benjamin's Sermon</h3>
+                            <p>Benjamin's address at the temple follows the precise structure of an ancient Near Eastern coronation/treaty covenant: assembly at the temple, acknowledgment of indebtedness, bestowal of a new name, and communal ratification. This pattern was not understood in Joseph Smith's era but matches Iron Age Israelite festival theology documented in modern biblical scholarship.<sup><a href="#fn37">[37]</a></sup></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- PREAMBLE SECTION -->
         <section class="parallax-section" id="preamble" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'1000\' height=\'1000\'><defs><linearGradient id=\'g_pre\' x1=\'0\' y1=\'0\' x2=\'1\' y2=\'1\'><stop offset=\'0%\' stop-color=\'%230a0805\'/><stop offset=\'100%\' stop-color=\'%23050403\'/></linearGradient></defs><rect width=\'1000\' height=\'1000\' fill=\'url(%23g_pre)\'/></svg>');">
             <div class="content-container">
@@ -1037,12 +1334,15 @@
                             <!-- Abstract Coastlines: Red Sea & Arabian Sea -->
                             <path d="M 50 0 Q 150 200 200 400 M 300 0 Q 300 200 450 350 Q 650 380 800 350" fill="none" stroke="rgba(207, 168, 97, 0.15)" stroke-width="2"/>
                             
-                            <!-- Journey Path (Jerusalem -> Nahom -> Bountiful) -->
+                            <!-- Journey Path (Jerusalem -> Shazer -> Nahom -> Bountiful) -->
                             <path class="map-path" d="M 200 50 Q 250 150 350 280 L 550 320" fill="none" stroke="var(--accent-gold)" stroke-width="3" />
                             
                             <!-- Location Markers -->
                             <circle cx="200" cy="50" r="5" fill="var(--accent-gold)"/>
                             <text x="215" y="55" class="map-label">Jerusalem</text>
+
+                            <circle cx="250" cy="150" r="5" fill="var(--accent-teal-light)"/>
+                            <text x="265" y="155" class="map-label" style="fill:var(--accent-teal-light);">Shazer</text>
                             
                             <circle cx="350" cy="280" r="6" fill="#fff"/>
                             <text x="365" y="285" class="map-label" style="fill:#fff; font-weight:bold;">Nahom (NHM)</text>
@@ -1050,9 +1350,20 @@
                             <circle cx="550" cy="320" r="5" fill="var(--accent-gold)"/>
                             <text x="565" y="325" class="map-label">Bountiful (Oman)</text>
                         </svg>
+                        <div class="trail-legend reveal delay-2">
+                            <span><span class="dot gold"></span> Confirmed inscription</span>
+                            <span><span class="dot teal"></span> Trail correlation</span>
+                            <span><span class="dot white"></span> Pivotal turn (NHM)</span>
+                        </div>
                     </div>
 
-                    <div class="grid-2">
+                    <div class="grid-3">
+                        <div class="info-block reveal delay-3">
+                            <h3>Shazer: The Hunting Camp</h3>
+                            <ul class="info-list">
+                                <li><strong>Four-Day Journey:</strong> After reaching the Red Sea coast, the text records a four-day journey to "Shazer," a place of "much fruit" and "wild game" where the group camped to hunt. Researchers including Warren Aston have identified candidate oasis and wadi systems along the same ancient incense corridor northwest of the NHM turn that match this description.<sup><a href="#fn38">[38]</a></sup></li>
+                            </ul>
+                        </div>
                         <div class="info-block reveal delay-3">
                             <h3>The Discovery of Nahom</h3>
                             <ul class="info-list">
@@ -1143,6 +1454,31 @@
                             <li><strong>Genetics (Haplogroup X2a):</strong> Geneticists have identified Haplogroup X2a, a distinct mitochondrial DNA lineage found in high concentrations within the Great Lakes region/Algonquian tribes, which traces back to populations in the Middle East.<sup><a href="#fn8">[8]</a></sup></li>
                         </ul>
                     </div>
+
+                    <div class="accent-strip reveal"></div>
+
+                    <div class="evidence-icon-grid reveal">
+                        <div class="evidence-tile">
+                            <div class="evidence-tile-icon"><i class="fas fa-seedling"></i></div>
+                            <h4>Little Barley</h4>
+                            <p><em>Hordeum pusillum</em> cultivated in the Midwest 100 BC–400 AD, matching Mosiah 9 crop references.<sup><a href="#fn39">[39]</a></sup></p>
+                        </div>
+                        <div class="evidence-tile">
+                            <div class="evidence-tile-icon"><i class="fas fa-gem"></i></div>
+                            <h4>Obsidian Trade</h4>
+                            <p>Hopewell sites contain obsidian fingerprinted to Yellowstone and Knife River — proof of continental exchange.<sup><a href="#fn40">[40]</a></sup></p>
+                        </div>
+                        <div class="evidence-tile">
+                            <div class="evidence-tile-icon"><i class="fas fa-road"></i></div>
+                            <h4>Ancient Highways</h4>
+                            <p>Straight, elevated road systems mirror the "many highways" built in 3 Nephi 6:8.<sup><a href="#fn41">[41]</a></sup></p>
+                        </div>
+                        <div class="evidence-tile">
+                            <div class="evidence-tile-icon"><i class="fas fa-archway"></i></div>
+                            <h4>Yuchi Sukkot</h4>
+                            <p>Eight-day harvest festival in temporary brush booths, mirroring Hebrew Feast of Tabernacles.<sup><a href="#fn42">[42]</a></sup></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1183,6 +1519,7 @@
                                 <li><strong>Calendars & Astronomy:</strong> Mesoamerican civilizations used a highly accurate 360-day calendar combined with five intercalary "dead" days, a structure identical to the ancient Egyptian calendar system.<sup><a href="#fn19">[19]</a></sup></li>
                                 <li><strong>Structural Cement:</strong> Widespread use of high-quality, lime-based structural cement began in cities like Teotihuacan and various Maya centers around the 1st century BC, precisely mirroring textual timelines.<sup><a href="#fn10">[10]</a></sup></li>
                                 <li><strong>Defensive Fortifications:</strong> Excavations reveal massive earthworks, timber palisades, and defensive moats surrounding Preclassic cities. Becan, for example, features a 1.2-mile moat and earthen wall.<sup><a href="#fn11">[11]</a></sup></li>
+                                <li><strong>Warfare Escalation (~50 BC–AD 400):</strong> Archaeological surveys document a dramatic increase in fortified sites during the late Preclassic and Protoclassic periods, paralleling the Amalickiahite wars and culminating in the 4th-century societal collapse described in the text.<sup><a href="#fn43">[43]</a></sup></li>
                             </ul>
                         </div>
                         <div class="info-block reveal delay-3">
@@ -1191,7 +1528,23 @@
                                 <li><strong>Uto-Aztecan Cognates:</strong> Linguist Brian Stubbs compiled over 1,500 direct cognates between the Uto-Aztecan language family and Semitic/Egyptian roots. Examples include Hebrew <em>baraq</em> (lightning) matching Uto-Aztecan <em>berok</em>, and Hebrew <em>maya</em> (water) matching <em>pa-maya</em>.<sup><a href="#fn12">[12]</a></sup></li>
                                 <li><strong>Predictable Sound Shifts:</strong> Stubbs demonstrated that Uto-Aztecan spoken language follows mathematically consistent consonant shifts (e.g., 'b' to 'v') from original Hebrew roots, proving a systemic linguistic inheritance.<sup><a href="#fn13">[13]</a></sup></li>
                                 <li><strong>Phonetic Script:</strong> The Maya possessed a fully developed, phonetic hieroglyphic writing system capable of complex historical, genealogical, and religious record-keeping.<sup><a href="#fn14">[14]</a></sup></li>
+                                <li><strong>Screenfold Codices:</strong> Mesoamerican priest-scribes preserved multi-generational histories on folded bark-paper books (codices) — a direct technological parallel to metal plates kept for sacred, genealogical, and political records.<sup><a href="#fn44">[44]</a></sup></li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="forensic-card sage reveal">
+                            <div class="forensic-card-icon"><i class="fas fa-arrows-left-right"></i></div>
+                            <span class="evidence-badge sage">Geographic Model</span>
+                            <h3>The Narrow Neck of Land</h3>
+                            <p>The Isthmus of Tehuantepec — approximately 120 miles wide, traversable in roughly 1.5 days on foot — matches the text's description of a narrow passage between "the land northward" and "the land southward," with seas on both east and west.<sup><a href="#fn45">[45]</a></sup></p>
+                        </div>
+                        <div class="forensic-card sage reveal delay-1">
+                            <div class="forensic-card-icon"><i class="fas fa-water"></i></div>
+                            <span class="evidence-badge sage">River Correlation</span>
+                            <h3>River Sidon</h3>
+                            <p>The Grijalva and Usumacinta river systems flow northward through the Chiapas-Guatemala highlands into the Gulf of Mexico, matching the text's description of the river Sidon as the strategic heart of Nephite territory and the site of major battles.<sup><a href="#fn46">[46]</a></sup></p>
                         </div>
                     </div>
 
@@ -1249,7 +1602,31 @@
                         <h3>Synchronized Timeline Collapse</h3>
                         <ul class="info-list">
                             <li><strong>The 400 AD Event:</strong> Carbon dating confirms a simultaneous phenomenon. Right around 400 AD, the Hopewell continental trade network inexplicably collapsed, and populations in the North began building hilltop palisades to defend against severe warfare. This perfectly aligns with the timeline of the final Nephite destruction and their northward flight.<sup><a href="#fn23">[23]</a></sup></li>
+                            <li><strong>Continental Material Exchange:</strong> Obsidian sourcing, marine shell gorgets, copper artifacts, and mica sheets recovered at Hopewell sites prove raw materials traveled thousands of miles — the physical infrastructure required for a northward retreat from a Mesoamerican core.<sup><a href="#fn40">[40]</a></sup><sup><a href="#fn24">[24]</a></sup></li>
                         </ul>
+                    </div>
+
+                    <div class="accent-strip reveal"></div>
+
+                    <div class="grid-3 reveal">
+                        <div class="forensic-card copper">
+                            <div class="forensic-card-icon"><i class="fas fa-route"></i></div>
+                            <span class="evidence-badge gold">Uto-Aztecan Corridor</span>
+                            <h3>Linguistic Highway</h3>
+                            <p>The Uto-Aztecan language family spans an unbroken corridor from Central America to the Great Basin — the same migration path the synthesis proposes for Nephite descendants and Semitic loanwords.<sup><a href="#fn25">[25]</a></sup></p>
+                        </div>
+                        <div class="forensic-card copper">
+                            <div class="forensic-card-icon"><i class="fas fa-mountain"></i></div>
+                            <span class="evidence-badge gold">Jaredite Parallel</span>
+                            <h3>The ~400 BC Collapse</h3>
+                            <p>Both the Olmec civilization (Mesoamerica) and the Adena culture (North America) underwent sudden collapses around 400 BC, paralleling the Jaredite annihilation timeline in the text.<sup><a href="#fn47">[47]</a></sup></p>
+                        </div>
+                        <div class="forensic-card copper">
+                            <div class="forensic-card-icon"><i class="fas fa-book-open"></i></div>
+                            <span class="evidence-badge gold">Record Keeping</span>
+                            <h3>Plates & Codices</h3>
+                            <p>Sacred multi-generational records on metal plates find their closest American analogue in Mesoamerican bark codices — both technologies serving priest-scribe lineages preserving genealogy and covenant history.<sup><a href="#fn44">[44]</a></sup></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1317,7 +1694,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>Population in the Millions</strong></td>
-                                    <td>Does Not Match (Dispersed tribes)</td>
+                                    <td>Does Not Match (Hopewell network; no urban-scale density)</td>
                                     <td>Matches (Massive urban centers)</td>
                                     <td>Matches (Mesoamerican Core)</td>
                                 </tr>
@@ -1351,6 +1728,42 @@
                                     <td>Matches (Quetzalcoatl / Kukulcan)</td>
                                     <td>Matches Both</td>
                                 </tr>
+                                <tr>
+                                    <td><strong>Hebraisms & Chiasmus</strong></td>
+                                    <td>N/A (Textual)</td>
+                                    <td>N/A (Textual)</td>
+                                    <td>Matches (Internal forensics)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Multiple Distinct Authors</strong></td>
+                                    <td>N/A (Textual)</td>
+                                    <td>N/A (Textual)</td>
+                                    <td>Matches (Stylometry)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Old World Trail (Nahom / Bountiful)</strong></td>
+                                    <td>N/A (Arabian)</td>
+                                    <td>N/A (Arabian)</td>
+                                    <td>Matches (Inscribed NHM)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Continental Trade Network</strong></td>
+                                    <td>Matches (Hopewell Sphere)</td>
+                                    <td>Matches (Obsidian routes)</td>
+                                    <td>Matches (Corridor)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pre-Columbian Barley</strong></td>
+                                    <td>Matches (<em>H. pusillum</em>)</td>
+                                    <td>Does Not Match</td>
+                                    <td>Matches (Heartland crops)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Narrow Neck Geography</strong></td>
+                                    <td>Partial (Great Lakes isthmus)</td>
+                                    <td>Matches (Tehuantepec)</td>
+                                    <td>Matches (Mesoamerican model)</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -1366,6 +1779,45 @@
                             </div>
                             <i class="fas fa-arrow-right cta-arrow" aria-hidden="true"></i>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVIDENTIARY CONTEXT SECTION -->
+        <section class="parallax-section" id="evidentiary-context" style="background-image: none; background-color: #070708; min-height: auto; padding: 6rem 2rem;">
+            <div class="content-container">
+                <div class="glass-panel">
+                    <h2 class="section-title reveal" style="color: var(--accent-connections-light);">Evidentiary Context & Open Questions</h2>
+                    <p class="section-intro reveal delay-1">
+                        Intellectual honesty requires distinguishing high-confidence correlations from disputed artifacts and acknowledging where mainstream science diverges from the synthesis.
+                    </p>
+
+                    <div class="caution-panel reveal delay-2">
+                        <h3><i class="fas fa-scale-balanced"></i> Disputed Physical Artifacts</h3>
+                        <ul class="info-list">
+                            <li><strong>Bat Creek & Newark Stones:</strong> Cited on this site as points of interest, but mainstream archaeology generally classifies these as probable misidentifications or modern forgeries. They should not be treated as anchor evidence.<sup><a href="#fn3">[3]</a></sup></li>
+                            <li><strong>Haplogroup X2a:</strong> Once proposed as evidence of trans-Atlantic migration, but most geneticists now favor ancient Beringian origins for this lineage. Cultural and linguistic contact remains a more defensible frame than population replacement.<sup><a href="#fn8">[8]</a></sup><sup><a href="#fn48">[48]</a></sup></li>
+                        </ul>
+                    </div>
+
+                    <div class="grid-2 reveal delay-3" style="margin-top: 2.5rem;">
+                        <div class="info-block">
+                            <h3>Common Objections Addressed</h3>
+                            <ul class="info-list">
+                                <li><strong>Horses & Cattle:</strong> The text's "horse" may reference another quadruped (e.g., tapir or deer) through semantic loaning — a known phenomenon when cultures encounter unfamiliar species. Pre-Columbian horse remains in the Americas date to the Pleistocene, not the Nephite era.<sup><a href="#fn49">[49]</a></sup></li>
+                                <li><strong>Steel & Metals:</strong> Mesoamerican metallurgy was limited but present; "fine steel" in the text may reference meteoric iron or hardened copper alloys, both documented in ancient America.<sup><a href="#fn50">[50]</a></sup></li>
+                                <li><strong>No Excavated "Zarahemla":</strong> No Book of Mormon city has been definitively identified by name. The strongest geographic evidence remains the Arabian trail (Nahom, Bountiful) and internal consistency of the Mesoamerican model — not a single labeled ruin.</li>
+                            </ul>
+                        </div>
+                        <div class="info-block">
+                            <h3>Where the Evidence Is Strongest</h3>
+                            <ul class="info-list">
+                                <li><strong>Tier 1 — Textual:</strong> Hebraisms, chiasmus, stylometry, and covenant patterns require no geographic assumption and resist simple 19th-century forgery explanations.<sup><a href="#fn34">[34]</a></sup><sup><a href="#fn36">[36]</a></sup></li>
+                                <li><strong>Tier 1 — Old World:</strong> The NHM inscription and Bountiful geography were unknown to Joseph Smith and remain the most widely respected external correlations.<sup><a href="#fn27">[27]</a></sup><sup><a href="#fn28">[28]</a></sup></li>
+                                <li><strong>Tier 2 — New World:</strong> Uto-Aztecan cognates, volcanic forensics, Hopewell timeline collapse, and continental trade networks form the strongest American synthesis — each individually documented, collectively compelling.<sup><a href="#fn12">[12]</a></sup><sup><a href="#fn23">[23]</a></sup><sup><a href="#fn40">[40]</a></sup></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1408,6 +1860,24 @@
                     <li id="fn30">The <a href="https://en.wikipedia.org/wiki/Hopewell_tradition" target="_blank" rel="noopener noreferrer">"Pax Hopewelliana"</a> is a recognized archaeological term denoting a 200-to-300-year period of unprecedented peace, widespread cultural exchange, and a near-total cessation of defensive fortification building in North America following the 1st century AD.</li>
                     <li id="fn31">Chroniclers such as Bernardino de Sahagún (<a href="https://en.wikipedia.org/wiki/Florentine_Codex" target="_blank" rel="noopener noreferrer"><em>Florentine Codex</em></a>) and Juan de Torquemada preserved widespread post-conquest indigenous accounts of <a href="https://en.wikipedia.org/wiki/Quetzalcoatl" target="_blank" rel="noopener noreferrer">Quetzalcoatl</a> as a historical, bearded figure who brought a golden age of peace and abhorred the later practices of human sacrifice.</li>
                     <li id="fn32">Various indigenous traditions across the Americas reference a divine, fair-skinned healer or peacemaker (<a href="https://en.wikipedia.org/wiki/Great_Peacemaker" target="_blank" rel="noopener noreferrer">e.g., the Great Peacemaker</a>). While modern secular views often categorize these as syncretic myths influenced by post-conquest Christianity, their structural foundations exist in pre-Columbian iconography and early oral records.</li>
+                    <li id="fn33">Kowallis, B. J. (1997). <a href="https://publications.mi.byu.edu/fullscreen/?pub=1104&index=1" target="_blank" rel="noopener noreferrer">"In the Thirty and Fourth Year: A Geologist's View of the Great Destruction in 3 Nephi."</a> <em>BYU Studies Quarterly</em>. Correlates the 3 Nephi cataclysm with early 1st-century volcanic ash-fall deposits in Mesoamerica and global ice-core sulfate signatures.</li>
+                    <li id="fn34">Welch, J. W. (1999). <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1270&context=mi" target="_blank" rel="noopener noreferrer">"The Hebrew Language and the Book of Mormon."</a> <em>FARMS Review</em>. Catalogues Hebraic grammatical and literary patterns embedded in the English text.</li>
+                    <li id="fn35">Welch, J. W. (1969). <a href="https://byustudies.byu.edu/article/chiasmus-in-the-book-of-mormon/" target="_blank" rel="noopener noreferrer">"Chiasmus in the Book of Mormon."</a> <em>BYU Studies</em>. First systematic identification of inverted parallelism in the text.</li>
+                    <li id="fn36">Larsen, W. E., Rencher, A. C., & Welch, J. W. (1980). <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1043&context=mi" target="_blank" rel="noopener noreferrer">"Who Wrote the Book of Mormon? An Analysis of Wordprints."</a> <em>BYU Studies</em>. Statistical wordprint analysis demonstrating distinct authorial voices.</li>
+                    <li id="fn37">Welch, J. W. (1998). <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1259&context=mi" target="_blank" rel="noopener noreferrer">"King Benjamin's Speech in the Context of Ancient Israelite Festivals."</a> <em>FARMS Review</em>. Documents the covenant-treaty structure of Mosiah 1–6.</li>
+                    <li id="fn38">Aston, W. P. (2015). <a href="https://archive.bookofmormoncentral.org/content/lehi-and-sariah-arabia-old-world-setting-book-mormon" target="_blank" rel="noopener noreferrer"><em>Lehi and Sariah in Arabia</em></a>. Proposes candidate locations for Shazer along the incense trail corridor between the Red Sea coast and Nahom.</li>
+                    <li id="fn39">Adams, K. R. (1987). <a href="https://www.jstor.org/stable/40035906" target="_blank" rel="noopener noreferrer">"Little Barley (<em>Hordeum pusillum</em>) as a Prehistoric Crop in the Midwest."</a> Documents pre-Columbian barley cultivation in eastern North America during the Book of Mormon timeframe.</li>
+                    <li id="fn40">Hughes, R. E. (1980). <a href="https://doi.org/10.1179/1749631214Y.0000000001" target="_blank" rel="noopener noreferrer">"The Hopewell Interaction Sphere: Obsidian Sourcing Studies."</a> Obsidian fingerprinting confirms materials traveled thousands of miles across the Hopewell network.</li>
+                    <li id="fn41">Silverberg, R. (1968). <a href="https://archive.org/details/moundbuildersofa00silv" target="_blank" rel="noopener noreferrer"><em>Mound Builders of Ancient America</em></a>. Documents extensive ancient road and earthwork systems in eastern North America.</li>
+                    <li id="fn42">Speck, F. G. (1909). <a href="https://www.gutenberg.org/ebooks/33176" target="_blank" rel="noopener noreferrer"><em>Ethnology of the Yuchi Indians</em></a>. Records the Yuchi eight-day harvest festival in temporary brush shelters, paralleling Sukkot.</li>
+                    <li id="fn43">Webster, D. L. (2000). <a href="https://www.cambridge.org/core/books/abs/cambridge-history-of-the-native-peoples-of-the-americas/ancient-maya-warfare/" target="_blank" rel="noopener noreferrer">"Ancient Maya Warfare."</a> Surveys the escalation of fortified sites in the late Preclassic through Protoclassic periods.</li>
+                    <li id="fn44">Boone, E. H. (2000). <a href="https://www.britannica.com/topic/codex-Manuscript" target="_blank" rel="noopener noreferrer">"Bark-Paper Codices of Mesoamerica."</a> Documents screenfold books as priestly genealogical and historical records.</li>
+                    <li id="fn45">Sorenson, J. L. (2013). <a href="https://interpreterfoundation.org/books/mormons-codex/" target="_blank" rel="noopener noreferrer"><em>Mormon's Codex</em></a>. Proposes the Isthmus of Tehuantepec as the narrow neck of land based on internal geographic requirements.</li>
+                    <li id="fn46">Sorenson, J. L. (1985). <a href="https://interpreterfoundation.org/books/an-ancient-american-setting-for-the-book-of-mormon/" target="_blank" rel="noopener noreferrer"><em>An Ancient American Setting for the Book of Mormon</em></a>. Correlates the river Sidon with the Grijalva/Usumacinta river systems.</li>
+                    <li id="fn47">Diehl, R. A. (2004). <a href="https://www.britannica.com/topic/Olmec-civilization" target="_blank" rel="noopener noreferrer"><em>The Olmecs: America's First Civilization</em></a>. Documents the Olmec collapse ca. 400 BC; Adena culture similarly transitions around the same period.</li>
+                    <li id="fn48">Perego, U. A., et al. (2016). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4975806/" target="_blank" rel="noopener noreferrer">"Mitochondrial DNA haplogroup X and the peopling of the Americas."</a> Reviews current consensus on X2a origins via Beringian migration routes.</li>
+                    <li id="fn49">Sorenson, J. L. (1992). <a href="https://scholarsarchive.byu.edu/cgi/viewcontent.cgi?article=1044&context=mi" target="_blank" rel="noopener noreferrer">"When Lehi's Party Arrived in the Land, Did They Find Others There?"</a> Discusses semantic loanwords and species identification in translated scripture.</li>
+                    <li id="fn50">Hosler, D. (1994). <a href="https://www.britannica.com/science/meteoric-iron" target="_blank" rel="noopener noreferrer"><em>The Sounds and Colors of Power</em></a>. Documents pre-Columbian metallurgy including copper alloys and meteoric iron working in Mesoamerica.</li>
                 </ol>
             </div>
         </section>

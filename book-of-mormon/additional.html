@@ -17,6 +17,12 @@
             --text-muted: #8c8c94;
             --accent-gold: #cfa861;
             --accent-gold-glow: rgba(207, 168, 97, 0.15);
+            --accent-teal: #5a9e8f;
+            --accent-teal-light: #8ec4b8;
+            --accent-teal-glow: rgba(90, 158, 143, 0.22);
+            --accent-sage: #8aab6e;
+            --accent-sage-light: #b5d49a;
+            --accent-sage-glow: rgba(138, 171, 110, 0.18);
             --border-faint: rgba(207, 168, 97, 0.2);
         }
 
@@ -466,6 +472,43 @@
             color: var(--accent-gold);
             font-style: italic;
         }
+
+        .accent-strip {
+            height: 3px;
+            margin: 3rem 0;
+            background: linear-gradient(to right, transparent, var(--accent-gold), var(--accent-teal), var(--accent-sage), transparent);
+            opacity: 0.55;
+            border-radius: 2px;
+        }
+
+        .section-card.teal { border-left-color: var(--accent-teal); }
+        .section-card.teal:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-teal-glow); }
+        .section-card.teal .fact-badge { color: var(--accent-teal-light); border-color: rgba(90, 158, 143, 0.35); background: rgba(90, 158, 143, 0.1); }
+
+        .section-card.sage { border-left-color: var(--accent-sage); }
+        .section-card.sage:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-sage-glow); }
+        .section-card.sage .fact-badge { color: var(--accent-sage-light); border-color: rgba(138, 171, 110, 0.35); background: rgba(138, 171, 110, 0.1); }
+
+        .textual-banner {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            padding: 2rem;
+            background: rgba(90, 158, 143, 0.06);
+            border: 1px solid rgba(90, 158, 143, 0.25);
+            border-radius: 6px;
+        }
+
+        .textual-banner h2 {
+            color: var(--accent-teal-light);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .textual-banner p {
+            margin-bottom: 0;
+            color: var(--text-muted);
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -499,6 +542,30 @@
             <div class="timeline-line"></div>
         </header>
 
+        <div class="textual-banner">
+            <h2><i class="fas fa-microscope" style="margin-right: 0.5rem; color: var(--accent-teal-light);"></i>Textual Forensics</h2>
+            <p>Evidence that requires no geographic assumption — ancient Hebrew grammar, statistical authorship, and covenant ritual embedded in the English text.</p>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 3rem;">
+            <div class="section-card teal">
+                <div class="section-card-header">
+                    <h3>Hebraisms Beyond Chiasmus</h3>
+                    <span class="fact-badge">Grammar</span>
+                </div>
+                <p>Prophetic perfect tense, cognate accusatives, construct-state phrasing, and <em>if-and</em> conditional clauses appear throughout the text — Hebrew patterns unrecognized by scholars until decades after 1830.<sup><a href="#fn17" class="footnote-ref">[17]</a></sup></p>
+            </div>
+            <div class="section-card teal">
+                <div class="section-card-header">
+                    <h3>Stylometry & Wordprints</h3>
+                    <span class="fact-badge">Statistics</span>
+                </div>
+                <p>Larsen, Rencher, and Welch demonstrated statistically distinct vocabularies for Nephi, Alma, Mormon, and Moroni — consistent with multiple ancient authors, not a single frontier writer.<sup><a href="#fn18" class="footnote-ref">[18]</a></sup></p>
+            </div>
+        </div>
+
+        <div class="accent-strip"></div>
+
         <div class="grid-2">
 
             <!-- COLUMN 1: Linguistics & Textual Evidence -->
@@ -531,12 +598,20 @@
                     <p>The <b>Purepecha</b> of Mexico speak a language unrelated to neighbors but structurally tied to Old World Semitic. Artifacts across North America often bear the <b>"Mystic Symbol"</b> (/|\), identified as Paleo-Hebrew shorthand for the name of God (YHW).<sup><a href="#fn3" class="footnote-ref">[3]</a></sup></p>
                 </div>
 
-                <div class="section-card">
+                <div class="section-card teal">
                     <div class="section-card-header">
                         <h3>Chiasmus & Ancient Poetics</h3>
                         <span class="fact-badge">Structural Fact</span>
                     </div>
                     <p>The Book of Mormon features <b>Chiasmus</b>, an inverted parallel structure used in ancient Hebrew (e.g., Alma 36). This literary complexity was unknown to 1830 English speakers but is foundational to the text.<sup><a href="#fn4" class="footnote-ref">[4]</a></sup></p>
+                </div>
+
+                <div class="section-card teal">
+                    <div class="section-card-header">
+                        <h3>King Benjamin's Covenant</h3>
+                        <span class="fact-badge">Ritual Pattern</span>
+                    </div>
+                    <p>Benjamin's temple sermon follows the Iron Age coronation/treaty covenant structure: assembly, indebtedness, new name, communal ratification — a pattern unknown in 1830 America.<sup><a href="#fn19" class="footnote-ref">[19]</a></sup></p>
                 </div>
             </section>
 
@@ -583,14 +658,24 @@
         <!-- Middle Section: Advanced Engineering & Cataclysm -->
         <div class="middle-section">
             <h2 class="middle-title">Engineering & Physical Evidence</h2>
-            <div class="grid-2" style="margin-bottom: 0;">
-                <div class="section-card" style="border-left-color: var(--accent-gold);">
-                    <h3 style="margin-bottom: 0.75rem;"><i class="fas fa-road" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>Ancient Highways & Military Works</h3>
+            <div class="grid-2" style="margin-bottom: 1.5rem;">
+                <div class="section-card sage">
+                    <h3 style="margin-bottom: 0.75rem;"><i class="fas fa-road" style="color: var(--accent-sage-light); margin-right: 0.5rem;"></i>Ancient Highways & Military Works</h3>
                     <p style="margin-bottom: 0;">Hopewell and Mayan road systems were vast, straight, and elevated—matching the "highways" of 3 Nephi 6:8. Hopewell "moats" and palisaded walls found in the Eastern US mirror the specific defensive strategies of Captain Moroni in the Book of Alma.<sup><a href="#fn15" class="footnote-ref">[15]</a></sup></p>
                 </div>
-                <div class="section-card" style="border-left-color: var(--accent-gold);">
-                    <h3 style="margin-bottom: 0.75rem;"><i class="fas fa-volcano" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>The 34 AD Geological Event</h3>
-                    <p style="margin-bottom: 0;">Geological records and ice core data from the Mesoamerican Highlands reveal massive volcanic eruptions and "ash-fall" layers dating to the early 1st century AD. This provides a scientific mechanism for the "three days of darkness" and seismic shifts described in the text.<sup><a href="#fn16" class="footnote-ref">[16]</a></sup></p>
+                <div class="section-card sage">
+                    <h3 style="margin-bottom: 0.75rem;"><i class="fas fa-volcano" style="color: var(--accent-sage-light); margin-right: 0.5rem;"></i>The 34 AD Geological Event</h3>
+                    <p style="margin-bottom: 0;">Kowallis correlated 3 Nephi with early 1st-century ash-fall deposits in highland Mesoamerica. Greenland ice-core sulfate spikes independently record major volcanic forcing in the same era.<sup><a href="#fn16" class="footnote-ref">[16]</a></sup></p>
+                </div>
+            </div>
+            <div class="grid-2" style="margin-bottom: 0;">
+                <div class="section-card sage">
+                    <h3 style="margin-bottom: 0.75rem;"><i class="fas fa-gem" style="color: var(--accent-sage-light); margin-right: 0.5rem;"></i>Obsidian Continental Trade</h3>
+                    <p style="margin-bottom: 0;">Obsidian fingerprinting at Hopewell sites traces raw materials to Yellowstone and Knife River — thousands of miles from excavation sites, proving the continental exchange network.<sup><a href="#fn20" class="footnote-ref">[20]</a></sup></p>
+                </div>
+                <div class="section-card sage">
+                    <h3 style="margin-bottom: 0.75rem;"><i class="fas fa-map" style="color: var(--accent-sage-light); margin-right: 0.5rem;"></i>Shazer & the Arabian Trail</h3>
+                    <p style="margin-bottom: 0;">Warren Aston identified candidate oasis locations for Shazer along the incense trail between the Red Sea coast and Nahom — extending the verified Old World corridor beyond NHM alone.<sup><a href="#fn21" class="footnote-ref">[21]</a></sup></p>
                 </div>
             </div>
         </div>
@@ -619,9 +704,9 @@
                     <p>6th-Century BC altars found in Oman inscribed with "NHM" mark the burial place of Ishmael.<sup><a href="#fn12" class="footnote-ref">[12]</a></sup></p>
                 </div>
                 <div class="scientific-item">
-                    <div class="symbol-glyph"><i class="fas fa-file-invoice"></i></div>
-                    <h4>Bat Creek Stone</h4>
-                    <p>A 1889 find in Tennessee featuring Paleo-Hebrew text translating to "For the Judeans."<sup><a href="#fn13" class="footnote-ref">[13]</a></sup></p>
+                    <div class="symbol-glyph"><i class="fas fa-book-open"></i></div>
+                    <h4>Maya Codices</h4>
+                    <p>Screenfold bark books preserved genealogical and covenant histories — the closest American analogue to metal plates.<sup><a href="#fn22" class="footnote-ref">[22]</a></sup></p>
                 </div>
             </div>
         </div>
@@ -646,6 +731,12 @@
                 <div id="fn14">14. <b>Norman, V. G.</b> (1973). <i>Izapa Sculpture.</i> BYU New World Archaeological Foundation.</div>
                 <div id="fn15">15. <b>Silverberg, R.</b> (1968). <i>Mound Builders of Ancient America.</i>; <b>Grover, J.</b> (2017). <i>Military Work and Defense.</i></div>
                 <div id="fn16">16. <b>Kowallis, B. J.</b> (1997). <i>In the 34th Year: Volcanism in the Book of Mormon.</i> BYU Studies.</div>
+                <div id="fn17">17. <b>Welch, J. W.</b> (1999). <i>The Hebrew Language and the Book of Mormon.</i> FARMS Review.</div>
+                <div id="fn18">18. <b>Larsen, W. E., et al.</b> (1980). <i>Who Wrote the Book of Mormon? An Analysis of Wordprints.</i> BYU Studies.</div>
+                <div id="fn19">19. <b>Welch, J. W.</b> (1998). <i>King Benjamin's Speech in the Context of Ancient Israelite Festivals.</i> FARMS Review.</div>
+                <div id="fn20">20. <b>Hughes, R. E.</b> (1980). <i>Obsidian Sourcing in the Hopewell Interaction Sphere.</i></div>
+                <div id="fn21">21. <b>Aston, W. P.</b> (2015). <i>Lehi and Sariah in Arabia.</i> Shazer trail correlations.</div>
+                <div id="fn22">22. <b>Boone, E. H.</b> (2000). <i>Bark-Paper Codices of Mesoamerica.</i></div>
             </div>
         </section>
 
